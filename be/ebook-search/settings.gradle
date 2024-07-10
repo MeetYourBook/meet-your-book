@@ -1,0 +1,4 @@
+rootProject.name = 'ebook-search'
+include 'ebook-core'
+include 'ebook-crawler'
+

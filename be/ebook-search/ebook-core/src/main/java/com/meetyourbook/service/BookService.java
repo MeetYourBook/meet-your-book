@@ -1,7 +1,7 @@
 package com.meetyourbook.service;
 
-import com.ebooksearch.common.entity.Book;
-import com.ebooksearch.common.repository.BookRepository;
+import com.meetyourbook.entity.Book;
+import com.meetyourbook.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package com.meetyourbook.service;
 
-import com.meetyourbook.entity.Book;
 import com.meetyourbook.repository.BookRepository;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,8 @@ public class BookService {
 
     private final BookRepository bookRepository;
 
-    public void saveBook(Book book) {
-        bookRepository.save(book);
+    public void findBook(UUID id) {
+        bookRepository.findById(id).orElseThrow();
     }
+
 }

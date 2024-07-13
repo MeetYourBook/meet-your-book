@@ -23,6 +23,7 @@ public class Library {
     String name;
     @Enumerated(EnumType.STRING)
     LibraryType type;
+    String url;
 
     public enum LibraryType {
         CORPORATE_LIBRARY,

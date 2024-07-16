@@ -1,5 +1,6 @@
-package com.meetyourbook;
+package com.meetyourbook.crawler;
 
+import com.meetyourbook.dto.BookInfo;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.LocalDate;

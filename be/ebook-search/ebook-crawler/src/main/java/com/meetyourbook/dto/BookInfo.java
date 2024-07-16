@@ -1,4 +1,4 @@
-package com.meetyourbook;
+package com.meetyourbook.dto;
 
 import java.time.LocalDate;
 import lombok.Builder;

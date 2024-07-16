@@ -49,6 +49,10 @@ public class BookPageProcessor implements PageProcessor {
         List<BookInfo> books = parseBooks(doc);
         log.info("파싱된 책의 개수: {}", books.size());
 
+        if (books.isEmpty()) {
+            return;
+        }
+
         try {
             page.addTargetRequest(fetchNextUrl(page.getUrl().toString()));
         } catch (URISyntaxException e) {

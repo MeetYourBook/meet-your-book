@@ -1,5 +1,6 @@
 package com.meetyourbook.dto;
 
+import com.meetyourbook.entity.Book;
 import java.time.LocalDate;
 import lombok.Builder;
 import lombok.Value;
@@ -13,7 +14,7 @@ public class BookInfo {
     String author;
     String publisher;
     LocalDate publishDate;
-    String imageURL;
+    String imageUrl;
     String description;
 
     @Override
@@ -24,9 +25,20 @@ public class BookInfo {
             ", author='" + author + '\'' +
             ", publisher='" + publisher + '\'' +
             ", publishDate='" + publishDate + '\'' +
-            ", imageURL='" + imageURL + '\'' +
+            ", imageURL='" + imageUrl + '\'' +
             ", description='" + description + '\'' +
             '}';
+    }
+
+    public Book toEntity() {
+        return Book.builder()
+            .title(title)
+            .author(author)
+            .publisher(publisher)
+            .imageUrl(imageUrl)
+            .publishDate(publishDate)
+            .provider(provider)
+            .build();
     }
 
 }

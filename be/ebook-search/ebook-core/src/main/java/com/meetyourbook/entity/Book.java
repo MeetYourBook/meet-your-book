@@ -33,24 +33,27 @@ public class Book {
     private String provider;
     private String publisher;
     private LocalDate publishDate;
-    private String imageURL;
+    private String imageUrl;
 
     @OneToMany(mappedBy = "book", cascade = {CascadeType.PERSIST, CascadeType.REMOVE} , orphanRemoval = true)
     private List<BookLibrary> bookLibraries = new ArrayList<>();
 
     @Builder
     private Book(String title, String author, String provider, String publisher, LocalDate publishDate,
-        String imageURL) {
+        String imageUrl) {
         this.title = title;
         this.author = author;
         this.provider = provider;
         this.publisher = publisher;
         this.publishDate = publishDate;
-        this.imageURL = imageURL;
+        this.imageUrl = imageUrl;
     }
 
-    public void add(BookLibrary bookLibrary) {
-        bookLibraries.add(bookLibrary);
+    public void add(Library library) {
+        BookLibrary bookLibrary = new BookLibrary(this, library);
+        if (!bookLibraries.contains(bookLibrary)) {
+            bookLibraries.add(bookLibrary);
+        }
     }
 
     public void remove(BookLibrary bookLibrary) {

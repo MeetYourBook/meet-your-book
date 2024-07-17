@@ -1,12 +1,16 @@
 package com.meetyourbook.crawler;
 
 import com.meetyourbook.dto.BookInfo;
+import com.meetyourbook.entity.Library;
+import com.meetyourbook.service.BookService;
+import com.meetyourbook.service.LibraryService;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -18,6 +22,7 @@ import us.codecraft.webmagic.processor.PageProcessor;
 
 @Component
 @Slf4j
+@RequiredArgsConstructor
 public class BookPageProcessor implements PageProcessor {
 
     private static final String RESULT_LIST_CLASS = "book_resultList";
@@ -32,7 +37,10 @@ public class BookPageProcessor implements PageProcessor {
     private static final String BOOK_RESULT_TXT_CLASS = "book_resultTxt";
     private static final String STRONG_TAG = "strong";
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE;
+
     private final Site site = Site.me().setTimeOut(10000000);
+    private final BookService bookService;
+    private final LibraryService libraryService;
 
     @Override
     public Site getSite() {
@@ -41,17 +49,22 @@ public class BookPageProcessor implements PageProcessor {
 
     @Override
     public void process(Page page) {
-        log.info("사이트 이름: {}", getSite().getDomain());
+        String domain = getSite().getDomain();
+        log.info("사이트 이름: {}", domain);
+
         Document doc = page.getHtml().getDocument();
 
         log.info("총 책의 수: {}", getTotalBookCount(doc));
 
-        List<BookInfo> books = parseBooks(doc);
-        log.info("파싱된 책의 개수: {}", books.size());
+        Library library = libraryService.findByDomain(domain);
+        List<BookInfo> bookInfos = parseBooks(doc);
+        log.info("파싱된 책의 개수: {}", bookInfos.size());
 
-        if (books.isEmpty()) {
+        if (bookInfos.isEmpty()) {
             return;
         }
+
+        bookService.saveAll(bookInfos, library);
 
         try {
             page.addTargetRequest(fetchNextUrl(page.getUrl().toString()));
@@ -104,7 +117,7 @@ public class BookPageProcessor implements PageProcessor {
                 .author(getAuthor(writerElement))
                 .publisher(getPublisher(writerElement))
                 .publishDate(getPublishDate(writerElement))
-                .imageURL(getImgUrl(bookElement))
+                .imageUrl(getImgUrl(bookElement))
                 .build());
         } catch (Exception e) {
             log.error("Error parsing book info", e);

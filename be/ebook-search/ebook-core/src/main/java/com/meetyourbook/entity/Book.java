@@ -10,6 +10,7 @@ import jakarta.persistence.OneToMany;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -35,11 +36,13 @@ public class Book {
     private LocalDate publishDate;
     private String imageUrl;
 
-    @OneToMany(mappedBy = "book", cascade = {CascadeType.PERSIST, CascadeType.REMOVE} , orphanRemoval = true)
+    @OneToMany(mappedBy = "book", cascade = {CascadeType.PERSIST,
+        CascadeType.REMOVE}, orphanRemoval = true)
     private List<BookLibrary> bookLibraries = new ArrayList<>();
 
     @Builder
-    private Book(String title, String author, String provider, String publisher, LocalDate publishDate,
+    private Book(String title, String author, String provider, String publisher,
+        LocalDate publishDate,
         String imageUrl) {
         this.title = title;
         this.author = author;
@@ -58,6 +61,25 @@ public class Book {
 
     public void remove(BookLibrary bookLibrary) {
         bookLibraries.remove(bookLibrary);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Book book = (Book) o;
+        return Objects.equals(title, book.title) && Objects.equals(author,
+            book.author) && Objects.equals(publisher, book.publisher) && Objects.equals(
+            publishDate, book.publishDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, author, provider, publisher, publishDate, imageUrl);
     }
 }
 

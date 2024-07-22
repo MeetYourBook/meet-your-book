@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.util.Objects;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -25,6 +26,13 @@ public class Library {
     @Enumerated(EnumType.STRING)
     LibraryType type;
     String url;
+
+    @Builder
+    public Library(String name, LibraryType type, String url) {
+        this.name = name;
+        this.type = type;
+        this.url = url;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -44,13 +52,31 @@ public class Library {
         return Objects.hash(name, type, url);
     }
 
+    @Getter
     public enum LibraryType {
-        CORPORATE_LIBRARY,
-        PUBLIC_INSTITUTION_LIBRARY,
-        PUBLIC_LIBRARY,
-        SCHOOL_LIBRARY,
-        UNIVERSITY_LIBRARY,
-        APARTMENT_LIBRARY,
-        RESEARCH_INSTITUTE_LIBRARY
+        CORPORATE_LIBRARY("기업"),
+        PUBLIC_INSTITUTION_LIBRARY("공공기관"),
+        PUBLIC_LIBRARY("공공도서관"),
+        SCHOOL_LIBRARY("초중고"),
+        UNIVERSITY_LIBRARY("대학"),
+        APARTMENT_LIBRARY("아파트"),
+        RESEARCH_INSTITUTE_LIBRARY("연구소");
+
+        private final String description;
+
+        LibraryType(String description) {
+            this.description = description;
+        }
+
+
+        public static LibraryType findByDescription(String description) {
+            for (LibraryType type : LibraryType.values()) {
+                if (type.getDescription().equals(description)) {
+                    return type;
+                }
+            }
+            throw new IllegalArgumentException("No LibraryType found for description: " + description);
+        }
+
     }
 }

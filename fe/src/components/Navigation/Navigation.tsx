@@ -1,4 +1,4 @@
-import useSearchStore from "../stores/search";
+import useSearchStore from "../../stores/search";
 import { SearchOutlined } from "@ant-design/icons";
 
 type HandleType =
@@ -14,7 +14,7 @@ const Navigation = () => {
     };
 
     return (
-        <nav className="bg-white border-b border-gray-300 py-2">
+        <nav className="bg-white border-b border-gray-300 py-2 mb-10">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">

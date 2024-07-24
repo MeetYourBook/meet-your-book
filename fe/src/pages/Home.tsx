@@ -1,9 +1,11 @@
+import BookDisplay from "../components/BookDisplay/BookDisplay";
 
 const Home = () => {
-
-    console.log(import.meta.env.VITE_APP_API_URL)
     return (
-        <div>12</div>
+        <>  
+            {/* <FilterDisplay/> */}
+            <BookDisplay/>
+        </>
     );
 };
 

@@ -1,6 +1,7 @@
 package com.meetyourbook.entity;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -25,13 +26,22 @@ public class Library {
     String name;
     @Enumerated(EnumType.STRING)
     LibraryType type;
-    String url;
+    @Embedded
+    LibraryUrl libraryUrl;
 
     @Builder
-    public Library(String name, LibraryType type, String url) {
+    public Library(String name, LibraryType type, String libraryUrl) {
         this.name = name;
         this.type = type;
-        this.url = url;
+        this.libraryUrl = new LibraryUrl(libraryUrl);
+    }
+
+    public boolean hasMainInk() {
+        return libraryUrl.hasMainInk();
+    }
+
+    public String getUrlWithQueryParameters(int viewCnt) {
+        return libraryUrl.getUrlWithQueryParameters(viewCnt);
     }
 
     @Override
@@ -44,12 +54,12 @@ public class Library {
         }
         Library library = (Library) o;
         return Objects.equals(name, library.name) && type == library.type
-            && Objects.equals(url, library.url);
+            && Objects.equals(libraryUrl, library.libraryUrl);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, type, url);
+        return Objects.hash(name, type, libraryUrl);
     }
 
     @Getter

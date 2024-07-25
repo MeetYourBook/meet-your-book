@@ -18,15 +18,16 @@ public class LibraryService {
 
     private final LibraryRepository libraryRepository;
 
-    public Library findByDomain(String domain) {
-        return libraryRepository.findByUrlContaining(domain).orElseThrow(NoSuchElementException::new);
+    public Library findByBaseUrl(String baseUrl) {
+        return libraryRepository.findByLibraryUrl_UrlContaining(baseUrl).orElseThrow(
+            () -> new NoSuchElementException("base Url not found = " + baseUrl));
     }
 
     public void saveLibraryFromJson(String filePath) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             List<LibraryCreation> libraryCreations = objectMapper.readValue(new File(filePath),
-                new TypeReference<List<LibraryCreation>>() {
+                new TypeReference<>() {
                 });
 
             List<Library> libraries = libraryCreations.stream()
@@ -40,4 +41,7 @@ public class LibraryService {
         }
     }
 
+    public List<Library> findAll() {
+        return libraryRepository.findAll();
+    }
 }

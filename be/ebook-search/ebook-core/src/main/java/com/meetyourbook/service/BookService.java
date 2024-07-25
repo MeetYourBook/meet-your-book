@@ -8,26 +8,31 @@ import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class BookService {
 
     private final BookRepository bookRepository;
+    private final LibraryService libraryService;
 
     @Transactional
-    public void saveAll(List<BookInfo> bookInfos, Library library) {
+    public void saveAll(List<BookInfo> bookInfos, String baseUrl) {
+        Library library = libraryService.findByBaseUrl(baseUrl);
+
         List<Book> books = bookInfos.stream()
             .map(this::findOrCreateBook)
-            .peek(book -> book.add(library))
+            .peek(book -> book.addLibrary(library))
             .toList();
 
         bookRepository.saveAll(books);
     }
 
-    public Book findOrCreateBook(BookInfo bookInfo) {
-        Optional<Book> optionalBook = bookRepository.findByTitleAndAuthorAndPublisherAndPublishDate(
+    private Book findOrCreateBook(BookInfo bookInfo) {
+        Optional<Book> optionalBook = bookRepository.findFirstByTitleAndAuthorAndPublisherAndPublishDate(
             bookInfo.getTitle(), bookInfo.getAuthor(), bookInfo.getPublisher(),
             bookInfo.getPublishDate());
 

@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface LibraryRepository extends JpaRepository<Library, Long> {
 
-    Optional<Library> findByUrlContaining(String domain);
+    Optional<Library> findByLibraryUrl_UrlContaining(String baseUrl);
 
 }

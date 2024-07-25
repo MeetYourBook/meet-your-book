@@ -1,9 +1,8 @@
 package com.meetyourbook.crawler;
 
 import com.meetyourbook.dto.BookInfo;
-import com.meetyourbook.entity.Library;
+import com.meetyourbook.entity.LibraryUrl;
 import com.meetyourbook.service.BookService;
-import com.meetyourbook.service.LibraryService;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.LocalDate;
@@ -38,9 +37,8 @@ public class BookPageProcessor implements PageProcessor {
     private static final String STRONG_TAG = "strong";
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE;
 
-    private final Site site = Site.me().setTimeOut(10000000);
+    private final Site site = Site.me().setTimeOut(10000000).setSleepTime(8000);
     private final BookService bookService;
-    private final LibraryService libraryService;
 
     @Override
     public Site getSite() {
@@ -49,14 +47,13 @@ public class BookPageProcessor implements PageProcessor {
 
     @Override
     public void process(Page page) {
-        String domain = getSite().getDomain();
-        log.info("사이트 이름: {}", domain);
+        String baseUrl = new LibraryUrl(page.getUrl().get()).getBaseUrl();
+        log.info("사이트 이름: {}", baseUrl);
 
         Document doc = page.getHtml().getDocument();
 
         log.info("총 책의 수: {}", getTotalBookCount(doc));
 
-        Library library = libraryService.findByDomain(domain);
         List<BookInfo> bookInfos = parseBooks(doc);
         log.info("파싱된 책의 개수: {}", bookInfos.size());
 
@@ -64,13 +61,7 @@ public class BookPageProcessor implements PageProcessor {
             return;
         }
 
-        bookService.saveAll(bookInfos, library);
-
-        try {
-            page.addTargetRequest(fetchNextUrl(page.getUrl().toString()));
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
+        bookService.saveAll(bookInfos, baseUrl);
 
     }
 
@@ -180,38 +171,5 @@ public class BookPageProcessor implements PageProcessor {
             .map(url -> url.startsWith("//") ? url.substring(2) : url)
             .orElse(NONE_DATA);
     }
-
-    private String fetchNextUrl(String url) throws URISyntaxException {
-        URI uri = URI.create(url);
-        String query = uri.getQuery();
-        String[] params = query.split("&");
-        StringBuilder newQuery = new StringBuilder();
-
-        for (String param : params) {
-            if (param.startsWith("pageIndex=")) {
-                String[] keyValue = param.split("=");
-                int pageIndex = Integer.parseInt(keyValue[1]);
-                pageIndex++;
-                newQuery.append("pageIndex=").append(pageIndex).append("&");
-            } else {
-                newQuery.append(param).append("&");
-            }
-        }
-
-        if (!newQuery.isEmpty()) {
-            newQuery.setLength(newQuery.length() - 1);
-        }
-
-        URI newUri = new URI(
-            uri.getScheme(),
-            uri.getAuthority(),
-            uri.getPath(),
-            newQuery.toString(),
-            uri.getFragment()
-        );
-
-        return newUri.toString();
-    }
-
 
 }

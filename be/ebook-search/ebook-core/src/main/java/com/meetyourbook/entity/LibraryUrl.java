@@ -45,7 +45,7 @@ public class LibraryUrl {
     public String getBaseUrl() {
         try {
             URI uri = new URI(url);
-            return getProtocol() + PROTOCOL_DELIMITER + uri.getHost();
+            return getProtocol() + PROTOCOL_DELIMITER + uri.getHost() + getPort();
         } catch (URISyntaxException e) {
             log.error("Invalid URL: {}", url, e);
             throw new IllegalArgumentException("Invalid URL provided", e);

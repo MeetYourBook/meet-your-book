@@ -3,17 +3,21 @@ package com.meetyourbook.crawler;
 import com.meetyourbook.dto.BookInfo;
 import com.meetyourbook.entity.LibraryUrl;
 import com.meetyourbook.service.BookService;
-import java.net.URI;
-import java.net.URISyntaxException;
+import io.micrometer.core.instrument.Counter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Semaphore;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
@@ -36,9 +40,20 @@ public class BookPageProcessor implements PageProcessor {
     private static final String BOOK_RESULT_TXT_CLASS = "book_resultTxt";
     private static final String STRONG_TAG = "strong";
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE;
+    private final ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor();
+    private final Semaphore semaphore = new Semaphore(20);
 
-    private final Site site = Site.me().setTimeOut(10000000).setSleepTime(8000);
+    private final Site site = Site.me().setTimeOut(1000000).setSleepTime(3000).setRetryTimes(3).setCycleRetryTimes(3);
     private final BookService bookService;
+
+    @Autowired
+    @Qualifier("pagesCounter")
+    private Counter pagesCounter;
+
+    @Autowired
+    @Qualifier("booksCounter")
+    private Counter booksCounter;
+
 
     @Override
     public Site getSite() {
@@ -55,13 +70,15 @@ public class BookPageProcessor implements PageProcessor {
         log.info("총 책의 수: {}", getTotalBookCount(doc));
 
         List<BookInfo> bookInfos = parseBooks(doc);
+        booksCounter.increment(bookInfos.size());
         log.info("파싱된 책의 개수: {}", bookInfos.size());
 
         if (bookInfos.isEmpty()) {
             return;
         }
 
-        bookService.saveAll(bookInfos, baseUrl);
+//        bookService.saveAll(bookInfos, baseUrl);
+//        pagesCounter.increment();
 
     }
 
@@ -78,7 +95,7 @@ public class BookPageProcessor implements PageProcessor {
             .map(this::parseBookInfo)
             .filter(Optional::isPresent)
             .map(Optional::get)
-            .peek(bookInfo -> log.info("book: {}", bookInfo))
+//            .peek(bookInfo -> log.info("book: {}", bookInfo))
             .toList();
     }
 

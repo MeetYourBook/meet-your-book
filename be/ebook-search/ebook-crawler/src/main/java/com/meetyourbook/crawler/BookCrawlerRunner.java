@@ -7,8 +7,6 @@ import io.micrometer.core.instrument.MeterRegistry;
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadInfo;
 import java.lang.management.ThreadMXBean;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -27,7 +25,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.Spider;
-import us.codecraft.webmagic.Spider.Status;
 
 @Component
 @RequiredArgsConstructor
@@ -35,45 +32,47 @@ import us.codecraft.webmagic.Spider.Status;
 public class BookCrawlerRunner implements CommandLineRunner {
 
     private final BookPageProcessor bookPageProcessor;
-    private static Spider spider;
-    private final ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor();
-    private final AtomicInteger processedPageCount = new AtomicInteger(0);
-    private long startTime;
-    private static final String REDIS_HOST = "localhost";
     private final LibraryService libraryService;
     private final DataSource dataSource;
     private final MeterRegistry meterRegistry;
-    private static final int MAX_PAGES_TO_SEARCH = 2000; // 크롤링할 최대 페이지 수
+    private static final int MAX_URL_TO_SEARCH = 1000;
     public static final ReentrantLock QUEUE_LOCK = new ReentrantLock();
     public static final Condition QUEUE_NOT_EMPTY = QUEUE_LOCK.newCondition();
+    public static final Queue<String> pageQueue = new ConcurrentLinkedQueue<>();
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         List<Library> libraries = libraryService.findAll();
 
-        Queue<String> pageQueue = new ConcurrentLinkedQueue<>(
+        pageQueue.addAll(
             libraries.stream()
                 .filter(Library::hasMainInk)
                 .map(library -> library.getUrlWithQueryParameters(500))
-                .limit(MAX_PAGES_TO_SEARCH)
+                .limit(MAX_URL_TO_SEARCH)
                 .toList()
         );
 
         AtomicInteger pageCount = new AtomicInteger(0);
         ConcurrentMap<String, Boolean> visited = new ConcurrentHashMap<>();
 
-        // Virtual Thread를 사용하려면 excutor 변경
         startResourceMonitoring();
         try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {
-            while (pageCount.get() < MAX_PAGES_TO_SEARCH) {
+            while (true) {
                 QUEUE_LOCK.lock();
                 try {
                     while (pageQueue.isEmpty()) {
-                        QUEUE_NOT_EMPTY.await();
+                        if (executor.isTerminated()) {
+                            QUEUE_LOCK.unlock();
+                            break;
+                        }
+                        QUEUE_NOT_EMPTY.await(100, TimeUnit.MILLISECONDS);
+                    }
+                    if (pageQueue.isEmpty() && executor.isTerminated()) {
+                        break;
                     }
                     String url = pageQueue.poll();
                     if (url != null && !visited.containsKey(url)) {
-                        executor.submit(new BookCrawler(pageCount, visited, url, pageQueue));
+                        executor.submit(new BookCrawler(pageCount, visited, url));
                     }
                 } finally {
                     QUEUE_LOCK.unlock();
@@ -94,32 +93,22 @@ public class BookCrawlerRunner implements CommandLineRunner {
         private final AtomicInteger count;
         private final ConcurrentMap<String, Boolean> visited;
         private final String url;
-        private final Queue<String> pageQueue;
 
-        public BookCrawler(AtomicInteger count, ConcurrentMap<String, Boolean> visited, String url, Queue<String> pageQueue) {
+        public BookCrawler(AtomicInteger count, ConcurrentMap<String, Boolean> visited, String url) {
             this.count = count;
             this.visited = visited;
             this.url = url;
-            this.pageQueue = pageQueue;
         }
 
         @Override
         public void run() {
-            if (!visited.containsKey(url) && count.get() < MAX_PAGES_TO_SEARCH) {
+            if (!visited.containsKey(url)) {
                 Spider spider = Spider.create(bookPageProcessor)
                     .addUrl(url);
 
-                spider.run();
-
                 visited.put(url, true);
+                spider.run();
                 count.incrementAndGet();
-
-                try {
-                    String s = fetchNextUrl(url);
-                    pageQueue.offer(s);
-                } catch (URISyntaxException e) {
-                    throw new RuntimeException(e);
-                }
 
                 signalQueue();
             }
@@ -137,12 +126,12 @@ public class BookCrawlerRunner implements CommandLineRunner {
 
     private void startResourceMonitoring() {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        log.info("pageQueue size: {}", pageQueue.size());
         scheduler.scheduleAtFixedRate(this::logResourceUsage, 1, 1, TimeUnit.SECONDS);
 
     }
 
     private void logResourceUsage() {
-        // 스레드 리소스 모니터링
         ThreadMXBean threadMXBean = ManagementFactory.getThreadMXBean();
         long[] threadIds = threadMXBean.getAllThreadIds();
         ThreadInfo[] threadInfos = threadMXBean.getThreadInfo(threadIds);
@@ -173,85 +162,5 @@ public class BookCrawlerRunner implements CommandLineRunner {
         meterRegistry.gauge("crawler.db.connections.active", activeConnections);
         meterRegistry.gauge("crawler.db.connections.total", totalConnections);
     }
-
-    private void startTpsMonitoring() {
-        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-        scheduler.scheduleAtFixedRate(this::logTps, 1, 1, TimeUnit.SECONDS);
-    }
-
-    private void logTps() {
-        long currentTime = System.currentTimeMillis();
-        long elapsedSeconds = (currentTime - startTime) / 1000;
-        if (elapsedSeconds > 0) {
-            double tps = (double) processedPageCount.get() / elapsedSeconds;
-            log.info("Current TPS: {}", String.format("%.2f", tps));
-        }
-    }
-
-    private void startMonitoringThread() {
-        new Thread(() -> {
-            while (!spider.getStatus().equals(Status.Stopped)) {
-                int activeThreadCount = spider.getThreadAlive();
-                log.info("Active thread count: {}", activeThreadCount);
-
-                Thread[] threads = new Thread[Thread.activeCount()];
-                Thread.enumerate(threads);
-
-                int virtualThreadCnt = 0;
-                int platformThreadCnt = 0;
-
-                for (Thread t : threads) {
-                    log.info("thread name: {}", t.getName());
-                    if (t.isVirtual()) {
-                        virtualThreadCnt++;
-                    } else {
-                        platformThreadCnt++;
-                    }
-                }
-                log.info("Virtual thread count: {}", virtualThreadCnt);
-                log.info("Platform thread count: {}", platformThreadCnt);
-
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    log.error("Monitoring thread interrupted", e);
-                }
-            }
-        }).start();
-    }
-
-    private String fetchNextUrl(String url) throws URISyntaxException {
-        URI uri = URI.create(url);
-        String query = uri.getQuery();
-        String[] params = query.split("&");
-        StringBuilder newQuery = new StringBuilder();
-
-        for (String param : params) {
-            if (param.startsWith("pageIndex=")) {
-                String[] keyValue = param.split("=");
-                int pageIndex = Integer.parseInt(keyValue[1]);
-                pageIndex++;
-                newQuery.append("pageIndex=").append(pageIndex).append("&");
-            } else {
-                newQuery.append(param).append("&");
-            }
-        }
-
-        if (!newQuery.isEmpty()) {
-            newQuery.setLength(newQuery.length() - 1);
-        }
-
-        URI newUri = new URI(
-            uri.getScheme(),
-            uri.getAuthority(),
-            uri.getPath(),
-            newQuery.toString(),
-            uri.getFragment()
-        );
-        log.info("newUri: {}", newUri);
-
-        return newUri.toString();
-    }
-
 
 }

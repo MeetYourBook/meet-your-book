@@ -2,9 +2,7 @@ package com.meetyourbook.crawler;
 
 import com.meetyourbook.dto.BookInfo;
 import com.meetyourbook.entity.LibraryUrl;
-import com.meetyourbook.service.BookService;
-import java.net.URI;
-import java.net.URISyntaxException;
+import com.meetyourbook.service.BookQueueService;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -38,7 +36,8 @@ public class BookPageProcessor implements PageProcessor {
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE;
 
     private final Site site = Site.me().setTimeOut(10000000).setSleepTime(8000);
-    private final BookService bookService;
+    private final BookQueueService bookQueueService;
+    private String baseUrl;
 
     @Override
     public Site getSite() {
@@ -47,7 +46,7 @@ public class BookPageProcessor implements PageProcessor {
 
     @Override
     public void process(Page page) {
-        String baseUrl = new LibraryUrl(page.getUrl().get()).getBaseUrl();
+        baseUrl = new LibraryUrl(page.getUrl().get()).getBaseUrl();
         log.info("사이트 이름: {}", baseUrl);
 
         Document doc = page.getHtml().getDocument();
@@ -61,7 +60,8 @@ public class BookPageProcessor implements PageProcessor {
             return;
         }
 
-        bookService.saveAll(bookInfos, baseUrl);
+        bookQueueService.addBookInfosToQueue(bookInfos);
+//        bookService.saveAll(bookInfos);
 
     }
 
@@ -109,6 +109,7 @@ public class BookPageProcessor implements PageProcessor {
                 .publisher(getPublisher(writerElement))
                 .publishDate(getPublishDate(writerElement))
                 .imageUrl(getImgUrl(bookElement))
+                .baseUrl(baseUrl)
                 .build());
         } catch (Exception e) {
             log.error("Error parsing book info", e);

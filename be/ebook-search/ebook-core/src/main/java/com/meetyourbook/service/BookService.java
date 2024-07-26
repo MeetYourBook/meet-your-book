@@ -5,6 +5,7 @@ import com.meetyourbook.entity.Book;
 import com.meetyourbook.entity.Library;
 import com.meetyourbook.repository.BookRepository;
 import jakarta.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -16,17 +17,21 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class BookService {
 
-    private final BookRepository bookRepository;
     private final LibraryService libraryService;
+    private final BookRepository bookRepository;
+
+
 
     @Transactional
-    public void saveAll(List<BookInfo> bookInfos, String baseUrl) {
-        Library library = libraryService.findByBaseUrl(baseUrl);
+    public void saveAll(List<BookInfo> bookInfos) {
 
-        List<Book> books = bookInfos.stream()
-            .map(this::findOrCreateBook)
-            .peek(book -> book.addLibrary(library))
-            .toList();
+        List<Book> books = new ArrayList<>();
+        for (BookInfo bookInfo : bookInfos) {
+            Book book = findOrCreateBook(bookInfo);
+            Library library = libraryService.findByBaseUrl(bookInfo.getBaseUrl());
+            book.addLibrary(library);
+            books.add(book);
+        }
 
         bookRepository.saveAll(books);
     }

@@ -16,6 +16,7 @@ public class BookInfo {
     LocalDate publishDate;
     String imageUrl;
     String description;
+    String baseUrl;
 
     @Override
     public String toString() {
@@ -24,9 +25,10 @@ public class BookInfo {
             ", title='" + title + '\'' +
             ", author='" + author + '\'' +
             ", publisher='" + publisher + '\'' +
-            ", publishDate='" + publishDate + '\'' +
-            ", imageURL='" + imageUrl + '\'' +
+            ", publishDate=" + publishDate +
+            ", imageUrl='" + imageUrl + '\'' +
             ", description='" + description + '\'' +
+            ", baseUrl='" + baseUrl + '\'' +
             '}';
     }
 

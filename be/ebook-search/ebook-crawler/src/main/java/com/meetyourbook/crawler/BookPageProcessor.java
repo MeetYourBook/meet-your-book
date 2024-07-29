@@ -34,8 +34,6 @@ public class BookPageProcessor implements PageProcessor {
     private static final String SRC_ATTR = "src";
     private static final String SPAN_TAG = "span";
     private static final String I_TAG = "i";
-    private static final String BOOK_RESULT_TXT_CLASS = "book_resultTxt";
-    private static final String STRONG_TAG = "strong";
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE;
 
     private final Site site = Site.me().setTimeOut(10000000).setSleepTime(8000);
@@ -57,8 +55,6 @@ public class BookPageProcessor implements PageProcessor {
         log.info("사이트 이름: {}", baseUrl);
 
         Document doc = page.getHtml().getDocument();
-        int totalBookCount = getTotalBookCount(doc);
-        log.info("총 책의 수: {}", totalBookCount);
 
         List<BookInfo> bookInfos = parseBooks(doc);
         log.info("파싱된 책의 개수: {}", bookInfos.size());
@@ -126,28 +122,6 @@ public class BookPageProcessor implements PageProcessor {
         } catch (Exception e) {
             log.error("Error parsing book info", e);
             return Optional.empty();
-        }
-    }
-
-    private int getTotalBookCount(Document document) {
-        Element bookResultTxt = document.getElementsByClass(BOOK_RESULT_TXT_CLASS).first();
-        if (bookResultTxt == null) {
-            log.warn("BookResultText가 존재하지 않습니다.");
-            return 0;
-        }
-
-        Element strongElement = bookResultTxt.getElementsByTag(STRONG_TAG).first();
-        if (strongElement == null) {
-            log.warn("BookResultText에서 Strong태그 Element가 없음");
-            return 0;
-        }
-
-        String countText = strongElement.text().replaceAll("\\D", "");
-        try {
-            return Integer.parseInt(countText);
-        } catch (NumberFormatException e) {
-            log.error("책의 총개수를 파싱하는 과정에서 오류가 생김", e);
-            return 0;
         }
     }
 

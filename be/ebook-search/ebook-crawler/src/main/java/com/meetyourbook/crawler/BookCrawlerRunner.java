@@ -22,32 +22,38 @@ import java.util.concurrent.locks.ReentrantLock;
 import javax.sql.DataSource;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.Spider;
+import us.codecraft.webmagic.processor.PageProcessor;
 
 @Component
 @RequiredArgsConstructor
 @Slf4j
 public class BookCrawlerRunner implements CommandLineRunner {
 
-    private final BookPageProcessor bookPageProcessor;
+    private final ProcessorFactory processorFactory;
     private final LibraryService libraryService;
     private final DataSource dataSource;
     private final MeterRegistry meterRegistry;
-    private static final int MAX_URL_TO_SEARCH = 1000;
+    private static final int MAX_URL_TO_SEARCH = 1954;
     public static final ReentrantLock QUEUE_LOCK = new ReentrantLock();
     public static final Condition QUEUE_NOT_EMPTY = QUEUE_LOCK.newCondition();
     public static final Queue<String> pageQueue = new ConcurrentLinkedQueue<>();
 
+    @Value("${crawler.processor}")
+    private String processor;
+
     @Override
     public void run(String... args) {
+        PageProcessor selectedProcessor = processorFactory.getProcessor(processor);
         List<Library> libraries = libraryService.findAll();
 
         pageQueue.addAll(
             libraries.stream()
                 .filter(Library::hasMainInk)
-                .map(library -> library.getUrlWithQueryParameters(500))
+                .map(library -> library.getUrlWithQueryParameters(1))
                 .limit(MAX_URL_TO_SEARCH)
                 .toList()
         );
@@ -72,7 +78,7 @@ public class BookCrawlerRunner implements CommandLineRunner {
                     }
                     String url = pageQueue.poll();
                     if (url != null && !visited.containsKey(url)) {
-                        executor.submit(new BookCrawler(pageCount, visited, url));
+                        executor.submit(new BookCrawler(pageCount, visited, url, selectedProcessor));
                     }
                 } finally {
                     QUEUE_LOCK.unlock();
@@ -93,17 +99,19 @@ public class BookCrawlerRunner implements CommandLineRunner {
         private final AtomicInteger count;
         private final ConcurrentMap<String, Boolean> visited;
         private final String url;
+        private final PageProcessor pageProcessor;
 
-        public BookCrawler(AtomicInteger count, ConcurrentMap<String, Boolean> visited, String url) {
+        public BookCrawler(AtomicInteger count, ConcurrentMap<String, Boolean> visited, String url, PageProcessor pageProcessor) {
             this.count = count;
             this.visited = visited;
             this.url = url;
+            this.pageProcessor = pageProcessor;
         }
 
         @Override
         public void run() {
             if (!visited.containsKey(url)) {
-                Spider spider = Spider.create(bookPageProcessor)
+                Spider spider = Spider.create(pageProcessor)
                     .addUrl(url);
 
                 visited.put(url, true);

@@ -26,7 +26,7 @@ public class LibraryUrl {
     private String url;
 
     public String getUrlWithQueryParameters(int viewCnt) {
-        return getBaseUrl() + getPort() + getELibraryFront() + CONTENT_LIST + getQueryParameters(
+        return getBaseUrl() + getELibraryFront() + CONTENT_LIST + getQueryParameters(
             viewCnt);
     }
 

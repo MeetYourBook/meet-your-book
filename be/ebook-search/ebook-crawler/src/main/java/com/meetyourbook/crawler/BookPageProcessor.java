@@ -3,6 +3,9 @@ package com.meetyourbook.crawler;
 import com.meetyourbook.dto.BookInfo;
 import com.meetyourbook.entity.LibraryUrl;
 import com.meetyourbook.service.BookQueueService;
+import io.micrometer.core.instrument.Counter;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -37,7 +40,11 @@ public class BookPageProcessor implements PageProcessor {
 
     private final Site site = Site.me().setTimeOut(10000000).setSleepTime(8000);
     private final BookQueueService bookQueueService;
+    private final Counter pagesCounter;
+    private final Counter booksCounter;
+
     private String baseUrl;
+
 
     @Override
     public Site getSite() {
@@ -50,18 +57,24 @@ public class BookPageProcessor implements PageProcessor {
         log.info("사이트 이름: {}", baseUrl);
 
         Document doc = page.getHtml().getDocument();
-
-        log.info("총 책의 수: {}", getTotalBookCount(doc));
+        int totalBookCount = getTotalBookCount(doc);
+        log.info("총 책의 수: {}", totalBookCount);
 
         List<BookInfo> bookInfos = parseBooks(doc);
         log.info("파싱된 책의 개수: {}", bookInfos.size());
 
-        if (bookInfos.isEmpty()) {
-            return;
-        }
+        if (!bookInfos.isEmpty()) {
+            bookQueueService.addBookInfosToQueue(bookInfos);
+            booksCounter.increment(bookInfos.size());
+            pagesCounter.increment();
 
-        bookQueueService.addBookInfosToQueue(bookInfos);
-//        bookService.saveAll(bookInfos);
+            try {
+                String nextUrl = fetchNextUrl(page.getUrl().get());
+                BookCrawlerRunner.pageQueue.add(nextUrl);
+            } catch (URISyntaxException e) {
+                log.error("다음 페이지 URL을 가져오는 과정에서 오류가 생김", e);
+            }
+        }
 
     }
 
@@ -78,7 +91,6 @@ public class BookPageProcessor implements PageProcessor {
             .map(this::parseBookInfo)
             .filter(Optional::isPresent)
             .map(Optional::get)
-            .peek(bookInfo -> log.info("book: {}", bookInfo))
             .toList();
     }
 
@@ -171,6 +183,39 @@ public class BookPageProcessor implements PageProcessor {
             .map(img -> img.attr(SRC_ATTR))
             .map(url -> url.startsWith("//") ? url.substring(2) : url)
             .orElse(NONE_DATA);
+    }
+
+    private String fetchNextUrl(String url) throws URISyntaxException {
+        URI uri = URI.create(url);
+        String query = uri.getQuery();
+        String[] params = query.split("&");
+        StringBuilder newQuery = new StringBuilder();
+
+        for (String param : params) {
+            if (param.startsWith("pageIndex=")) {
+                String[] keyValue = param.split("=");
+                int pageIndex = Integer.parseInt(keyValue[1]);
+                pageIndex++;
+                newQuery.append("pageIndex=").append(pageIndex).append("&");
+            } else {
+                newQuery.append(param).append("&");
+            }
+        }
+
+        if (!newQuery.isEmpty()) {
+            newQuery.setLength(newQuery.length() - 1);
+        }
+
+        URI newUri = new URI(
+            uri.getScheme(),
+            uri.getAuthority(),
+            uri.getPath(),
+            newQuery.toString(),
+            uri.getFragment()
+        );
+        log.info("newUri: {}", newUri);
+
+        return newUri.toString();
     }
 
 }

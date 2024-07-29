@@ -28,7 +28,8 @@ public class BookQueueService {
         queue.offer(bookInfo);
     }
 
-    @Scheduled(fixedDelay = 5000) // 5초마다 실행
+    @Scheduled(fixedDelay = 1000)
+    @Async
     public void processBatch() {
         List<BookInfo> batch = new ArrayList<>(BATCH_SIZE);
         queue.drainTo(batch, BATCH_SIZE);

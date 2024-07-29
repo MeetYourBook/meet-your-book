@@ -30,6 +30,7 @@ public class BookQueueService {
 
     @Scheduled(fixedDelay = 1000)
     @Async
+    @LogExecutionTime
     public void processBatch() {
         List<BookInfo> batch = new ArrayList<>(BATCH_SIZE);
         queue.drainTo(batch, BATCH_SIZE);

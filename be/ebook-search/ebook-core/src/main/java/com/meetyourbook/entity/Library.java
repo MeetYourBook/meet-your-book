@@ -29,11 +29,18 @@ public class Library {
     @Embedded
     LibraryUrl libraryUrl;
 
+    int totalBookCount;
+
     @Builder
-    public Library(String name, LibraryType type, String libraryUrl) {
+    public Library(String name, LibraryType type, String libraryUrl, int totalBookCount) {
         this.name = name;
         this.type = type;
         this.libraryUrl = new LibraryUrl(libraryUrl);
+        this.totalBookCount = totalBookCount;
+    }
+
+    public void updateTotalBookCount(int totalBookCount) {
+        this.totalBookCount = totalBookCount;
     }
 
     public boolean hasMainInk() {

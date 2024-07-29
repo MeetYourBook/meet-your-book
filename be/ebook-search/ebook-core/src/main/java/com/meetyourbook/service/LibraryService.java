@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -43,5 +44,11 @@ public class LibraryService {
 
     public List<Library> findAll() {
         return libraryRepository.findAll();
+    }
+
+    @Transactional
+    public void updateTotalBookCount(int totalBookCount, String baseUrl) {
+        Library library = findByBaseUrl(baseUrl);
+        library.updateTotalBookCount(totalBookCount);
     }
 }

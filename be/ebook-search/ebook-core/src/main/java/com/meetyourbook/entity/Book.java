@@ -36,7 +36,7 @@ public class Book {
     private LocalDate publishDate;
     private String imageUrl;
 
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "book", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private final Set<BookLibrary> bookLibraries = new HashSet<>();
 
     @Builder
@@ -51,9 +51,8 @@ public class Book {
         this.imageUrl = imageUrl;
     }
 
-    public void addLibrary(Library library) {
-        BookLibrary bookLibrary = new BookLibrary(this, library);
-        this.bookLibraries.add(bookLibrary);
+    public void addBookLibrary(BookLibrary bookLibrary) {
+        bookLibraries.add(bookLibrary);
     }
 
     public void remove(BookLibrary bookLibrary) {

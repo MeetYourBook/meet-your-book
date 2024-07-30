@@ -1,5 +1,6 @@
 package com.meetyourbook.service;
 
+import com.meetyourbook.aop.LogExecutionTime;
 import com.meetyourbook.dto.BookInfo;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +17,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class BookQueueService {
 
-    private static final int BATCH_SIZE = 10000;
+    private static final int BATCH_SIZE = 200;
 
     private final BlockingQueue<BookInfo> queue = new LinkedBlockingQueue<>();
     private final BookService bookService;
@@ -28,17 +30,20 @@ public class BookQueueService {
         queue.offer(bookInfo);
     }
 
-    @Scheduled(fixedDelay = 5000) // 5초마다 실행
+    @Scheduled(fixedDelay = 1000)
+    @Async("taskExecutor")
+    @LogExecutionTime
     public void processBatch() {
         List<BookInfo> batch = new ArrayList<>(BATCH_SIZE);
         queue.drainTo(batch, BATCH_SIZE);
+        log.info("배치 작업 시작: {}권", batch.size());
 
         if (batch.isEmpty()) {
             return;
         }
 
-        log.info("배치 작업 실행: {}권 저장", batch.size());
         bookService.saveAll(batch);
+        log.info("배치 작업 실행 완료: {}권", batch.size());
     }
 
 }

@@ -34,6 +34,12 @@ public class BookLibrary {
         this.library = library;
     }
 
+    public static BookLibrary createBookLibrary(Book book, Library library) {
+        BookLibrary bookLibrary = new BookLibrary(book, library);
+        book.addBookLibrary(bookLibrary);
+        return bookLibrary;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

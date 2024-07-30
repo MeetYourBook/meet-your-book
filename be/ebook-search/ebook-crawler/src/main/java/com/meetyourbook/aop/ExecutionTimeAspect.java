@@ -1,4 +1,4 @@
-package com.meetyourbook.AOP;
+package com.meetyourbook.aop;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;

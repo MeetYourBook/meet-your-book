@@ -1,4 +1,4 @@
-package com.meetyourbook.AOP;
+package com.meetyourbook.aop;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

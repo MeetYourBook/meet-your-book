@@ -1,6 +1,6 @@
 package com.meetyourbook.service;
 
-import com.meetyourbook.AOP.LogExecutionTime;
+import com.meetyourbook.aop.LogExecutionTime;
 import com.meetyourbook.dto.BookInfo;
 import java.util.ArrayList;
 import java.util.List;

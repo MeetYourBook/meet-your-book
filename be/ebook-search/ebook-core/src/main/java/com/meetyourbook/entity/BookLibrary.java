@@ -29,13 +29,17 @@ public class BookLibrary {
     @JoinColumn(name = "library_id")
     private Library library;
 
-    public BookLibrary(Book book, Library library) {
+    @JoinColumn(name = "url")
+    private String url;
+
+    public BookLibrary(Book book, Library library, String url) {
         this.book = book;
         this.library = library;
+        this.url = url;
     }
 
-    public static BookLibrary createBookLibrary(Book book, Library library) {
-        BookLibrary bookLibrary = new BookLibrary(book, library);
+    public static BookLibrary createBookLibrary(Book book, Library library, String url) {
+        BookLibrary bookLibrary = new BookLibrary(book, library, url);
         book.addBookLibrary(bookLibrary);
         return bookLibrary;
     }

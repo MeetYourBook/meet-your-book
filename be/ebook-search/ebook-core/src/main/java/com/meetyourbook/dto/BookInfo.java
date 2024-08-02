@@ -17,6 +17,7 @@ public class BookInfo {
     String imageUrl;
     String description;
     String baseUrl;
+    String bookUrl;
 
     @Override
     public String toString() {
@@ -42,5 +43,4 @@ public class BookInfo {
             .provider(provider)
             .build();
     }
-
 }

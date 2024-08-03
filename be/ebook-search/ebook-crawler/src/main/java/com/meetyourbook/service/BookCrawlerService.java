@@ -1,0 +1,173 @@
+package com.meetyourbook.service;
+
+import com.meetyourbook.crawler.ProcessorFactory;
+import com.meetyourbook.entity.Library;
+import com.zaxxer.hikari.HikariDataSource;
+import io.micrometer.core.instrument.MeterRegistry;
+import java.lang.management.ManagementFactory;
+import java.lang.management.ThreadInfo;
+import java.lang.management.ThreadMXBean;
+import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
+import javax.sql.DataSource;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import us.codecraft.webmagic.Spider;
+import us.codecraft.webmagic.processor.PageProcessor;
+
+@Slf4j
+@Service
+@RequiredArgsConstructor
+public class BookCrawlerService {
+
+    public static final BlockingQueue<String> pageQueue = new LinkedBlockingQueue<>();
+    public static final ConcurrentHashMap<String, Boolean> visited = new ConcurrentHashMap<>();
+
+    private final ProcessorFactory processorFactory;
+    private final LibraryService libraryService;
+    private final DataSource dataSource;
+    private final MeterRegistry meterRegistry;
+    private final AtomicBoolean isRunning = new AtomicBoolean(false);
+    private final ConcurrentHashMap<String, Spider> activeSpiders = new ConcurrentHashMap<>();
+    private final ExecutorService crawlTaskExecutor = Executors.newVirtualThreadPerTaskExecutor();
+    private final ExecutorService spiderExecutor = Executors.newVirtualThreadPerTaskExecutor();
+
+
+    public String startCrawl(String processor, int maxUrl, int viewCount) {
+        if (isRunning.compareAndSet(false, true)) {
+            String id = String.valueOf(UUID.randomUUID());
+            CompletableFuture.runAsync(() -> crawl(id, processor, maxUrl, viewCount));
+            return id;
+        }
+        throw new IllegalStateException("현재 크롤러가 이미 실행중입니다.");
+    }
+
+    public void stopCrawl() {
+        if (isRunning.compareAndSet(true, false)) {
+            if (crawlTaskExecutor != null) {
+                log.info("Executor를 멈춥니다.");
+                crawlTaskExecutor.shutdownNow();
+                spiderExecutor.shutdownNow();
+                isRunning.set(false);
+            }
+            stopAllSpiders();
+            log.info("크롤러가 멈췄습니다.");
+        }
+    }
+
+    public void crawl(String crawlerId, String processor, int maxUrlToSearch, int viewCount) {
+        PageProcessor selectedProcessor = processorFactory.getProcessor(processor);
+        List<Library> libraries = libraryService.findAll();
+
+        pageQueue.addAll(
+            libraries.stream()
+                .filter(Library::hasMainInk)
+                .map(library -> library.getUrlWithQueryParameters(viewCount))
+                .limit(maxUrlToSearch)
+                .toList()
+        );
+
+        startResourceMonitoring();
+        try {
+            while (isRunning.get()) {
+                String url = pageQueue.poll(100, TimeUnit.MILLISECONDS);
+                if (url == null) {
+                    if (crawlTaskExecutor.isTerminated()) {
+                        break;
+                    }
+                    continue;
+                }
+                if (visited.putIfAbsent(url, Boolean.TRUE) == null) {
+                    crawlTaskExecutor.submit(new BookCrawler(url, selectedProcessor));
+                }
+            }
+
+            crawlTaskExecutor.shutdown();
+            crawlTaskExecutor.awaitTermination(1, TimeUnit.DAYS);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            log.error("Crawler {} was interrupted", crawlerId);
+        } finally {
+            crawlTaskExecutor.shutdownNow();
+            isRunning.set(false);
+            log.info("Crawler {} has stopped", crawlerId);
+        }
+    }
+
+    private void stopAllSpiders() {
+        activeSpiders.forEach((url, spider) -> {
+            activeSpiders.remove(url);
+            spider.stop();
+        });
+    }
+
+    private void startResourceMonitoring() {
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        log.info("pageQueue size: {}", pageQueue.size());
+        scheduler.scheduleAtFixedRate(this::logResourceUsage, 1, 1, TimeUnit.SECONDS);
+    }
+
+    private void logResourceUsage() {
+        ThreadMXBean threadMXBean = ManagementFactory.getThreadMXBean();
+        long[] threadIds = threadMXBean.getAllThreadIds();
+        ThreadInfo[] threadInfos = threadMXBean.getThreadInfo(threadIds);
+
+        long virtualThreadCount = 0;
+        long platformThreadCount = 0;
+
+        for (ThreadInfo threadInfo : threadInfos) {
+            if (threadInfo != null) {
+                if (threadInfo.getThreadName().startsWith("VirtualThread")) {
+                    virtualThreadCount++;
+                } else {
+                    platformThreadCount++;
+                }
+            }
+        }
+
+        HikariDataSource hikariDataSource = (HikariDataSource) dataSource;
+        int activeConnections = hikariDataSource.getHikariPoolMXBean().getActiveConnections();
+        int totalConnections = hikariDataSource.getHikariPoolMXBean().getTotalConnections();
+
+        log.info(
+            "Resource Usage - Virtual Threads: {}, Platform Threads: {}, DB Connections: {}/{} (active/total)",
+            virtualThreadCount, platformThreadCount, activeConnections, totalConnections);
+
+        meterRegistry.gauge("crawler.threads.virtual", virtualThreadCount);
+        meterRegistry.gauge("crawler.threads.platform", platformThreadCount);
+        meterRegistry.gauge("crawler.db.connections.active", activeConnections);
+        meterRegistry.gauge("crawler.db.connections.total", totalConnections);
+    }
+
+    private class BookCrawler implements Runnable {
+
+        private final String url;
+        private final PageProcessor pageProcessor;
+
+        public BookCrawler(String url, PageProcessor pageProcessor) {
+            this.url = url;
+            this.pageProcessor = pageProcessor;
+        }
+
+        @Override
+        public void run() {
+            if (isRunning.get()) {
+                Spider spider = Spider.create(pageProcessor)
+                    .thread(spiderExecutor, 1)
+                    .addUrl(url);
+                activeSpiders.putIfAbsent(url, spider);
+                spider.runAsync();
+            }
+        }
+    }
+}

@@ -1,5 +1,7 @@
 package com.meetyourbook.crawler;
 
+import static com.meetyourbook.service.BookCrawlerService.pageQueue;
+
 import com.meetyourbook.dto.BookInfo;
 import com.meetyourbook.entity.LibraryUrl;
 import com.meetyourbook.service.BookQueueService;
@@ -10,11 +12,12 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
@@ -22,7 +25,6 @@ import us.codecraft.webmagic.processor.PageProcessor;
 
 @Component
 @Slf4j
-@RequiredArgsConstructor
 public class BookPageProcessor implements PageProcessor {
 
     private static final String RESULT_LIST_CLASS = "book_resultList";
@@ -43,6 +45,14 @@ public class BookPageProcessor implements PageProcessor {
 
     private String baseUrl;
 
+    @Autowired
+    public BookPageProcessor(BookQueueService bookQueueService,
+        @Qualifier("pagesCounter") Counter pagesCounter,
+        @Qualifier("booksCounter") Counter booksCounter) {
+        this.bookQueueService = bookQueueService;
+        this.pagesCounter = pagesCounter;
+        this.booksCounter = booksCounter;
+    }
 
     @Override
     public Site getSite() {
@@ -66,7 +76,7 @@ public class BookPageProcessor implements PageProcessor {
 
             try {
                 String nextUrl = fetchNextUrl(page.getUrl().get());
-                BookCrawlerRunner.pageQueue.add(nextUrl);
+                pageQueue.add(nextUrl);
             } catch (URISyntaxException e) {
                 log.error("다음 페이지 URL을 가져오는 과정에서 오류가 생김", e);
             }

@@ -51,7 +51,7 @@ public class BookLibraryService {
     }
 
     private Optional<Book> findBookByBookInfo(BookInfo bookInfo) {
-        return bookRepository.findFirstByTitleAndAuthorAndPublisherAndPublishDate(
+        return bookRepository.findFirstByBookInfo(
             bookInfo.getTitle(), bookInfo.getAuthor(), bookInfo.getPublisher(),
             bookInfo.getPublishDate());
     }

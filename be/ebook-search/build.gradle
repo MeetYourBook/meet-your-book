@@ -11,6 +11,10 @@ allprojects {
     repositories {
         mavenCentral()
     }
+
+    apply plugin: 'java'
+    apply plugin: 'org.sonarqube' 
+    apply plugin: 'jacoco'
 }
 
 sonar {
@@ -18,14 +22,10 @@ sonar {
         property "sonar.projectKey", "MeetYourBook_meet-your-book"
         property "sonar.organization", "meetyourbook"
         property "sonar.host.url", "https://sonarcloud.io"
-        property "sonar.coverage.jacoco.xmlReportPaths", "${buildDir}/reports/jacoco/test/jacocoTestReport.xml"
     }
 }
 
 subprojects {
-    apply plugin: 'java'
-    apply plugin: 'jacoco'
-
     java {
         toolchain {
             languageVersion = JavaLanguageVersion.of(21)
@@ -62,10 +62,11 @@ subprojects {
         properties {
             property "sonar.sources", "src/main/java"
             property "sonar.tests", "src/test/java"
+            property "sonar.coverage.jacoco.xmlReportPaths", "${buildDir}/reports/jacoco/test/jacocoTestReport.xml"
         }
     }
+}
 
-    tasks.named('sonar').configure {
-        dependsOn jacocoTestReport
-    }
+tasks.named('sonar').configure {
+    dependsOn subprojects.test  
 }

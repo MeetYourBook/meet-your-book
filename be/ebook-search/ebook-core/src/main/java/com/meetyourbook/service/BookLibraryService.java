@@ -34,7 +34,7 @@ public class BookLibraryService {
         for (BookInfo bookInfo : bookInfos) {
             Book book = getBook(bookInfo);
             Library library = getLibrary(bookInfo);
-            BookLibrary bookLibrary = BookLibrary.createBookLibrary(book, library);
+            BookLibrary bookLibrary = BookLibrary.createBookLibrary(book, library, bookInfo.getBookUrl());
             bookLibraries.add(bookLibrary);
         }
         bookLibraryRepository.saveAll(bookLibraries);

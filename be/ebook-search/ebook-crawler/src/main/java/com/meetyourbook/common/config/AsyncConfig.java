@@ -1,4 +1,4 @@
-package com.meetyourbook.config;
+package com.meetyourbook.common.config;
 
 import java.util.concurrent.Executor;
 import org.springframework.context.annotation.Bean;

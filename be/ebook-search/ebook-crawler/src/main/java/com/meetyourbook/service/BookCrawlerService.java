@@ -1,5 +1,7 @@
 package com.meetyourbook.service;
 
+import com.meetyourbook.common.exception.CrawlerAlreadyRunningException;
+import com.meetyourbook.common.exception.CrawlerNotRunningException;
 import com.meetyourbook.crawler.ProcessorFactory;
 import com.meetyourbook.entity.Library;
 import com.zaxxer.hikari.HikariDataSource;
@@ -53,11 +55,11 @@ public class BookCrawlerService {
             crawl(id, processor, maxUrl, viewCount);
             return id;
         } else {
-            throw new IllegalStateException("현재 크롤러가 이미 실행중입니다.");
+            throw new CrawlerAlreadyRunningException();
         }
     }
 
-    public void stopCrawl(String id) {
+    public void stopCrawl() {
         if (isRunning.compareAndSet(true, false)) {
             log.info("Executor를 멈춥니다.");
             crawlTaskExecutor.shutdownNow();
@@ -66,7 +68,7 @@ public class BookCrawlerService {
             stopAllSpiders();
             log.info("크롤러가 멈췄습니다.");
         } else {
-            throw new IllegalStateException("현재 크롤러가 실행중이지 않습니다.");
+            throw new CrawlerNotRunningException();
         }
     }
 
@@ -172,7 +174,9 @@ public class BookCrawlerService {
                 try {
                     Thread.sleep(15000);
                 } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+                    Thread.currentThread().interrupt();
+                    log.error("Crawler was interrupted", e);
+                    return;
                 }
                 HttpClientDownloader httpClientDownloader = new HttpClientDownloader();
                 Spider spider = Spider.create(pageProcessor)

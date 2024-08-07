@@ -202,8 +202,4 @@ public class BookPageProcessor implements PageProcessor {
 
         return newUri.toString();
     }
-//
-//    private String getRandomUserAgent() {
-//        return USER_AGENTS.get((int) (Math.random() * USER_AGENTS.size()));
-//    }
 }

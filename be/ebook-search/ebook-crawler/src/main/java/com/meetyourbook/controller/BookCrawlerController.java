@@ -67,7 +67,7 @@ public class BookCrawlerController {
     })
     @GetMapping("/{id}/stop")
     public ResponseEntity<CrawlerResponse> stopCrawler(@PathVariable String id) {
-        bookCrawlerService.stopCrawl(id);
+        bookCrawlerService.stopCrawl();
         return ResponseEntity.ok(new CrawlerResponse(id, "크롤러가 중단되었습니다."));
     }
 }

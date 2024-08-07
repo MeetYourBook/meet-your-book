@@ -1,12 +1,7 @@
-import BookDisplay from "../components/BookDisplay/BookDisplay";
+import React from "react";
 
 const Home = () => {
-    return (
-        <>  
-            {/* <FilterDisplay/> */}
-            <BookDisplay/>
-        </>
-    );
+    return <div>Home</div>;
 };
 
 export default Home;

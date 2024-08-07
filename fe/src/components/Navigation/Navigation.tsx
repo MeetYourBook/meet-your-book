@@ -1,7 +1,6 @@
-import React from "react";
-
+import { NavContainer } from "@/styles/NavagationStyle";
 const Navigation = () => {
-    return <div>Navigation</div>;
+    return <NavContainer>Navigation</NavContainer>;
 };
 
 export default Navigation;

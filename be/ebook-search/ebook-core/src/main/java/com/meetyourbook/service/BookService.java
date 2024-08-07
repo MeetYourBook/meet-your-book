@@ -4,8 +4,11 @@ import com.meetyourbook.dto.BookSearchRequest;
 import com.meetyourbook.dto.SimpleBookResponse;
 import com.meetyourbook.entity.Book;
 import com.meetyourbook.repository.BookRepository;
+import com.meetyourbook.spec.BookSpecs;
+import com.meetyourbook.spec.SpecBuilder;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,18 +21,22 @@ public class BookService {
     @Transactional(readOnly = true)
     public List<SimpleBookResponse> searchBooks(BookSearchRequest request) {
 
-        List<Book> books = switch (request.condition()) {
-            case TITLE -> bookRepository.searchByTitle(request.query(), request.libraryIds());
-            case AUTHOR -> bookRepository.searchByAuthor(request.query(), request.libraryIds());
-            case PUBLISHER -> bookRepository.searchByPublisher(request.query(), request.libraryIds());
-            case ALL -> bookRepository.searchByAll(request.query(), request.libraryIds());
-        };
+        Specification<Book> spec = createBookSpec(request);
+
+        List<Book> books = bookRepository.findAll(spec);
 
         return books.stream()
             .map(SimpleBookResponse::fromEntity)
             .toList();
-
     }
 
+    private Specification<Book> createBookSpec(BookSearchRequest request) {
+        return SpecBuilder.builder(Book.class)
+            .ifNotNull(request.title(), BookSpecs::titleContains)
+            .ifNotNull(request.author(), BookSpecs::authorContains)
+            .ifNotNull(request.publisher(), BookSpecs::publisherContains)
+            .ifNotNull(request.libraryIds(), BookSpecs::inLibraries)
+            .toSpec();
+    }
 
 }

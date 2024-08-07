@@ -38,7 +38,8 @@ public class BookPageProcessor implements PageProcessor {
     private static final String I_TAG = "i";
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE;
 
-    private final Site site = Site.me().setTimeOut(10000000).setSleepTime(8000);
+    private final Site site = Site.me().setTimeOut(10000000).setSleepTime(8000)
+        .addHeader("Accept-Encoding", "gzip, deflate, br");
     private final BookQueueService bookQueueService;
     private final Counter pagesCounter;
     private final Counter booksCounter;
@@ -201,5 +202,8 @@ public class BookPageProcessor implements PageProcessor {
 
         return newUri.toString();
     }
-
+//
+//    private String getRandomUserAgent() {
+//        return USER_AGENTS.get((int) (Math.random() * USER_AGENTS.size()));
+//    }
 }

@@ -26,7 +26,8 @@ jobs:
           cd ./fe
           npm install
 
-      - name: Run Chromatic
-        run: |
-          cd ./fe
-          npx chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }} --token=${{ secrets.GITHUB_TOKEN }}
+      - uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          workingDir: ./fe

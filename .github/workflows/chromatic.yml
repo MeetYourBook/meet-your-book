@@ -3,7 +3,7 @@ name: 'Chromatic Deployment'
 on:
   push:
     branches:
-      - fe-develop
+      - feature/sonarcloud-chromatic-setup
 
 jobs:
   test:

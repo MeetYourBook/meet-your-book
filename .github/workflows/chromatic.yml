@@ -26,7 +26,7 @@ jobs:
           cd ./fe
           npm install
 
-      - name: Run Chromatic
+      - name: start Chromatic
         run: |
           cd ./fe
           npx chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }} --token=${{ secrets.GITHUB_TOKEN }} --exit-zero-on-changes --auto-accept-changes

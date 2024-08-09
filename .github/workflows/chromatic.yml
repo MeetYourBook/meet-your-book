@@ -1,18 +1,32 @@
-
 name: 'Chromatic Deployment'
 
 on:
   push:
     branches:
-      - fe-develop
+      - feature/sonarcloud-chromatic-setup
 
 jobs:
-  test:
+  chromatic-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - run: yarn
-      - uses: chromaui/action@v1
+      - name: Checkout repository
+        uses: actions/checkout@v3
         with:
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+          sparse-checkout: |
+            ./fe
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.16.0"
+
+      - name: Install dependency
+        run: |
+          cd ./fe
+          npm install
+
+      - name: start Chromatic
+        run: |
+          cd ./fe
+          npx chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }} --token=${{ secrets.GITHUB_TOKEN }} --exit-zero-on-changes --auto-accept-changes

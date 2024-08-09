@@ -11,9 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - run: yarn
-        working-directory: fe
+        working-directory: ./fe
       - uses: chromaui/action@v1
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-        working-directory: fe
+          token: ${{ secrets.GITHUB_TOKEN }}  
+        working-directory: ./fe

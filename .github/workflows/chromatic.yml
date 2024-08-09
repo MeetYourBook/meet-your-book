@@ -6,14 +6,40 @@ on:
       - feature/sonarcloud-chromatic-setup
 
 jobs:
-  test:
+  chromatic-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - run: yarn
-        working-directory: ./fe
-      - uses: chromaui/action@v1
+      - name: Checkout repository
+        uses: actions/checkout@v3
         with:
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          token: ${{ secrets.GITHUB_TOKEN }}  
-        working-directory: ./fe
+          fetch-depth: 0
+          sparse-checkout: |
+            fe
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.16.0"
+
+      - name: Install pnpm
+        run: |
+          npm install -g pnpm
+
+      - name: Install Dependency
+        run: pnpm install -no-frozen-lockfile
+        working-directory: packages/web-ui
+
+      - name: Publish Chromatic
+        id: chromatic
+        uses: chromaui/action@v1
+        with:
+          workingDir: packages/web-ui/src
+          projectToken: ${{ secrets.CHROMATIC_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create comment PR
+        uses: thollander/actions-comment-pull-request@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          message: "🚀storybook: ${{ steps.chromatic.outputs.storybookUrl }}"

@@ -1,6 +1,6 @@
 
 const FilterDisplay = () => {
-    return <div>FilterDisplay</div>;
+    return <div style={{border: "1px solid red"}}>FilterDisplay</div>;
 };
 
 export default FilterDisplay;

@@ -6,5 +6,5 @@ public record BookSearchRequest(
     String title,
     String author,
     String publisher,
-    List<Long> libraryIds) {
+    List<Long> libraries) {
 }

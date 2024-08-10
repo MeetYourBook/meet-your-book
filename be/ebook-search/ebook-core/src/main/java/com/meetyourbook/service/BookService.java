@@ -35,7 +35,7 @@ public class BookService {
             .ifNotNullOr(request.title(), BookSpecs::titleContains)
             .ifNotNullOr(request.author(), BookSpecs::authorContains)
             .ifNotNullOr(request.publisher(), BookSpecs::publisherContains)
-            .ifNotNullAnd(request.libraryIds(), BookSpecs::inLibraries)
+            .ifNotNullAnd(request.libraries(), BookSpecs::inLibraries)
             .toSpec();
     }
 

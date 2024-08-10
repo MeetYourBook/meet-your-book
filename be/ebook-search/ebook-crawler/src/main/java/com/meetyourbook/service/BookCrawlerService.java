@@ -3,6 +3,7 @@ package com.meetyourbook.service;
 import com.meetyourbook.common.exception.CrawlerAlreadyRunningException;
 import com.meetyourbook.common.exception.CrawlerNotRunningException;
 import com.meetyourbook.crawler.ProcessorFactory;
+import com.meetyourbook.crawler.ProcessorType;
 import com.meetyourbook.entity.Library;
 import com.zaxxer.hikari.HikariDataSource;
 import io.micrometer.core.instrument.MeterRegistry;
@@ -13,12 +14,14 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 import javax.sql.DataSource;
@@ -37,13 +40,14 @@ public class BookCrawlerService {
     public static final ReentrantLock QUEUE_LOCK = new ReentrantLock();
     public static final Condition QUEUE_NOT_EMPTY = QUEUE_LOCK.newCondition();
     public static final BlockingQueue<String> pageQueue = new LinkedBlockingQueue<>();
-    public static final ConcurrentHashMap<String, Boolean> visited = new ConcurrentHashMap<>();
+    public static final ConcurrentMap<String, Boolean> visited = new ConcurrentHashMap<>();
 
     private final ProcessorFactory processorFactory;
     private final LibraryService libraryService;
     private final DataSource dataSource;
     private final MeterRegistry meterRegistry;
     private final AtomicBoolean isRunning = new AtomicBoolean(false);
+    private final AtomicLong activeSpiderCount = new AtomicLong(0);
     private final ConcurrentHashMap<String, Spider> activeSpiders = new ConcurrentHashMap<>();
     private final ExecutorService crawlTaskExecutor = Executors.newVirtualThreadPerTaskExecutor();
     private final ExecutorService spiderExecutor = Executors.newVirtualThreadPerTaskExecutor();
@@ -72,8 +76,9 @@ public class BookCrawlerService {
         }
     }
 
-    public void crawl(String crawlerId, String processor, int maxUrlToSearch, int viewCount) {
-        PageProcessor selectedProcessor = processorFactory.getProcessor(processor);
+    private void crawl(String crawlerId, String processor, int maxUrlToSearch, int viewCount) {
+        PageProcessor selectedProcessor = processorFactory.getProcessor(
+            ProcessorType.fromString(processor));
         List<Library> libraries = libraryService.findAll();
 
         pageQueue.addAll(
@@ -86,15 +91,18 @@ public class BookCrawlerService {
 
         startResourceMonitoring();
         try {
-            while (isRunning.get()) {
+            while (isRunning.get() && (activeSpiderCount.get() != 0 || !pageQueue.isEmpty())) {
                 QUEUE_LOCK.lock();
                 try {
                     while (pageQueue.isEmpty()) {
-                        QUEUE_NOT_EMPTY.await();
+                        if (!QUEUE_NOT_EMPTY.await(30, TimeUnit.SECONDS)) {
+                            break;
+                        }
                     }
                     String url = pageQueue.poll();
-                    if (visited.putIfAbsent(url, Boolean.TRUE) == null) {
+                    if (url != null && !visited.containsKey(url)) {
                         crawlTaskExecutor.submit(new BookCrawler(url, selectedProcessor));
+                        activeSpiderCount.incrementAndGet();
                     }
                 } finally {
                     QUEUE_LOCK.unlock();
@@ -185,6 +193,7 @@ public class BookCrawlerService {
                     .setExecutorService(spiderExecutor);
                 activeSpiders.putIfAbsent(url, spider);
                 spider.run();
+                activeSpiderCount.decrementAndGet();
                 signalQueue();
             }
         }

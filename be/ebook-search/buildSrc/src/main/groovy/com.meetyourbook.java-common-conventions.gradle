@@ -32,7 +32,38 @@ jacocoTestReport {
     reports {
         xml.required = true
         csv.required = false
-        html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+        html.required = true
+    }
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                    "**/dto/**",
+                    "**/entity/**",
+                    "**/config/**",
+                    "**/exception/**",
+                    "**/EbookCrawlerApplication.class"
+            ])
+        }))
+    }
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            element = 'CLASS'
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                minimum = 0.80
+            }
+            excludes = [
+                    'com.meetyourbook.dto.*',
+                    'com.meetyourbook.entity.*',
+                    'com.meetyourbook.config.*',
+                    'com.meetyourbook.exception.*',
+                    'com.meetyourbook.EbookCrawlerApplication'
+            ]
+        }
     }
 }
 

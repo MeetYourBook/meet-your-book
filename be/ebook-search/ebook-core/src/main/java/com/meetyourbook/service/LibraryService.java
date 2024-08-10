@@ -22,11 +22,24 @@ public class LibraryService {
     private final LibraryRepository libraryRepository;
     private final ObjectMapper objectMapper;
 
+    @Transactional(readOnly = true)
+    public List<Library> findAll() {
+        return libraryRepository.findAll();
+    }
+
+    @Transactional
+    public void updateTotalBookCount(int totalBookCount, String baseUrl) {
+        Library library = findByBaseUrl(baseUrl);
+        library.updateTotalBookCount(totalBookCount);
+    }
+
+    @Transactional(readOnly = true)
     public Library findByBaseUrl(String baseUrl) {
         return libraryRepository.findByLibraryUrl_UrlContaining(baseUrl)
             .orElseThrow(() -> new NoSuchElementException("base Url not found = " + baseUrl));
     }
 
+    @Transactional
     public void saveLibraryFromJson(String filePath) {
         try {
             List<LibraryCreation> libraryCreations = readLibraryCreationsFromJson(filePath);
@@ -49,13 +62,4 @@ public class LibraryService {
             .toList();
     }
 
-    public List<Library> findAll() {
-        return libraryRepository.findAll();
-    }
-
-    @Transactional
-    public void updateTotalBookCount(int totalBookCount, String baseUrl) {
-        Library library = findByBaseUrl(baseUrl);
-        library.updateTotalBookCount(totalBookCount);
-    }
 }

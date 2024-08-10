@@ -40,6 +40,7 @@ logs
 node_modules
 bower_components
 /src/fonts
+/src/mocks/mockData
 *.sublime*
 
 psd
@@ -53,7 +54,8 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-
+.env.production
+.env.development
 node_modules
 dist
 dist-ssr

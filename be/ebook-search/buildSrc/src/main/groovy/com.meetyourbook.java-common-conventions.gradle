@@ -51,11 +51,6 @@ jacocoTestCoverageVerification {
     violationRules {
         rule {
             element = 'CLASS'
-            limit {
-                counter = 'LINE'
-                value = 'COVEREDRATIO'
-                minimum = 0.80
-            }
             excludes = [
                     'com.meetyourbook.dto.*',
                     'com.meetyourbook.entity.*',

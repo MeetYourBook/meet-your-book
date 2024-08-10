@@ -8,6 +8,7 @@ import com.meetyourbook.spec.BookSpecs;
 import com.meetyourbook.spec.SpecBuilder;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,11 +20,9 @@ public class BookService {
     private final BookRepository bookRepository;
 
     @Transactional(readOnly = true)
-    public List<SimpleBookResponse> searchBooks(BookSearchRequest request) {
-
+    public List<SimpleBookResponse> searchBooks(BookSearchRequest request, Pageable pageable) {
         Specification<Book> spec = createBookSpec(request);
-
-        List<Book> books = bookRepository.findAll(spec);
+        List<Book> books = bookRepository.findAll(spec, pageable);
 
         return books.stream()
             .map(SimpleBookResponse::fromEntity)

@@ -13,32 +13,47 @@ public class SpecBuilder {
 
     public static class Builder<T> {
 
-        private List<Specification<T>> specs = new ArrayList<>();
+        private List<Specification<T>> andSpecs = new ArrayList<>();
+        private List<Specification<T>> orSpecs = new ArrayList<>();
 
-        private void addSpec(Specification<T> spec) {
+        private void addAndSpec(Specification<T> spec) {
             if (spec != null) {
-                specs.add(spec);
+                andSpecs.add(spec);
             }
         }
 
-        public Builder<T> and(Specification<T> spec) {
-            addSpec(spec);
+        private void addOrSpec(Specification<T> spec) {
+            if (spec != null) {
+                orSpecs.add(spec);
+            }
+        }
+
+        public <V> Builder<T> ifNotNullAnd(V value, Function<V, Specification<T>> specSupplier) {
+            if (value != null) {
+                addAndSpec(specSupplier.apply(value));
+            }
             return this;
         }
 
-        public <V> Builder<T> ifNotNull(V value, Function<V, Specification<T>> specSupplier) {
+        public <V> Builder<T> ifNotNullOr(V value, Function<V, Specification<T>> specSupplier) {
             if (value != null) {
-                addSpec(specSupplier.apply(value));
+                addOrSpec(specSupplier.apply(value));
             }
             return this;
         }
 
         public Specification<T> toSpec() {
-            Specification<T> spec = Specification.where(null);
-            for (Specification<T> s : specs) {
-                spec = spec.and(s);
+            Specification<T> andSpec = Specification.where(null);
+            for (Specification<T> s : andSpecs) {
+                andSpec = andSpec.and(s);
             }
-            return spec;
+
+            Specification<T> orSpec = Specification.where(null);
+            for (Specification<T> s : orSpecs) {
+                orSpec = orSpec.or(s);
+            }
+
+            return andSpec.and(orSpec);
         }
     }
 }

@@ -32,10 +32,10 @@ public class BookService {
 
     private Specification<Book> createBookSpec(BookSearchRequest request) {
         return SpecBuilder.builder(Book.class)
-            .ifNotNull(request.title(), BookSpecs::titleContains)
-            .ifNotNull(request.author(), BookSpecs::authorContains)
-            .ifNotNull(request.publisher(), BookSpecs::publisherContains)
-            .ifNotNull(request.libraryIds(), BookSpecs::inLibraries)
+            .ifNotNullOr(request.title(), BookSpecs::titleContains)
+            .ifNotNullOr(request.author(), BookSpecs::authorContains)
+            .ifNotNullOr(request.publisher(), BookSpecs::publisherContains)
+            .ifNotNullAnd(request.libraries(), BookSpecs::inLibraries)
             .toSpec();
     }
 

@@ -10,6 +10,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +24,7 @@ import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
 
-@Component
+@Component("BookPage")
 @Slf4j
 public class BookPageProcessor implements PageProcessor {
 
@@ -38,12 +39,14 @@ public class BookPageProcessor implements PageProcessor {
     private static final String I_TAG = "i";
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE;
 
-    private final Site site = Site.me().setTimeOut(10000000).setSleepTime(8000);
+    private final Site site = Site.me().setTimeOut(10000000).setSleepTime(8000)
+        .addHeader("Accept-Encoding", "gzip, deflate, br");
     private final BookQueueService bookQueueService;
     private final Counter pagesCounter;
     private final Counter booksCounter;
 
     private String baseUrl;
+    private String url;
 
     @Autowired
     public BookPageProcessor(BookQueueService bookQueueService,
@@ -62,6 +65,7 @@ public class BookPageProcessor implements PageProcessor {
     @Override
     public void process(Page page) {
         baseUrl = new LibraryUrl(page.getUrl().get()).getBaseUrl();
+        url = page.getUrl().get();
         log.info("사이트 이름: {}", baseUrl);
 
         Document doc = page.getHtml().getDocument();
@@ -87,7 +91,7 @@ public class BookPageProcessor implements PageProcessor {
     private List<BookInfo> parseBooks(Document doc) {
         Element resultListElement = doc.getElementsByClass(RESULT_LIST_CLASS).first();
         if (resultListElement == null) {
-            log.warn("Result list element not found");
+            log.warn("Result List Element를 찾지 못했습니다 : {}", url);
             return List.of();
         }
 
@@ -158,8 +162,17 @@ public class BookPageProcessor implements PageProcessor {
         return writerElement.textNodes().stream()
             .skip(1)
             .findFirst()
-            .map(node -> LocalDate.parse(node.text(), DATE_FORMATTER))
+            .map(node -> parseDate(node.text().trim()))
             .orElse(null);
+    }
+
+    private LocalDate parseDate(String date) {
+        try {
+            return LocalDate.parse(date, DATE_FORMATTER);
+        } catch (DateTimeParseException e) {
+            log.warn("날짜 파싱 오류 데이터 : {}, 원인 :{}", date, e.getMessage());
+            return null;
+        }
     }
 
     private String getImgUrl(Element element) {
@@ -201,5 +214,4 @@ public class BookPageProcessor implements PageProcessor {
 
         return newUri.toString();
     }
-
 }

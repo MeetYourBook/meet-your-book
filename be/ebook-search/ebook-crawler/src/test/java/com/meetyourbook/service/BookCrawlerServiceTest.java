@@ -1,31 +1,32 @@
 package com.meetyourbook.service;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.doAnswer;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.meetyourbook.common.exception.CrawlerAlreadyRunningException;
+import com.meetyourbook.common.exception.CrawlerNotRunningException;
 import com.meetyourbook.crawler.ProcessorFactory;
-import com.meetyourbook.entity.Library;
-import com.meetyourbook.entity.Library.LibraryType;
-import com.zaxxer.hikari.HikariDataSource;
-import com.zaxxer.hikari.HikariPoolMXBean;
+import com.meetyourbook.crawler.ProcessorType;
 import io.micrometer.core.instrument.MeterRegistry;
-import java.sql.SQLException;
-import java.util.List;
+import java.util.Collections;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 import javax.sql.DataSource;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import us.codecraft.webmagic.processor.PageProcessor;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-class BookCrawlerServiceTest {
+@ExtendWith(MockitoExtension.class)
+public class BookCrawlerServiceTest {
 
     @Mock
     private ProcessorFactory processorFactory;
@@ -35,59 +36,78 @@ class BookCrawlerServiceTest {
     private DataSource dataSource;
     @Mock
     private MeterRegistry meterRegistry;
-    @Mock
-    private PageProcessor pageProcessor;
-    @Mock
-    private HikariDataSource hikariDataSource;
-    @Mock
-    private HikariPoolMXBean hikariPoolMXBean;
 
+    @InjectMocks
     private BookCrawlerService bookCrawlerService;
+    private ExecutorService executorService;
 
     @BeforeEach
-    void setUp() throws SQLException {
-        MockitoAnnotations.openMocks(this);
-        when(dataSource.unwrap(HikariDataSource.class)).thenReturn(hikariDataSource);
-        when(hikariDataSource.getHikariPoolMXBean()).thenReturn(hikariPoolMXBean);
-        when(processorFactory.getProcessor(anyString())).thenReturn(pageProcessor);
-
+    void setUp() {
         bookCrawlerService = new BookCrawlerService(processorFactory, libraryService, dataSource,
             meterRegistry);
+        BookCrawlerService.pageQueue.clear();
     }
 
     @Test
-    @DisplayName("크롤러의 생명 주기 테스트")
-    void testCrawlerLifeCycle() throws InterruptedException {
+    @DisplayName("크롤링을 시작하면 실행된 크롤러의 ID를 반환한다.")
+    void startCrawl_returnId() {
+        // Given
+        when(libraryService.findAll()).thenReturn(Collections.emptyList());
 
-        // 도서관 데이터 준비
-        Library ASMLLibrary = Library.builder()
-            .name("ASML")
-            .type(LibraryType.UNIVERSITY_LIBRARY)
-            .libraryUrl("https://asml.dkyobobook.co.kr/main.ink")
-            .build();
+        // When
+        String id = bookCrawlerService.startCrawl("BookPage", 1, 10);
 
-        Library NCLibrary = Library.builder()
-            .name("NC")
-            .type(LibraryType.UNIVERSITY_LIBRARY)
-            .libraryUrl("https://ncsoft.dkyobobook.co.kr/main.ink")
-            .build();
-
-        when(libraryService.findAll()).thenReturn(List.of(ASMLLibrary, NCLibrary));
-
-        CountDownLatch latch = new CountDownLatch(2);
-        AtomicInteger count = new AtomicInteger(0);
-
-        doAnswer(invocation -> {
-            count.incrementAndGet();
-            latch.countDown();
-            return null;
-        }).when(pageProcessor).process(any());
-
-        //크롤링 시작
-        String crawlerId = bookCrawlerService.startCrawl("BookPageProcessor", 50, 20);
-        assertNotEquals("Crawler is already running", crawlerId);
-
-        assertEquals(2, latch.getCount());
-
+        // Then
+        assertThat(id).isNotNull();
     }
+
+    @Test
+    @DisplayName("이미 크롤링이 진행 중일 때 크롤링을 시작하려고 하면 예외를 던진다.")
+    void starCrawl_whenAlreadyRunning_throwException() throws InterruptedException {
+
+        // Given
+        int threadCount = 2;
+        executorService = Executors.newFixedThreadPool(threadCount);
+        CountDownLatch latch = new CountDownLatch(threadCount);
+        AtomicInteger successCount = new AtomicInteger(0);
+        AtomicInteger exceptionCount = new AtomicInteger(0);
+
+        // When
+        for (int i = 0; i < threadCount; i++) {
+            executorService.submit(() -> {
+                try {
+                    latch.countDown();
+                    latch.await(); // 모든 스레드가 준비될 때까지 대기
+                    bookCrawlerService.startCrawl("BookPage", 1, 10);
+                    successCount.incrementAndGet();
+                } catch (CrawlerAlreadyRunningException e) {
+                    exceptionCount.incrementAndGet();
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            });
+        }
+
+        executorService.shutdown();
+        executorService.awaitTermination(10, java.util.concurrent.TimeUnit.SECONDS);
+
+        // Then
+        assertThat(successCount.get()).isEqualTo(1);
+        assertThat(exceptionCount.get()).isEqualTo(1);
+
+        // Verify
+        verify(processorFactory, times(1)).getProcessor(ProcessorType.BOOK);
+    }
+
+    @Test
+    @DisplayName("크롤링이 실행중이지 않을 때 크롤링을 중지하면 예외를 던진다.")
+    void stopCrawl_whenNotRunning_throwException() {
+        // When
+        Throwable throwable = catchThrowable(() -> bookCrawlerService.stopCrawl());
+
+        // Then
+        assertThat(throwable).isInstanceOf(CrawlerNotRunningException.class);
+    }
+
+
 }

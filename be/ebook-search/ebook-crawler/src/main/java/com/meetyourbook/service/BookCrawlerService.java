@@ -1,6 +1,9 @@
 package com.meetyourbook.service;
 
+import com.meetyourbook.common.exception.CrawlerAlreadyRunningException;
+import com.meetyourbook.common.exception.CrawlerNotRunningException;
 import com.meetyourbook.crawler.ProcessorFactory;
+import com.meetyourbook.crawler.ProcessorType;
 import com.meetyourbook.entity.Library;
 import com.zaxxer.hikari.HikariDataSource;
 import io.micrometer.core.instrument.MeterRegistry;
@@ -10,19 +13,23 @@ import java.lang.management.ThreadMXBean;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
 import javax.sql.DataSource;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import us.codecraft.webmagic.Spider;
+import us.codecraft.webmagic.downloader.HttpClientDownloader;
 import us.codecraft.webmagic.processor.PageProcessor;
 
 @Slf4j
@@ -30,14 +37,17 @@ import us.codecraft.webmagic.processor.PageProcessor;
 @RequiredArgsConstructor
 public class BookCrawlerService {
 
+    public static final ReentrantLock QUEUE_LOCK = new ReentrantLock();
+    public static final Condition QUEUE_NOT_EMPTY = QUEUE_LOCK.newCondition();
     public static final BlockingQueue<String> pageQueue = new LinkedBlockingQueue<>();
-    public static final ConcurrentHashMap<String, Boolean> visited = new ConcurrentHashMap<>();
+    public static final ConcurrentMap<String, Boolean> visited = new ConcurrentHashMap<>();
 
     private final ProcessorFactory processorFactory;
     private final LibraryService libraryService;
     private final DataSource dataSource;
     private final MeterRegistry meterRegistry;
     private final AtomicBoolean isRunning = new AtomicBoolean(false);
+    private final AtomicLong activeSpiderCount = new AtomicLong(0);
     private final ConcurrentHashMap<String, Spider> activeSpiders = new ConcurrentHashMap<>();
     private final ExecutorService crawlTaskExecutor = Executors.newVirtualThreadPerTaskExecutor();
     private final ExecutorService spiderExecutor = Executors.newVirtualThreadPerTaskExecutor();
@@ -46,27 +56,29 @@ public class BookCrawlerService {
     public String startCrawl(String processor, int maxUrl, int viewCount) {
         if (isRunning.compareAndSet(false, true)) {
             String id = String.valueOf(UUID.randomUUID());
-            CompletableFuture.runAsync(() -> crawl(id, processor, maxUrl, viewCount));
+            crawl(id, processor, maxUrl, viewCount);
             return id;
+        } else {
+            throw new CrawlerAlreadyRunningException();
         }
-        throw new IllegalStateException("현재 크롤러가 이미 실행중입니다.");
     }
 
     public void stopCrawl() {
         if (isRunning.compareAndSet(true, false)) {
-            if (crawlTaskExecutor != null) {
-                log.info("Executor를 멈춥니다.");
-                crawlTaskExecutor.shutdownNow();
-                spiderExecutor.shutdownNow();
-                isRunning.set(false);
-            }
+            log.info("Executor를 멈춥니다.");
+            crawlTaskExecutor.shutdownNow();
+            spiderExecutor.shutdownNow();
+            isRunning.set(false);
             stopAllSpiders();
             log.info("크롤러가 멈췄습니다.");
+        } else {
+            throw new CrawlerNotRunningException();
         }
     }
 
-    public void crawl(String crawlerId, String processor, int maxUrlToSearch, int viewCount) {
-        PageProcessor selectedProcessor = processorFactory.getProcessor(processor);
+    private void crawl(String crawlerId, String processor, int maxUrlToSearch, int viewCount) {
+        PageProcessor selectedProcessor = processorFactory.getProcessor(
+            ProcessorType.fromString(processor));
         List<Library> libraries = libraryService.findAll();
 
         pageQueue.addAll(
@@ -79,16 +91,21 @@ public class BookCrawlerService {
 
         startResourceMonitoring();
         try {
-            while (isRunning.get()) {
-                String url = pageQueue.poll(100, TimeUnit.MILLISECONDS);
-                if (url == null) {
-                    if (crawlTaskExecutor.isTerminated()) {
-                        break;
+            while (isRunning.get() && (activeSpiderCount.get() != 0 || !pageQueue.isEmpty())) {
+                QUEUE_LOCK.lock();
+                try {
+                    while (pageQueue.isEmpty()) {
+                        if (!QUEUE_NOT_EMPTY.await(30, TimeUnit.SECONDS)) {
+                            break;
+                        }
                     }
-                    continue;
-                }
-                if (visited.putIfAbsent(url, Boolean.TRUE) == null) {
-                    crawlTaskExecutor.submit(new BookCrawler(url, selectedProcessor));
+                    String url = pageQueue.poll();
+                    if (url != null && !visited.containsKey(url)) {
+                        crawlTaskExecutor.submit(new BookCrawler(url, selectedProcessor));
+                        activeSpiderCount.incrementAndGet();
+                    }
+                } finally {
+                    QUEUE_LOCK.unlock();
                 }
             }
 
@@ -113,7 +130,6 @@ public class BookCrawlerService {
 
     private void startResourceMonitoring() {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-        log.info("pageQueue size: {}", pageQueue.size());
         scheduler.scheduleAtFixedRate(this::logResourceUsage, 1, 1, TimeUnit.SECONDS);
     }
 
@@ -142,6 +158,7 @@ public class BookCrawlerService {
         log.info(
             "Resource Usage - Virtual Threads: {}, Platform Threads: {}, DB Connections: {}/{} (active/total)",
             virtualThreadCount, platformThreadCount, activeConnections, totalConnections);
+        log.info("pageQueue size: {}", pageQueue.size());
 
         meterRegistry.gauge("crawler.threads.virtual", virtualThreadCount);
         meterRegistry.gauge("crawler.threads.platform", platformThreadCount);
@@ -162,12 +179,32 @@ public class BookCrawlerService {
         @Override
         public void run() {
             if (isRunning.get()) {
+                try {
+                    Thread.sleep(15000);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    log.error("Crawler was interrupted", e);
+                    return;
+                }
+                HttpClientDownloader httpClientDownloader = new HttpClientDownloader();
                 Spider spider = Spider.create(pageProcessor)
-                    .thread(spiderExecutor, 1)
-                    .addUrl(url);
+                    .addUrl(url)
+                    .setDownloader(httpClientDownloader)
+                    .setExecutorService(spiderExecutor);
                 activeSpiders.putIfAbsent(url, spider);
-                spider.runAsync();
+                spider.run();
+                activeSpiderCount.decrementAndGet();
+                signalQueue();
             }
+        }
+    }
+
+    private static void signalQueue() {
+        QUEUE_LOCK.lock();
+        try {
+            QUEUE_NOT_EMPTY.signalAll();
+        } finally {
+            QUEUE_LOCK.unlock();
         }
     }
 }

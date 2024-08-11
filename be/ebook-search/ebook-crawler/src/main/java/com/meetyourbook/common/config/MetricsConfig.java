@@ -1,4 +1,4 @@
-package com.meetyourbook.crawler;
+package com.meetyourbook.common.config;
 
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;

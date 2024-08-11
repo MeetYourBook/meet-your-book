@@ -12,14 +12,15 @@ import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
 
 @Slf4j
-@Component
+@Component("BookCount")
 @RequiredArgsConstructor
 public class BookCountProcessor implements PageProcessor {
 
     private static final String BOOK_RESULT_TXT_CLASS = "book_resultTxt";
     private static final String STRONG_TAG = "strong";
 
-    private final Site site = Site.me().setTimeOut(10000000).setSleepTime(8000).setCycleRetryTimes(3).setRetryTimes(3);
+    private final Site site = Site.me().setTimeOut(10000000).setSleepTime(8000)
+        .setCycleRetryTimes(3).setRetryTimes(3);
 
     private final LibraryService libraryService;
 

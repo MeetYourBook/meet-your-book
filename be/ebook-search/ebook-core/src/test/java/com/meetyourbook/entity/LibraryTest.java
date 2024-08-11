@@ -1,6 +1,8 @@
-import com.meetyourbook.entity.Library;
+package com.meetyourbook.entity;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.meetyourbook.entity.Library.LibraryType;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +19,7 @@ public class LibraryTest {
             .build();
 
         String url = library.getUrlWithQueryParameters(1);
-        Assertions.assertThat(url).isEqualTo("https://ebook.howon.ac.kr:444/elibrary-front/content/contentList.ink?brcd=&sntnAuthCode=&contentAll=Y&cttsDvsnCode=001&ctgrId=&orderByKey=publDate&selViewCnt=1&pageIndex=1&recordCount=20");
+        assertThat(url).isEqualTo("https://ebook.howon.ac.kr:444/elibrary-front/content/contentList.ink?brcd=&sntnAuthCode=&contentAll=Y&cttsDvsnCode=001&ctgrId=&orderByKey=publDate&selViewCnt=1&pageIndex=1&recordCount=20");
     }
 
 

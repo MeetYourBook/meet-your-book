@@ -3,6 +3,7 @@ package com.meetyourbook.service;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.meetyourbook.dto.LibraryCreation;
+import com.meetyourbook.dto.LibraryResponse;
 import com.meetyourbook.entity.Library;
 import com.meetyourbook.repository.LibraryRepository;
 import java.io.File;
@@ -22,11 +23,33 @@ public class LibraryService {
     private final LibraryRepository libraryRepository;
     private final ObjectMapper objectMapper;
 
+    @Transactional(readOnly = true)
+    public List<Library> findAll() {
+        return libraryRepository.findAll();
+    }
+
+    @Transactional(readOnly = true)
+    public List<LibraryResponse> findAllLibraryResponses() {
+        List<Library> libraries = findAll();
+
+        return libraries.stream()
+            .map(LibraryResponse::fromEntity)
+            .toList();
+    }
+
+    @Transactional
+    public void updateTotalBookCount(int totalBookCount, String baseUrl) {
+        Library library = findByBaseUrl(baseUrl);
+        library.updateTotalBookCount(totalBookCount);
+    }
+
+    @Transactional(readOnly = true)
     public Library findByBaseUrl(String baseUrl) {
         return libraryRepository.findByLibraryUrl_UrlContaining(baseUrl)
             .orElseThrow(() -> new NoSuchElementException("base Url not found = " + baseUrl));
     }
 
+    @Transactional
     public void saveLibraryFromJson(String filePath) {
         try {
             List<LibraryCreation> libraryCreations = readLibraryCreationsFromJson(filePath);
@@ -49,13 +72,4 @@ public class LibraryService {
             .toList();
     }
 
-    public List<Library> findAll() {
-        return libraryRepository.findAll();
-    }
-
-    @Transactional
-    public void updateTotalBookCount(int totalBookCount, String baseUrl) {
-        Library library = findByBaseUrl(baseUrl);
-        library.updateTotalBookCount(totalBookCount);
-    }
 }

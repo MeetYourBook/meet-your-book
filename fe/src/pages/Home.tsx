@@ -1,16 +1,22 @@
-import { useEffect } from "react";
+import BooksDisplay from "@/components/BooksDisplay/BooksDisplay";
+import FilterDisplay from "@/components/FilterDisplay/FilterDisplay";
+import styled from "styled-components";
 
 const Home = () => {
-    async function app() {
-        const response = await fetch('/test')
-        const user = await response.json()
-        console.log(user)
-    }
-    useEffect(() => {
-        app()
-    }, []);
-
-    return <div>Home</div>;
+    return (
+        <HomeContainer>
+            <FilterDisplay />
+            <BooksDisplay />
+        </HomeContainer>
+    );
 };
 
 export default Home;
+
+const HomeContainer = styled.main`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 2rem
+`;

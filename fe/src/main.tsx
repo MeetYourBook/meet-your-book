@@ -8,7 +8,7 @@ import GlobalStyle from "./styles/GlobalStyle.ts";
 const main = async () => {
   if (process.env.NODE_ENV === 'development') {
     const { worker } = await import('./mocks/node.ts');
-    await worker.start();
+    await worker.start({onUnhandledRequest: 'bypass'});
   }
 };
 await main();

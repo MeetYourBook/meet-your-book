@@ -4,6 +4,7 @@ const NavContainer = styled.nav`
     width: 100%;
     border-bottom: 1px solid var(--border-color);
     padding: 1rem;
+    margin-bottom: 4rem;
 `;
 
 const NavWrap = styled.div`

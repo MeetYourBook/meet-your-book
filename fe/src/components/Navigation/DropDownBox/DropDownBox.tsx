@@ -1,4 +1,5 @@
 import { useState } from "react";
+import useQueryStore from "@/stores/queryStore";
 import * as S from "@/styles/DropDownStyle";
 
 type ItemType = { value: string; label: string };
@@ -11,6 +12,7 @@ const initialItems = [
 ];
 
 const DropDownBox = () => {
+    const { setSelectedValue } = useQueryStore();
     const [items] = useState<ItemType[]>(initialItems);
     const [curSelect, setSelect] = useState<ItemType>(items[0]);
     const [isHover, setIsHover] = useState<boolean>(false);
@@ -18,6 +20,7 @@ const DropDownBox = () => {
     const handleClickItem = (item: ItemType) => {
         setSelect(item);
         setIsHover(false);
+        setSelectedValue(item.value)
     };
 
     return (

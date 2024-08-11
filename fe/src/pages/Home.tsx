@@ -18,5 +18,5 @@ const HomeContainer = styled.main`
     height: 100%;
     display: flex;
     justify-content: center;
-    gap: 5rem
+    gap: 2rem
 `;

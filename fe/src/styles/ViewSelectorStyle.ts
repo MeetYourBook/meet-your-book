@@ -26,7 +26,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-    font-size: 1.875rem;
+    font-size: 1.7rem;
     font-weight: 800;
 `;
 

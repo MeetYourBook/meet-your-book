@@ -9,10 +9,8 @@ const Card = styled.div<{ $isVisible: boolean }>`
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
     transition:
         opacity 0.2s ease-in-out,
-        box-shadow 0.2s ease-in-out,
-        transform 0.2s ease-in-out;
+        box-shadow 0.2s ease-in-out,;
     opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
-    transform: ${({ $isVisible }) => ($isVisible ? "scale(1)" : "scale(1)")};
 
     &:hover {
         box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);

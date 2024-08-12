@@ -11,7 +11,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "test:ci": "vitest run --coverage"
   },
   "dependencies": {
     "@ant-design/icons": "^5.4.0",

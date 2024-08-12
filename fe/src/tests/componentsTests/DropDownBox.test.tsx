@@ -4,12 +4,12 @@ import "@testing-library/jest-dom";
 import DropDownBox from "@/components/Navigation/DropDownBox/DropDownBox";
 
 describe("DropDownBox 컴포넌트 테스트", () => {
-    it("초기 렌더링 initial로 통합 검색이 설정된다.", () => {
+    test("초기 렌더링 initial로 통합 검색이 설정되는지 확인.", () => {
         render(<DropDownBox />);
         expect(screen.getByText("통합 검색")).toBeInTheDocument();
     });
 
-    it("드랍다운을 호버했을때 리스트가 렌더링 된다.", () => {
+    test("드랍다운을 호버했을때 리스트가 렌더링 되는지 확인", () => {
         render(<DropDownBox />);
         const dropdownContainer = screen.getByText("통합 검색");
         fireEvent.mouseEnter(dropdownContainer);
@@ -18,7 +18,7 @@ describe("DropDownBox 컴포넌트 테스트", () => {
         expect(screen.getByText("출판사")).toBeInTheDocument();
     });
 
-    it("리스트를 클릭했을때 클릭한 라벨로 설정이 바뀌고 리스트 박스가 사라진다.", () => {
+    test("리스트를 클릭했을때 클릭한 라벨로 설정이 바뀌고 리스트 박스가 사라지는지 확인.", () => {
         render(<DropDownBox />);
         const dropdownContainer = screen.getByText("통합 검색");
         fireEvent.mouseEnter(dropdownContainer);
@@ -28,7 +28,7 @@ describe("DropDownBox 컴포넌트 테스트", () => {
         expect(screen.queryByText("통합 검색")).not.toBeInTheDocument();
     });
 
-    it("드랍다운을 호버하고 마우스가 떠나면 리스트가 사라진다.", () => {
+    test("드랍다운을 호버하고 마우스가 떠나면 리스트가 사라지는지 확인.", () => {
         render(<DropDownBox />);
         const dropdownContainer = screen.getByText("통합 검색");
         fireEvent.mouseEnter(dropdownContainer);

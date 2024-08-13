@@ -45,9 +45,6 @@ public class BookPageProcessor implements PageProcessor {
     private final Counter pagesCounter;
     private final Counter booksCounter;
 
-    private String baseUrl;
-    private String url;
-
     @Autowired
     public BookPageProcessor(BookQueueService bookQueueService,
         @Qualifier("pagesCounter") Counter pagesCounter,
@@ -64,14 +61,7 @@ public class BookPageProcessor implements PageProcessor {
 
     @Override
     public void process(Page page) {
-        baseUrl = new LibraryUrl(page.getUrl().get()).getBaseUrl();
-        url = page.getUrl().get();
-        log.info("사이트 이름: {}", baseUrl);
-
-        Document doc = page.getHtml().getDocument();
-
-        List<BookInfo> bookInfos = parseBooks(doc);
-        log.info("파싱된 책의 개수: {}", bookInfos.size());
+        List<BookInfo> bookInfos = parseBooks(page);
 
         if (!bookInfos.isEmpty()) {
             bookQueueService.addBookInfosToQueue(bookInfos);
@@ -88,17 +78,21 @@ public class BookPageProcessor implements PageProcessor {
 
     }
 
-    private List<BookInfo> parseBooks(Document doc) {
+    private List<BookInfo> parseBooks(Page page) {
+        String baseUrl = new LibraryUrl(page.getUrl().get()).getBaseUrl();
+        String exactPageUrl = page.getUrl().get();
+        Document doc = page.getHtml().getDocument();
+
         Element resultListElement = doc.getElementsByClass(RESULT_LIST_CLASS).first();
         if (resultListElement == null) {
-            log.warn("Result List Element를 찾지 못했습니다 : {}", url);
+            log.warn("해당 페이지에서 도서 목록을 찾을 수 없습니다 : {}", exactPageUrl);
             return List.of();
         }
 
         Elements bookElements = getBookElements(resultListElement);
 
         return bookElements.stream()
-            .map(this::parseBookInfo)
+            .map(bookElement -> parseBookInfo(bookElement, baseUrl))
             .filter(Optional::isPresent)
             .map(Optional::get)
             .toList();
@@ -116,11 +110,11 @@ public class BookPageProcessor implements PageProcessor {
         return bookElements;
     }
 
-    private Optional<BookInfo> parseBookInfo(Element bookElement) {
+    private Optional<BookInfo> parseBookInfo(Element bookElement, String baseUrl) {
         try {
             Element writerElement = bookElement.getElementsByClass(WRITER_CLASS).first();
             if (writerElement == null) {
-                log.warn("Writer element not found for book");
+                log.warn("작가를 찾지 못했습니다.");
                 return Optional.empty();
             }
 

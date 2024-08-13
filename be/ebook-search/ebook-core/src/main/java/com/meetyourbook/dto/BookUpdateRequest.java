@@ -6,12 +6,22 @@ import lombok.Builder;
 
 @Builder
 public record BookUpdateRequest(
-    @NotBlank(message = "Title is required") String title,
-    @NotBlank(message = "Author is required") String author,
-    @NotBlank(message = "Publisher is required") String publisher,
-    @NotBlank(message = "Provider is required") String provider,
+
+    @NotBlank(message = "Title is required")
+    String title,
+
+    @NotBlank(message = "Author is required")
+    String author,
+
+    @NotBlank(message = "Publisher is required")
+    String publisher,
+
+    @NotBlank(message = "Provider is required")
+    String provider,
+
     LocalDate publishDate,
     String imageUrl
+
 ) {
 
 }

@@ -13,6 +13,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -38,6 +40,8 @@ public class BookPageProcessor implements PageProcessor {
     private static final String SPAN_TAG = "span";
     private static final String I_TAG = "i";
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE;
+    private static final Pattern ONCLICK_PATTERN = Pattern.compile(
+        "fnContentClick\\(this,\\s*'(\\d+)',\\s*'([^']+)',\\s*'\\d+'");
 
     private final Site site = Site.me().setTimeOut(10000000).setSleepTime(8000)
         .addHeader("Accept-Encoding", "gzip, deflate, br");
@@ -61,18 +65,20 @@ public class BookPageProcessor implements PageProcessor {
 
     @Override
     public void process(Page page) {
+        String url = page.getUrl().get();
         List<BookInfo> bookInfos = parseBooks(page);
 
         if (!bookInfos.isEmpty()) {
             bookQueueService.addBookInfosToQueue(bookInfos);
             booksCounter.increment(bookInfos.size());
             pagesCounter.increment();
+            log.info("페이지 처리 완료: {}, 발견된 도서 수: {}", url, bookInfos.size());
 
             try {
                 String nextUrl = fetchNextUrl(page.getUrl().get());
                 pageQueue.add(nextUrl);
             } catch (URISyntaxException e) {
-                log.error("다음 페이지 URL을 가져오는 과정에서 오류가 생김", e);
+                log.error("다음 페이지 URL 생성 중 오류 발생. 현재 URL: {}, 오류 메시지: {}", url, e.getMessage());
             }
         }
 
@@ -90,6 +96,7 @@ public class BookPageProcessor implements PageProcessor {
         }
 
         Elements bookElements = getBookElements(resultListElement);
+        log.debug("페이지에서 발견된 도서 요소 수: {}, 페이지 URL: {}", bookElements.size(), exactPageUrl);
 
         return bookElements.stream()
             .map(bookElement -> parseBookInfo(bookElement, baseUrl))
@@ -114,11 +121,11 @@ public class BookPageProcessor implements PageProcessor {
         try {
             Element writerElement = bookElement.getElementsByClass(WRITER_CLASS).first();
             if (writerElement == null) {
-                log.warn("작가를 찾지 못했습니다.");
+                log.debug("도서의 작가 정보를 찾을 수 없음");
                 return Optional.empty();
             }
 
-            return Optional.of(BookInfo.builder()
+            BookInfo bookInfo = BookInfo.builder()
                 .provider(getTextFromClass(bookElement, PROVIDER_CLASS))
                 .title(getTextFromClass(bookElement, TITLE_CLASS))
                 .author(getAuthor(writerElement))
@@ -126,9 +133,13 @@ public class BookPageProcessor implements PageProcessor {
                 .publishDate(getPublishDate(writerElement))
                 .imageUrl(getImgUrl(bookElement))
                 .baseUrl(baseUrl)
-                .build());
+                .bookUrl(getBookUrl(bookElement, baseUrl))
+                .build();
+
+            log.trace("파싱된 도서 정보: {}", bookInfo);
+            return Optional.of(bookInfo);
         } catch (Exception e) {
-            log.error("Error parsing book info", e);
+            log.error("도서 정보 파싱 중 오류 발생: {}", e.getMessage(), e);
             return Optional.empty();
         }
     }
@@ -164,7 +175,7 @@ public class BookPageProcessor implements PageProcessor {
         try {
             return LocalDate.parse(date, DATE_FORMATTER);
         } catch (DateTimeParseException e) {
-            log.warn("날짜 파싱 오류 데이터 : {}, 원인 :{}", date, e.getMessage());
+            log.warn("날짜 파싱 오류. 입력 데이터: {}, 오류 원인: {}", date, e.getMessage());
             return null;
         }
     }
@@ -174,6 +185,51 @@ public class BookPageProcessor implements PageProcessor {
             .map(img -> img.attr(SRC_ATTR))
             .map(url -> url.startsWith("//") ? url.substring(2) : url)
             .orElse(NONE_DATA);
+    }
+
+    private String getBookUrl(Element element, String baseUrl) throws URISyntaxException {
+        Element titleElement = element.getElementsByClass(TITLE_CLASS).first();
+        if (titleElement == null) {
+            log.warn("도서 제목 요소를 찾을 수 없음");
+            return NONE_DATA;
+        }
+
+        Element anchorElement = titleElement.getElementsByTag("a").first();
+        if (anchorElement == null) {
+            log.warn("도서 링크 요소를 찾을 수 없음");
+            return NONE_DATA;
+        }
+
+        String onClickAttr = anchorElement.attr("onClick");
+        String extraUrl = anchorElement.attr("href");
+        Matcher matcher = ONCLICK_PATTERN.matcher(onClickAttr);
+
+        if (matcher.find()) {
+            String cttsDvsnCode = matcher.group(1);
+            String brcd = matcher.group(2);
+
+            URI uri = URI.create(baseUrl + extraUrl);
+            String query = uri.getQuery();
+            StringBuilder newQuery = new StringBuilder(query == null ? "" : query);
+
+            if (!newQuery.isEmpty()) {
+                newQuery.append("&");
+            }
+            newQuery.append("brcd=").append(brcd).append("&cttsDvsnCode=").append(cttsDvsnCode);
+
+            URI newUri = new URI(
+                uri.getScheme(),
+                uri.getAuthority(),
+                uri.getPath(),
+                newQuery.toString(),
+                uri.getFragment()
+            );
+
+            return newUri.toString();
+        } else {
+            log.warn("onClick 속성에서 매개변수를 추출할 수 없음");
+            return NONE_DATA;
+        }
     }
 
     private String fetchNextUrl(String url) throws URISyntaxException {

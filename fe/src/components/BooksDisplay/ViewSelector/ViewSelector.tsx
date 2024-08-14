@@ -1,4 +1,4 @@
-import { ViewType } from "../BooksDisplay";
+import { ViewType } from "@/types/View";
 import { MenuOutlined, AppstoreOutlined } from "@ant-design/icons";
 import * as S from "@/styles/ViewSelectorStyle"
 interface ViewSelectorProps {

@@ -1,11 +1,9 @@
 import React, { useMemo } from "react";
 import useDebounce from "@/hooks/useDebounce";
-import { useLibraryFilter } from "@/hooks/useLibraryFilter";
+import { useLibraryFilter, LibrariesType } from "@/hooks/useLibraryFilter";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
+import { DEBOUNCE_TIME } from "@/constants";
 import * as S from "@/styles/LibraryFilterStyle";
-import { LibrariesType } from "@/hooks/useLibraryFilter";
-
-const DEBOUNCE_TIME = 300;
 interface LibraryListProps {
     libraries: LibrariesType[];
     librariesFilter: string[];

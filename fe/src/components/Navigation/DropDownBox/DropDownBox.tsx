@@ -1,19 +1,12 @@
 import { useState } from "react";
 import useQueryStore from "@/stores/queryStore";
 import * as S from "@/styles/DropDownStyle";
-
-type ItemType = { value: string; label: string };
-
-const initialItems = [
-    { value: "all", label: "통합 검색" },
-    { value: "title", label: "제목" },
-    { value: "author", label: "저자" },
-    { value: "publisher", label: "출판사" },
-];
+import { ItemType } from "@/types/DropDown";
+import { DROP_DOWN_INITIAL_ITEMS } from "@/constants";
 
 const DropDownBox = () => {
     const { setSelectedValue } = useQueryStore();
-    const [items] = useState<ItemType[]>(initialItems);
+    const [items] = useState<ItemType[]>(DROP_DOWN_INITIAL_ITEMS);
     const [curSelect, setSelect] = useState<ItemType>(items[0]);
     const [isHover, setIsHover] = useState<boolean>(false);
 

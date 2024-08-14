@@ -1,4 +1,3 @@
-// DropDownBox.test.jsx
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import DropDownBox from "@/components/Navigation/DropDownBox/DropDownBox";

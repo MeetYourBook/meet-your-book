@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import BookCard from "@/components/BooksDisplay/BookCard/BookCard";
-import { Book } from "@/components/BooksDisplay/BooksDisplay";
+import { BookContent } from "@/types/Books";
 import { vi } from "vitest";
 
 vi.mock("@/styles/BookCardStyle", () => ({
@@ -14,14 +14,14 @@ vi.mock("@/styles/BookCardStyle", () => ({
     MetaInfo: 'span',
 }));
 
-const mockBook: Book = {
+const mockBook: BookContent = {
     id: "1",
     title: "Test Book",
     author: "Test Author",
     provider: "Test Provider",
     publisher: "Test Publisher",
-    publish_date: "2023-01-01",
-    image_url: "test-image-url.com",
+    imageUrl: "test-image-url.com",
+    libraryResponses: [],
 };
 
 describe("BookCard 컴포넌트", () => {
@@ -41,7 +41,6 @@ describe("BookCard 컴포넌트", () => {
         expect(screen.getByText("Test Author")).toBeInTheDocument();
         expect(screen.getByText("Test Provider")).toBeInTheDocument();
         expect(screen.getByText("Test Publisher")).toBeInTheDocument();
-        expect(screen.getByText("2023-01-01")).toBeInTheDocument();
     });
 
 });

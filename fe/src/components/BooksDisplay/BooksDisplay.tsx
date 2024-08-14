@@ -4,19 +4,21 @@ import BookCard from "./BookCard/BookCard";
 import * as S from "@/styles/BookDisplayStyle"
 import { BookContent } from "@/types/Books";
 import { ViewType } from "@/types/View";
+import useGenerateQuery from "@/hooks/useGenerateQuery";
 
 const BooksDisplay = () => {
     const [viewMode, setViewMode] = useState<ViewType>("grid");
     const [bookItem, setBookItem] = useState<BookContent[]>([]);
+    const query = useGenerateQuery();
 
     useEffect(() => {
         const getData = async () => {
-            const response = await fetch("api/books?page=0&size=20&title=지혜명상법&author=지혜명상법&publisher=지혜명상법");
+            const response = await fetch(`api/${query}`);
             const data = await response.json();
             setBookItem(data.content)
         };
         getData();
-    }, []);
+    }, [query]);
 
     return (
         <S.BookContainer>

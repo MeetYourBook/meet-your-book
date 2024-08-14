@@ -1,9 +1,11 @@
 import React, { useMemo } from "react";
 import useDebounce from "@/hooks/useDebounce";
-import { useLibraryFilter, LibrariesType } from "@/hooks/useLibraryFilter";
+import { useLibraryFilter } from "@/hooks/useLibraryFilter";
+import { LibrariesType } from "@/types/Libraries";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import { DEBOUNCE_TIME } from "@/constants";
 import * as S from "@/styles/LibraryFilterStyle";
+import useQueryData from "@/hooks/useQueryData";
 interface LibraryListProps {
     libraries: LibrariesType[];
     librariesFilter: string[];
@@ -33,21 +35,25 @@ const LibraryList = React.memo(
 const LibraryFilter = () => {
     const {
         isOpen,
-        librariesItem,
         search,
         librariesFilter,
         handleSelectLibrary,
         toggleFilter,
         handleSearch,
     } = useLibraryFilter();
+    const {data = [], isLoading} = useQueryData("libraries")
 
     const debouncedValue = useDebounce(search, DEBOUNCE_TIME);
-
+    
     const libraries = useMemo(() => {
         return debouncedValue
-            ? librariesItem.filter((item) => item.name.includes(debouncedValue))
-            : librariesItem;
-    }, [debouncedValue, librariesItem]);
+        ? data.filter((item: LibrariesType) => item.name.includes(debouncedValue))
+        : data;
+    }, [debouncedValue, data]);
+
+    if (isLoading) return <div>Loading...</div>; 
+    // suspense 처리
+    // errorBoundary 처리
 
     return (
         <S.Container>

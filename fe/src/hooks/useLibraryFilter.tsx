@@ -1,17 +1,22 @@
 import useQueryStore from "@/stores/queryStore";
 import { useEffect, useState } from "react";
 
+export interface LibrariesType {
+    id: string;
+    name: string;
+}
+
 export const useLibraryFilter = () => {
     const [isOpen, setIsOpen] = useState(true);
-    const [librariesItem, setLibrariesItem] = useState<string[]>([]);
+    const [librariesItem, setLibrariesItem] = useState<LibrariesType[]>([]);
     const [search, setSearch] = useState("");
     const { librariesFilter, setLibrariesFilter } = useQueryStore();
 
-    const handleSelectLibrary = (library: string) => {
+    const handleSelectLibrary = (id: string) => {
         setLibrariesFilter(
-            librariesFilter.includes(library)
-                ? librariesFilter.filter((item) => item !== library)
-                : [...librariesFilter, library]
+            librariesFilter.includes(id)
+                ? librariesFilter.filter((item) => item !== id)
+                : [...librariesFilter, id]
         );
     };
 
@@ -24,16 +29,12 @@ export const useLibraryFilter = () => {
     useEffect(() => {
         // mock 데이터 구현 후 useQuery으로 변경
         const getData = async () => {
-            const response = await fetch("api/library");
+            const response = await fetch("api/libraries");
             const data = await response.json();
             setLibrariesItem(data);
         };
         getData();
     }, []);
-
-    useEffect(() => {
-        console.log(librariesFilter)
-    }, [librariesFilter])
 
     return {
         isOpen,

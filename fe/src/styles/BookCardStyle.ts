@@ -9,7 +9,8 @@ const Card = styled.div<{ $isVisible: boolean }>`
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
     transition:
         opacity 0.2s ease-in-out,
-        box-shadow 0.2s ease-in-out,;
+        box-shadow 0.2s ease-in-out,
+        transform 0.2s ease-in-out;
     opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
 
     &:hover {
@@ -17,6 +18,7 @@ const Card = styled.div<{ $isVisible: boolean }>`
         transform: scale(1.05);
     }
 `;
+
 
 const GridCard = styled(Card)`
     width: 150px;
@@ -50,20 +52,17 @@ const TextContainer = styled.div<{ $viewMode: ViewType }>`
     margin: auto 0;
 `;
 
-const Title = styled.h3<{ isList?: boolean }>`
+const Title = styled.h3`
     font-weight: bold;
-    font-size: ${({ isList }) =>
-        isList ? "1.25rem" : "0.875rem"};
-    margin-bottom: ${({ isList }) =>
-        isList ? "0.5rem" : "0.25rem"};
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 `;
 
-const Subtitle = styled.p<{ isList?: boolean }>`
-    font-size: ${({ isList }) =>
-        isList ? "0.875rem" : "0.75rem"};
+const Subtitle = styled.p`
+    font-size: 0.75rem;
     color: #4b5563;
     margin-bottom: 0.25rem;
     white-space: nowrap;

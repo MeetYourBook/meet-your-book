@@ -3,28 +3,29 @@ import useDebounce from "@/hooks/useDebounce";
 import { useLibraryFilter } from "@/hooks/useLibraryFilter";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import * as S from "@/styles/LibraryFilterStyle";
+import { LibrariesType } from "@/hooks/useLibraryFilter";
 
 const DEBOUNCE_TIME = 300;
-
 interface LibraryListProps {
-    libraries: string[];
+    libraries: LibrariesType[];
     librariesFilter: string[];
-    handleSelectLibrary: (library: string) => void;
+    handleSelectLibrary: (id: string) => void;
 }
 
 const LibraryList = React.memo(
     ({ libraries, librariesFilter, handleSelectLibrary }: LibraryListProps) => (
-        
         <>
             {libraries.map((library, index) => (
-                <S.ListItem key={index}>
+                <S.ListItem key={library.id}>
                     <S.Checkbox
                         type="checkbox"
                         id={`library-${index}`}
-                        checked={librariesFilter.includes(library)}
-                        onChange={() => handleSelectLibrary(library)}
+                        checked={librariesFilter.includes(library.id)}
+                        onChange={() => handleSelectLibrary(library.id)}
                     />
-                    <S.Label htmlFor={`library-${index}`}>{library}</S.Label>
+                    <S.Label htmlFor={`library-${index}`}>
+                        {library.name}
+                    </S.Label>
                 </S.ListItem>
             ))}
         </>
@@ -41,12 +42,12 @@ const LibraryFilter = () => {
         toggleFilter,
         handleSearch,
     } = useLibraryFilter();
-    
+
     const debouncedValue = useDebounce(search, DEBOUNCE_TIME);
 
     const libraries = useMemo(() => {
         return debouncedValue
-            ? librariesItem.filter((item) => item === debouncedValue)
+            ? librariesItem.filter((item) => item.name.includes(debouncedValue))
             : librariesItem;
     }, [debouncedValue, librariesItem]);
 

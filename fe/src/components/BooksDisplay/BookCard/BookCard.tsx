@@ -36,8 +36,8 @@ const BookCard = ({ bookData, viewMode }: BookItemProps) => {
                         alt={title}
                     />
                     <S.TextContainer $viewMode="list">
-                        <S.Title isList>{title}</S.Title>
-                        <S.Subtitle isList>{author}</S.Subtitle>
+                        <S.Title>{title}</S.Title>
+                        <S.Subtitle>{author}</S.Subtitle>
                         <div>
                             <S.MetaInfo>{provider}</S.MetaInfo>
                             <S.MetaInfo>{publisher}</S.MetaInfo>

@@ -30,22 +30,9 @@ public class BookCountVerificationService {
         List<Library> libraries = libraryRepository.findAll();
 
         return libraries.stream()
-            .map(library -> createBookCountVerificationResult(library, bookLibraryCounts))
+            .map(library -> BookCountVerificationResult.of(library, bookLibraryCounts))
             .toList();
 
     }
 
-    private BookCountVerificationResult createBookCountVerificationResult(Library library,
-        Map<Long, Integer> actualBookCounts) {
-        int actualBookCount = actualBookCounts.getOrDefault(library.getId(), 0);
-        int expectedBookCount = library.getTotalBookCount();
-
-        return new BookCountVerificationResult(
-            library.getId(),
-            library.getName(),
-            actualBookCount,
-            expectedBookCount,
-            actualBookCount == expectedBookCount
-        );
-    }
 }

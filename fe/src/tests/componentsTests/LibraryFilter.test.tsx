@@ -3,15 +3,13 @@ import LibraryFilter from "@/components/FilterDisplay/LibraryFilter/LibraryFilte
 import { useLibraryFilter } from "@/hooks/useLibraryFilter";
 import useDebounce from "@/hooks/useDebounce";
 import { vi } from "vitest";
+import { useQuery } from "react-query";
 
 vi.mock("@/styles/LibraryFilterStyle", () => ({
-    Container: 'div',
-    Header: 'div',
-    ListWrap: 'div',
-    Input: 'input',
-    ListItem: 'li',
-    Checkbox: 'input',
-    Label: 'label',
+    Container: "div",
+    Header: "div",
+    ListWrap: "div",
+    Input: "input",
 }));
 
 vi.mock("@/hooks/useLibraryFilter", () => ({
@@ -20,6 +18,10 @@ vi.mock("@/hooks/useLibraryFilter", () => ({
 
 vi.mock("@/hooks/useDebounce", () => ({
     default: vi.fn(),
+}));
+
+vi.mock("react-query", () => ({
+    useQuery: vi.fn(),
 }));
 
 const mockLibraries = [
@@ -31,15 +33,21 @@ describe("LibraryFilter 컴포넌트 테스트", () => {
     beforeEach(() => {
         (useLibraryFilter as jest.Mock).mockReturnValue({
             isOpen: true,
-            librariesItem: mockLibraries,
             search: "",
             librariesFilter: [],
             handleSelectLibrary: vi.fn(),
             toggleFilter: vi.fn(),
             handleSearch: vi.fn(),
         });
-    });
 
+        (useQuery as jest.Mock).mockReturnValue({
+            data: mockLibraries,
+            isLoading: false,
+        });
+
+        (useDebounce as jest.Mock).mockReturnValue("");
+    });
+    
     afterEach(() => {
         vi.clearAllMocks();
     });
@@ -48,7 +56,9 @@ describe("LibraryFilter 컴포넌트 테스트", () => {
         render(<LibraryFilter />);
 
         expect(screen.getByText("도서관 필터")).toBeInTheDocument();
-        expect(screen.getByPlaceholderText("도서관 검색...")).toBeInTheDocument();
+        expect(
+            screen.getByPlaceholderText("도서관 검색...")
+        ).toBeInTheDocument();
         expect(screen.getByLabelText("Library One")).toBeInTheDocument();
         expect(screen.getByLabelText("Library Two")).toBeInTheDocument();
     });
@@ -85,7 +95,7 @@ describe("LibraryFilter 컴포넌트 테스트", () => {
 
     test("debouncedValue에 따라 도서관 목록이 필터링되는지 확인", () => {
         const { handleSearch } = useLibraryFilter();
-        
+
         render(<LibraryFilter />);
 
         const searchInput = screen.getByPlaceholderText("도서관 검색...");
@@ -95,7 +105,9 @@ describe("LibraryFilter 컴포넌트 테스트", () => {
 
         expect(screen.getByLabelText("Library One")).toBeInTheDocument();
         expect(screen.getByLabelText("Library Two")).toBeInTheDocument();
-        expect(screen.queryByLabelText("Another Library")).not.toBeInTheDocument();
+        expect(
+            screen.queryByLabelText("Another Library")
+        ).not.toBeInTheDocument();
     });
 
     test("검색어가 없을 때 전체 도서관 목록이 표시되는지 확인", () => {
@@ -112,7 +124,9 @@ describe("LibraryFilter 컴포넌트 테스트", () => {
 
         expect(screen.getByLabelText("Library One")).toBeInTheDocument();
         expect(screen.getByLabelText("Library Two")).toBeInTheDocument();
-        expect(screen.queryByLabelText("Another Library")).not.toBeInTheDocument();
+        expect(
+            screen.queryByLabelText("Another Library")
+        ).not.toBeInTheDocument();
     });
 
     test("debouncedValue가 적용되었을 때 빈 결과를 반환하는지 확인", () => {
@@ -122,7 +136,9 @@ describe("LibraryFilter 컴포넌트 테스트", () => {
 
         expect(screen.queryByLabelText("Library One")).not.toBeInTheDocument();
         expect(screen.queryByLabelText("Library Two")).not.toBeInTheDocument();
-        expect(screen.queryByLabelText("Another Library")).not.toBeInTheDocument();
+        expect(
+            screen.queryByLabelText("Another Library")
+        ).not.toBeInTheDocument();
     });
 });
 
@@ -140,7 +156,7 @@ describe("LibraryFilter 컴포넌트 - 아이콘 렌더링 테스트", () => {
 
         render(<LibraryFilter />);
 
-        expect(document.querySelector('.anticon-up')).toBeInTheDocument();
+        expect(document.querySelector(".anticon-up")).toBeInTheDocument();
     });
 
     it("isOpen이 false일 때 DownOutlined 아이콘이 렌더링되는지 확인", () => {
@@ -156,6 +172,6 @@ describe("LibraryFilter 컴포넌트 - 아이콘 렌더링 테스트", () => {
 
         render(<LibraryFilter />);
 
-        expect(document.querySelector('.anticon-down')).toBeInTheDocument();
+        expect(document.querySelector(".anticon-down")).toBeInTheDocument();
     });
 });

@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import useDebounce from "@/hooks/useDebounce";
 import { useLibraryFilter } from "@/hooks/useLibraryFilter";
 import { LibrariesType } from "@/types/Libraries";
@@ -6,31 +6,8 @@ import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import { DEBOUNCE_TIME } from "@/constants";
 import * as S from "@/styles/LibraryFilterStyle";
 import useQueryData from "@/hooks/useQueryData";
-interface LibraryListProps {
-    libraries: LibrariesType[];
-    librariesFilter: string[];
-    handleSelectLibrary: (id: string) => void;
-}
+import LibraryList from "./LibraryList";
 
-const LibraryList = React.memo(
-    ({ libraries, librariesFilter, handleSelectLibrary }: LibraryListProps) => (
-        <>
-            {libraries.map((library, index) => (
-                <S.ListItem key={library.id}>
-                    <S.Checkbox
-                        type="checkbox"
-                        id={`library-${index}`}
-                        checked={librariesFilter.includes(library.id)}
-                        onChange={() => handleSelectLibrary(library.id)}
-                    />
-                    <S.Label htmlFor={`library-${index}`}>
-                        {library.name}
-                    </S.Label>
-                </S.ListItem>
-            ))}
-        </>
-    )
-);
 
 const LibraryFilter = () => {
     const {

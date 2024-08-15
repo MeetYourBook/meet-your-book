@@ -71,19 +71,7 @@ const ListUl = styled.ul`
     padding: 0;
 `;
 
-const ListItem = styled.li`
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.5rem;
-`;
 
-const Checkbox = styled.input`
-    margin-right: 0.5rem;
-`;
-
-const Label = styled.label`
-    flex-grow: 1;
-`;
 
 const Input = styled.input`
     width: 90%;
@@ -95,4 +83,4 @@ const Input = styled.input`
     outline: none;
 `
 
-export { Container, Header, ListWrap, ListUl, ListItem, Checkbox, Label, Input };
+export { Container, Header, ListWrap, ListUl, Input };

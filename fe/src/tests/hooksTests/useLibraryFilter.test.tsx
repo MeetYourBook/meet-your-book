@@ -1,4 +1,4 @@
-import { renderHook, act, waitFor } from "@testing-library/react";
+import { renderHook, act } from "@testing-library/react";
 import { vi } from "vitest";
 import { useLibraryFilter } from "@/hooks/useLibraryFilter";
 
@@ -32,23 +32,7 @@ describe("useLibraryFilter 테스트", () => {
 
         expect(result.current.search).toBe("");
         expect(result.current.isOpen).toBe(true);
-        expect(result.current.librariesItem).toEqual([]);
         expect(result.current.librariesFilter).toEqual([]);
-    });
-
-    test("API 요청 후 마운트 되었을때 librariesItem이 업데이트 되는지 확인.", async () => {
-        const mockData = [
-            { id: "1", name: "Library 1" },
-            { id: "2", name: "Library 2" },
-        ];
-        const { result } = renderHook(() => useLibraryFilter());
-
-        await waitFor(() => {
-            expect(result.current.librariesItem).toEqual(mockData);
-        });
-
-        expect(result.current.librariesItem).toEqual(mockData);
-        expect(fetch).toHaveBeenCalledWith("api/libraries");
     });
 
     test("토글버튼을 클릭했을때 state가 변경되는지 확인.", () => {

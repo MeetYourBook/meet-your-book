@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import { ViewType, Book } from "../BooksDisplay";
+import { ViewType } from "@/types/View";
+import { BookContent } from "@/types/Books";
 import * as S from "@/styles/BookCardStyle";
 
 interface BookItemProps {
-    bookData: Book;
+    bookData: BookContent;
     viewMode: ViewType;
 }
 
 const BookCard = ({ bookData, viewMode }: BookItemProps) => {
-    const { image_url, title, author, provider, publisher, publish_date } = bookData;
+    const { imageUrl, title, author, provider, publisher } = bookData;
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
@@ -21,7 +22,7 @@ const BookCard = ({ bookData, viewMode }: BookItemProps) => {
             {viewMode === "grid" ? (
                 <S.GridCard $isVisible={isVisible}>
                     <S.Image
-                        src={`http://${image_url}`}
+                        src={`http://${imageUrl}`}
                         alt={title}
                     />
                     <S.TextContainer $viewMode="grid">
@@ -32,7 +33,7 @@ const BookCard = ({ bookData, viewMode }: BookItemProps) => {
             ) : (
                 <S.ListCard $isVisible={isVisible}>
                     <S.ListImage
-                        src={`http://${image_url}`}
+                        src={`http://${imageUrl}`}
                         alt={title}
                     />
                     <S.TextContainer $viewMode="list">
@@ -41,7 +42,6 @@ const BookCard = ({ bookData, viewMode }: BookItemProps) => {
                         <div>
                             <S.MetaInfo>{provider}</S.MetaInfo>
                             <S.MetaInfo>{publisher}</S.MetaInfo>
-                            <S.MetaInfo>{publish_date}</S.MetaInfo>
                         </div>
                     </S.TextContainer>
                 </S.ListCard>

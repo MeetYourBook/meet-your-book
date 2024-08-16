@@ -5,6 +5,7 @@ import routes from "./routers/routes.tsx";
 import GlobalStyle from "./styles/GlobalStyle.ts";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import "@/styles/font.css"
 
 const main = async () => {
     if (process.env.NODE_ENV === "development") {

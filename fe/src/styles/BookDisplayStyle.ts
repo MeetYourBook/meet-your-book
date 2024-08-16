@@ -3,6 +3,8 @@ import { ViewType } from "./ViewSelectorStyle";
 
 const BookContainer = styled.div`
     width: 750px;
+    min-width: 750px;
+    
 `;
 
 const BookWrap = styled.div<{ $viewMode: ViewType }>`

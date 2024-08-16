@@ -1,0 +1,6 @@
+@font-face {
+    font-family: 'NotoSansFont';
+    src: local('NotoSansFont'), local('NotoSansFont');
+    font-style: normal;
+    src: url(${NotoSansFont}) format('truetype');
+}

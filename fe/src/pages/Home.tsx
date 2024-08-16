@@ -14,9 +14,10 @@ const Home = () => {
 export default Home;
 
 const HomeContainer = styled.main`
-    width: 100%;
+    max-width: 1200px;
     height: 100%;
     display: flex;
     justify-content: center;
-    gap: 2rem
+    gap: 2rem;
+    margin: 0px auto
 `;

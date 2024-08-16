@@ -1,18 +1,11 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
-import NotoSansFont from "@/fonts/NotoSansKR-VariableFont_wght.ttf";
 
 const GlobalStyle = createGlobalStyle`
     ${reset}
 
     :root {
     --border-color: #e9e7e7;
-    }
-    @font-face {
-        font-family: 'NotoSansFont';
-        src: local('NotoSansFont'), local('NotoSansFont');
-        font-style: normal;
-        src: url(${NotoSansFont}) format('truetype');
     }
     
     body,

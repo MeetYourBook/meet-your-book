@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ViewType } from "@/types/View";
 import { BookContent } from "@/types/Books";
 import * as S from "@/styles/BookCardStyle";
-
+import { ANIMATION_TIME } from "@/constants";
 interface BookItemProps {
     bookData: BookContent;
     viewMode: ViewType;
@@ -13,7 +13,7 @@ const BookCard = ({ bookData, viewMode }: BookItemProps) => {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        const timer = setTimeout(() => setIsVisible(true), 100);
+        const timer = setTimeout(() => setIsVisible(true), ANIMATION_TIME);
         return () => clearTimeout(timer);
     }, []);
 

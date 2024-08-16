@@ -2,7 +2,7 @@ import useQueryStore from "@/stores/queryStore";
 import { useEffect, useState } from "react";
 
 const useGenerateQuery = () => {
-    const { searchText, page, size, selectedValue, librariesFilter } =
+    const { searchText, page, size, selectedValue, librariesFilter} =
         useQueryStore();
     const [query, setQuery] = useState(`books?page=${page}&size=${size}`);
 
@@ -27,6 +27,7 @@ const useGenerateQuery = () => {
         setQuery(`books?${queryString}`);
     }, [page, size, selectedValue, librariesFilter, searchText]);
 
+    useEffect(() => console.log(query), [query])
     return query;
 };
 

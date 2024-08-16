@@ -14,4 +14,9 @@ const BookWrap = styled.div<{ $viewMode: ViewType }>`
     gap: 15px;
 `;
 
-export { BookContainer, BookWrap };
+const LastPageView = styled.div`
+    margin: 30px;
+    text-align: center;
+`
+
+export { BookContainer, BookWrap, LastPageView };

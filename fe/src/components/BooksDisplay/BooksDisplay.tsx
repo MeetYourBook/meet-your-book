@@ -11,13 +11,11 @@ const BooksDisplay = () => {
     const { booksItem, observerRef, lastPageNum, page, isLoading } =
         useBooksLogic();
 
-    if (isLoading) return <div>Loading...</div>;
-    // suspense 처리
-    
     return (
         <S.BookContainer>
             <ViewSelector viewMode={viewMode} setViewMode={setViewMode} />
             <S.BookWrap $viewMode={viewMode}>
+                {isLoading && <div>Loading...</div>}
                 {booksItem.map((book: BookContent, index: number) => (
                     <BookCard
                         key={`${book.id}-${index}`}
@@ -25,12 +23,14 @@ const BooksDisplay = () => {
                         viewMode={viewMode}
                     />
                 ))}
-                {page === lastPageNum ? (
-                    <div>마지막 페이지 입니다.</div>
-                ) : (
-                    <div ref={observerRef} style={{ height: "1px" }} />
-                )}
             </S.BookWrap>
+            {page === lastPageNum ? (
+                <S.LastPageView style={{ margin: "30px", textAlign: "center" }}>
+                    마지막 페이지 입니다.
+                </S.LastPageView>
+            ) : (
+                <div ref={observerRef} style={{ height: "1px" }} />
+            )}
         </S.BookContainer>
     );
 };

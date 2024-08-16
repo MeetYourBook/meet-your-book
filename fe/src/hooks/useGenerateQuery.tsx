@@ -27,7 +27,6 @@ const useGenerateQuery = () => {
         setQuery(`books?${queryString}`);
     }, [page, size, selectedValue, librariesFilter, searchText]);
 
-    useEffect(() => console.log(query), [query])
     return query;
 };
 

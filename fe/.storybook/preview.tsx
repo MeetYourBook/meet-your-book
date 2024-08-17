@@ -11,6 +11,7 @@ initialize({
     serviceWorker: {
         url: "/mockServiceWorker.js",
     },
+    onUnhandledRequest: "bypass"
 });
 
 const queryClient = new QueryClient();

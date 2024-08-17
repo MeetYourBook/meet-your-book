@@ -17,6 +17,11 @@ const BookCard = ({ bookData, viewMode }: BookItemProps) => {
         return () => clearTimeout(timer);
     }, []);
 
+    const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+        e.currentTarget.src = "/images/errorImg.png";
+        e.currentTarget.style.objectFit = "cover"; 
+    };
+
     return (
         <>
             {viewMode === "grid" ? (
@@ -24,6 +29,7 @@ const BookCard = ({ bookData, viewMode }: BookItemProps) => {
                     <S.Image
                         src={`http://${imageUrl}`}
                         alt={title}
+                        onError={handleImageError}
                     />
                     <S.TextContainer $viewMode="grid">
                         <S.Title>{title}</S.Title>
@@ -35,6 +41,7 @@ const BookCard = ({ bookData, viewMode }: BookItemProps) => {
                     <S.ListImage
                         src={`http://${imageUrl}`}
                         alt={title}
+                        onError={handleImageError}
                     />
                     <S.TextContainer $viewMode="list">
                         <S.Title>{title}</S.Title>

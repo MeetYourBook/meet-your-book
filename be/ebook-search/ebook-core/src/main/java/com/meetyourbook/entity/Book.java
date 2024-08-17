@@ -1,6 +1,7 @@
 package com.meetyourbook.entity;
 
 
+import com.meetyourbook.dto.BookUpdateRequest;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -76,5 +77,14 @@ public class Book {
     @Override
     public int hashCode() {
         return Objects.hash(title, author, provider, publisher, publishDate, imageUrl);
+    }
+
+    public void update(BookUpdateRequest request) {
+        this.title = request.title();
+        this.author = request.author();
+        this.provider = request.provider();
+        this.publisher = request.publisher();
+        this.publishDate = request.publishDate();
+        this.imageUrl = request.imageUrl();
     }
 }

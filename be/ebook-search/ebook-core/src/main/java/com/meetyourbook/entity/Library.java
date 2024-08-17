@@ -1,5 +1,6 @@
 package com.meetyourbook.entity;
 
+import com.meetyourbook.dto.LibraryUpdateRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -69,6 +70,12 @@ public class Library {
         return Objects.hash(name, type, libraryUrl);
     }
 
+    public void update(LibraryUpdateRequest request) {
+        this.name = request.press();
+        this.type = LibraryType.findByDescription(request.category());
+        this.libraryUrl = new LibraryUrl(request.url());
+    }
+
     @Getter
     public enum LibraryType {
         CORPORATE_LIBRARY("기업"),
@@ -84,7 +91,6 @@ public class Library {
         LibraryType(String description) {
             this.description = description;
         }
-
 
         public static LibraryType findByDescription(String description) {
             for (LibraryType type : LibraryType.values()) {

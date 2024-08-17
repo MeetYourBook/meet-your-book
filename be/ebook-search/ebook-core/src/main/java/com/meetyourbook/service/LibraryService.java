@@ -4,7 +4,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.meetyourbook.dto.LibraryCreation;
 import com.meetyourbook.dto.LibraryResponse;
+import com.meetyourbook.dto.LibraryUpdateRequest;
 import com.meetyourbook.entity.Library;
+import com.meetyourbook.exception.ResourceNotFoundException;
 import com.meetyourbook.repository.LibraryRepository;
 import java.io.File;
 import java.io.IOException;
@@ -26,6 +28,31 @@ public class LibraryService {
     @Transactional(readOnly = true)
     public List<Library> findAll() {
         return libraryRepository.findAll();
+    }
+
+    @Transactional
+    public Long createLibrary(LibraryCreation request) {
+        Library library = libraryRepository.save(request.toEntity());
+        return library.getId();
+    }
+
+    @Transactional
+    public LibraryResponse findById(long id) {
+        Library library = findLibrary(id);
+        return LibraryResponse.fromEntity(library);
+    }
+
+    @Transactional
+    public LibraryResponse updateLibrary(Long id, LibraryUpdateRequest request) {
+        Library library = findLibrary(id);
+        library.update(request);
+        return LibraryResponse.fromEntity(library);
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        Library library = findLibrary(id);
+        libraryRepository.delete(library);
     }
 
     @Transactional(readOnly = true)
@@ -72,4 +99,8 @@ public class LibraryService {
             .toList();
     }
 
+    private Library findLibrary(Long id) {
+        return libraryRepository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("Library not found"));
+    }
 }

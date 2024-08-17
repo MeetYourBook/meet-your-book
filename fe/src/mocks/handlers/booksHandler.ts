@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
 import booksData from "../mockData/books.json";
-import { BookContent } from "@/components/BooksDisplay/BooksDisplay";
+import { BookContent } from "@/types/Books";
 
 interface Params {
     [Key: string]: string;

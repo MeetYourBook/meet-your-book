@@ -3,7 +3,7 @@ import LibraryFilter from "@/components/FilterDisplay/LibraryFilter/LibraryFilte
 import { useLibraryFilter } from "@/hooks/useLibraryFilter";
 import useDebounce from "@/hooks/useDebounce";
 import { vi } from "vitest";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 vi.mock("@/styles/LibraryFilterStyle", () => ({
     Container: "div",
@@ -20,7 +20,7 @@ vi.mock("@/hooks/useDebounce", () => ({
     default: vi.fn(),
 }));
 
-vi.mock("react-query", () => ({
+vi.mock("@tanstack/react-query", () => ({
     useQuery: vi.fn(),
 }));
 

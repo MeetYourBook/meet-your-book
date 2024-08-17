@@ -6,6 +6,7 @@ import useQueryData from "@/hooks/useQueryData";
 vi.mock("@/styles/BookDisplayStyle", () => ({
     BookContainer: "div",
     BookWrap: "div",
+    LastPageView: "div"
 }));
 
 vi.mock("@/hooks/useQueryData", () => ({
@@ -34,6 +35,46 @@ const mockBooks = {
         },
     ],
 };
+
+beforeAll(() => {
+    class MockIntersectionObserver {
+        private callback: (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => void;
+    
+        constructor(callback: (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => void) {
+            this.callback = callback;
+        }
+    
+        observe() {
+            const entries: IntersectionObserverEntry[] = [
+                {
+                    isIntersecting: true,
+                    target: document.createElement('div'),
+                    intersectionRatio: 1,
+                    time: 0,
+                    boundingClientRect: {} as DOMRectReadOnly,
+                    intersectionRect: {} as DOMRectReadOnly,
+                    rootBounds: null,
+                }
+            ];
+            this.callback(entries, this as unknown as IntersectionObserver);
+        }
+    
+        disconnect() {
+            return null;
+        }
+    
+        unobserve() {
+            return null;
+        }
+    }
+    
+    Object.defineProperty(window, "IntersectionObserver", {
+        writable: true,
+        configurable: true,
+        value: MockIntersectionObserver,
+    });
+    
+});
 
 describe("BooksDisplay 컴포넌트", () => {
     beforeEach(() => {

@@ -25,7 +25,7 @@ const BooksDisplay = () => {
                 ))}
             </S.BookWrap>
             {page === lastPageNum ? (
-                <S.LastPageView style={{ margin: "30px", textAlign: "center" }}>
+                <S.LastPageView>
                     마지막 페이지 입니다.
                 </S.LastPageView>
             ) : (

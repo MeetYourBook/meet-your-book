@@ -7,6 +7,7 @@ vi.mock("@/stores/queryStore", () => ({
     __esModule: true,
     default: () => ({
         setSearchText: mockSetSearchText,
+        setPage: mockSetSearchText,
     }),
 }));
 

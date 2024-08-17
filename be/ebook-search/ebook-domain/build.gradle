@@ -1,5 +1,5 @@
 plugins {
-    id 'com.meetyourbook.java-common-conventions'
+    id 'java-common-conventions'
 }
 
 bootJar {

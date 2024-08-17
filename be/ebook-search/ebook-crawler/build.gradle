@@ -1,5 +1,6 @@
 plugins {
-    id 'com.meetyourbook.java-common-conventions'
+    id 'java-common-conventions'
+    id 'api-test-conventions'
     id 'application'
 }
 

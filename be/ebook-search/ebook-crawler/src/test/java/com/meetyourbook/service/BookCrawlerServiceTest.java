@@ -31,7 +31,7 @@ public class BookCrawlerServiceTest {
     @Mock
     private ProcessorFactory processorFactory;
     @Mock
-    private LibraryService libraryService;
+    private LibraryDomainService libraryDomainService;
     @Mock
     private DataSource dataSource;
     @Mock
@@ -43,7 +43,8 @@ public class BookCrawlerServiceTest {
 
     @BeforeEach
     void setUp() {
-        bookCrawlerService = new BookCrawlerService(processorFactory, libraryService, dataSource,
+        bookCrawlerService = new BookCrawlerService(processorFactory, libraryDomainService,
+            dataSource,
             meterRegistry);
         BookCrawlerService.pageQueue.clear();
     }
@@ -52,7 +53,7 @@ public class BookCrawlerServiceTest {
     @DisplayName("크롤링을 시작하면 실행된 크롤러의 ID를 반환한다.")
     void startCrawl_returnId() {
         // Given
-        when(libraryService.findAll()).thenReturn(Collections.emptyList());
+        when(libraryDomainService.findAll()).thenReturn(Collections.emptyList());
 
         // When
         String id = bookCrawlerService.startCrawl("BookPage", 1, 10);

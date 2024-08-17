@@ -1,0 +1,20 @@
+plugins {
+    id 'com.meetyourbook.java-common-conventions'
+}
+
+group = 'com.meetyourbook'
+version = 'unspecified'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':ebook-domain')
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}

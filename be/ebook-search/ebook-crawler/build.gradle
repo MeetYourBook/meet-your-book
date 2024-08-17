@@ -8,7 +8,7 @@ application {
 }
 
 dependencies {
-    implementation project(":ebook-core")
+    implementation project(":ebook-domain")
     implementation 'org.springframework.boot:spring-boot-starter-aop'
     implementation 'org.jsoup:jsoup:1.17.2'
     implementation 'us.codecraft:webmagic-core:0.10.3'

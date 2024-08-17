@@ -34,11 +34,8 @@ const preview: Preview = {
             },
         },
         msw: {
-          handlers: [
-            ...libraryHandlers,
-            ...booksHandlers,
-          ]
-        }
+            handlers: [...libraryHandlers, ...booksHandlers],
+        },
     },
 };
 

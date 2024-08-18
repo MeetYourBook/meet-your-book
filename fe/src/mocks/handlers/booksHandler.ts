@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
 import booksData from "../mockData/books.json";
-import { BookContent } from "@/components/BooksDisplay/BooksDisplay";
+import { BookContent } from "@/types/Books";
 
 interface Params {
     [Key: string]: string;
@@ -41,15 +41,17 @@ const searchFilter = (books: BookContent[], params: Params) => {
     }
 
     return books;
-}
+};
 
 const filterBooks = (books: BookContent[], params: Params) => {
     let filteredBooks = searchFilter(books, params);
 
     if (params.libraries) {
-        const libraryIds = params.libraries.split(',');
-        filteredBooks = filteredBooks.filter(book =>
-            book.libraryResponses.some(library => libraryIds.includes(library.id))
+        const libraryIds = params.libraries.split(",");
+        filteredBooks = filteredBooks.filter((book) =>
+            book.libraryResponses.some((library) =>
+                libraryIds.includes(library.id)
+            )
         );
     }
 
@@ -67,20 +69,30 @@ export const booksHandlers = [
         const url = new URL(request.url);
         const params = Object.fromEntries(url.searchParams);
         const filteredBooks = filterBooks(booksData.content, params);
-        
+
         const pageNum = parseInt(params.page) || 0;
         const sizeNum = parseInt(params.size) || DEFAULT_PAGE_SIZE;
-        
+
         const paginatedBooks = paginateBooks(filteredBooks, pageNum, sizeNum);
-        
+
         const response = {
             content: paginatedBooks,
             pageNumber: pageNum,
             pageSize: sizeNum,
             totalElements: filteredBooks.length,
-            totalPages: Math.ceil(filteredBooks.length / sizeNum)
+            totalPages: Math.ceil(filteredBooks.length / sizeNum),
         };
-        
+
         return HttpResponse.json(response);
     }),
+
+    // http.get("*", ({ request }) => {
+    //     const url = new URL(request.url);
+
+    //     if (url.pathname.includes("ebook")) {
+    //         return; 
+    //     }
+
+    //     return HttpResponse.json({ message: "handled by MSW" });
+    // }),
 ];

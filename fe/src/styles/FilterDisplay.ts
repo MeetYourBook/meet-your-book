@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const FilterContainer = styled.div`
-    width: 270px;
+    min-width: 240px;
 `;
 
 const Title = styled.h1`

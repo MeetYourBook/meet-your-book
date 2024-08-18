@@ -1,12 +1,13 @@
 import useQueryStore from "@/stores/queryStore";
 import { useState } from "react";
-
+import { FIRST_PAGE } from "@/constants";
 export const useLibraryFilter = () => {
     const [isOpen, setIsOpen] = useState(true);
     const [search, setSearch] = useState("");
-    const { librariesFilter, setLibrariesFilter } = useQueryStore();
+    const { librariesFilter, setLibrariesFilter, setPage } = useQueryStore();
     
     const handleSelectLibrary = (id: string) => {
+        setPage(FIRST_PAGE)
         setLibrariesFilter(
             librariesFilter.includes(id)
                 ? librariesFilter.filter((item) => item !== id)

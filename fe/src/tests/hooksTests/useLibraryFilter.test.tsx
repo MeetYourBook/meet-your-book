@@ -9,6 +9,7 @@ vi.mock("@/stores/queryStore", () => ({
     default: () => ({
         librariesFilter: [],
         setLibrariesFilter: mockSetLibrariesFilter,
+        setPage: mockSetLibrariesFilter,
     }),
 }));
 

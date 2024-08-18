@@ -8,7 +8,7 @@ const NavContainer = styled.nav`
 `;
 
 const NavWrap = styled.div`
-    max-width: 1200px;
+    max-width: 1070px;
     min-width: 350px;
     margin: auto;
     display: flex;

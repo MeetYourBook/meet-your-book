@@ -1,33 +1,36 @@
 import { useState } from "react";
 import ViewSelector from "./ViewSelector/ViewSelector";
 import BookCard from "./BookCard/BookCard";
-import useGenerateQuery from "@/hooks/useGenerateQuery";
 import { BookContent } from "@/types/Books";
 import { ViewType } from "@/types/View";
-import useQueryData from "@/hooks/useQueryData";
 import * as S from "@/styles/BookDisplayStyle";
+import useBooksLogic from "@/hooks/useBooksLogic";
 
 const BooksDisplay = () => {
     const [viewMode, setViewMode] = useState<ViewType>("grid");
-    const query = useGenerateQuery();
-    const { data: books, isLoading } = useQueryData(query)
-
-    if (isLoading) return <div>Loading...</div>; 
-    // suspense 처리
-    // errorBoundary 처리
+    const { booksItem, observerRef, lastPageNum, page, isLoading } =
+        useBooksLogic();
 
     return (
         <S.BookContainer>
             <ViewSelector viewMode={viewMode} setViewMode={setViewMode} />
             <S.BookWrap $viewMode={viewMode}>
-                {books.content.map((book: BookContent) => (
+                {isLoading && <div>Loading...</div>}
+                {booksItem.map((book: BookContent, index: number) => (
                     <BookCard
-                        key={book.id}
+                        key={`${book.id}-${index}`}
                         bookData={book}
                         viewMode={viewMode}
                     />
                 ))}
             </S.BookWrap>
+            {page === lastPageNum ? (
+                <S.LastPageView>
+                    마지막 페이지 입니다.
+                </S.LastPageView>
+            ) : (
+                <div ref={observerRef} style={{ height: "1px" }} />
+            )}
         </S.BookContainer>
     );
 };

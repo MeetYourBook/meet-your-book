@@ -3,6 +3,8 @@ import { ViewType } from "./ViewSelectorStyle";
 
 const BookContainer = styled.div`
     width: 750px;
+    min-width: 750px;
+    
 `;
 
 const BookWrap = styled.div<{ $viewMode: ViewType }>`
@@ -12,4 +14,9 @@ const BookWrap = styled.div<{ $viewMode: ViewType }>`
     gap: 15px;
 `;
 
-export { BookContainer, BookWrap };
+const LastPageView = styled.div`
+    margin: 30px;
+    text-align: center;
+`
+
+export { BookContainer, BookWrap, LastPageView };

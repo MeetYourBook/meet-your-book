@@ -24,7 +24,7 @@ const dropdownCloseAnimation = keyframes`
 `;
 
 const Container = styled.div`
-    width: 100%;
+    min-width: 240px;
     border: 1px solid var(--border-color);
     border-radius: 8px;
 `;

@@ -2,13 +2,17 @@ import * as S from "@/styles/SearchInputStyle";
 import { KeyboardEvent, useRef } from "react";
 import useQueryStore from "@/stores/queryStore";
 import { SearchOutlined } from "@ant-design/icons";
+import { FIRST_PAGE } from "@/constants";
 
 const SearchInput = () => {
     const inputRef = useRef<HTMLInputElement>(null);
-    const { setSearchText } = useQueryStore();
+    const { setSearchText, setPage } = useQueryStore();
 
     const handleSearchClick = () => {
-        if (inputRef.current) setSearchText(inputRef.current.value);
+        if (inputRef.current) {
+            setPage(FIRST_PAGE)
+            setSearchText(inputRef.current.value);
+        }
     };
 
     const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {

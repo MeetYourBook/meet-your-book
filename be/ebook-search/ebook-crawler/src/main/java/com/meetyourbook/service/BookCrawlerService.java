@@ -43,7 +43,7 @@ public class BookCrawlerService {
     public static final ConcurrentMap<String, Boolean> visited = new ConcurrentHashMap<>();
 
     private final ProcessorFactory processorFactory;
-    private final LibraryService libraryService;
+    private final LibraryDomainService libraryDomainService;
     private final DataSource dataSource;
     private final MeterRegistry meterRegistry;
     private final AtomicBoolean isRunning = new AtomicBoolean(false);
@@ -79,7 +79,7 @@ public class BookCrawlerService {
     private void crawl(String crawlerId, String processor, int maxUrlToSearch, int viewCount) {
         PageProcessor selectedProcessor = processorFactory.getProcessor(
             ProcessorType.fromString(processor));
-        List<Library> libraries = libraryService.findAll();
+        List<Library> libraries = libraryDomainService.findAll();
 
         pageQueue.addAll(
             libraries.stream()

@@ -1,7 +1,7 @@
 package com.meetyourbook.crawler;
 
 import com.meetyourbook.entity.LibraryUrl;
-import com.meetyourbook.service.LibraryService;
+import com.meetyourbook.service.LibraryDomainService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.nodes.Document;
@@ -22,7 +22,7 @@ public class BookCountProcessor implements PageProcessor {
     private final Site site = Site.me().setTimeOut(10000000).setSleepTime(8000)
         .setCycleRetryTimes(3).setRetryTimes(3);
 
-    private final LibraryService libraryService;
+    private final LibraryDomainService libraryDomainService;
 
     @Override
     public Site getSite() {
@@ -37,7 +37,7 @@ public class BookCountProcessor implements PageProcessor {
         int totalBookCount = getTotalBookCount(doc);
         log.info("도서관 URL: {}, 책의 총 개수: {}", baseUrl, totalBookCount);
 
-        libraryService.updateTotalBookCount(totalBookCount, baseUrl);
+        libraryDomainService.updateTotalBookCount(totalBookCount, baseUrl);
 
     }
 

@@ -1,0 +1,8 @@
+plugins {
+    id 'java-common-conventions'
+    id 'api-test-conventions'
+}
+
+dependencies {
+    implementation project(':ebook-domain')
+}

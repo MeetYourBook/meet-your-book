@@ -1,4 +1,5 @@
 rootProject.name = 'ebook-search'
-include 'ebook-core'
+include 'ebook-domain'
 include 'ebook-crawler'
+include 'ebook-web'
 

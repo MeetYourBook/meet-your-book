@@ -2,6 +2,7 @@ package com.meetyourbook.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.meetyourbook.common.RepositoryTest;
 import com.meetyourbook.entity.Book;
 import com.meetyourbook.entity.BookLibrary;
 import com.meetyourbook.entity.Library;
@@ -12,11 +13,8 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.context.ActiveProfiles;
 
-@ActiveProfiles("test")
-@DataJpaTest
+@RepositoryTest
 class BookLibraryRepositoryTest {
 
     @Autowired

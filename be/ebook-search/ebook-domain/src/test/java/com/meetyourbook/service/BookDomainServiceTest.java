@@ -2,6 +2,7 @@ package com.meetyourbook.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.meetyourbook.common.RepositoryTest;
 import com.meetyourbook.dto.BookCreationInfo;
 import com.meetyourbook.dto.BookUpdateInfo;
 import com.meetyourbook.entity.Book;
@@ -10,18 +11,23 @@ import java.time.LocalDate;
 import java.util.Optional;
 import java.util.UUID;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+@RepositoryTest
 class BookDomainServiceTest {
 
-    @Autowired
-    BookDomainService bookDomainService;
+    private BookDomainService bookDomainService;
+
     @Autowired
     private BookRepository bookRepository;
+
+    @BeforeEach
+    void setUp() {
+        bookDomainService = new BookDomainService(bookRepository);
+    }
 
     @AfterEach
     void tearDown() {

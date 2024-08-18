@@ -4,6 +4,8 @@ import static com.meetyourbook.entity.Library.LibraryType.PUBLIC_LIBRARY;
 import static com.meetyourbook.entity.Library.LibraryType.UNIVERSITY_LIBRARY;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.meetyourbook.common.RepositoryTest;
 import com.meetyourbook.dto.LibraryCreationInfo;
 import com.meetyourbook.dto.LibraryResponse;
 import com.meetyourbook.dto.LibraryUpdateInfo;
@@ -11,19 +13,25 @@ import com.meetyourbook.entity.Library;
 import com.meetyourbook.repository.LibraryRepository;
 import java.util.Optional;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+@RepositoryTest
 class LibraryDomainServiceTest {
 
-    @Autowired
-    LibraryDomainService libraryDomainService;
+    private LibraryDomainService libraryDomainService;
+
+    private ObjectMapper objectMapper;
 
     @Autowired
-    LibraryRepository libraryRepository;
+    private LibraryRepository libraryRepository;
+
+    @BeforeEach
+    void setUp() {
+        libraryDomainService = new LibraryDomainService(libraryRepository, objectMapper);
+    }
 
     @AfterEach
     void tearDown() {

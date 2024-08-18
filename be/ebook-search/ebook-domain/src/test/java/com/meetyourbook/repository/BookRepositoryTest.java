@@ -3,6 +3,7 @@ package com.meetyourbook.repository;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.tuple;
 
+import com.meetyourbook.common.RepositoryTest;
 import com.meetyourbook.entity.Book;
 import com.meetyourbook.entity.BookLibrary;
 import com.meetyourbook.entity.Library;
@@ -13,12 +14,9 @@ import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.test.context.ActiveProfiles;
 
-@ActiveProfiles("test")
-@DataJpaTest
+@RepositoryTest
 class BookRepositoryTest {
 
     @Autowired
@@ -45,7 +43,7 @@ class BookRepositoryTest {
         //then
         assertThat(firstByBookInfo.get()).isEqualTo(book1);
     }
-    
+
     @DisplayName("특정 도서관이 보유한 책을 검색할 수 있다.")
     @Test
     void findBooksInLibraries() {
@@ -71,7 +69,8 @@ class BookRepositoryTest {
         List<Book> books = bookRepository.findAll(spec);
 
         //then
-        assertThat(books).hasSize(2).extracting(Book::getTitle).containsExactlyInAnyOrder("지식의 착각", "이기적 유전자");
+        assertThat(books).hasSize(2).extracting(Book::getTitle)
+            .containsExactlyInAnyOrder("지식의 착각", "이기적 유전자");
     }
 
     @DisplayName("특정 도서관이 보유한 책을 제목, 저자로 검색할 수 있다.")
@@ -101,7 +100,8 @@ class BookRepositoryTest {
         List<Book> books = bookRepository.findAll(spec);
 
         //then
-        assertThat(books).hasSize(1).extracting(Book::getTitle, Book::getAuthor).containsExactlyInAnyOrder(tuple("지식의 착각", "스티븐 슬로먼"));
+        assertThat(books).hasSize(1).extracting(Book::getTitle, Book::getAuthor)
+            .containsExactlyInAnyOrder(tuple("지식의 착각", "스티븐 슬로먼"));
     }
 
     private void linkBookToLibrary(Book book, Library library) {

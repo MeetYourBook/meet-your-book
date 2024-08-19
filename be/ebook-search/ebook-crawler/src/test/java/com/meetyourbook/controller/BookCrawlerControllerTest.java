@@ -41,18 +41,19 @@ class BookCrawlerControllerTest {
     private BookCrawlerService bookCrawlerService;
 
     @Test
-    @DisplayName("크롤러가 정상적으로 시작되는지 확인")
-    void startCrawler() throws Exception {
+    @DisplayName("크롤러 실행 요청 성공")
+    void startCrawler_success() throws Exception {
         // Given
+        String crawlerId = UUID.randomUUID().toString();
         when(bookCrawlerService.startCrawl(anyString(), anyInt(), anyInt())).thenReturn(
-            "crawler-123");
+            crawlerId);
 
         // When & Then
         mockMvc.perform(MockMvcRequestBuilders.post("/api/crawler/start")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"processor\":\"test\",\"initMaxUrl\":100,\"viewCount\":1000}"))
             .andExpect(status().isOk())
-            .andExpect(jsonPath("$.id").value("crawler-123"))
+            .andExpect(jsonPath("$.id").value(crawlerId))
             .andExpect(jsonPath("$.message").exists())
             .andDo(document("start-crawler",
                 requestFields(
@@ -68,7 +69,7 @@ class BookCrawlerControllerTest {
 
     @Test
     @DisplayName("크롤러를 중복 실행 하는 경우 에러가 발생하는지 확인")
-    void testStartCrawler_WhenAlreadyRunning() throws Exception {
+    void startCrawlerWhenAlreadyRunning_returnConflict() throws Exception {
         // Given
         when(bookCrawlerService.startCrawl(anyString(), anyInt(), anyInt())).thenThrow(
             new CrawlerAlreadyRunningException());
@@ -114,7 +115,7 @@ class BookCrawlerControllerTest {
 
     @Test
     @DisplayName("실행중인 크롤러가 없을 떄 중지 요청 시 실패")
-    void stopCrawler_returnNotFound() throws Exception {
+    void stopCrawlerWhenNotRunning_returnConflict() throws Exception {
         // Given
         String crawlerId = UUID.randomUUID().toString();
         doThrow(new CrawlerNotRunningException()).when(bookCrawlerService).stopCrawl();

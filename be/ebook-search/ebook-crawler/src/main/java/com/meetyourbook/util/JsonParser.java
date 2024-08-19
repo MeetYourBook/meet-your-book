@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class JsonConvertor {
+public class JsonParser {
 
     private final ObjectMapper objectMapper;
 

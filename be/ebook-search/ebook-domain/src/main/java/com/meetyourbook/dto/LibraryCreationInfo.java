@@ -6,7 +6,6 @@ import lombok.Builder;
 
 @Builder
 public record LibraryCreationInfo(
-
     String category,
     String name,
     String url

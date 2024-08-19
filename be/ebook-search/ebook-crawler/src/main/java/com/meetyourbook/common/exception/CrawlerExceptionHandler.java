@@ -27,13 +27,13 @@ public class CrawlerExceptionHandler {
     }
 
     @ExceptionHandler(CrawlerNotRunningException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseStatus(HttpStatus.CONFLICT)
     public ResponseEntity<CrawlerErrorResponse> handleCrawlerNotRunningException(
         CrawlerNotRunningException e) {
         return ResponseEntity
-            .status(HttpStatus.BAD_REQUEST)
+            .status(HttpStatus.CONFLICT)
             .body(new CrawlerErrorResponse(
-                HttpStatus.BAD_REQUEST.toString(),
+                HttpStatus.CONFLICT.toString(),
                 e.getMessage(),
                 LocalDateTime.now()
             ));

@@ -1,0 +1,72 @@
+= 크롤러 API 문서
+
+== 크롤러 시작
+
+=== 요청
+
+include::{snippets}/start-crawler/http-request.adoc[]
+
+==== 요청 필드
+
+include::{snippets}/start-crawler/request-fields.adoc[]
+
+=== 응답
+
+include::{snippets}/start-crawler/http-response.adoc[]
+
+==== 응답 필드
+
+include::{snippets}/start-crawler/response-fields.adoc[]
+
+=== 크롤러 이미 실행 중 오류
+
+크롤러가 이미 실행 중일 때 시작 요청을 하면 다음과 같은 오류 응답을 받습니다.
+
+include::{snippets}/start-crawler-already-running/http-response.adoc[]
+
+==== 오류 응답 필드
+
+include::{snippets}/start-crawler-already-running/response-fields.adoc[]
+
+== 크롤러 중지
+
+=== 요청
+
+include::{snippets}/stop-crawler/http-request.adoc[]
+
+=== 응답
+
+include::{snippets}/stop-crawler/http-response.adoc[]
+
+==== 응답 필드
+
+include::{snippets}/stop-crawler/response-fields.adoc[]
+
+=== 크롤러 실행 중이 아닐 때 오류
+
+크롤러가 실행 중이 아닐 때 중지 요청을 하면 다음과 같은 오류 응답을 받습니다.
+
+include::{snippets}/stop-crawler-not-found/http-response.adoc[]
+
+==== 오류 응답 필드
+
+include::{snippets}/stop-crawler-not-found/response-fields.adoc[]
+
+== 공통 오류 응답
+
+모든 오류 응답은 다음과 같은 구조를 가집니다:
+
+[source,json]
+----
+{
+  "status": "HTTP 상태 코드와 설명",
+  "message": "에러 메시지",
+  "timestamp": "에러 발생 시각"
+}
+----
+
+=== 필드 설명
+
+* `status`: HTTP 상태 코드와 그에 대한 설명
+* `message`: 구체적인 에러 메시지
+* `timestamp`: 에러가 발생한 시각 (ISO 8601 형식)

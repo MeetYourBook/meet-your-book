@@ -1,6 +1,6 @@
 plugins {
     id 'java-common-conventions'
-    id 'api-test-conventions'
+    id 'api-conventions'
 }
 
 dependencies {
@@ -10,7 +10,6 @@ dependencies {
     implementation 'us.codecraft:webmagic-core:0.10.3'
     implementation 'us.codecraft:webmagic-extension:0.10.3'
     implementation 'redis.clients:jedis:3.7.1'
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'io.micrometer:micrometer-registry-prometheus'
     implementation 'com.zaxxer:HikariCP'
 }

@@ -1,6 +1,6 @@
 plugins {
     id 'java-common-conventions'
-    id 'api-test-conventions'
+    id 'api-conventions'
 }
 
 dependencies {

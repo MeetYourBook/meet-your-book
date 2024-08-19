@@ -13,6 +13,7 @@ const NavWrap = styled.div`
     margin: auto;
     display: flex;
     align-items: center;
+    justify-content: space-between
 `;
 
 const LogoWrap = styled.div`

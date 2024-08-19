@@ -32,11 +32,13 @@ public class LibraryDomainService {
     }
 
     @Transactional
-    public void createLibraries(List<LibraryCreationInfo> libraryCreationInfos) {
+    public int createLibraries(List<LibraryCreationInfo> libraryCreationInfos) {
         List<Library> libraries = libraryCreationInfos.stream()
             .map(LibraryCreationInfo::toEntity)
             .toList();
-        libraryRepository.saveAll(libraries);
+
+        List<Library> savedLibraries = libraryRepository.saveAll(libraries);
+        return savedLibraries.size();
     }
 
     @Transactional

@@ -39,4 +39,13 @@ public class CrawlerExceptionHandler {
             ));
     }
 
+    @ExceptionHandler(JsonParseException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<CrawlerErrorResponse> handleJsonParseException(
+        CrawlerNotRunningException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
+            new CrawlerErrorResponse(HttpStatus.BAD_REQUEST.toString(), e.getMessage(),
+                LocalDateTime.now()));
+    }
+
 }

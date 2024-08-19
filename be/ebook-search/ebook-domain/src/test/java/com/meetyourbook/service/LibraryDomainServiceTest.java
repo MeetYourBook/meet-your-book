@@ -4,7 +4,6 @@ import static com.meetyourbook.entity.Library.LibraryType.PUBLIC_LIBRARY;
 import static com.meetyourbook.entity.Library.LibraryType.UNIVERSITY_LIBRARY;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.meetyourbook.common.RepositoryTest;
 import com.meetyourbook.dto.LibraryCreationInfo;
 import com.meetyourbook.dto.LibraryResponse;
@@ -23,14 +22,12 @@ class LibraryDomainServiceTest {
 
     private LibraryDomainService libraryDomainService;
 
-    private ObjectMapper objectMapper;
-
     @Autowired
     private LibraryRepository libraryRepository;
 
     @BeforeEach
     void setUp() {
-        libraryDomainService = new LibraryDomainService(libraryRepository, objectMapper);
+        libraryDomainService = new LibraryDomainService(libraryRepository);
     }
 
     @AfterEach

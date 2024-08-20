@@ -21,7 +21,7 @@ const Navigation = () => {
                     <DropDownBox/>
                     <SearchInput/>
                 </S.InputWrap>
-                <div onClick={goToLogin}>로그인</div>
+                <S.LoginBtn onClick={goToLogin}>로그인</S.LoginBtn>
             </S.NavWrap>
         </S.NavContainer>
     );

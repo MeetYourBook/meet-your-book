@@ -3,7 +3,7 @@ name: 'Chromatic Deployment'
 on:
   push:
     branches:
-      - feat/infinite-scroll
+      - fe-develop
 
 jobs:
   chromatic-deploy:

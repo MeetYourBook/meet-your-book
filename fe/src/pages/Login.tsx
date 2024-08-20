@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import * as S from "@/styles/AuthForm";
-
+import * as S from "@/styles/AuthFormStyle";
+import BackButton from "@/components/BackButton/BackButton";
 const Login = () => {
     const navigate = useNavigate();
     const goToSignUp = () => {
@@ -9,7 +9,11 @@ const Login = () => {
     return (
         <S.AuthContainer>
             <S.AuthCard>
-                <S.AuthTitle>Login</S.AuthTitle>
+                <S.Header>
+                    <BackButton/>
+                    <S.AuthTitle>Login</S.AuthTitle>
+
+                </S.Header>
                 <S.AuthForm>
                     <S.FormGroup>
                         <S.Label>ID</S.Label>

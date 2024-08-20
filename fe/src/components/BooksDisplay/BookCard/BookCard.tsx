@@ -38,7 +38,7 @@ const BookCard = ({ bookData, viewMode }: BookItemProps) => {
                 </S.GridCard>
             ) : (
                 <S.ListCard $isVisible={isVisible}>
-                    <S.ListImage
+                    <S.Image
                         src={`http://${imageUrl}`}
                         alt={title}
                         onError={handleImageError}

@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 vi.mock("@/styles/LibraryFilterStyle", () => ({
     Container: "div",
     Header: "div",
+    Title: "div",
     ListWrap: "div",
     Input: "input",
 }));

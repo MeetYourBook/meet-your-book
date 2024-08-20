@@ -8,12 +8,12 @@ const NavContainer = styled.nav`
 `;
 
 const NavWrap = styled.div`
-    max-width: 1070px;
+    max-width: 1000px;
     min-width: 350px;
     margin: auto;
     display: flex;
     align-items: center;
-    justify-content: space-between
+    justify-content: space-between;
 `;
 
 const LogoWrap = styled.div`
@@ -27,20 +27,13 @@ const LogoWrap = styled.div`
 
 const LogoAbbreviation = styled.h1`
     font-weight: 700;
-    font-size: 1.6rem;
-
-    @media (max-width: 768px) {
-        font-size: 1rem;
-    }
+    font-size: 24Px;
 `;
 
 const LogoFullName = styled.p`
     font-weight: 300;
     font-size: 0.8rem;
     font-style: italic;
-    @media (max-width: 768px) {
-        font-size: 0.4rem;
-    }
 `;
 
 const InputWrap = styled.div`
@@ -48,20 +41,20 @@ const InputWrap = styled.div`
     left: 50%;
     transform: translate(-50%, 0);
     border: 1px solid var(--border-color);
-    border-radius: 5px;
+    border-radius: 8px;
     max-width: 600px;
     min-width: 300px;
     margin: 0 20px;
     display: flex;
     align-items: center;
-    height: 2.1rem;
-
-    @media (max-width: 768px) {
-        position: static;
-        transform: none;
-    }
-
+    height: 2.4rem;
 `;
+
+const LoginBtn = styled.div`
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-right: 2rem;
+`
 
 export {
     NavContainer,
@@ -70,4 +63,5 @@ export {
     LogoFullName,
     LogoWrap,
     InputWrap,
+    LoginBtn
 };

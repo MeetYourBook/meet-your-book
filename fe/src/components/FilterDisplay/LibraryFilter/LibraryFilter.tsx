@@ -35,7 +35,7 @@ const LibraryFilter = () => {
     return (
         <S.Container>
             <S.Header onClick={toggleFilter}>
-                <h1>도서관 필터</h1>
+                <S.Title>도서관 필터</S.Title>
                 {isOpen ? <UpOutlined /> : <DownOutlined />}
             </S.Header>
             <S.ListWrap $isOpen={isOpen}>

@@ -18,10 +18,17 @@ const AuthCard = styled.div`
     max-width: 300px;
 `;
 
+const Header = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    padding: 0px 2px
+`
+
 const AuthTitle = styled.h2`
     font-size: 1.25rem;
     font-weight: bold;
-    margin-bottom: 16px;
 `;
 
 const AuthForm = styled.div`
@@ -53,14 +60,14 @@ const Input = styled.input`
 const Button = styled.button`
     width: 100%;
     padding: 10px;
-    background-color: #10b981;
+    background-color: #22C55E;
     color: white;
     border-radius: 8px;
     border: none;
     font-size: 1rem;
     cursor: pointer;
     &:hover {
-        background-color: #059669;
+        background-color: #16A34A;
     }
 `;
 
@@ -106,4 +113,5 @@ export {
     AuthButton,
     SignUpText,
     SignUpLink,
+    Header
 };

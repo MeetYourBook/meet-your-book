@@ -6,12 +6,13 @@ import "../src/styles/GlobalStyle";
 import GlobalStyle from "../src/styles/GlobalStyle";
 import { libraryHandlers } from "../src/mocks/handlers/libraryHandler";
 import { booksHandlers } from "../src/mocks/handlers/booksHandler";
+import { BrowserRouter } from "react-router-dom";
 
 initialize({
     serviceWorker: {
         url: "/mockServiceWorker.js",
     },
-    onUnhandledRequest: "bypass"
+    onUnhandledRequest: "bypass",
 });
 
 const queryClient = new QueryClient();
@@ -20,7 +21,9 @@ export const decorators = [
     (Story: React.ComponentType) => (
         <QueryClientProvider client={queryClient}>
             <GlobalStyle />
-            <Story />
+            <BrowserRouter>
+                <Story />
+            </BrowserRouter>
         </QueryClientProvider>
     ),
     mswDecorator,

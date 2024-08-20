@@ -5,7 +5,7 @@ const Card = styled.div<{ $isVisible: boolean }>`
     background-color: white;
     border: 1px solid #d1d5db;
     border-radius: 0.375rem;
-    padding: 0.5rem;
+    padding: 0.3rem;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
     transition:
         opacity 0.2s ease-in-out,
@@ -32,15 +32,10 @@ const ListCard = styled(Card)`
 
 const Image = styled.img`
     object-fit: contain;
-    height: 12rem;
-    width: 100%;
+    height: 13rem;
     border-radius: 0.375rem;
     margin: auto;
     margin-bottom: 0.5rem;
-`;
-
-const ListImage = styled(Image)`
-    width: 132px;
 `;
 
 const TextContainer = styled.div<{ $viewMode: ViewType }>`
@@ -78,7 +73,6 @@ const MetaInfo = styled.p`
 export {
     GridCard,
     ListCard,
-    ListImage,
     TextContainer,
     Title,
     Subtitle,

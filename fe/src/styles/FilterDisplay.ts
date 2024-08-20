@@ -5,8 +5,8 @@ const FilterContainer = styled.div`
 `;
 
 const Title = styled.h1`
-    font-size: 1.6rem;
-    font-weight: 800;
+    font-size: 24px;
+    font-weight: 700;
     margin-bottom: 1.5rem
 `;
 export { FilterContainer, Title };

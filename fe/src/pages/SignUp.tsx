@@ -1,10 +1,14 @@
-import * as S from "@/styles/AuthForm";
+import BackButton from "@/components/BackButton/BackButton";
+import * as S from "@/styles/AuthFormStyle";
 
 const SignUp = () => {
     return (
         <S.AuthContainer>
             <S.AuthCard>
-                <S.AuthTitle>Sign Up</S.AuthTitle>
+            <S.Header>
+                    <BackButton/>
+                    <S.AuthTitle>Sign Up</S.AuthTitle>
+                </S.Header>
                 <S.AuthForm>
                     <S.FormGroup>
                         <S.Label>Name</S.Label>

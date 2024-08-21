@@ -6,6 +6,9 @@ import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
+import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessRequest;
+import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessResponse;
+import static org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.restdocs.payload.PayloadDocumentation.requestFields;
 import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
@@ -56,6 +59,8 @@ class BookCrawlerControllerTest {
             .andExpect(jsonPath("$.id").value(crawlerId))
             .andExpect(jsonPath("$.message").exists())
             .andDo(document("start-crawler",
+                preprocessRequest(prettyPrint()),
+                preprocessResponse(prettyPrint()),
                 requestFields(
                     fieldWithPath("processor").description("크롤러 프로세서 이름"),
                     fieldWithPath("initMaxUrl").description("초기 최대 URL 수"),
@@ -82,6 +87,8 @@ class BookCrawlerControllerTest {
             .andExpect(jsonPath("$.message").value("크롤러가 이미 실행중입니다."))
             .andExpect(jsonPath("$.timestamp").exists())
             .andDo(document("start-crawler-already-running",
+                preprocessRequest(prettyPrint()),
+                preprocessResponse(prettyPrint()),
                 requestFields(
                     fieldWithPath("processor").description("크롤러 프로세서 이름"),
                     fieldWithPath("initMaxUrl").description("초기 최대 URL 수"),
@@ -106,6 +113,8 @@ class BookCrawlerControllerTest {
             .andExpect(jsonPath("$.id").value(crawlerId))
             .andExpect(jsonPath("$.message").exists())
             .andDo(document("stop-crawler",
+                preprocessRequest(prettyPrint()),
+                preprocessResponse(prettyPrint()),
                 responseFields(
                     fieldWithPath("id").description("크롤러 ID"),
                     fieldWithPath("message").description("응답 메시지")
@@ -127,6 +136,8 @@ class BookCrawlerControllerTest {
             .andExpect(jsonPath("$.message").value("현재 크롤러가 실행중이지 않습니다."))
             .andExpect(jsonPath("$.timestamp").exists())
             .andDo(document("stop-crawler-not-found",
+                preprocessRequest(prettyPrint()),
+                preprocessResponse(prettyPrint()),
                 responseFields(
                     fieldWithPath("status").description("HTTP 상태 코드와 설명"),
                     fieldWithPath("message").description("에러 메시지"),

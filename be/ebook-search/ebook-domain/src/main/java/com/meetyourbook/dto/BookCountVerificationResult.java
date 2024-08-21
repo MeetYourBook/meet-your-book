@@ -9,7 +9,7 @@ public record BookCountVerificationResult(
     String libraryName,
     int actualBookCount,
     int expectedBookCount,
-    boolean verified
+    boolean isVerified
 
 ) {
 

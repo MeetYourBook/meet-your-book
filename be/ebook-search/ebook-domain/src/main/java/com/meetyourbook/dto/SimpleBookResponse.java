@@ -3,7 +3,9 @@ package com.meetyourbook.dto;
 import com.meetyourbook.entity.Book;
 import java.util.List;
 import java.util.UUID;
+import lombok.Builder;
 
+@Builder
 public record SimpleBookResponse(UUID id, String title, String author, String provider,
                                  String publisher, String imageUrl,
                                  List<BookLibraryResponse> libraryResponses) {

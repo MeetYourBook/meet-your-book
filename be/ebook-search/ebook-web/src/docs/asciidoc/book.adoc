@@ -1,0 +1,20 @@
+== 책 검색 API
+
+operation::search-books[snippets='http-request,query-parameters,http-response,response-fields,response-body']
+
+== 책 저장 API
+
+operation::create-book[snippets='http-request,request-body,http-response,response-headers']
+
+
+== 책 업데이트 API
+
+operation::update-book[snippets='http-request,path-parameters,request-body,http-response,response-headers']
+
+== 책 삭제 API
+
+operation::delete-book[snippets='http-request,path-parameters,http-response']
+
+== 도서관별 책 권수 검증 API
+
+operation::verify-book-count[snippets='http-request,http-response,response-fields,response-body']

@@ -1,0 +1,19 @@
+== 전체 도서관 목록 조회 API
+
+operation::libraries[snippets='http-request,http-response,response-fields,response-body']
+
+== 단일 도서관 조회
+
+operation::library[snippets='http-request,path-parameters,http-response,response-fields,response-body']
+
+== 도서관 저장 API
+
+operation::create-library[snippets='http-request,request-body,http-response,response-headers']
+
+== 도서관 업데이트 API
+
+operation::update-library[snippets='http-request,path-parameters,request-body,http-response,response-headers']
+
+== 도서관 삭제 API
+
+operation::delete-library[snippets='http-request,path-parameters,http-response']

@@ -1,6 +1,10 @@
-= WEB API 문서
+= API 문서
 
-== API 목록
+== 목차
 
-* link:book.adoc[도서 API]
-* link:library.adoc[도서관 API]
+* link:book.html[도서 API]
+* link:library.html[도서관 API]
+
+== 개요
+
+이 문서는 도서 관리 시스템의 API를 설명합니다.

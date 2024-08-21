@@ -1,5 +1,3 @@
-= Book API
-
 == 책 검색 API
 
 operation::search-books[snippets='http-request,query-parameters,http-response,response-fields,response-body']

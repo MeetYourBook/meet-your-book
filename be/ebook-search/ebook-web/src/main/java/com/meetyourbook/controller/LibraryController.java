@@ -45,8 +45,9 @@ public class LibraryController {
     @PatchMapping("/{libraryId}")
     public ResponseEntity<LibraryResponse> updateLibrary(@PathVariable Long libraryId,
         @RequestBody LibraryUpdateRequest request) {
-        LibraryResponse response = libraryWebService.updateLibrary(libraryId, request);
-        return ResponseEntity.ok(response);
+        libraryWebService.updateLibrary(libraryId, request);
+        return ResponseEntity.noContent().location(URI.create("api/libraries/" + libraryId))
+            .build();
     }
 
     @DeleteMapping("/{libraryId}")

@@ -3,18 +3,24 @@ import SearchInput from "./SearchInput/SearchInput";
 import * as S from "@/styles/NavigationStyle";
 import { MobileSearchFilterPanel } from "./MobileSearchFilterPanel/MobileSearchFilterPanel";
 
-const Navigation = () => {
+export const Logo = () => {
     const navigate = useNavigate();
 
     const goToMain = () => {
         navigate("/");
     };
     return (
+        <S.LogoWrap onClick={goToMain}>
+            <S.LogoName>Meet Your Book</S.LogoName>
+        </S.LogoWrap>
+    );
+};
+
+const Navigation = () => {
+    return (
         <S.NavContainer>
             <S.NavWrap>
-                <S.LogoWrap onClick={goToMain}>
-                    <S.LogoName>Meet Your Book</S.LogoName>
-                </S.LogoWrap>
+                <Logo/>
                 <S.SearchWrap>
                     <SearchInput />
                 </S.SearchWrap>

@@ -31,7 +31,7 @@ jobs:
       - name: Build ebook-web with Gradle
         run: |
           cd be/ebook-search
-          ./gradlew :ebook-web:test
+          ./gradlew :ebook-web:build
 
       - name: List build directory contents
         run: |

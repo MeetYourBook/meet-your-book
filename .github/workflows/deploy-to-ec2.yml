@@ -26,10 +26,12 @@ jobs:
           distribution: 'temurin'
 
       - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+        run: chmod +x be/gradlew
 
       - name: Build ebook-web with Gradle
-        run: ./gradlew :ebook-web:build
+        run: |
+          cd be
+          ./gradlew :ebook-web:build
 
       - name: Build Docker image
         run: |

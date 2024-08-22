@@ -18,7 +18,7 @@ const BookWrap = styled.div<{ $viewMode: ViewType }>`
     grid-template-columns: ${({ $viewMode }) =>
         $viewMode === "grid" ? "repeat(4, 1fr)" : "none"};
     gap: 15px;
-
+    justify-content: center;
     @media (max-width: 600px) {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;

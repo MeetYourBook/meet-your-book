@@ -6,6 +6,7 @@ const Card = styled.div<{ $isVisible: boolean }>`
     border: 1px solid #d1d5db;
     border-radius: 0.375rem;
     padding: 0.3rem;
+    margin: 0 auto;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
     transition:
         opacity 0.2s ease-in-out,

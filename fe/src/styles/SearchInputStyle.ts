@@ -5,7 +5,6 @@ const InputWrap = styled.div`
     border-radius: 8px;
     max-width: 450px;
     min-width: 300px;
-    margin: 0 50px 0 0;
     display: flex;
     align-items: center;
     height: 2.4rem;
@@ -21,6 +20,10 @@ const InputField = styled.input`
     padding: 0 10px;
     outline: none;
     border: none;
+
+    @media (max-width: 450px) {
+        width: 200px;
+    }
 `;
 
 const SearchField = styled.button`

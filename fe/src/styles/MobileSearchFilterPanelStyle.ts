@@ -4,7 +4,7 @@ import { SearchOutlined, FilterOutlined } from "@ant-design/icons";
 const PanelContainer = styled.div`
     display: none;
     padding: 0 16px;
-    @media (max-width: 768px) {
+    @media (max-width: 1000px) {
         display: flex;
         gap: 16px;
         padding: 0 24px;
@@ -34,10 +34,6 @@ const FilterWrap = styled.div<{ $isFilterOpen: boolean }>`
     transition: right 0.3s ease;
     box-sizing: border-box;
     overflow-y: auto;
-
-    @media (max-width: 600px) {
-        padding: 20px 30px 20px 20px;
-    }
 `;
 
 const Overlay = styled.div`
@@ -62,6 +58,7 @@ const CancelBtn = styled.div`
 const SearchWrap = styled.div<{$isSearchOpen: boolean}>`
     position: fixed;
     display: flex;
+    justify-content: center;
     z-index: 50;
     width: 100%;
     left: 0;

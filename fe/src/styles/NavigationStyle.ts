@@ -10,23 +10,26 @@ const NavContainer = styled.nav`
 `;
 
 const NavWrap = styled.div`
-    max-width: 1075px;
+    max-width: 1060px;
     min-width: 350px;
     margin: 1rem auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media (max-width: 1000px) {
+        width: 780px;
+    }
     @media (max-width: 768px) {
-        margin: 1rem 0.5rem;
+        width: 100%;
+    }
+    @media (max-width: 600px) {
+        width: 363px;
     }
 `;
 
 const LogoWrap = styled.div`
     text-align: center;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    padding: 0px 2px;
+    padding-left: 1rem;
     gap: 3px;
     cursor: pointer;
 `;
@@ -37,7 +40,8 @@ const LogoName = styled.h1`
 `;
 
 const SearchWrap = styled.div`
-    @media (max-width: 768px) {
+    margin-right: 30px;
+    @media (max-width: 1000px) {
         display: none;
     }
 `

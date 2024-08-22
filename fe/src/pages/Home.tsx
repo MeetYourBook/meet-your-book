@@ -22,10 +22,13 @@ const HomeContainer = styled.main`
     justify-content: center;
     gap: 2rem;
     margin: 0px auto;
+    @media (max-width: 1024px) {
+        gap: 0;
+    }
 `;
 
 const FilterWrap = styled.div`
-    @media (max-width: 768px) {
+    @media (max-width: 1000px) {
         display: none;
     }
 `

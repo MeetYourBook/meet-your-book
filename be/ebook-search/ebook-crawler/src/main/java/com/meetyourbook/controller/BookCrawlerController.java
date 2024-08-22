@@ -22,8 +22,8 @@ public class BookCrawlerController {
 
     @PostMapping("/start")
     public ResponseEntity<CrawlerResponse> startCrawler(@RequestBody CrawlerRequest request) {
-        String id = bookCrawlerService.startCrawl(request.processor(), request.initMaxUrl(),
-            request.viewCount());
+        String id = bookCrawlerService.startCrawl(request.processor(), request.viewCount(),
+            request.startLibraryId(), request.endLibraryId());
         return ResponseEntity.ok(new CrawlerResponse(id, "크롤러가 시작되었습니다."));
     }
 

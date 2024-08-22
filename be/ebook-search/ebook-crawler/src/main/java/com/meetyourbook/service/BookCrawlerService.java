@@ -53,10 +53,11 @@ public class BookCrawlerService {
     private final ExecutorService spiderExecutor = Executors.newVirtualThreadPerTaskExecutor();
 
 
-    public String startCrawl(String processor, int maxUrl, int viewCount) {
+    public String startCrawl(String processor, int viewCount, Long startId,
+        Long endId) {
         if (isRunning.compareAndSet(false, true)) {
             String id = String.valueOf(UUID.randomUUID());
-            crawl(id, processor, maxUrl, viewCount);
+            crawl(id, processor, viewCount, startId, endId);
             return id;
         } else {
             throw new CrawlerAlreadyRunningException();
@@ -76,16 +77,18 @@ public class BookCrawlerService {
         }
     }
 
-    private void crawl(String crawlerId, String processor, int maxUrlToSearch, int viewCount) {
+    private void crawl(String crawlerId, String processor, int viewCount,
+        Long startId, Long endId) {
         PageProcessor selectedProcessor = processorFactory.getProcessor(
             ProcessorType.fromString(processor));
-        List<Library> libraries = libraryDomainService.findAll();
+        List<Library> libraries = libraryDomainService.findLibrariesByIdRange(startId, endId);
+        log.info("총 {}개의 도서관을 크롤링합니다.", libraries.size());
+        log.info("도서관 범위는 {}부터 {}까지입니다.", startId, endId);
 
         pageQueue.addAll(
             libraries.stream()
                 .filter(Library::hasMainInk)
                 .map(library -> library.getUrlWithQueryParameters(viewCount))
-                .limit(maxUrlToSearch)
                 .toList()
         );
 

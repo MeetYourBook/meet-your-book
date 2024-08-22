@@ -1,6 +1,7 @@
 package com.meetyourbook.controller;
 
 import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
@@ -15,8 +16,10 @@ import static org.springframework.restdocs.payload.PayloadDocumentation.response
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.meetyourbook.common.exception.CrawlerAlreadyRunningException;
 import com.meetyourbook.common.exception.CrawlerNotRunningException;
+import com.meetyourbook.dto.CrawlerRequest;
 import com.meetyourbook.service.BookCrawlerService;
 import java.util.UUID;
 import org.junit.jupiter.api.DisplayName;
@@ -43,18 +46,23 @@ class BookCrawlerControllerTest {
     @MockBean
     private BookCrawlerService bookCrawlerService;
 
+    @Autowired
+    private ObjectMapper objectMapper;
+
     @Test
     @DisplayName("크롤러 실행 요청 성공")
     void startCrawler_success() throws Exception {
         // Given
         String crawlerId = UUID.randomUUID().toString();
-        when(bookCrawlerService.startCrawl(anyString(), anyInt(), anyInt())).thenReturn(
+        CrawlerRequest request = new CrawlerRequest("BookPage", 99, 1L, 20L);
+        String requestBody = objectMapper.writeValueAsString(request);
+        when(bookCrawlerService.startCrawl(anyString(), anyInt(), anyLong(), anyLong())).thenReturn(
             crawlerId);
 
         // When & Then
         mockMvc.perform(MockMvcRequestBuilders.post("/api/crawler/start")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"processor\":\"test\",\"initMaxUrl\":100,\"viewCount\":1000}"))
+                .content(requestBody))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.id").value(crawlerId))
             .andExpect(jsonPath("$.message").exists())
@@ -63,8 +71,9 @@ class BookCrawlerControllerTest {
                 preprocessResponse(prettyPrint()),
                 requestFields(
                     fieldWithPath("processor").description("크롤러 프로세서 이름"),
-                    fieldWithPath("initMaxUrl").description("초기 최대 URL 수"),
-                    fieldWithPath("viewCount").description("조회할 도서 수")
+                    fieldWithPath("viewCount").description("조회할 도서 수"),
+                    fieldWithPath("startLibraryId").description("시작 도서관 ID"),
+                    fieldWithPath("endLibraryId").description("마지막 도서관 ID")
                 ),
                 responseFields(
                     fieldWithPath("id").description("크롤러 ID"),
@@ -76,13 +85,15 @@ class BookCrawlerControllerTest {
     @DisplayName("크롤러를 중복 실행 하는 경우 에러가 발생하는지 확인")
     void startCrawlerWhenAlreadyRunning_returnConflict() throws Exception {
         // Given
-        when(bookCrawlerService.startCrawl(anyString(), anyInt(), anyInt())).thenThrow(
+        CrawlerRequest request = new CrawlerRequest("BookPage", 99, 1L, 20L);
+        String requestBody = objectMapper.writeValueAsString(request);
+        when(bookCrawlerService.startCrawl(anyString(), anyInt(), anyLong(), anyLong())).thenThrow(
             new CrawlerAlreadyRunningException());
 
         // When & Then
         mockMvc.perform(MockMvcRequestBuilders.post("/api/crawler/start")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"processor\":\"BookPage\",\"initMaxUrl\":100,\"viewCount\":1000}"))
+                .content(requestBody))
             .andExpect(jsonPath("$.status").value("409 CONFLICT"))
             .andExpect(jsonPath("$.message").value("크롤러가 이미 실행중입니다."))
             .andExpect(jsonPath("$.timestamp").exists())
@@ -91,8 +102,9 @@ class BookCrawlerControllerTest {
                 preprocessResponse(prettyPrint()),
                 requestFields(
                     fieldWithPath("processor").description("크롤러 프로세서 이름"),
-                    fieldWithPath("initMaxUrl").description("초기 최대 URL 수"),
-                    fieldWithPath("viewCount").description("조회할 도서 수")
+                    fieldWithPath("viewCount").description("조회할 도서 수"),
+                    fieldWithPath("startLibraryId").description("시작 도서관 ID"),
+                    fieldWithPath("endLibraryId").description("마지막 도서관 ID")
                 ),
                 responseFields(
                     fieldWithPath("status").description("HTTP 상태 코드와 설명"),

@@ -47,6 +47,12 @@ public class LibraryDomainService {
         return LibraryResponse.fromEntity(library);
     }
 
+    @Transactional(readOnly = true)
+    public List<Library> findLibrariesByIdRange(Long startId, Long endId) {
+        return libraryRepository.findByIdBetween(startId, endId);
+        
+    }
+
     @Transactional
     public LibraryResponse updateLibrary(Long id, LibraryUpdateInfo updateInfo) {
         Library library = findLibrary(id);

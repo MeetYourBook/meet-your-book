@@ -7,13 +7,13 @@ import lombok.Builder;
 @Builder
 public record LibraryCreationInfo(
     String category,
-    String name,
+    String press,
     String url
 ) {
 
     public Library toEntity() {
         return Library.builder()
-            .name(name)
+            .name(press)
             .type(LibraryType.findByDescription(category))
             .libraryUrl(url)
             .build();

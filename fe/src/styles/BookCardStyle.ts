@@ -36,7 +36,6 @@ const Image = styled.img`
     height: 13rem;
     border-radius: 0.375rem;
     margin: auto;
-    margin-bottom: 0.5rem;
 `;
 
 const TextContainer = styled.div<{ $viewMode: ViewType }>`
@@ -51,7 +50,7 @@ const TextContainer = styled.div<{ $viewMode: ViewType }>`
 const Title = styled.h3`
     font-weight: bold;
     font-size: 0.875rem;
-    margin-bottom: 0.25rem;
+    margin: 0.25rem 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

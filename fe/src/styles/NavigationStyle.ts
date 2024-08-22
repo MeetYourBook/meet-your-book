@@ -3,11 +3,8 @@ import styled from "styled-components";
 const NavContainer = styled.nav`
     width: 100%;
     border-bottom: 1px solid var(--border-color);
-    padding: 1rem;
     margin-bottom: 4rem;
-
     @media (max-width: 768px) {
-        padding: 1rem 0.5rem;
         margin-bottom: 1rem;
     }
 `;
@@ -15,10 +12,13 @@ const NavContainer = styled.nav`
 const NavWrap = styled.div`
     max-width: 1075px;
     min-width: 350px;
-    margin: auto;
+    margin: 1rem auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media (max-width: 768px) {
+        margin: 1rem 0.5rem;
+    }
 `;
 
 const LogoWrap = styled.div`

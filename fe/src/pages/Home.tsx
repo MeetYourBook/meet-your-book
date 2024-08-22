@@ -19,5 +19,9 @@ const HomeContainer = styled.main`
     display: flex;
     justify-content: center;
     gap: 2rem;
-    margin: 0px auto
+    margin: 0px auto;
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 `;

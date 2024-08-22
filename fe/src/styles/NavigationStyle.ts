@@ -3,8 +3,12 @@ import styled from "styled-components";
 const NavContainer = styled.nav`
     width: 100%;
     border-bottom: 1px solid var(--border-color);
-    padding: 1.5rem;
+    padding: 1rem;
     margin-bottom: 4rem;
+
+    @media (max-width: 768px) {
+        padding: 1rem 0.5rem;
+    }
 `;
 
 const NavWrap = styled.div`
@@ -31,9 +35,16 @@ const LogoName = styled.h1`
     font-size: 24Px;
 `;
 
+const SearchWrap = styled.div`
+    @media (max-width: 768px) {
+        display: none;
+    }
+`
+
 export {
     NavContainer,
     NavWrap,
     LogoName,
     LogoWrap,
+    SearchWrap,
 };

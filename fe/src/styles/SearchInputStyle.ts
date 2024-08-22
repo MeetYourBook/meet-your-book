@@ -3,7 +3,7 @@ import styled from "styled-components";
 const InputWrap = styled.div`
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    max-width: 600px;
+    max-width: 450px;
     min-width: 300px;
     margin: 0 50px 0 0;
     display: flex;
@@ -11,7 +11,7 @@ const InputWrap = styled.div`
     height: 2.4rem;
 
     @media (max-width: 768px) {
-        display: none;
+        margin: auto;
     }
 `;
 

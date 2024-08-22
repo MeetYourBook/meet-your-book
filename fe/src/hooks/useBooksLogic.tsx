@@ -30,11 +30,7 @@ const useBooksLogic = () => {
 
     useEffect(() => {
         if (books && books.content) {
-            if (page === FIRST_PAGE) {
-                setBooksItem(books.content);
-            } else {
-                setBooksItem([...booksItem, ...books.content]);
-            }
+            setBooksItem(page === FIRST_PAGE ? books.content : [...booksItem, ...books.content])
             setLastPageNum(books.totalPages);
             loadingMore.current = false;
         }

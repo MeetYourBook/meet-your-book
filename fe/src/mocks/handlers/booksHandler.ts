@@ -85,14 +85,4 @@ export const booksHandlers = [
 
         return HttpResponse.json(response);
     }),
-
-    // http.get("*", ({ request }) => {
-    //     const url = new URL(request.url);
-
-    //     if (url.pathname.includes("ebook")) {
-    //         return; 
-    //     }
-
-    //     return HttpResponse.json({ message: "handled by MSW" });
-    // }),
 ];

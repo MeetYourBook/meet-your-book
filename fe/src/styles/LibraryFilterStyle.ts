@@ -39,6 +39,10 @@ const Header = styled.header`
     
 `;
 
+const Title = styled.div`
+    font-weight: 600;
+`
+
 const ListWrap = styled.div<{ $isOpen: boolean }>`
     font-weight: 400;
     font-size: 0.9rem;
@@ -83,4 +87,4 @@ const Input = styled.input`
     outline: none;
 `
 
-export { Container, Header, ListWrap, ListUl, Input };
+export { Container, Header, ListWrap, ListUl, Input, Title };

@@ -2,8 +2,8 @@ import { useState } from "react";
 import useQueryStore from "@/stores/queryStore";
 import * as S from "@/styles/DropDownStyle";
 import { ItemType } from "@/types/DropDown";
-import { DROP_DOWN_INITIAL_ITEMS } from "@/constants";
-import { FIRST_PAGE } from "@/constants";
+import { DROP_DOWN_INITIAL_ITEMS, FIRST_PAGE } from "@/constants";
+
 const DropDownBox = () => {
     const { setSelectedValue, setPage } = useQueryStore();
     const [items] = useState<ItemType[]>(DROP_DOWN_INITIAL_ITEMS);

@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 const DropdownContainer = styled.div`
     position: relative;
     padding: 2px;
-    width: 4rem;
+    width: 5rem;
     height: 100%;
     font-size: 0.9rem;
     text-align: center;
@@ -43,7 +43,7 @@ const DropdownItem = styled.li`
     padding: 8px;
     margin: auto;
     color: gray;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     cursor: pointer;
     &:hover {
         background-color: #f0f0f0;
@@ -52,8 +52,7 @@ const DropdownItem = styled.li`
 
 const SelectedItemText = styled.p`
     margin: auto;
-    color: gray;
-    font-size: 0.8rem;
+    font-weight: 500;
 `
 
 export { DropdownContainer, DropdownList, DropdownItem, SelectedItemText };

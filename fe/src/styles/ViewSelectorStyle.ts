@@ -10,11 +10,11 @@ const ModeButton = styled.button`
 `
 
 const GridButton = styled(ModeButton)<{ $active: ViewType }>`
-    color: ${({ $active }) => $active === "grid" && "rgb(168 85 247)"};
+    color: ${({ $active }) => $active === "grid" ? "#22C55E" : "gray"};
 `;
 
 const ListButton = styled(ModeButton)<{ $active: ViewType }>`
-    color: ${({ $active }) => $active === "list" && "rgb(168 85 247)"};
+    color: ${({ $active }) => $active === "list" ? "#22C55E" : "gray"};
     
 `;
 
@@ -26,8 +26,8 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-    font-size: 1.7rem;
-    font-weight: 800;
+    font-size: 24px;
+    font-weight: 700;
 `;
 
 const IconButtonGroup = styled.div`

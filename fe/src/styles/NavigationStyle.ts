@@ -8,6 +8,7 @@ const NavContainer = styled.nav`
 
     @media (max-width: 768px) {
         padding: 1rem 0.5rem;
+        margin-bottom: 1rem;
     }
 `;
 

@@ -36,6 +36,7 @@ jobs:
       - name: Build Docker image
         run: |
           cd be/ebook-search/ebook-web
+          cp build/libs/*.jar .
           docker build -t ebook-web .
           
       - name: Login to Docker Hub

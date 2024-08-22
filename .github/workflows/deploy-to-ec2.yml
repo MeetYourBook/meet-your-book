@@ -26,16 +26,16 @@ jobs:
           distribution: 'temurin'
 
       - name: Grant execute permission for gradlew
-        run: chmod +x be/gradlew
+        run: chmod +x be/ebook-search/gradlew
 
       - name: Build ebook-web with Gradle
         run: |
-          cd be
-          ./gradlew :ebook-web:build
+          cd be/ebook-search
+          ./gradlew :ebook-web:test
 
       - name: Build Docker image
         run: |
-          cd be/ebook-web
+          cd be/ebook-search/ebook-web
           docker build -t ebook-web .
           
       - name: Login to Docker Hub

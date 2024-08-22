@@ -1,5 +1,20 @@
 import styled from "styled-components";
 
+const InputWrap = styled.div`
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    max-width: 600px;
+    min-width: 300px;
+    margin: 0 50px 0 0;
+    display: flex;
+    align-items: center;
+    height: 2.4rem;
+
+    @media (max-width: 768px) {
+        display: none;
+    }
+`;
+
 const InputField = styled.input`
     width: 300px;
     height: 100%;
@@ -20,7 +35,6 @@ const SearchField = styled.button`
     justify-content: center;
     cursor: pointer;
     background-color: white;
-    
 `;
 
-export { InputField, SearchField };
+export { InputWrap, InputField, SearchField };

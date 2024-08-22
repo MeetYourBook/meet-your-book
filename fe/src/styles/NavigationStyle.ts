@@ -3,12 +3,12 @@ import styled from "styled-components";
 const NavContainer = styled.nav`
     width: 100%;
     border-bottom: 1px solid var(--border-color);
-    padding: 1rem;
+    padding: 1.5rem;
     margin-bottom: 4rem;
 `;
 
 const NavWrap = styled.div`
-    max-width: 1000px;
+    max-width: 1075px;
     min-width: 350px;
     margin: auto;
     display: flex;
@@ -23,45 +23,17 @@ const LogoWrap = styled.div`
     flex-direction: column;
     padding: 0px 2px;
     gap: 3px;
+    cursor: pointer;
 `;
 
-const LogoAbbreviation = styled.h1`
-    font-weight: 700;
+const LogoName = styled.h1`
+    font-weight: 800;
     font-size: 24Px;
 `;
-
-const LogoFullName = styled.p`
-    font-weight: 300;
-    font-size: 0.8rem;
-    font-style: italic;
-`;
-
-const InputWrap = styled.div`
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    max-width: 600px;
-    min-width: 300px;
-    margin: 0 20px;
-    display: flex;
-    align-items: center;
-    height: 2.4rem;
-`;
-
-const LoginBtn = styled.div`
-    cursor: pointer;
-    font-size: 0.9rem;
-    margin-right: 2rem;
-`
 
 export {
     NavContainer,
     NavWrap,
-    LogoAbbreviation,
-    LogoFullName,
+    LogoName,
     LogoWrap,
-    InputWrap,
-    LoginBtn
 };

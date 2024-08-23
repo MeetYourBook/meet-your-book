@@ -1,16 +1,16 @@
-name: Deploy ebook-web to EC2
+name: deploy-web
 
 on:
   push:
     branches: [ cicd ]
     paths:
       - 'be/**'
-      - '.github/workflows/deploy-to-ec2.yml'
+      - 'deploy-web.yml'
   pull_request:
     branches: [ cicd ]
     paths:
       - 'be/**'
-      - '.github/workflows/deploy-to-ec2.yml'
+      - 'deploy-web.yml'
   workflow_dispatch:
 
 jobs:

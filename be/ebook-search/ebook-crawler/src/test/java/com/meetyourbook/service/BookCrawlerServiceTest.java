@@ -4,14 +4,12 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 import com.meetyourbook.common.exception.CrawlerAlreadyRunningException;
 import com.meetyourbook.common.exception.CrawlerNotRunningException;
 import com.meetyourbook.crawler.ProcessorFactory;
 import com.meetyourbook.crawler.ProcessorType;
 import io.micrometer.core.instrument.MeterRegistry;
-import java.util.Collections;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -52,11 +50,9 @@ public class BookCrawlerServiceTest {
     @Test
     @DisplayName("크롤링을 시작하면 실행된 크롤러의 ID를 반환한다.")
     void startCrawl_returnId() {
-        // Given
-        when(libraryDomainService.findAll()).thenReturn(Collections.emptyList());
 
         // When
-        String id = bookCrawlerService.startCrawl("BookPage", 1, 10);
+        String id = bookCrawlerService.startCrawl("BookPage", 1, 1L, 20L);
 
         // Then
         assertThat(id).isNotNull();
@@ -79,7 +75,7 @@ public class BookCrawlerServiceTest {
                 try {
                     latch.countDown();
                     latch.await(); // 모든 스레드가 준비될 때까지 대기
-                    bookCrawlerService.startCrawl("BookPage", 1, 10);
+                    bookCrawlerService.startCrawl("BookPage", 20, 1L, 20L);
                     successCount.incrementAndGet();
                 } catch (CrawlerAlreadyRunningException e) {
                     exceptionCount.incrementAndGet();

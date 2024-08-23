@@ -11,7 +11,7 @@ public record LibraryCreateRequest(
     public LibraryCreationInfo toLibraryCreationInfo() {
         return LibraryCreationInfo.builder()
             .category(category)
-            .name(press)
+            .press(press)
             .url(url)
             .build();
     }

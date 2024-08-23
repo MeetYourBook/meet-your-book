@@ -1,11 +1,29 @@
 import styled from "styled-components";
 
+const InputWrap = styled.div`
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    max-width: 450px;
+    min-width: 300px;
+    display: flex;
+    align-items: center;
+    height: 2.4rem;
+
+    @media (max-width: 768px) {
+        margin: auto;
+    }
+`;
+
 const InputField = styled.input`
     width: 300px;
     height: 100%;
     padding: 0 10px;
     outline: none;
     border: none;
+
+    @media (max-width: 450px) {
+        width: 200px;
+    }
 `;
 
 const SearchField = styled.button`
@@ -20,7 +38,6 @@ const SearchField = styled.button`
     justify-content: center;
     cursor: pointer;
     background-color: white;
-    
 `;
 
-export { InputField, SearchField };
+export { InputWrap, InputField, SearchField };

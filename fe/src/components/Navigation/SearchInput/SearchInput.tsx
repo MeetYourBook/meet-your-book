@@ -3,6 +3,7 @@ import { KeyboardEvent, useRef } from "react";
 import useQueryStore from "@/stores/queryStore";
 import { SearchOutlined } from "@ant-design/icons";
 import { FIRST_PAGE } from "@/constants";
+import DropDownBox from "../DropDownBox/DropDownBox";
 
 const SearchInput = () => {
     const inputRef = useRef<HTMLInputElement>(null);
@@ -20,7 +21,8 @@ const SearchInput = () => {
     };
 
     return (
-        <>
+        <S.InputWrap>
+            <DropDownBox/>
             <S.InputField
                 ref={inputRef}
                 onKeyDown={handleKeyDown}
@@ -29,7 +31,7 @@ const SearchInput = () => {
             <S.SearchField onClick={handleSearchClick}>
                 <SearchOutlined />
             </S.SearchField>
-        </>
+        </S.InputWrap>
     );
 };
 

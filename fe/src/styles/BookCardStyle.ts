@@ -6,6 +6,7 @@ const Card = styled.div<{ $isVisible: boolean }>`
     border: 1px solid #d1d5db;
     border-radius: 0.375rem;
     padding: 0.3rem;
+    margin: 0 auto;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
     transition:
         opacity 0.2s ease-in-out,
@@ -35,7 +36,6 @@ const Image = styled.img`
     height: 13rem;
     border-radius: 0.375rem;
     margin: auto;
-    margin-bottom: 0.5rem;
 `;
 
 const TextContainer = styled.div<{ $viewMode: ViewType }>`
@@ -50,7 +50,7 @@ const TextContainer = styled.div<{ $viewMode: ViewType }>`
 const Title = styled.h3`
     font-weight: bold;
     font-size: 0.875rem;
-    margin-bottom: 0.25rem;
+    margin: 0.25rem 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

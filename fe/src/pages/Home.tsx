@@ -5,7 +5,9 @@ import styled from "styled-components";
 const Home = () => {
     return (
         <HomeContainer>
-            <FilterDisplay />
+            <FilterWrap>
+                <FilterDisplay />
+            </FilterWrap>
             <BooksDisplay />
         </HomeContainer>
     );
@@ -19,5 +21,15 @@ const HomeContainer = styled.main`
     display: flex;
     justify-content: center;
     gap: 2rem;
-    margin: 0px auto
+    margin: 0px auto;
+    @media (max-width: 1024px) {
+        gap: 0;
+    }
 `;
+
+const FilterWrap = styled.div`
+    @media (max-width: 1000px) {
+        display: none;
+    }
+`
+

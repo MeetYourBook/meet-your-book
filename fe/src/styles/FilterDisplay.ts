@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 const FilterContainer = styled.div`
     min-width: 240px;
+
+    @media (max-width: 768px) {
+        margin: auto;
+    }
 `;
 
 const Title = styled.h1`

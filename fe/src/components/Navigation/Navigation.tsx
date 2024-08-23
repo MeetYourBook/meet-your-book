@@ -1,27 +1,30 @@
 import { useNavigate } from "react-router-dom";
-import DropDownBox from "./DropDownBox/DropDownBox";
 import SearchInput from "./SearchInput/SearchInput";
 import * as S from "@/styles/NavigationStyle";
+import { MobileSearchFilterPanel } from "./MobileSearchFilterPanel/MobileSearchFilterPanel";
 
+export const Logo = () => {
+    const navigate = useNavigate();
+
+    const goToMain = () => {
+        navigate("/");
+    };
+    return (
+        <S.LogoWrap onClick={goToMain}>
+            <S.LogoName>Meet Your Book</S.LogoName>
+        </S.LogoWrap>
+    );
+};
 
 const Navigation = () => {
-    const navigate = useNavigate()
-
-    const goToLogin = () => {
-        navigate("/Login")
-    }
     return (
         <S.NavContainer>
             <S.NavWrap>
-                <S.LogoWrap>
-                    <S.LogoAbbreviation>MYB</S.LogoAbbreviation>
-                    <S.LogoFullName>MeetYourBook</S.LogoFullName>
-                </S.LogoWrap>
-                <S.InputWrap>
-                    <DropDownBox/>
-                    <SearchInput/>
-                </S.InputWrap>
-                <S.LoginBtn onClick={goToLogin}>로그인</S.LoginBtn>
+                <Logo/>
+                <S.SearchWrap>
+                    <SearchInput />
+                </S.SearchWrap>
+                <MobileSearchFilterPanel />
             </S.NavWrap>
         </S.NavContainer>
     );

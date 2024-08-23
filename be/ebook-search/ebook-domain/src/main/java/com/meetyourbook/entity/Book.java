@@ -23,7 +23,7 @@ import org.hibernate.annotations.UuidGenerator.Style;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Book {
+public class Book extends BaseEntity {
 
     @Id
     @GeneratedValue

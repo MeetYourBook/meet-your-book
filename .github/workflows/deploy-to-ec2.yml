@@ -6,12 +6,12 @@ on:
     paths:
       - 'be/**'
       - '.github/workflows/deploy-to-ec2.yml'
-
   pull_request:
     branches: [ cicd ]
     paths:
       - 'be/**'
       - '.github/workflows/deploy-to-ec2.yml'
+  workflow_dispatch:
 
 jobs:
   deploy:

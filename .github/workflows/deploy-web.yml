@@ -5,12 +5,12 @@ on:
     branches: [ cicd ]
     paths:
       - 'be/**'
-      - 'deploy-web.yml'
+      - '.github/workflows/deploy-web.yml'
   pull_request:
     branches: [ cicd ]
     paths:
       - 'be/**'
-      - 'deploy-web.yml'
+      - '.github/workflows/deploy-web.yml'
   workflow_dispatch:
 
 

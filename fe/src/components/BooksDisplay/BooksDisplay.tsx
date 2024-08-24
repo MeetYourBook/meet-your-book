@@ -9,13 +9,13 @@ const BookCard = React.lazy(() => import("./BookCard/BookCard"));
 
 const BooksDisplay = () => {
     const [viewMode, setViewMode] = useState<ViewType>("grid");
-    const { booksItem, observerRef, lastPageNum, page, isLoading } =
+    const { booksItem, observerRefCallback, lastPageNum, page, isLoading } =
         useBooksLogic();
 
     return (
         <S.BookContainer>
             <ViewSelector viewMode={viewMode} setViewMode={setViewMode} />
-            <Suspense fallback={<LoadingFallBack/>}>
+            <Suspense fallback={<LoadingFallBack />}>
                 <S.BookWrap $viewMode={viewMode}>
                     {booksItem.map((book: BookContent, index: number) => (
                         <BookCard
@@ -25,13 +25,13 @@ const BooksDisplay = () => {
                         />
                     ))}
                 </S.BookWrap>
-                    {isLoading && <LoadingFallBack/>}
-            </Suspense>
+                {isLoading && <LoadingFallBack />}
                 {page === lastPageNum ? (
                     <S.LastPageView>마지막 페이지 입니다.</S.LastPageView>
                 ) : (
-                    <div ref={observerRef} style={{ height: "1px" }} />
+                    <div ref={observerRefCallback} style={{ height: "10px" }} />
                 )}
+            </Suspense>
         </S.BookContainer>
     );
 };

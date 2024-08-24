@@ -2,6 +2,8 @@ const API_URL = import.meta.env.VITE_API_URL
 
 export const fetchAPI = async (query: string, option: RequestInit) => {
     try{
+        const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
+        await delay(3000)
         const response = await fetch(API_URL + query, option)
 
         if(!response.ok) {

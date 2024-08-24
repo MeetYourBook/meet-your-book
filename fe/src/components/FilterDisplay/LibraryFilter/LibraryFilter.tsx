@@ -7,6 +7,7 @@ import { DEBOUNCE_TIME } from "@/constants";
 import * as S from "@/styles/LibraryFilterStyle";
 import useQueryData from "@/hooks/useQueryData";
 import LibraryList from "./LibraryList";
+import LoadingFallBack from "@/components/LodingFallBack/LoadingFallBack";
 
 
 const LibraryFilter = () => {
@@ -28,10 +29,6 @@ const LibraryFilter = () => {
         : data;
     }, [debouncedValue, data]);
 
-    if (isLoading) return <div>Loading...</div>; 
-    // suspense 처리
-    // errorBoundary 처리
-
     return (
         <S.Container>
             <S.Header onClick={toggleFilter}>
@@ -44,6 +41,7 @@ const LibraryFilter = () => {
                     onChange={handleSearch}
                     placeholder="도서관 검색..."
                 />
+                {isLoading && <LoadingFallBack/>}
                 <LibraryList
                     libraries={libraries}
                     librariesFilter={librariesFilter}

@@ -30,6 +30,7 @@ const BookCard = ({ bookData, viewMode }: BookItemProps) => {
                         src={`http://${imageUrl}`}
                         alt={title}
                         onError={handleImageError}
+                        loading="lazy"
                     />
                     <S.TextContainer $viewMode="grid">
                         <S.Title>{title}</S.Title>

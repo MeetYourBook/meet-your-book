@@ -45,6 +45,10 @@ public class BookLibrary extends BaseEntity {
         return bookLibrary;
     }
 
+    public void updateUrl(String url) {
+        this.url = url;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

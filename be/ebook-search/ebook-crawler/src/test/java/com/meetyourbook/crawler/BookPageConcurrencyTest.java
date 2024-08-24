@@ -82,7 +82,7 @@ class BookPageConcurrencyTest {
             String expectedUrl = "http://test" + i + ".com";
 
             long count = capturedBookInfos.stream()
-                .filter(bookInfo -> bookInfo.getBaseUrl().equals(expectedUrl))
+                .filter(bookInfo -> bookInfo.baseUrl().equals(expectedUrl))
                 .count();
 
             assertThat(count).isEqualTo(1);

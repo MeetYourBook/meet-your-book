@@ -34,9 +34,17 @@ public class BookLibraryService {
         for (BookInfo bookInfo : bookInfos) {
             Book book = getBook(bookInfo);
             Library library = getLibrary(bookInfo);
-            BookLibrary bookLibrary = BookLibrary.createBookLibrary(book, library,
-                bookInfo.getBookUrl());
-            bookLibraries.add(bookLibrary);
+            Optional<BookLibrary> existingBookLibrary = bookLibraryRepository.findBookLibraryByBookIdAndLibraryId(
+                book.getId(), library.getId());
+            if (existingBookLibrary.isPresent()) {
+                BookLibrary bookLibrary = existingBookLibrary.get();
+                bookLibrary.updateUrl(bookInfo.bookUrl());
+            }
+            if (existingBookLibrary.isEmpty()) {
+                BookLibrary bookLibrary = BookLibrary.createBookLibrary(book, library,
+                    bookInfo.bookUrl());
+                bookLibraries.add(bookLibrary);
+            }
         }
         bookLibraryRepository.saveAll(bookLibraries);
     }
@@ -47,14 +55,14 @@ public class BookLibraryService {
     }
 
     private Library getLibrary(BookInfo bookInfo) {
-        return libraryCache.computeIfAbsent(bookInfo.getBaseUrl(),
+        return libraryCache.computeIfAbsent(bookInfo.baseUrl(),
             libraryDomainService::findByBaseUrl);
     }
 
     private Optional<Book> findBookByBookInfo(BookInfo bookInfo) {
         return bookRepository.findFirstByBookInfo(
-            bookInfo.getTitle(), bookInfo.getAuthor(), bookInfo.getPublisher(),
-            bookInfo.getPublishDate());
+            bookInfo.title(), bookInfo.author(), bookInfo.publisher(),
+            bookInfo.publishDate());
     }
 
 }

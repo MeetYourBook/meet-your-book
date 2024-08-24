@@ -35,6 +35,7 @@ const LogoWrap = styled.div`
 `;
 
 const LogoName = styled.h1`
+
     font-weight: 800;
     font-size: 24Px;
 `;

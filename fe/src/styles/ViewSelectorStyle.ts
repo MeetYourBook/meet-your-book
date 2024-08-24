@@ -10,11 +10,11 @@ const ModeButton = styled.button`
 `
 
 const GridButton = styled(ModeButton)<{ $active: ViewType }>`
-    color: ${({ $active }) => $active === "grid" ? "#22C55E" : "gray"};
+    color: ${({ $active }) => $active === "grid" ? "#0064FF" : "gray"};
 `;
 
 const ListButton = styled(ModeButton)<{ $active: ViewType }>`
-    color: ${({ $active }) => $active === "list" ? "#22C55E" : "gray"};
+    color: ${({ $active }) => $active === "list" ? "#0064FF" : "gray"};
     
 `;
 

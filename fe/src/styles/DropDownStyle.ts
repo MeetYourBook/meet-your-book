@@ -52,7 +52,7 @@ const DropdownItem = styled.li`
 
 const SelectedItemText = styled.p`
     margin: auto;
-    font-weight: 500;
+    font-weight: 400;
 `
 
 export { DropdownContainer, DropdownList, DropdownItem, SelectedItemText };

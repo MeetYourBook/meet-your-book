@@ -40,7 +40,7 @@ const BookCard = ({ bookData, viewMode }: BookItemProps) => {
             ) : (
                 <S.ListCard $isVisible={isVisible}>
                     <S.Image
-                        src={`http://${imageUrl}11`}
+                        src={`http://${imageUrl}`}
                         alt={title}
                         onError={handleImageError}
                     />

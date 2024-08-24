@@ -5,8 +5,7 @@ import { get } from "@/services/APIOptions";
 const useQueryData = (query: string) => {
     return useQuery({
         queryKey: [query],
-        queryFn: () => fetchAPI(query, get()),
-        
+        queryFn: () => fetchAPI(query, get()), 
     });
 };
 

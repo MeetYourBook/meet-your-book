@@ -18,7 +18,7 @@ const Container = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-    max-width: 28rem;
+    max-width: 30rem;
     text-align: center;
     margin: 0 auto;
 `;

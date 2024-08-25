@@ -1,17 +1,22 @@
 import { BookContent } from "@/types/Books";
 import * as S from "@/styles/BookInfoModalStyle";
 import LibrariesPaging from "./LibrariesPaging";
+import { useRef } from "react";
+import useOnClickOutside from "@/hooks/useOnClickOutside";
 interface BookInfoModalProps {
     bookData: BookContent;
     handleModalClose: () => void;
 }
 
 const BookInfoModal = ({ bookData, handleModalClose }: BookInfoModalProps) => {
+    const inSideRef = useRef(null)
     const { imageUrl, title, author, provider, publisher, libraryResponses } = bookData;
-    console.log(libraryResponses)
+
+    useOnClickOutside(inSideRef, handleModalClose)
+    
     return (
         <S.PopupOverlay>
-            <S.PopupCard>
+            <S.PopupCard ref={inSideRef}>
                 <S.CloseBtn onClick={handleModalClose} />
                 <S.BookInfoWrap>
                     <S.Img src={`http://${imageUrl}`} alt={title} />

@@ -15,7 +15,16 @@ const main = async () => {
 };
 await main();
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            throwOnError: true,
+        },
+        mutations: {
+            throwOnError: true,
+        },
+    },
+});
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>

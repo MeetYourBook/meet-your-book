@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import BookCard from "@/components/BooksDisplay/BookCard/BookCard";
 import { BookContent } from "@/types/Books";
 import { vi } from "vitest";
@@ -43,4 +43,14 @@ describe("BookCard 컴포넌트", () => {
         expect(screen.getByText("Test Publisher")).toBeInTheDocument();
     });
 
+    test("이미지 로드 실패 시 대체 이미지를 보여주는지 확인", () => {
+        render(<BookCard bookData={mockBook} viewMode="grid" />);
+        
+        const imgElement = screen.getByRole("img", { name: /test book/i });
+
+        fireEvent.error(imgElement);
+
+        expect(imgElement).toHaveAttribute("src", "/images/errorImg.png");
+        expect(imgElement).toHaveStyle("object-fit: cover");
+    });
 });

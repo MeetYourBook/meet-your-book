@@ -1,6 +1,5 @@
 @font-face {
     font-family: 'NotoSansFont';
-    src: local('NotoSansFont'), local('NotoSansFont');
+    src: url('/src/fonts/NotoSansKR-VariableFont_wght.ttf') format('truetype');
     font-style: normal;
-    src: url(${NotoSansFont}) format('truetype');
 }

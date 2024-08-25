@@ -58,14 +58,14 @@ const Input = styled.input`
 const Button = styled.button`
     width: 100%;
     padding: 10px;
-    background-color: #22c55e;
+    background-color: black;
     color: white;
     border-radius: 8px;
     border: none;
     font-size: 1rem;
     cursor: pointer;
     &:hover {
-        background-color: #16a34a;
+        background-color: #A1A5AB;
     }
 `;
 

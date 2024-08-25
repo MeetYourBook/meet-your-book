@@ -73,22 +73,19 @@ beforeAll(() => {
         configurable: true,
         value: MockIntersectionObserver,
     });
-    
 });
 
 describe("BooksDisplay 컴포넌트", () => {
     beforeEach(() => {
-        (useQueryData as jest.Mock).mockReturnValue({
-            data: mockBooks,
-            isLoading: false,
-        });
-    });
-
-    afterEach(() => {
         vi.clearAllMocks();
     });
 
     test("초기 렌더링 시 컴포넌트가 올바르게 표시되는지 확인", async () => {
+        (useQueryData as jest.Mock).mockReturnValue({
+            data: mockBooks,
+            isLoading: false,
+        });
+
         render(<BooksDisplay />);
 
         await waitFor(() => {
@@ -97,5 +94,17 @@ describe("BooksDisplay 컴포넌트", () => {
             expect(screen.getByText("Book Two")).toBeInTheDocument();
             expect(screen.getByText("Author Two")).toBeInTheDocument();
         });
+    });
+
+    test("로딩 중일 때 Spin 컴포넌트가 화면에 표시되는지 확인", async () => {
+        (useQueryData as jest.Mock).mockReturnValue({
+            data: null,
+            isLoading: true,
+        });
+
+        render(<BooksDisplay />);
+
+        const spinElement = document.querySelector('.ant-spin');
+        expect(spinElement).toBeInTheDocument();
     });
 });

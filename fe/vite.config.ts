@@ -10,6 +10,7 @@ export default defineConfig({
     ],
   },
   build: {
+    target: 'esnext',
     rollupOptions: {
       external: ['msw-storybook-addon'],
     },

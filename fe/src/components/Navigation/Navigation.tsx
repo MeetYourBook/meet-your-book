@@ -6,9 +6,8 @@ import { MobileSearchFilterPanel } from "./MobileSearchFilterPanel/MobileSearchF
 export const Logo = () => {
     const navigate = useNavigate();
 
-    const goToMain = () => {
-        navigate("/");
-    };
+    const goToMain = () => navigate("/");
+
     return (
         <S.LogoWrap onClick={goToMain}>
             <S.LogoName>Meet Your Book</S.LogoName>

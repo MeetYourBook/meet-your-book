@@ -4,29 +4,36 @@ import Home from "../pages/Home";
 import NotFound from "../pages/NotFound";
 import Login from "@/pages/Login";
 import SignUp from "@/pages/SignUp";
+import ErrorFallBack from "@/components/ErrorFallBack/ErrorFallBack";
+import { ErrorBoundary } from "react-error-boundary";
+
 const routes = createBrowserRouter([
     {
         path: "/",
-        element: <Layout/>,
+        element: (
+            <ErrorBoundary fallbackRender={ErrorFallBack}>
+                <Layout />
+            </ErrorBoundary>
+        ),
         children: [
             {
                 path: "/",
-                element: <Home />
+                element: <Home />,
             },
-        ]
+        ],
     },
     {
         path: "/Login",
-        element: <Login/>
+        element: <Login />,
     },
     {
         path: "/SignUp",
-        element: <SignUp/>
+        element: <SignUp />,
     },
     {
         path: "*",
-        element: <NotFound />
-    }
-])
+        element: <NotFound />,
+    },
+]);
 
-export default routes
+export default routes;

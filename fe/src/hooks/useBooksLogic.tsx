@@ -10,7 +10,6 @@ const useBooksLogic = () => {
     const { data: books, isLoading, isFetching } = useQueryData(query);
     const { booksItem, setBooksItem, page, setPage } = useQueryStore();
     const [lastPageNum, setLastPageNum] = useState(FIRST_PAGE);
-    const observerRef = useRef<HTMLDivElement | null>(null);
     const loadingMore = useRef(false);
 
     const handleLoadMore = useCallback(() => {
@@ -22,11 +21,10 @@ const useBooksLogic = () => {
 
     const { observe } = useInfiniteScroll(handleLoadMore);
 
-    useEffect(() => {
-        if (observerRef.current) {
-            observe(observerRef.current);
-        }
+    const observerRefCallback = useCallback((node: HTMLDivElement) => {
+        if (node) observe(node);
     }, [observe]);
+
 
     useEffect(() => {
         if (books && books.content) {
@@ -39,7 +37,7 @@ const useBooksLogic = () => {
 
     return {
         booksItem,
-        observerRef,
+        observerRefCallback,
         lastPageNum,
         page,
         isLoading: isLoading || isFetching,

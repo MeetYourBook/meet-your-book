@@ -95,12 +95,12 @@ class BookPageProcessorTest {
         List<BookInfo> capturedBookInfos = bookInfosCaptor.getValue();
         assertThat(1).isEqualTo(capturedBookInfos.size());
         BookInfo bookInfo = capturedBookInfos.getFirst();
-        assertThat(bookInfo.getTitle()).isEqualTo("테스트 책 제목");
-        assertThat(bookInfo.getAuthor()).isEqualTo("제이든");
-        assertThat(bookInfo.getPublisher()).isEqualTo("테스트 출판사");
-        assertThat(bookInfo.getImageUrl()).isEqualTo("example.com/book-cover.jpg");
-        assertThat(bookInfo.getPublishDate()).isEqualTo(LocalDate.of(2024, 1, 1));
-        assertThat(bookInfo.getBaseUrl()).isEqualTo("https://example.com");
+        assertThat(bookInfo.title()).isEqualTo("테스트 책 제목");
+        assertThat(bookInfo.author()).isEqualTo("제이든");
+        assertThat(bookInfo.publisher()).isEqualTo("테스트 출판사");
+        assertThat(bookInfo.imageUrl()).isEqualTo("example.com/book-cover.jpg");
+        assertThat(bookInfo.publishDate()).isEqualTo(LocalDate.of(2024, 1, 1));
+        assertThat(bookInfo.baseUrl()).isEqualTo("https://example.com");
 
         verify(booksCounter).increment(1);
         verify(pagesCounter).increment();
@@ -154,7 +154,7 @@ class BookPageProcessorTest {
         List<BookInfo> capturedBookInfos = bookInfosCaptor.getValue();
         assertThat(1).isEqualTo(capturedBookInfos.size());
         BookInfo bookInfo = capturedBookInfos.getFirst();
-        assertThat(bookInfo.getPublishDate()).isNull();
+        assertThat(bookInfo.publishDate()).isNull();
     }
 
     @Test
@@ -219,7 +219,7 @@ class BookPageProcessorTest {
         verify(bookQueueService).addBookInfosToQueue(bookInfosCaptor.capture());
         List<BookInfo> capturedBookInfos = bookInfosCaptor.getValue();
         BookInfo bookInfo = capturedBookInfos.getFirst();
-        assertThat(bookInfo.getBookUrl()).isEqualTo(expectedBookUrl);
+        assertThat(bookInfo.bookUrl()).isEqualTo(expectedBookUrl);
     }
 
 

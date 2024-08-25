@@ -16,7 +16,7 @@ import lombok.ToString;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @ToString
-public class BookLibrary {
+public class BookLibrary extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,6 +43,10 @@ public class BookLibrary {
         BookLibrary bookLibrary = new BookLibrary(book, library, url);
         book.addBookLibrary(bookLibrary);
         return bookLibrary;
+    }
+
+    public void updateUrl(String url) {
+        this.url = url;
     }
 
     @Override

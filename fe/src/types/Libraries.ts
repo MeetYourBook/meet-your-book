@@ -1,4 +1,5 @@
 export interface LibrariesType {
     id: string;
-    name: string;
+    LibraryName: string;
+    BookLibraryUrl: string;
 }

@@ -3,6 +3,7 @@ import { ViewType } from "@/types/View";
 import { BookContent } from "@/types/Books";
 import * as S from "@/styles/BookCardStyle";
 import { ANIMATION_TIME } from "@/constants";
+import BookInfoModal from "@/components/BookInfoModal/BookInfoModal";
 interface BookItemProps {
     bookData: BookContent;
     viewMode: ViewType;
@@ -11,6 +12,11 @@ interface BookItemProps {
 const BookCard = ({ bookData, viewMode }: BookItemProps) => {
     const { imageUrl, title, author, provider, publisher } = bookData;
     const [isVisible, setIsVisible] = useState(false);
+    const [isModalOpen, setModalOpen] = useState(false)
+
+    const handleModalOpen = () => setModalOpen(true)
+
+    const handleModalClose = () => setModalOpen(false)
 
     useEffect(() => {
         const timer = setTimeout(() => setIsVisible(true), ANIMATION_TIME);
@@ -25,7 +31,7 @@ const BookCard = ({ bookData, viewMode }: BookItemProps) => {
     return (
         <>
             {viewMode === "grid" ? (
-                <S.GridCard $isVisible={isVisible}>
+                <S.GridCard $isVisible={isVisible} onClick={handleModalOpen}>
                     <S.Image
                         src={`http://${imageUrl}`}
                         alt={title}
@@ -38,13 +44,13 @@ const BookCard = ({ bookData, viewMode }: BookItemProps) => {
                     </S.TextContainer>
                 </S.GridCard>
             ) : (
-                <S.ListCard $isVisible={isVisible}>
+                <S.ListCard $isVisible={isVisible} onClick={handleModalOpen}>
                     <S.Image
                         src={`http://${imageUrl}`}
                         alt={title}
                         onError={handleImageError}
                     />
-                    <S.TextContainer $viewMode="list">
+                    <S.TextContainer $viewMode="list" >
                         <S.Title>{title}</S.Title>
                         <S.Subtitle>{author}</S.Subtitle>
                         <div>
@@ -54,6 +60,7 @@ const BookCard = ({ bookData, viewMode }: BookItemProps) => {
                     </S.TextContainer>
                 </S.ListCard>
             )}
+            {isModalOpen && <BookInfoModal bookData={bookData} handleModalClose={handleModalClose}/>}
         </>
     );
 };

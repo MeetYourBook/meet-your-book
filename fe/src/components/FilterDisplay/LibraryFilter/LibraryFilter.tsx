@@ -25,7 +25,7 @@ const LibraryFilter = () => {
     
     const libraries = useMemo(() => {
         return debouncedValue
-        ? data.filter((item: LibrariesType) => item.name.includes(debouncedValue))
+        ? data.filter((item: LibrariesType) => item.LibraryName.includes(debouncedValue))
         : data;
     }, [debouncedValue, data]);
 

@@ -2,7 +2,7 @@ const API_URL = import.meta.env.VITE_API_URL
 
 export const fetchAPI = async (query: string, option: RequestInit) => {
     try{
-        const response = await fetch(API_URL+ 11+ query, option)
+        const response = await fetch(API_URL + query, option)
 
         if(!response.ok) {
             throw new Error(`${response.status}`)

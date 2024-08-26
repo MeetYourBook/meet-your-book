@@ -1,15 +1,16 @@
 import React from "react";
-import { LibrariesType } from "@/types/Libraries";
 import * as S from "@/styles/LibraryListStyle"
 
+type Libraries = {id: string, name: string}
 interface LibraryListProps {
-    libraries: LibrariesType[];
+    libraries: Libraries[];
     librariesFilter: string[];
     handleSelectLibrary: (id: string) => void;
 }
 
 const LibraryList = React.memo(
     ({ libraries, librariesFilter, handleSelectLibrary }: LibraryListProps) => (
+        
         <>
             {libraries.map((library, index) => (
                 <S.ListItem key={library.id}>

@@ -3,11 +3,11 @@ import styled from "styled-components";
 const Container = styled.div`
     width: 100%;
     height: 100%;
-    padding: 1rem 0;
+    padding-bottom: 1rem;
 `
 
 const Input = styled.input`
-    width: 50%;
+    width: 60%;
     height: 2rem;
     border: 1px solid var(--border-color);
     border-radius: 8px;
@@ -22,7 +22,7 @@ const LibrariesWrap = styled.div`
 `
 
 const LibraryItem = styled.a`
-    font-size: 12px;
+    font-size: 13px;
     margin: 2px 0;
     color: black;
     text-decoration: none;
@@ -33,4 +33,10 @@ const LibraryItem = styled.a`
     }
 `;
 
-export {Container, Input, LibrariesWrap, LibraryItem}
+const PagingWrap = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+`;
+
+export {Container, Input, LibrariesWrap, LibraryItem, PagingWrap}

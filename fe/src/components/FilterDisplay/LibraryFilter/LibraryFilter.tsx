@@ -9,7 +9,6 @@ import useQueryData from "@/hooks/useQueryData";
 import LibraryList from "./LibraryList";
 import LoadingFallBack from "@/components/LodingFallBack/LoadingFallBack";
 
-
 const LibraryFilter = () => {
     const {
         isOpen,
@@ -25,7 +24,7 @@ const LibraryFilter = () => {
     
     const libraries = useMemo(() => {
         return debouncedValue
-        ? data.filter((item: LibrariesType) => item.LibraryName.includes(debouncedValue))
+        ? data.filter((item: LibrariesType) => item.name.includes(debouncedValue))
         : data;
     }, [debouncedValue, data]);
 

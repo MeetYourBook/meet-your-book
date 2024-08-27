@@ -1,4 +1,4 @@
-import { LibrariesType } from "@/types/Libraries";
+import { LibrariesResponseType } from "@/types/LibrariesResponse";
 import * as S from "@/styles/LibrariesPagingStyle";
 import { useMemo, useState } from "react";
 import useDebounce from "@/hooks/useDebounce";
@@ -7,7 +7,7 @@ import { Pagination } from "antd";
 import { LIBRARIES_PER_PAGE } from "@/types/PageNation";
 
 interface LibrariesPagingProps {
-    libraryResponses: LibrariesType[];
+    libraryResponses: LibrariesResponseType[];
 }
 
 const LibrariesPaging = ({ libraryResponses }: LibrariesPagingProps) => {
@@ -18,7 +18,7 @@ const LibrariesPaging = ({ libraryResponses }: LibrariesPagingProps) => {
 
     const filteredLibraries = useMemo(() => {
         return debouncedValue
-            ? libraryResponses.filter((item: LibrariesType) =>
+            ? libraryResponses.filter((item: LibrariesResponseType) =>
                   item.LibraryName.includes(debouncedValue)
               )
             : libraryResponses;

@@ -2,7 +2,7 @@ package com.meetyourbook.dto;
 
 import java.util.UUID;
 
-public record BookLibraryPair(
+public record BookLibraryRelation(
 
     UUID bookId,
     Long libraryId,

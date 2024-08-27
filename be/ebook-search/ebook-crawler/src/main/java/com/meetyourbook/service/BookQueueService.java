@@ -48,7 +48,6 @@ public class BookQueueService {
 
     private void saveBatchWithErrorHandling(List<BookInfo> batch) {
         try {
-            bookService.saveBooks(batch);
             bookService.saveAll(batch);
             log.info("배치 작업 실행 완료: {}권", batch.size());
         } catch (Exception e) {

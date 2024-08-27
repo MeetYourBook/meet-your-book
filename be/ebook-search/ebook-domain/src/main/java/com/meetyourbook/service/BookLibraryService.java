@@ -1,12 +1,12 @@
 package com.meetyourbook.service;
 
 import com.meetyourbook.common.QueryCountInspector;
-import com.meetyourbook.dto.BookCache;
 import com.meetyourbook.dto.BookInfo;
-import com.meetyourbook.dto.BookLibraryPair;
+import com.meetyourbook.dto.BookLibraryRelation;
+import com.meetyourbook.dto.BookUniqueKey;
+import com.meetyourbook.entity.Book;
+import com.meetyourbook.repository.BookLibraryJdbcRepository;
 import com.meetyourbook.repository.BookRepository;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -14,9 +14,8 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.jdbc.core.BatchPreparedStatementSetter;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
@@ -24,98 +23,71 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 public class BookLibraryService {
 
-    private static final String sql =
-        "INSERT INTO book_library (book_id, library_id, url) VALUES (?, ?, ?) " +
-            "ON DUPLICATE KEY UPDATE url = VALUES(url)";
-
     private final LibraryDomainService libraryDomainService;
+    private final BookLibraryJdbcRepository bookLibraryJdbcRepository;
     private final BookRepository bookRepository;
-    private final Map<BookCache, UUID> bookCache = new ConcurrentHashMap<>();
+    private final Map<BookUniqueKey, UUID> bookCache = new ConcurrentHashMap<>();
     private final Map<String, Long> libraryCache = new ConcurrentHashMap<>();
+    private final List<BookLibraryRelation> bookLibraryRelations = new ArrayList<>();
     private final QueryCountInspector queryCountInspector;
-    private final JdbcTemplate jdbcTemplate;
-    private final List<BookLibraryPair> bookLibraryPairs = new ArrayList<>();
 
     @Transactional
     public void saveAll(List<BookInfo> bookInfos) {
         log.info("bookInfos size: {}", bookInfos.size());
-        try {
-            jdbcTemplate.batchUpdate(sql, new BatchPreparedStatementSetter() {
-                @Override
-                public void setValues(PreparedStatement ps, int i) throws SQLException {
-                    BookLibraryPair bookLibraryPair = bookLibraryPairs.get(i);
-                    ps.setObject(1, uuidToBytes(bookLibraryPair.bookId()));
-                    ps.setLong(2, bookLibraryPair.libraryId());
-                    ps.setString(3, bookLibraryPair.bookUrl());
-                }
-
-                @Override
-                public int getBatchSize() {
-                    log.info("batch size: {}", bookInfos.size());
-                    return bookInfos.size();
-                }
-            });
-        } catch (Exception e) {
-            log.error("error", e);
-        }
-        bookLibraryPairs.clear();
-
+        saveBooks(bookInfos);
+        saveBookLibraries(bookInfos);
+        bookLibraryRelations.clear();
     }
 
-    @Transactional
-    public void saveBooks(List<BookInfo> bookInfos) {
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    protected void saveBooks(List<BookInfo> bookInfos) {
         queryCountInspector.startCounter();
+
         findBooksByBookInfos(bookInfos);
-        try {
-            for (BookInfo bookInfo : bookInfos) {
-                BookCache bookCacheKey = new BookCache(bookInfo.title(), bookInfo.author(),
-                    bookInfo.publisher(), bookInfo.publishDate());
-
-                if (bookCache.containsKey(bookCacheKey)) {
-                    UUID bookId = bookCache.get(bookCacheKey);
-                    Long libraryId = getLibrary(bookInfo);
-                    bookLibraryPairs.add(
-                        new BookLibraryPair(bookId, libraryId, bookInfo.bookUrl()));
-                } else {
-                    UUID bookId = bookRepository.save(bookInfo.toEntity()).getId();
-                    bookCache.put(bookCacheKey, bookId);
-                    Long libraryId = getLibrary(bookInfo);
-                    bookLibraryPairs.add(
-                        new BookLibraryPair(bookId, libraryId, bookInfo.bookUrl()));
-                }
-
-            }
-        } finally {
-            log.info("query count: {}", queryCountInspector.getQueryCount().getCount());
+        for (BookInfo bookInfo : bookInfos) {
+            addBookLibraryRelation(bookInfo);
         }
+
+        log.info("query count: {}", queryCountInspector.getQueryCount().getCount());
         queryCountInspector.clearCounter();
     }
 
-
-    private Long getLibrary(BookInfo bookInfo) {
-        Long libraryId = libraryCache.computeIfAbsent(bookInfo.baseUrl(),
-            baseurl -> libraryDomainService.findByBaseUrl(baseurl).getId());
-        return libraryId;
+    @Transactional
+    protected void saveBookLibraries(List<BookInfo> bookInfos) {
+        bookLibraryJdbcRepository.saveAll(bookInfos, bookLibraryRelations);
     }
 
-    public void findBooksByBookInfos(List<BookInfo> bookInfos) {
+    private void addBookLibraryRelation(BookInfo bookInfo) {
+        UUID bookId = getBookIdFromCache(bookInfo);
+        Long libraryId = getLibraryFromCache(bookInfo);
+        bookLibraryRelations.add(
+            new BookLibraryRelation(bookId, libraryId, bookInfo.bookUrl()));
+    }
+
+    private void findBooksByBookInfos(List<BookInfo> bookInfos) {
         for (BookInfo bookInfo : bookInfos) {
-            BookCache bookCacheKey = new BookCache(bookInfo.title(), bookInfo.author(),
-                bookInfo.publisher(), bookInfo.publishDate());
+            BookUniqueKey bookCacheKey = BookUniqueKey.from(bookInfo);
+
             if (bookCache.containsKey(bookCacheKey)) {
                 continue;
             }
-            bookRepository.findBooksByBookInfo(bookInfo.title(), bookInfo.author(),
-                    bookInfo.publisher(), bookInfo.publishDate())
+            bookRepository.findBooksByBookInfo(bookInfo)
                 .ifPresent(book -> bookCache.put(bookCacheKey, book.getId()));
         }
     }
 
-    public byte[] uuidToBytes(UUID uuid) {
-        java.nio.ByteBuffer bb = java.nio.ByteBuffer.wrap(new byte[16]);
-        bb.putLong(uuid.getMostSignificantBits());
-        bb.putLong(uuid.getLeastSignificantBits());
-        return bb.array();
+    private UUID getBookIdFromCache(BookInfo bookInfo) {
+        BookUniqueKey bookUniqueKey = BookUniqueKey.from(bookInfo);
+        return bookCache.computeIfAbsent(bookUniqueKey,
+            key -> {
+                Book savedBook = bookRepository.save(bookInfo.toEntity());
+                return savedBook.getId();
+            });
+    }
+
+    private Long getLibraryFromCache(BookInfo bookInfo) {
+        return libraryCache.computeIfAbsent(bookInfo.baseUrl(),
+            baseurl -> libraryDomainService.findByBaseUrl(baseurl).getId());
     }
 
 }

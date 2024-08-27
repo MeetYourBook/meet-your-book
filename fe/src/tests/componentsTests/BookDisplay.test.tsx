@@ -34,6 +34,7 @@ const mockBooks = {
             image_url: "/images/book2.jpg",
         },
     ],
+    totalPages: 3,
 };
 
 beforeAll(() => {
@@ -106,5 +107,35 @@ describe("BooksDisplay 컴포넌트", () => {
 
         const spinElement = document.querySelector('.ant-spin');
         expect(spinElement).toBeInTheDocument();
+    });
+
+    test("스크롤하여 페이지가 증가하는지 확인", async () => {
+        let currentPage = 1;
+        (useQueryData as jest.Mock).mockReturnValue(() => {
+            return {
+                data: {
+                    ...mockBooks,
+                    content: mockBooks.content.slice(0, currentPage),
+                },
+                isLoading: false,
+                isFetching: false,
+            };
+        });
+
+        const { container } = render(<BooksDisplay />);
+
+        await waitFor(() => {
+            expect(screen.getByText("Book One")).toBeInTheDocument();
+        });
+
+        const observerDiv = container.querySelector('div[style="height: 10px;"]');
+        expect(observerDiv).toBeInTheDocument();
+
+        currentPage = 2;
+        observerDiv && (new IntersectionObserver(() => {}).observe(observerDiv));
+
+        await waitFor(() => {
+            expect(screen.getByText("Book Two")).toBeInTheDocument();
+        });
     });
 });

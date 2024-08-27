@@ -4,7 +4,7 @@ export const DROP_DOWN_INITIAL_ITEMS = [
     { value: "author", label: "저자" },
     { value: "publisher", label: "출판사" },
 ];
-
+export const PAGINATION_FIRST_PAGE = 1
 export const FIRST_PAGE = 0;
 export const ANIMATION_TIME = 100;
 

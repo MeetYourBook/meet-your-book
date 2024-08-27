@@ -9,7 +9,6 @@ import useQueryData from "@/hooks/useQueryData";
 import LibraryList from "./LibraryList";
 import LoadingFallBack from "@/components/LodingFallBack/LoadingFallBack";
 
-
 const LibraryFilter = () => {
     const {
         isOpen,

@@ -37,7 +37,7 @@ class BookRepositoryTest {
         Book book5 = saveBook("지식의 착각", "스티븐 슬로먼", "교보문고", LocalDate.of(2022, 7, 12));
 
         //when
-        Optional<Book> firstByBookInfo = bookRepository.findFirstByBookInfo("지식의 착각", "스티븐 슬로먼",
+        Optional<Book> firstByBookInfo = bookRepository.findBooksByBookInfo("지식의 착각", "스티븐 슬로먼",
             "교보문고", LocalDate.of(2022, 7, 11));
 
         //then

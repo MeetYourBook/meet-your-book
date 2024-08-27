@@ -8,7 +8,6 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +28,6 @@ public class BookQueueService {
     }
 
     @Scheduled(fixedDelay = PROCESSING_INTERVAL)
-    @Async("taskExecutor")
     @LogExecutionTime
     public void processBatch() {
         List<BookInfo> batch = fetchBatchFromQueue();
@@ -50,6 +48,7 @@ public class BookQueueService {
 
     private void saveBatchWithErrorHandling(List<BookInfo> batch) {
         try {
+            bookService.saveBooks(batch);
             bookService.saveAll(batch);
             log.info("배치 작업 실행 완료: {}권", batch.size());
         } catch (Exception e) {

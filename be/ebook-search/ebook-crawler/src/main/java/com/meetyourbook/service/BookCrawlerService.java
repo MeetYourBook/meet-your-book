@@ -192,8 +192,7 @@ public class BookCrawlerService {
                 HttpClientDownloader httpClientDownloader = new HttpClientDownloader();
                 Spider spider = Spider.create(pageProcessor)
                     .addUrl(url)
-                    .setDownloader(httpClientDownloader)
-                    .setExecutorService(spiderExecutor);
+                    .setDownloader(httpClientDownloader);
                 activeSpiders.putIfAbsent(url, spider);
                 spider.run();
                 activeSpiderCount.decrementAndGet();

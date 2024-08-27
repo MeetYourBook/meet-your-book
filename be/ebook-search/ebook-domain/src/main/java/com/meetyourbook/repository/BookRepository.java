@@ -16,7 +16,8 @@ import org.springframework.data.jpa.repository.Query;
 public interface BookRepository extends JpaRepository<Book, UUID> {
 
     @Query("SELECT b FROM Book b WHERE b.title = :title AND b.author = :author AND b.publisher = :publisher AND b.publishDate = :pubDate")
-    Optional<Book> findFirstByBookInfo(String title, String author, String publisher, LocalDate pubDate);
+    Optional<Book> findBooksByBookInfo(String title, String author, String publisher,
+        LocalDate pubDate);
 
     @EntityGraph(attributePaths = {"bookLibraries", "bookLibraries.library"})
     List<Book> findAll(Specification<Book> spec);

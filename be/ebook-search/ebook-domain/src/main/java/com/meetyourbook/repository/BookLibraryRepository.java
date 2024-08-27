@@ -2,8 +2,6 @@ package com.meetyourbook.repository;
 
 import com.meetyourbook.entity.BookLibrary;
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -18,7 +16,5 @@ public interface BookLibraryRepository extends JpaRepository<BookLibrary, Long> 
 
         Integer getBookCount();
     }
-
-    Optional<BookLibrary> findBookLibraryByBookIdAndLibraryId(UUID bookId, Long libraryId);
 
 }

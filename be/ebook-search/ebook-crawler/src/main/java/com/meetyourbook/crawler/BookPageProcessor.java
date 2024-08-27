@@ -227,7 +227,7 @@ public class BookPageProcessor implements PageProcessor {
 
             return newUri.toString();
         } else {
-            log.warn("onClick 속성에서 매개변수를 추출할 수 없음");
+            log.warn("onClick 속성에서 매개변수를 추출할 수 없음. base URL: {}, extra URL: {}", baseUrl, extraUrl);
             return NONE_DATA;
         }
     }
@@ -260,7 +260,6 @@ public class BookPageProcessor implements PageProcessor {
             newQuery.toString(),
             uri.getFragment()
         );
-        log.info("newUri: {}", newUri);
 
         return newUri.toString();
     }

@@ -2,12 +2,12 @@ name: deploy-web
 
 on:
   push:
-    branches: [ cicd ]
+    branches: [ dev-be ]
     paths:
       - 'be/**'
       - '.github/workflows/deploy-web.yml'
   pull_request:
-    branches: [ cicd ]
+    branches: [ dev-be ]
     paths:
       - 'be/**'
       - '.github/workflows/deploy-web.yml'

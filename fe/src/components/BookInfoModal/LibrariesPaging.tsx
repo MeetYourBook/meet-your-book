@@ -1,6 +1,6 @@
 import { LibrariesResponseType } from "@/types/LibrariesResponse";
 import * as S from "@/styles/LibrariesPagingStyle";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import useDebounce from "@/hooks/useDebounce";
 import { DEBOUNCE_TIME, PAGINATION_FIRST_PAGE } from "@/constants";
 import { Pagination } from "antd";
@@ -32,6 +32,9 @@ const LibrariesPaging = ({ libraryResponses }: LibrariesPagingProps) => {
     );
 
     const handlePageChange = (page: number) => setCurrentPage(page);
+
+    useEffect(() => setCurrentPage(PAGINATION_FIRST_PAGE), [filteredLibraries]);
+    
     return (
         <S.Container>
             <p>소장 도서관: {libraryResponses.length}</p>

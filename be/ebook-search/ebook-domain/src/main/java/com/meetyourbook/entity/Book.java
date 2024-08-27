@@ -39,6 +39,7 @@ public class Book extends BaseEntity {
     private String author;
     private String provider;
     private String publisher;
+    @Column(name = "publish_date")
     private LocalDate publishDate;
     private String imageUrl;
 

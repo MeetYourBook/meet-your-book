@@ -1,0 +1,76 @@
+name: deploy-web
+
+on:
+  push:
+    branches: [ dev-be ]
+    paths:
+      - 'be/**'
+      - '.github/workflows/deploy-web.yml'
+  pull_request:
+    branches: [ dev-be ]
+    paths:
+      - 'be/**'
+      - '.github/workflows/deploy-web.yml'
+  workflow_dispatch:
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x be/ebook-search/gradlew
+
+      - name: Build ebook-web with Gradle
+        run: |
+          cd be/ebook-search
+          ./gradlew :ebook-web:build
+
+      - name: List build directory contents
+        run: |
+          echo "Listing be/ebook-search/ebook-web/build directory:"
+          ls -R be/ebook-search/ebook-web/build
+
+      - name: Build Docker image
+        run: |
+          cd be/ebook-search/ebook-web
+          ls -la
+          docker build -t ebook-web .
+          ls -la
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      - name: Push to Docker Hub
+        run: |
+          docker tag ebook-web ${{ secrets.DOCKER_HUB_USERNAME }}/ebook-web:${{ github.sha }}
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/ebook-web:${{ github.sha }}
+
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
+          script: |
+            docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/ebook-web:${{ github.sha }}
+            docker stop ebook-web || true
+            docker rm ebook-web || true
+            docker run -d --name ebook-web \
+              -p 8080:8080 \
+              -v /home/${{ secrets.EC2_USERNAME }}/ebook-config:/app/config \
+              -e DB_USERNAME=${{ secrets.DB_USERNAME }} \
+              -e DB_PASSWORD=${{ secrets.DB_PASSWORD }} \
+              -e SPRING_PROFILES_ACTIVE=prod \
+              ${{ secrets.DOCKER_HUB_USERNAME }}/ebook-web:${{ github.sha }}

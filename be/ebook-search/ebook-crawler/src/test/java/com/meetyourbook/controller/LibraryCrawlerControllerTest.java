@@ -7,6 +7,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.meetyourbook.service.LibraryCrawlerService;
 import com.meetyourbook.service.LibraryImportService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,6 +28,9 @@ class LibraryCrawlerControllerTest {
 
     @MockBean
     private LibraryImportService libraryImportService;
+
+    @MockBean
+    private LibraryCrawlerService libraryCrawlerService;
 
     @Test
     @DisplayName("JSON 파일 업로드 시 저장한 도서관 수를 반환한다.")
@@ -54,8 +58,10 @@ class LibraryCrawlerControllerTest {
         // when & then
         mockMvc.perform(multipart("/api/library-crawler/import"))
             .andExpect(status().isBadRequest())
-            .andExpect(result -> assertThat(result.getResolvedException() instanceof MissingServletRequestPartException).isTrue())
-            .andExpect(result -> assertThat(result.getResolvedException().getMessage()).isEqualTo("Required part 'file' is not present."));
+            .andExpect(result -> assertThat(
+                result.getResolvedException() instanceof MissingServletRequestPartException).isTrue())
+            .andExpect(result -> assertThat(result.getResolvedException().getMessage()).isEqualTo(
+                "Required part 'file' is not present."));
     }
 
 }

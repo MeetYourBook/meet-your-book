@@ -13,6 +13,26 @@ vi.mock("@/stores/queryStore", () => ({
     }),
 }));
 
+interface QueryData {
+    data: Array<{ id: string; name: string }>;
+    isLoading: boolean;
+}
+
+vi.mock('@/hooks/useQueryData', () => ({
+    default: (key: string): QueryData => {
+        if (key === "libraries") {
+            return {
+                data: [
+                    { id: "1", name: "Library 1" },
+                    { id: "2", name: "Library 2" },
+                ],
+                isLoading: false,
+            };
+        }
+        return { data: [], isLoading: true };
+    },
+}));
+
 global.fetch = vi.fn(() =>
     Promise.resolve({
         json: () =>
@@ -31,7 +51,7 @@ describe("useLibraryFilter 테스트", () => {
     test("useLibraryFilter이 초기 value값을 갖고 있는지 확인.", () => {
         const { result } = renderHook(() => useLibraryFilter());
 
-        expect(result.current.search).toBe("");
+        expect(result.current.searchValue).toBe("");
         expect(result.current.isOpen).toBe(true);
         expect(result.current.librariesFilter).toEqual([]);
     });
@@ -59,7 +79,7 @@ describe("useLibraryFilter 테스트", () => {
             } as React.ChangeEvent<HTMLInputElement>);
         });
 
-        expect(result.current.search).toBe("search query");
+        expect(result.current.searchValue).toBe("search query");
     });
 
     test("handleSelectLibrary가 올바르게 librariesFilter를 추가/제거 하는지 확인.", () => {

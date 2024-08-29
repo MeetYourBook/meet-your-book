@@ -3,7 +3,7 @@ import { ViewType } from "@/types/View";
 import { BookContent } from "@/types/Books";
 import * as S from "@/styles/BookCardStyle";
 import { ANIMATION_TIME } from "@/constants";
-import BookInfoModal from "@/components/BookInfoModal/BookInfoModal";
+import BookInfoModal from "@/components/Modal/BookInfoModal/BookInfoModal";
 interface BookItemProps {
     bookData: BookContent;
     viewMode: ViewType;

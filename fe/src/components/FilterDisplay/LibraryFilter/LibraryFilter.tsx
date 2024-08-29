@@ -6,8 +6,8 @@ import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import { DEBOUNCE_TIME } from "@/constants";
 import * as S from "@/styles/LibraryFilterStyle";
 import useQueryData from "@/hooks/useQueryData";
-import LibraryList from "./LibraryList";
-import LoadingFallBack from "@/components/LodingFallBack/LoadingFallBack";
+import LibraryList from "../LibraryList/LibraryList";
+import LoadingFallBack from "@/components/LoadingFallBack/LoadingFallBack";
 
 const LibraryFilter = () => {
     const {

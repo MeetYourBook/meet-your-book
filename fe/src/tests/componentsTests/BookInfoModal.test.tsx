@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import BookInfoModal from "@/components/BookInfoModal/BookInfoModal";
+import BookInfoModal from "@/components/Modal/BookInfoModal/BookInfoModal";
 import { vi } from "vitest";
 import { BookContent } from "@/types/Books";
 

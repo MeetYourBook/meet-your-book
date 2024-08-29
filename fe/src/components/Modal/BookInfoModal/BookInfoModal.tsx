@@ -1,6 +1,6 @@
 import { BookContent } from "@/types/Books";
 import * as S from "@/styles/BookInfoModalStyle";
-import LibrariesPaging from "./LibrariesPaging";
+import LibrariesPaging from "../LibrariesPaging/LibrariesPaging";
 import { useRef } from "react";
 import useOnClickOutside from "@/hooks/useOnClickOutside";
 interface BookInfoModalProps {

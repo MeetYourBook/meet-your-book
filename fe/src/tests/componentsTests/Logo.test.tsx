@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, expect, test, vi } from "vitest";
-import Navigation from "@/components/Navigation/Navigation";
-import { MemoryRouter } from "react-router-dom"; // MemoryRouter를 사용
+import Logo from "@/components/Navigation/Logo/Logo";
+import { MemoryRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
@@ -20,7 +20,7 @@ describe("Layout Navigation Component 테스트", () => {
         render(
             <MemoryRouter>
                 <QueryClientProvider client={queryClient}>
-                    <Navigation />
+                    <Logo />
                 </QueryClientProvider>
             </MemoryRouter>
         );
@@ -34,7 +34,7 @@ describe("Layout Navigation Component 테스트", () => {
         render(
             <MemoryRouter>
                 <QueryClientProvider client={queryClient}>
-                    <Navigation />
+                    <Logo />
                 </QueryClientProvider>
             </MemoryRouter>
         );

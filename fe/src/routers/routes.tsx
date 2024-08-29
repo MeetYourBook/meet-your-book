@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import Layout from "../pages/Layout";
+import DefaultLayout from "@/components/Layout/DefaultLayout";
 import Home from "../pages/Home";
 import NotFound from "../pages/NotFound";
 import Login from "@/pages/Login";
@@ -12,7 +12,7 @@ const routes = createBrowserRouter([
         path: "/",
         element: (
             <ErrorBoundary fallbackRender={ErrorFallBack}>
-                <Layout />
+                <DefaultLayout />
             </ErrorBoundary>
         ),
         children: [

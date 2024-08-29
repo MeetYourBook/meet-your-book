@@ -3,7 +3,7 @@ import * as S from "@/styles/MobileSearchFilterPanelStyle";
 import { useState } from "react";
 import SearchInput from "../SearchInput/SearchInput";
 
-export const MobileSearchFilterPanel = () => {
+const MobileSearchFilterPanel = () => {
     const [isFilterOpen, setFilterOpen] = useState(false);
     const [isSearchOpen, setSearchOpen] = useState(false);
 
@@ -36,3 +36,5 @@ export const MobileSearchFilterPanel = () => {
         </S.PanelContainer>
     );
 };
+
+export default MobileSearchFilterPanel

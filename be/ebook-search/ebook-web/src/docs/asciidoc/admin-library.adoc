@@ -1,0 +1,13 @@
+= 관리자 도서관 API
+
+== 도서관 저장 API
+
+operation::create-library[snippets='http-request,request-body,http-response,response-headers']
+
+== 도서관 업데이트 API
+
+operation::update-library[snippets='http-request,path-parameters,request-body,http-response,response-headers']
+
+== 도서관 삭제 API
+
+operation::delete-library[snippets='http-request,path-parameters,http-response']

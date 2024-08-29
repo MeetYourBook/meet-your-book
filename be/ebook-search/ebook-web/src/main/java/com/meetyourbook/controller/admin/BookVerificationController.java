@@ -1,4 +1,4 @@
-package com.meetyourbook.controller;
+package com.meetyourbook.controller.admin;
 
 import com.meetyourbook.dto.BookCountVerificationResult;
 import com.meetyourbook.service.BookCountVerificationService;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/admin")
+@RequestMapping("/admin")
 @RequiredArgsConstructor
 public class BookVerificationController {
 

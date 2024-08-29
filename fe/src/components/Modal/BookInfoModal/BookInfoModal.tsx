@@ -3,6 +3,7 @@ import * as S from "@/styles/BookInfoModalStyle";
 import LibrariesPaging from "../LibrariesPaging/LibrariesPaging";
 import { useRef } from "react";
 import useOnClickOutside from "@/hooks/useOnClickOutside";
+import { handleImageError } from "@/utils";
 interface BookInfoModalProps {
     bookData: BookContent;
     handleModalClose: () => void;
@@ -19,7 +20,7 @@ const BookInfoModal = ({ bookData, handleModalClose }: BookInfoModalProps) => {
             <S.PopupCard ref={inSideRef}>
                 <S.CloseBtn onClick={handleModalClose} />
                 <S.BookInfoWrap>
-                    <S.Img src={`http://${imageUrl}`} alt={title} />
+                    <S.Img src={`http://${imageUrl}`} alt={title} onError={handleImageError}/>
                     <S.InfoWrap>
                         <S.Title>{title}</S.Title>
                         <S.MetaInfo>저자: {author}</S.MetaInfo>

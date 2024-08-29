@@ -5,7 +5,7 @@ import { PAGINATION_FIRST_PAGE } from "@/constants";
 import { Pagination } from "antd";
 import { LIBRARIES_PER_PAGE } from "@/types/PageNation";
 import useSearchFilter from "@/hooks/useFilterSearch";
-
+import { getCurrentPageItems } from "@/utils";
 interface LibrariesPagingProps {
     libraryResponses: LibrariesResponseType[];
 }
@@ -17,12 +17,7 @@ const LibrariesPaging = ({ libraryResponses }: LibrariesPagingProps) => {
         keyName: 'LibraryName'
     });
 
-    const indexOfLast = currentPage * LIBRARIES_PER_PAGE;
-    const indexOfFirst = indexOfLast - LIBRARIES_PER_PAGE;
-    const currentPageLibraries = filteredLibraries.slice(
-        indexOfFirst,
-        indexOfLast
-    );
+    const currentPageLibraries = getCurrentPageItems(filteredLibraries, currentPage, LIBRARIES_PER_PAGE);
 
     const handlePageChange = (page: number) => setCurrentPage(page);
 

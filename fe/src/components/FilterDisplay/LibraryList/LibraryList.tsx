@@ -1,9 +1,9 @@
 import React from "react";
 import * as S from "@/styles/LibraryListStyle"
+import { LibrariesType } from "@/types/Libraries";
 
-type Libraries = {id: string, name: string}
 interface LibraryListProps {
-    libraries: Libraries[];
+    libraries: LibrariesType[];
     librariesFilter: string[];
     handleSelectLibrary: (id: string) => void;
 }

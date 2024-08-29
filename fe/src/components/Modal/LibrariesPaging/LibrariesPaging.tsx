@@ -1,28 +1,21 @@
 import { LibrariesResponseType } from "@/types/LibrariesResponse";
 import * as S from "@/styles/LibrariesPagingStyle";
-import { useEffect, useMemo, useState } from "react";
-import useDebounce from "@/hooks/useDebounce";
-import { DEBOUNCE_TIME, PAGINATION_FIRST_PAGE } from "@/constants";
+import { useEffect, useState } from "react";
+import { PAGINATION_FIRST_PAGE } from "@/constants";
 import { Pagination } from "antd";
 import { LIBRARIES_PER_PAGE } from "@/types/PageNation";
+import useSearchFilter from "@/hooks/useFilterSearch";
 
 interface LibrariesPagingProps {
     libraryResponses: LibrariesResponseType[];
 }
 
 const LibrariesPaging = ({ libraryResponses }: LibrariesPagingProps) => {
-    const [searchValue, setSearchValue] = useState("");
     const [currentPage, setCurrentPage] = useState(PAGINATION_FIRST_PAGE);
-
-    const debouncedValue = useDebounce(searchValue, DEBOUNCE_TIME);
-
-    const filteredLibraries = useMemo(() => {
-        return debouncedValue
-            ? libraryResponses.filter((item: LibrariesResponseType) =>
-                  item.LibraryName.includes(debouncedValue)
-              )
-            : libraryResponses;
-    }, [debouncedValue, libraryResponses]);
+    const { searchValue, setSearchValue, filteredLibraries } = useSearchFilter({
+        libraries: libraryResponses,
+        keyName: 'LibraryName'
+    });
 
     const indexOfLast = currentPage * LIBRARIES_PER_PAGE;
     const indexOfFirst = indexOfLast - LIBRARIES_PER_PAGE;
@@ -44,9 +37,9 @@ const LibrariesPaging = ({ libraryResponses }: LibrariesPagingProps) => {
                 onChange={(e) => setSearchValue(e.target.value)}
             />
             <S.LibrariesWrap>
-                {currentPageLibraries.map((curLibrary, idx) => (
-                    <S.LibraryItem key={idx} href={curLibrary.BookLibraryUrl}>
-                        {curLibrary.LibraryName}
+            {currentPageLibraries.map((curLibrary, idx) => (
+                    <S.LibraryItem key={idx} href={(curLibrary as LibrariesResponseType).BookLibraryUrl}>
+                        {(curLibrary as LibrariesResponseType).LibraryName}
                     </S.LibraryItem>
                 ))}
             </S.LibrariesWrap>

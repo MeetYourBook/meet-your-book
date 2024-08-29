@@ -1,32 +1,21 @@
-import { useMemo } from "react";
-import useDebounce from "@/hooks/useDebounce";
 import { useLibraryFilter } from "@/hooks/useLibraryFilter";
-import { LibrariesType } from "@/types/Libraries";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
-import { DEBOUNCE_TIME } from "@/constants";
 import * as S from "@/styles/LibraryFilterStyle";
-import useQueryData from "@/hooks/useQueryData";
 import LibraryList from "../LibraryList/LibraryList";
 import LoadingFallBack from "@/components/LoadingFallBack/LoadingFallBack";
+import { LibrariesType } from "@/types/Libraries";
 
 const LibraryFilter = () => {
     const {
         isOpen,
-        search,
+        searchValue,
         librariesFilter,
         handleSelectLibrary,
         toggleFilter,
         handleSearch,
+        isLoading,
+        filteredLibraries
     } = useLibraryFilter();
-    const {data = [], isLoading} = useQueryData("libraries")
-
-    const debouncedValue = useDebounce(search, DEBOUNCE_TIME);
-    
-    const libraries = useMemo(() => {
-        return debouncedValue
-        ? data.filter((item: LibrariesType) => item.name.includes(debouncedValue))
-        : data;
-    }, [debouncedValue, data]);
 
     return (
         <S.Container>
@@ -36,13 +25,13 @@ const LibraryFilter = () => {
             </S.Header>
             <S.ListWrap $isOpen={isOpen}>
                 <S.Input
-                    value={search}
+                    value={searchValue}
                     onChange={handleSearch}
                     placeholder="도서관 검색..."
                 />
                 {isLoading && <LoadingFallBack/>}
                 <LibraryList
-                    libraries={libraries}
+                    libraries={filteredLibraries as LibrariesType[]}
                     librariesFilter={librariesFilter}
                     handleSelectLibrary={handleSelectLibrary}
                 />

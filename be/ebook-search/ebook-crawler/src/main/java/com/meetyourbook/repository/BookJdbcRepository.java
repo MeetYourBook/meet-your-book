@@ -2,6 +2,7 @@ package com.meetyourbook.repository;
 
 import com.meetyourbook.dto.BookInfo;
 import com.meetyourbook.dto.BookUniqueKey;
+import java.nio.ByteBuffer;
 import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -32,7 +33,7 @@ public class BookJdbcRepository {
             .param("author", bookUniqueKey.author())
             .param("publisher", bookUniqueKey.publisher())
             .param("publishDate", bookUniqueKey.publishDate())
-            .query(UUID.class)
+            .query((rs, rowNum) -> bytesToUuid(rs.getBytes("id")))
             .optional();
     }
 
@@ -40,7 +41,7 @@ public class BookJdbcRepository {
         UUID id = UUID.randomUUID();
 
         int rowsAffected = jdbcClient.sql(INSERT_BOOK_SQL)
-            .param("id", id)
+            .param("id", uuidToBytes(id))
             .param("title", bookInfo.title())
             .param("author", bookInfo.author())
             .param("publisher", bookInfo.publisher())
@@ -56,6 +57,20 @@ public class BookJdbcRepository {
 
         log.debug("Book 저장 성공. ID: {}", id);
         return id;
+    }
+
+    private byte[] uuidToBytes(UUID uuid) {
+        ByteBuffer bb = ByteBuffer.wrap(new byte[16]);
+        bb.putLong(uuid.getMostSignificantBits());
+        bb.putLong(uuid.getLeastSignificantBits());
+        return bb.array();
+    }
+
+    private UUID bytesToUuid(byte[] bytes) {
+        ByteBuffer bb = ByteBuffer.wrap(bytes);
+        long high = bb.getLong();
+        long low = bb.getLong();
+        return new UUID(high, low);
     }
 
 }

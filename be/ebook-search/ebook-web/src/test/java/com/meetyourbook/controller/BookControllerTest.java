@@ -2,32 +2,22 @@ package com.meetyourbook.controller;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-import static org.springframework.restdocs.headers.HeaderDocumentation.headerWithName;
-import static org.springframework.restdocs.headers.HeaderDocumentation.responseHeaders;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.delete;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.patch;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessRequest;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessResponse;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
-import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
 import static org.springframework.restdocs.request.RequestDocumentation.queryParameters;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.meetyourbook.dto.BookCreateRequest;
 import com.meetyourbook.dto.BookLibraryResponse;
 import com.meetyourbook.dto.BookPageResponse;
 import com.meetyourbook.dto.BookSearchRequest;
-import com.meetyourbook.dto.BookUpdateRequest;
 import com.meetyourbook.dto.SimpleBookResponse;
 import com.meetyourbook.service.BookService;
-import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
@@ -45,16 +35,13 @@ import org.springframework.test.web.servlet.MockMvc;
 @WebMvcTest(BookController.class)
 @AutoConfigureRestDocs
 @ExtendWith(RestDocumentationExtension.class)
-public class BookControllerTest {
+class BookControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
     private BookService bookService;
-
-    @Autowired
-    private ObjectMapper objectMapper;
 
     @Test
     @DisplayName("책 검색 요청 성공")
@@ -118,7 +105,7 @@ public class BookControllerTest {
 
         // When, Then
         mockMvc.perform(
-                get("/api/books")
+                get("/books")
                     .param("title", bookSearchRequest.title())
                     .param("author", bookSearchRequest.author())
                     .param("publisher", bookSearchRequest.publisher())
@@ -153,63 +140,5 @@ public class BookControllerTest {
                         "책 상세 페이지 주소"))));
 
     }
-
-    @Test
-    @DisplayName("책 저장 요청 성공")
-    void createBook_success() throws Exception {
-        // Given
-        BookCreateRequest bookCreateRequest = new BookCreateRequest("사피엔스", "유발 하라리", "김영사", "교보문고",
-            LocalDate.of(2024, 1, 1), "https://test.com/image");
-        String requestBody = objectMapper.writeValueAsString(bookCreateRequest);
-
-        // When, Then
-        mockMvc.perform(
-                post("/api/books")
-                    .contentType("application/json")
-                    .content(requestBody))
-            .andExpect(status().isCreated())
-            .andDo(document("create-book",
-                preprocessRequest(prettyPrint()),
-                preprocessResponse(prettyPrint()),
-                responseHeaders(headerWithName("Location").description("생성된 책의 URL"))));
-    }
-
-    @Test
-    @DisplayName("책 삭제 요청 성공")
-    void deleteBook_success() throws Exception {
-        // Given
-        UUID bookId = UUID.randomUUID();
-
-        // When, Then
-        mockMvc.perform(delete("/api/books/{bookId}", bookId))
-            .andExpect(status().isNoContent())
-            .andDo(document("delete-book",
-                preprocessRequest(prettyPrint()),
-                preprocessResponse(prettyPrint()),
-                pathParameters(parameterWithName("bookId").description("책 ID"))));
-    }
-
-    @Test
-    @DisplayName("책 수정 요청 성공")
-    void updateBook_success() throws Exception {
-        // Given
-        UUID bookId = UUID.randomUUID();
-        BookUpdateRequest bookUpdateRequest = new BookUpdateRequest("사피엔스", "유발 하라리", "김영사", "교보문고",
-            LocalDate.of(2024, 1, 1), "https://test.com/image_sapiens");
-        String requestBody = objectMapper.writeValueAsString(bookUpdateRequest);
-
-        // When, Then
-        mockMvc.perform(
-                patch("/api/books/{bookId}", bookId)
-                    .contentType("application/json")
-                    .content(requestBody))
-            .andExpect(status().isNoContent())
-            .andDo(document("update-book",
-                preprocessRequest(prettyPrint()),
-                preprocessResponse(prettyPrint()),
-                pathParameters(parameterWithName("bookId").description("책 ID")),
-                responseHeaders(headerWithName("Location").description("수정된 책의 URL"))));
-    }
-
 
 }

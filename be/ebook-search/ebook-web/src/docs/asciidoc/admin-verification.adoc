@@ -1,0 +1,5 @@
+= 관리자 검증 API
+
+== 도서관별 책 권수 검증 API
+
+operation::verify-book-count[snippets='http-request,http-response,response-fields,response-body']

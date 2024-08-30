@@ -1,4 +1,4 @@
-package com.meetyourbook.controller;
+package com.meetyourbook.controller.admin;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
@@ -45,7 +45,7 @@ class BookVerificationControllerTest {
             List.of(bookCountVerificationResult));
 
         // When, Then
-        mockMvc.perform(get("/api/admin/verify-book-count"))
+        mockMvc.perform(get("/admin/verify-book-count"))
             .andExpect(status().isOk())
             .andDo(document("verify-book-count",
                 preprocessRequest(prettyPrint()),

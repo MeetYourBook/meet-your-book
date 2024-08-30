@@ -2,6 +2,7 @@ package com.meetyourbook.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.meetyourbook.dto.KyoboLibraryApiRequest;
 import com.meetyourbook.dto.LibraryCrawlResponse;
 import com.meetyourbook.dto.LibraryCrawlResult;
 import com.meetyourbook.dto.LibraryCrawlerRequest;
@@ -30,6 +31,7 @@ public class LibraryCrawlerService {
 
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper;
+    private final LibraryDomainService libraryDomainService;
 
     public void crawl(LibraryCrawlerRequest request) {
         log.info("도서관 정보 크롤링을 시작합니다.");
@@ -52,6 +54,28 @@ public class LibraryCrawlerService {
 
         log.info("총 {}개의 도서관 정보를 수집하였습니다.", libraryNames.size());
         saveToJson(libraryNames, request.libraryBaseUrl());
+    }
+
+    public int crawlLibraryApi(KyoboLibraryApiRequest request) {
+        URI uri = URI.create(request.url());
+        ResponseEntity<String> response = restTemplate.getForEntity(uri, String.class);
+        try {
+            if (response.getStatusCode().is2xxSuccessful()) {
+                LibraryCrawlResponse libraryCrawlResponse = objectMapper.readValue(
+                    response.getBody(),
+                    LibraryCrawlResponse.class);
+                List<LibraryCrawlResult> results = libraryCrawlResponse.resultData().item();
+                return libraryDomainService.createLibraries(results.stream()
+                    .filter(result -> !result.libraryHost().contains("dev"))
+                    .map(LibraryCrawlResult::toLibraryCreationInfo)
+                    .toList());
+            } else {
+                throw new IllegalStateException("다음 API에 대해 응답 실패: " + response.getStatusCode());
+            }
+        } catch (JsonProcessingException e) {
+            log.error("API 호출 중 오류 발생: {}", e);
+        }
+        return 0;
     }
 
     private void crawlCharacter(String character, Set<SimpleLibraryInfo> libraryNames,

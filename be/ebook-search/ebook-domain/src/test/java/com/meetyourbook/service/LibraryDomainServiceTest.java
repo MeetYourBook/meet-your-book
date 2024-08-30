@@ -39,7 +39,7 @@ class LibraryDomainServiceTest {
     @DisplayName("도서관을 추가할 수 있다.")
     void createLibrary() {
         //given
-        LibraryCreationInfo request = new LibraryCreationInfo("대학", "서울대학교",
+        LibraryCreationInfo request = new LibraryCreationInfo("서울대학교",
             "www.snu.elibrary.com");
 
         //when
@@ -57,7 +57,7 @@ class LibraryDomainServiceTest {
             )
             .containsExactly(
                 "서울대학교",
-                UNIVERSITY_LIBRARY,
+                null,
                 "www.snu.elibrary.com"
             );
     }

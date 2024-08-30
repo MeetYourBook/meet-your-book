@@ -12,4 +12,8 @@ public record LibraryCrawlResult(
 
 ) {
 
+    public LibraryCreationInfo toLibraryCreationInfo() {
+        return new LibraryCreationInfo(libraryName, libraryHost);
+    }
+
 }

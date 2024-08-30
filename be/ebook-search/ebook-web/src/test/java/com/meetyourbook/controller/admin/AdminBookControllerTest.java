@@ -32,7 +32,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @WebMvcTest(AdminBookController.class)
 @AutoConfigureRestDocs
 @ExtendWith(RestDocumentationExtension.class)
-public class AdminBookControllerTest {
+class AdminBookControllerTest {
 
     @Autowired
     private MockMvc mockMvc;

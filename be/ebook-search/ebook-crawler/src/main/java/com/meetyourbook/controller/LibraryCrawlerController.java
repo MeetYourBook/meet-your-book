@@ -1,9 +1,11 @@
 package com.meetyourbook.controller;
 
 import com.meetyourbook.dto.ImportResult;
+import com.meetyourbook.dto.KyoboLibraryApiRequest;
 import com.meetyourbook.dto.LibraryCrawlerRequest;
 import com.meetyourbook.service.LibraryCrawlerService;
 import com.meetyourbook.service.LibraryImportService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,6 +32,13 @@ public class LibraryCrawlerController {
     @PostMapping("/crawl")
     public ResponseEntity<?> startCrawling(@RequestBody LibraryCrawlerRequest request) {
         libraryCrawlerService.crawl(request);
+        return ResponseEntity.ok("크롤링을 시작했습니다.");
+    }
+
+    @PostMapping("/crawl-kyobo-api")
+    public ResponseEntity<?> startCrawlingKyoboApi(
+        @Valid @RequestBody KyoboLibraryApiRequest request) {
+        libraryCrawlerService.crawlLibraryApi(request);
         return ResponseEntity.ok("크롤링을 시작했습니다.");
     }
 }

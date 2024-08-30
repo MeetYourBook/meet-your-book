@@ -38,6 +38,7 @@ public class LibraryDomainService {
             .toList();
 
         List<Library> savedLibraries = libraryRepository.saveAll(libraries);
+        log.info("총 {}개의 도서관을 저장했습니다.", savedLibraries.size());
         return savedLibraries.size();
     }
 
@@ -50,7 +51,7 @@ public class LibraryDomainService {
     @Transactional(readOnly = true)
     public List<Library> findLibrariesByIdRange(Long startId, Long endId) {
         return libraryRepository.findByIdBetween(startId, endId);
-        
+
     }
 
     @Transactional

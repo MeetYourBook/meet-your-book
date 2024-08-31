@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.tuple;
 
 import com.meetyourbook.common.RepositoryTest;
+import com.meetyourbook.dto.BookInfo;
 import com.meetyourbook.entity.Book;
 import com.meetyourbook.entity.BookLibrary;
 import com.meetyourbook.entity.Library;
@@ -31,17 +32,22 @@ class BookRepositoryTest {
     void findByBookInfo() {
         //given
         Book book1 = saveBook("지식의 착각", "스티븐 슬로먼", "교보문고", LocalDate.of(2022, 7, 11));
-        Book book2 = saveBook("이기적 유전자", "스티븐 슬로먼", "교보문고", LocalDate.of(2022, 7, 11));
-        Book book3 = saveBook("지식의 착각", "스티븐 슬로", "교보문고", LocalDate.of(2022, 7, 11));
-        Book book4 = saveBook("지식의 착각", "스티븐 슬로먼", "교보문", LocalDate.of(2022, 7, 11));
-        Book book5 = saveBook("지식의 착각", "스티븐 슬로먼", "교보문고", LocalDate.of(2022, 7, 12));
+
+        BookInfo bookInfo = BookInfo.builder()
+            .title("지식의 착각")
+            .author("스티븐 슬로먼")
+            .publisher("교보문고")
+            .publishDate(LocalDate.of(2022, 7, 11))
+            .build();
 
         //when
-        Optional<Book> firstByBookInfo = bookRepository.findBooksByBookInfo("지식의 착각", "스티븐 슬로먼",
-            "교보문고", LocalDate.of(2022, 7, 11));
+        Optional<Book> firstByBookInfo = bookRepository.findBooksByBookInfo(bookInfo);
 
         //then
-        assertThat(firstByBookInfo.get()).isEqualTo(book1);
+        assertThat(firstByBookInfo)
+            .isPresent()
+            .get()
+            .isEqualTo(book1);
     }
 
     @DisplayName("특정 도서관이 보유한 책을 검색할 수 있다.")

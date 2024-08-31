@@ -31,6 +31,10 @@ jobs:
           path: ~/.gradle/caches
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
+      - name: Create schema.sql
+        run: |
+          mkdir -p be/ebook-search/ebook-crawler/src/test/resources
+          echo "${{ secrets.TEST_DB_SCHEMA }}" > be/ebook-search/ebook-crawler/src/test/resources/schema.sql
       - name: Build and analyze backend
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

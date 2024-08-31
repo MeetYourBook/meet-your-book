@@ -20,7 +20,7 @@ public class BookQueueService {
     private static final int PROCESSING_INTERVAL = 10000; // 10 seconds
 
     private final BlockingQueue<BookInfo> queue = new LinkedBlockingQueue<>();
-    private final BookLibraryService bookService;
+    private final BookLibraryService bookLibraryService;
 
     public void addBookInfosToQueue(List<BookInfo> bookInfos) {
         queue.addAll(bookInfos);
@@ -48,8 +48,7 @@ public class BookQueueService {
 
     private void saveBatchWithErrorHandling(List<BookInfo> batch) {
         try {
-            bookService.saveBooks(batch);
-            bookService.saveAll(batch);
+            bookLibraryService.saveBookInfos(batch);
             log.info("배치 작업 실행 완료: {}권", batch.size());
         } catch (Exception e) {
             log.error("배치 작업 실행 중 오류 발생: ", e);

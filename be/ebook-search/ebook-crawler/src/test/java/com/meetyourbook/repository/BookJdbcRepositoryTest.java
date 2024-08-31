@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.meetyourbook.dto.BookInfo;
+import com.meetyourbook.dto.BookRecord;
 import com.meetyourbook.dto.BookUniqueKey;
 import java.time.LocalDate;
 import java.util.Optional;
@@ -49,8 +50,9 @@ class BookJdbcRepositoryTest {
     void findIdByUniqueKeyWhenBookExists() {
         // Given
         BookInfo bookInfo = createSampleBookInfo();
-        UUID savedId = bookJdbcRepository.saveBook(bookInfo);
-        BookUniqueKey bookUniqueKey = BookUniqueKey.from(bookInfo);
+        BookRecord bookRecord = BookRecord.from(bookInfo);
+        UUID savedId = bookJdbcRepository.saveBook(bookRecord);
+        BookUniqueKey bookUniqueKey = BookUniqueKey.from(bookRecord);
 
         // When
         Optional<UUID> optionalUUID = bookJdbcRepository.findIdByUniqueKey(bookUniqueKey);
@@ -67,9 +69,10 @@ class BookJdbcRepositoryTest {
     void saveBookSuccessfully() {
         // Given
         BookInfo bookInfo = createSampleBookInfo();
+        BookRecord bookRecord = BookRecord.from(bookInfo);
 
         // When
-        UUID savedId = bookJdbcRepository.saveBook(bookInfo);
+        UUID savedId = bookJdbcRepository.saveBook(bookRecord);
 
         // Then
         assertThat(savedId).isNotNull();
@@ -88,9 +91,10 @@ class BookJdbcRepositoryTest {
             .bookUrl("www.testurl.com")
             .imageUrl("www.testurl.com")
             .build();
+        BookRecord invalidBookRecord = BookRecord.from(invalidBookInfo);
 
         // When & Then
-        assertThatThrownBy(() -> bookJdbcRepository.saveBook(invalidBookInfo))
+        assertThatThrownBy(() -> bookJdbcRepository.saveBook(invalidBookRecord))
             .isInstanceOf(DataIntegrityViolationException.class);
     }
 

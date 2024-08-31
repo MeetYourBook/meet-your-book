@@ -74,6 +74,30 @@ class BookLibraryJdbcRepositoryTest {
         assertThat(url).isEqualTo("http://newUrl.com");
     }
 
+    @Test
+    @DisplayName("BookLibrary 저장 시 생성시간, 수정시간을 저장한다")
+    void createdAtUpdatedAt() {
+        // Given
+        UUID bookId = UUID.randomUUID();
+        long libraryId = 1L;
+
+        List<BookLibraryRelation> oldRelations = List.of(
+            new BookLibraryRelation(bookId, libraryId, "http://example.com/book1")
+        );
+        List<BookLibraryRelation> newRelation = List.of(
+            new BookLibraryRelation(bookId, libraryId, "http://newUrl.com")
+        );
+        repository.saveAll(oldRelations);
+
+        // When
+        repository.saveAll(newRelation);
+
+        // Then
+        String sql = "SELECT url FROM book_library WHERE book_id = ? AND library_id = ?";
+        String url = jdbcTemplate.queryForObject(sql, String.class, uuidToBytes(bookId), libraryId);
+        assertThat(url).isEqualTo("http://newUrl.com");
+    }
+
     private byte[] uuidToBytes(UUID uuid) {
         ByteBuffer bb = ByteBuffer.wrap(new byte[16]);
         bb.putLong(uuid.getMostSignificantBits());

@@ -2,6 +2,7 @@ package com.meetyourbook.repository;
 
 import com.meetyourbook.dto.BookLibraryRelation;
 import java.nio.ByteBuffer;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -17,17 +18,19 @@ import org.springframework.stereotype.Repository;
 public class BookLibraryJdbcRepository {
 
     private static final String SAVE_BOOK_LIBRARY_SQL =
-        "INSERT INTO book_library (book_id, library_id, url) VALUES (:bookId, :libraryId, :url) " +
-            "ON DUPLICATE KEY UPDATE url = VALUES(url)";
+        "INSERT INTO book_library (book_id, library_id, url, created_at, updated_at) VALUES (:bookId, :libraryId, :url, :now, :now) " +
+            "ON DUPLICATE KEY UPDATE url = VALUES(url), updated_at = :now";
 
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     public void saveAll(List<BookLibraryRelation> bookLibraryPairs) {
+
         SqlParameterSource[] batchArgs = bookLibraryPairs.stream()
             .map(relation -> new MapSqlParameterSource()
                 .addValue("bookId", uuidToBytes(relation.bookId()))
                 .addValue("libraryId", relation.libraryId())
-                .addValue("url", relation.bookUrl()))
+                .addValue("url", relation.bookUrl())
+                .addValue("now", relation.dateTime()))
             .toArray(SqlParameterSource[]::new);
 
         int[] updateCounts = namedParameterJdbcTemplate.batchUpdate(SAVE_BOOK_LIBRARY_SQL,

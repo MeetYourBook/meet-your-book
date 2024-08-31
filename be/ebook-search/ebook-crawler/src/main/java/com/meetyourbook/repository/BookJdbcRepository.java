@@ -1,6 +1,6 @@
 package com.meetyourbook.repository;
 
-import com.meetyourbook.dto.BookInfo;
+import com.meetyourbook.dto.BookRecord;
 import com.meetyourbook.dto.BookUniqueKey;
 import java.nio.ByteBuffer;
 import java.util.Optional;
@@ -21,8 +21,8 @@ public class BookJdbcRepository {
             + "AND publisher = :publisher AND publish_date = :publishDate";
 
     private static final String INSERT_BOOK_SQL =
-        "INSERT INTO book (id, title, author, publisher, publish_date, provider, image_url) "
-            + "VALUES (:id, :title, :author, :publisher, :publishDate, :provider, :imageUrl)";
+        "INSERT INTO book (id, title, author, publisher, publish_date, provider, image_url, created_at, updated_at) "
+            + "VALUES (:id, :title, :author, :publisher, :publishDate, :provider, :imageUrl, :now, :now)";
 
     private final JdbcClient jdbcClient;
 
@@ -37,21 +37,22 @@ public class BookJdbcRepository {
             .optional();
     }
 
-    public UUID saveBook(BookInfo bookInfo) {
+    public UUID saveBook(BookRecord bookRecord) {
         UUID id = UUID.randomUUID();
 
         int rowsAffected = jdbcClient.sql(INSERT_BOOK_SQL)
             .param("id", uuidToBytes(id))
-            .param("title", bookInfo.title())
-            .param("author", bookInfo.author())
-            .param("publisher", bookInfo.publisher())
-            .param("publishDate", bookInfo.publishDate())
-            .param("provider", bookInfo.provider())
-            .param("imageUrl", bookInfo.imageUrl())
+            .param("title", bookRecord.title())
+            .param("author", bookRecord.author())
+            .param("publisher", bookRecord.publisher())
+            .param("publishDate", bookRecord.publishDate())
+            .param("provider", bookRecord.provider())
+            .param("imageUrl", bookRecord.imageUrl())
+            .param("now", bookRecord.dateTime())
             .update();
 
         if (rowsAffected != 1) {
-            log.error("BookInfo 저장 실패. BookInfo: {}", bookInfo);
+            log.error("BookInfo 저장 실패. BookInfo: {}", bookRecord);
             throw new DataIntegrityViolationException("Book 저장에 실패했습니다. 영향받은 행: " + rowsAffected);
         }
 

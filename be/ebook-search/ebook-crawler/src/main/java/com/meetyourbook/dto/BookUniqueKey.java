@@ -9,9 +9,9 @@ public record BookUniqueKey(
     LocalDate publishDate
 ) {
 
-    public static BookUniqueKey from(BookInfo bookInfo) {
-        return new BookUniqueKey(bookInfo.title(), bookInfo.author(),
-            bookInfo.publisher(), bookInfo.publishDate());
+    public static BookUniqueKey from(BookRecord bookRecord) {
+        return new BookUniqueKey(bookRecord.title(), bookRecord.author(),
+            bookRecord.publisher(), bookRecord.publishDate());
     }
 
 }

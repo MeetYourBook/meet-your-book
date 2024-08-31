@@ -15,7 +15,7 @@ public class LibraryCacheService {
     private final LibraryDomainService libraryDomainService;
 
     @Transactional(readOnly = true)
-    @Cacheable(value = "libraryCache", key = "#baseUrl", sync = true)
+    @Cacheable(value = "libraryCache", key = "#baseUrl")
     public Long getLibraryFromCache(String baseUrl) {
         Library library = libraryDomainService.findByBaseUrl(baseUrl);
         return library.getId();

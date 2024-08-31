@@ -2,7 +2,6 @@ package com.meetyourbook.repository;
 
 import com.meetyourbook.dto.BookLibraryRelation;
 import java.nio.ByteBuffer;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;

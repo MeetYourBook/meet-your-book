@@ -19,7 +19,7 @@ public class BookCacheService {
     private final BookJdbcRepository bookJdbcRepository;
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    @Cacheable(value = "bookCache", key = "#bookUniqueKey", sync = true)
+    @Cacheable(value = "bookCache", key = "#bookUniqueKey")
     public UUID getBookIdFromCache(BookUniqueKey bookUniqueKey, BookRecord bookRecord) {
         return bookJdbcRepository.findIdByUniqueKey(bookUniqueKey)
             .orElseGet(() -> bookJdbcRepository.saveBook(bookRecord));

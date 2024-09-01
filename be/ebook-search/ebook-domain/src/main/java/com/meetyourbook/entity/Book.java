@@ -1,6 +1,5 @@
 package com.meetyourbook.entity;
 
-
 import com.meetyourbook.dto.BookUpdateInfo;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -35,24 +34,24 @@ public class Book extends BaseEntity {
     @UuidGenerator(style = Style.TIME)
     @Column(columnDefinition = "BINARY(16)")
     private UUID id;
+
     private String title;
     private String author;
-    private String provider;
     private String publisher;
+
     @Column(name = "publish_date")
     private LocalDate publishDate;
+
     private String imageUrl;
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private final Set<BookLibrary> bookLibraries = new HashSet<>();
 
     @Builder
-    private Book(String title, String author, String provider, String publisher,
-        LocalDate publishDate,
+    private Book(String title, String author, String publisher, LocalDate publishDate,
         String imageUrl) {
         this.title = title;
         this.author = author;
-        this.provider = provider;
         this.publisher = publisher;
         this.publishDate = publishDate;
         this.imageUrl = imageUrl;
@@ -75,20 +74,19 @@ public class Book extends BaseEntity {
             return false;
         }
         Book book = (Book) o;
-        return Objects.equals(title, book.title) && Objects.equals(author,
-            book.author) && Objects.equals(publisher, book.publisher) && Objects.equals(
-            publishDate, book.publishDate);
+        return Objects.equals(title, book.title) && Objects.equals(author, book.author)
+            && Objects.equals(publisher, book.publisher) && Objects.equals(publishDate,
+            book.publishDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, author, provider, publisher, publishDate, imageUrl);
+        return Objects.hash(title, author, publisher, publishDate, imageUrl);
     }
 
     public void update(BookUpdateInfo request) {
         this.title = request.title();
         this.author = request.author();
-        this.provider = request.provider();
         this.publisher = request.publisher();
         this.publishDate = request.publishDate();
         this.imageUrl = request.imageUrl();

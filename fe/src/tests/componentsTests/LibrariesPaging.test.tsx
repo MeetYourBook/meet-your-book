@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import LibrariesPaging from "@/components/BookInfoModal/LibrariesPaging";
+import LibrariesPaging from "@/components/Modal/LibrariesPaging/LibrariesPaging";
 import { LibrariesResponseType } from "@/types/LibrariesResponse";
 import { vi } from "vitest";
 

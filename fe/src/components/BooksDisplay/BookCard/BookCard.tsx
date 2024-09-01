@@ -3,7 +3,8 @@ import { ViewType } from "@/types/View";
 import { BookContent } from "@/types/Books";
 import * as S from "@/styles/BookCardStyle";
 import { ANIMATION_TIME } from "@/constants";
-import BookInfoModal from "@/components/BookInfoModal/BookInfoModal";
+import BookInfoModal from "@/components/Modal/BookInfoModal/BookInfoModal";
+import { handleImageError } from "@/utils";
 interface BookItemProps {
     bookData: BookContent;
     viewMode: ViewType;
@@ -22,11 +23,6 @@ const BookCard = ({ bookData, viewMode }: BookItemProps) => {
         const timer = setTimeout(() => setIsVisible(true), ANIMATION_TIME);
         return () => clearTimeout(timer);
     }, []);
-
-    const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
-        e.currentTarget.src = "/images/errorImg.png";
-        e.currentTarget.style.objectFit = "cover"; 
-    };
 
     return (
         <>

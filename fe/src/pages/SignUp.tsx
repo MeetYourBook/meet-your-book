@@ -1,5 +1,5 @@
 import BackButton from "@/components/BackButton/BackButton";
-import { Logo } from "@/components/Navigation/Navigation";
+import Logo from "@/components/Navigation/Logo/Logo";
 import * as S from "@/styles/AuthFormStyle";
 
 const SignUp = () => {

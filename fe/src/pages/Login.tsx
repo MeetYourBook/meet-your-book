@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import * as S from "@/styles/AuthFormStyle";
 import BackButton from "@/components/BackButton/BackButton";
-import { Logo } from "@/components/Navigation/Navigation";
+import Logo from "@/components/Navigation/Logo/Logo";
 const Login = () => {
     const navigate = useNavigate();
     const goToSignUp = () => {

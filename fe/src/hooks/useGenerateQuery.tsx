@@ -25,7 +25,8 @@ const useGenerateQuery = () => {
             .join("&");
 
         setQuery(`books?${queryString}`);
-    }, [page, size, selectedValue, librariesFilter, searchText]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [page, size, librariesFilter, searchText]);
 
     return query;
 };

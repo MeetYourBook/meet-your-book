@@ -4,7 +4,7 @@ import { BookContent } from "@/types/Books";
 import { ViewType } from "@/types/View";
 import * as S from "@/styles/BookDisplayStyle";
 import useBooksLogic from "@/hooks/useBooksLogic";
-import LoadingFallBack from "../LodingFallBack/LoadingFallBack";
+import LoadingFallBack from "../LoadingFallBack/LoadingFallBack";
 const BookCard = React.lazy(() => import("./BookCard/BookCard"));
 
 const BooksDisplay = () => {

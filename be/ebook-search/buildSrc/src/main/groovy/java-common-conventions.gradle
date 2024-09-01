@@ -4,6 +4,7 @@ plugins {
     id 'io.spring.dependency-management'
     id 'org.sonarqube'
     id 'jacoco'
+    id 'org.liquibase.gradle'
 }
 
 group = 'com.meetyourbook'
@@ -15,19 +16,23 @@ java {
     }
 }
 
+def excludedPaths = [
+        "**/dto/**",
+        "**/entity/**",
+        "**/config/**",
+        "**/exception/**",
+        "**/constant/**",
+        "**/*Application.class",
+        "**/*Configuration.class"
+]
+
 sonar {
     properties {
         property "sonar.projectKey", "MeetYourBook_meet-your-book"
         property "sonar.organization", "meetyourbook"
         property "sonar.host.url", "https://sonarcloud.io"
         property "sonar.coverage.jacoco.xmlReportPaths", "${layout.buildDirectory.get()}/reports/jacoco/test/jacocoTestReport.xml"
-        property "sonar.coverage.exclusions", [
-                "**/dto/**",
-                "**/entity/**",
-                "**/config/**",
-                "**/exception/**",
-                "**/EbookCrawlerApplication.class"
-        ]
+        property "sonar.coverage.exclusions", excludedPaths
     }
 }
 
@@ -43,13 +48,7 @@ jacocoTestReport {
     }
     afterEvaluate {
         classDirectories.setFrom(files(classDirectories.files.collect {
-            fileTree(dir: it, exclude: [
-                    "**/dto/**",
-                    "**/entity/**",
-                    "**/config/**",
-                    "**/exception/**",
-                    "**/EbookCrawlerApplication.class"
-            ])
+            fileTree(dir: it, exclude: excludedPaths)
         }))
     }
 }
@@ -58,13 +57,7 @@ jacocoTestCoverageVerification {
     violationRules {
         rule {
             element = 'CLASS'
-            excludes = [
-                    'com.meetyourbook.dto.*',
-                    'com.meetyourbook.entity.*',
-                    'com.meetyourbook.config.*',
-                    'com.meetyourbook.exception.*',
-                    'com.meetyourbook.EbookCrawlerApplication'
-            ]
+            excludes = excludedPaths.collect { it.replace('/', '.').replace('/**', '.*') }
         }
     }
 }
@@ -75,6 +68,7 @@ repositories {
 
 dependencies {
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'
+    implementation 'org.liquibase:liquibase-core'
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'

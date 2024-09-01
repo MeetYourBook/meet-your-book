@@ -25,16 +25,11 @@ jobs:
           cache: gradle
 
       - name: Cache SonarCloud packages
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
-
-      - name: Create schema.sql for test
-        run: |
-          mkdir -p be/ebook-search/ebook-crawler/src/test/resources
-          echo "${{ secrets.TEST_DB_SCHEMA }}" > be/ebook-search/ebook-crawler/src/test/resources/schema.sql
 
       - name: Build and analyze backend
         env:

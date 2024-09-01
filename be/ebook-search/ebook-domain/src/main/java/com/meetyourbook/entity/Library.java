@@ -22,21 +22,29 @@ public class Library extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    @Column(unique = true)
-    String name;
-    @Enumerated(EnumType.STRING)
-    LibraryType type;
-    @Embedded
-    LibraryUrl libraryUrl;
+    private Long id;
 
-    int totalBookCount;
+    @Column(unique = true)
+    private String name;
+
+    @Enumerated(EnumType.STRING)
+    private LibraryType type;
+
+    @Embedded
+    private LibraryUrl libraryUrl;
+
+    @Enumerated(EnumType.STRING)
+    private EbookPlatform ebookPlatform;
+
+    private int totalBookCount;
 
     @Builder
-    public Library(String name, LibraryType type, String libraryUrl, int totalBookCount) {
+    public Library(String name, LibraryType type, String libraryUrl,
+        EbookPlatform ebookPlatform, int totalBookCount) {
         this.name = name;
         this.type = type;
         this.libraryUrl = new LibraryUrl(libraryUrl);
+        this.ebookPlatform = ebookPlatform;
         this.totalBookCount = totalBookCount;
     }
 
@@ -100,6 +108,21 @@ public class Library extends BaseEntity {
             }
             throw new IllegalArgumentException(
                 "No LibraryType found for description: " + description);
+        }
+
+    }
+
+    @Getter
+    public enum EbookPlatform {
+        KYOBO("교보문고"),
+        YES24("예스24"),
+        BOOKCUBE("북큐브"),
+        ALADIN("알라딘");
+
+        private final String description;
+
+        EbookPlatform(String description) {
+            this.description = description;
         }
 
     }

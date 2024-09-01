@@ -21,8 +21,8 @@ public class BookJdbcRepository {
             + "AND publisher = :publisher AND publish_date = :publishDate";
 
     private static final String INSERT_BOOK_SQL =
-        "INSERT INTO book (id, title, author, publisher, publish_date, provider, image_url, created_at, updated_at) "
-            + "VALUES (:id, :title, :author, :publisher, :publishDate, :provider, :imageUrl, :now, :now)";
+        "INSERT INTO book (id, title, author, publisher, publish_date, image_url, created_at, updated_at) "
+            + "VALUES (:id, :title, :author, :publisher, :publishDate, :imageUrl, :now, :now)";
 
     private final JdbcClient jdbcClient;
 
@@ -46,7 +46,6 @@ public class BookJdbcRepository {
             .param("author", bookRecord.author())
             .param("publisher", bookRecord.publisher())
             .param("publishDate", bookRecord.publishDate())
-            .param("provider", bookRecord.provider())
             .param("imageUrl", bookRecord.imageUrl())
             .param("now", bookRecord.dateTime())
             .update();

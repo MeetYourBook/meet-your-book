@@ -126,7 +126,6 @@ public class BookPageProcessor implements PageProcessor {
             }
 
             BookInfo bookInfo = BookInfo.builder()
-                .provider(getTextFromClass(bookElement, PROVIDER_CLASS))
                 .title(getTextFromClass(bookElement, TITLE_CLASS))
                 .author(getAuthor(writerElement))
                 .publisher(getPublisher(writerElement))

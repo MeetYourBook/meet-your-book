@@ -13,13 +13,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.core.simple.JdbcClient;
 
 @JdbcTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class BookJdbcRepositoryTest {
 
     @Autowired
@@ -87,7 +85,6 @@ class BookJdbcRepositoryTest {
             .author("저자")
             .publisher("출판사")
             .publishDate(LocalDate.now())
-            .provider("제공자")
             .bookUrl("www.testurl.com")
             .imageUrl("www.testurl.com")
             .build();
@@ -104,7 +101,6 @@ class BookJdbcRepositoryTest {
             .author("저자")
             .publisher("출판사")
             .publishDate(LocalDate.of(2000, 5, 11))
-            .provider("제공자")
             .bookUrl("www.testurl.com")
             .imageUrl("www.testurl.com")
             .build();

@@ -48,7 +48,7 @@ class AdminBookControllerTest {
     @DisplayName("책 저장 요청 성공")
     void createBook_success() throws Exception {
         // Given
-        BookCreateRequest bookCreateRequest = new BookCreateRequest("사피엔스", "유발 하라리", "김영사", "교보문고",
+        BookCreateRequest bookCreateRequest = new BookCreateRequest("사피엔스", "유발 하라리", "김영사",
             LocalDate.of(2024, 1, 1), "https://test.com/image");
         String requestBody = objectMapper.writeValueAsString(bookCreateRequest);
 

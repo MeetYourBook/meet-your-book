@@ -11,7 +11,6 @@ public record BookRecord(
     String author,
     String publisher,
     LocalDate publishDate,
-    String provider,
     String imageUrl,
     String description,
     String baseUrl,
@@ -26,7 +25,6 @@ public record BookRecord(
             .author(bookInfo.author())
             .publisher(bookInfo.publisher())
             .publishDate(bookInfo.publishDate())
-            .provider(bookInfo.provider())
             .imageUrl(bookInfo.imageUrl())
             .description(bookInfo.description())
             .baseUrl(bookInfo.baseUrl())

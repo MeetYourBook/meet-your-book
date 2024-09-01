@@ -6,16 +6,15 @@ import java.util.UUID;
 import lombok.Builder;
 
 @Builder
-public record SimpleBookResponse(UUID id, String title, String author, String provider,
-                                 String publisher, String imageUrl,
-                                 List<BookLibraryResponse> libraryResponses) {
+public record SimpleBookResponse(UUID id, String title, String author, String publisher,
+                                 String imageUrl, List<BookLibraryResponse> libraryResponses) {
 
     public static SimpleBookResponse fromEntity(Book book) {
         List<BookLibraryResponse> bookLibraryResponses = book.getBookLibraries().stream()
             .map(BookLibraryResponse::formEntity).toList();
 
         return new SimpleBookResponse(book.getId(), book.getTitle(), book.getAuthor(),
-            book.getProvider(), book.getPublisher(), book.getImageUrl(), bookLibraryResponses);
+            book.getPublisher(), book.getImageUrl(), bookLibraryResponses);
     }
 
 }

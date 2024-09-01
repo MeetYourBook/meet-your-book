@@ -10,7 +10,6 @@ public record BookCreationInfo(
     String title,
     String author,
     String publisher,
-    String provider,
     String url,
     LocalDate publishDate
 
@@ -21,7 +20,6 @@ public record BookCreationInfo(
             .title(title)
             .author(author)
             .publisher(publisher)
-            .provider(provider)
             .publishDate(publishDate)
             .imageUrl(url)
             .build();

@@ -1,5 +1,6 @@
 package com.meetyourbook.service;
 
+import static com.meetyourbook.entity.Library.EbookPlatform.KYOBO;
 import static com.meetyourbook.entity.Library.LibraryType.PUBLIC_LIBRARY;
 import static com.meetyourbook.entity.Library.LibraryType.UNIVERSITY_LIBRARY;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -40,7 +41,7 @@ class LibraryDomainServiceTest {
     void createLibrary() {
         //given
         LibraryCreationInfo request = new LibraryCreationInfo("서울대학교",
-            "www.snu.elibrary.com");
+            "www.snu.elibrary.com", KYOBO);
 
         //when
         Long libraryId = libraryDomainService.createLibrary(request);
@@ -52,13 +53,13 @@ class LibraryDomainServiceTest {
             .get()
             .extracting(
                 Library::getName,
-                Library::getType,
-                library -> library.getLibraryUrl().getUrl()
+                library -> library.getLibraryUrl().getUrl(),
+                Library::getEbookPlatform
             )
             .containsExactly(
                 "서울대학교",
-                null,
-                "www.snu.elibrary.com"
+                "www.snu.elibrary.com",
+                KYOBO
             );
     }
 

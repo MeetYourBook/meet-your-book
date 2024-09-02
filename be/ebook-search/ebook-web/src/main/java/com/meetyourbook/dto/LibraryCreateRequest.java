@@ -10,7 +10,7 @@ public record LibraryCreateRequest(
 
     public LibraryCreationInfo toLibraryCreationInfo() {
         return LibraryCreationInfo.builder()
-            .press(press)
+            .name(press)
             .url(url)
             .build();
     }

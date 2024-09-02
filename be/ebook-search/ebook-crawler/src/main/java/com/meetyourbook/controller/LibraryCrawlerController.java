@@ -1,7 +1,7 @@
 package com.meetyourbook.controller;
 
+import com.meetyourbook.dto.EbookPlatformCrawlRequest;
 import com.meetyourbook.dto.ImportResult;
-import com.meetyourbook.dto.KyoboLibraryApiRequest;
 import com.meetyourbook.dto.LibraryCrawlerRequest;
 import com.meetyourbook.service.LibraryCrawlerService;
 import com.meetyourbook.service.LibraryImportService;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-@RequestMapping("/api/library-crawler")
+@RequestMapping("/admin/library-crawler")
 @RequiredArgsConstructor
 public class LibraryCrawlerController {
 
@@ -35,10 +35,10 @@ public class LibraryCrawlerController {
         return ResponseEntity.ok("크롤링을 시작했습니다.");
     }
 
-    @PostMapping("/crawl-kyobo-api")
-    public ResponseEntity<?> startCrawlingKyoboApi(
-        @Valid @RequestBody KyoboLibraryApiRequest request) {
-        libraryCrawlerService.crawlLibraryApi(request);
-        return ResponseEntity.ok("크롤링을 시작했습니다.");
+    @PostMapping("/crawl-api")
+    public ResponseEntity<?> startCrawlingApi(
+        @Valid @RequestBody EbookPlatformCrawlRequest request) {
+        int crawledCount = libraryCrawlerService.crawLibrary(request);
+        return ResponseEntity.ok("총 " + crawledCount + "개의 도서관 정보를 크롤링했습니다.");
     }
 }

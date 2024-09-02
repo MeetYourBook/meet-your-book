@@ -2,11 +2,17 @@ package com.meetyourbook.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.meetyourbook.dto.KyoboLibraryApiRequest;
+import com.meetyourbook.crawler.library.EbookPlatformLibraryCrawler;
+import com.meetyourbook.crawler.library.LibraryCrawlerFactory;
+import com.meetyourbook.dto.EbookPlatformCrawlRequest;
 import com.meetyourbook.dto.LibraryCrawlResponse;
 import com.meetyourbook.dto.LibraryCrawlResult;
 import com.meetyourbook.dto.LibraryCrawlerRequest;
+import com.meetyourbook.dto.LibraryCrawlerTarget;
+import com.meetyourbook.dto.LibraryCreationInfo;
 import com.meetyourbook.dto.SimpleLibraryInfo;
+import com.meetyourbook.entity.Library.EbookPlatform;
+import com.meetyourbook.util.EbookPlatformUrlProperties;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -32,6 +38,8 @@ public class LibraryCrawlerService {
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper;
     private final LibraryDomainService libraryDomainService;
+    private final EbookPlatformUrlProperties ebookPlatformUrlProperties;
+    private final LibraryCrawlerFactory libraryCrawlerFactory;
 
     public void crawl(LibraryCrawlerRequest request) {
         log.info("도서관 정보 크롤링을 시작합니다.");
@@ -56,26 +64,22 @@ public class LibraryCrawlerService {
         saveToJson(libraryNames, request.libraryBaseUrl());
     }
 
-    public int crawlLibraryApi(KyoboLibraryApiRequest request) {
-        URI uri = URI.create(request.url());
-        ResponseEntity<String> response = restTemplate.getForEntity(uri, String.class);
-        try {
-            if (response.getStatusCode().is2xxSuccessful()) {
-                LibraryCrawlResponse libraryCrawlResponse = objectMapper.readValue(
-                    response.getBody(),
-                    LibraryCrawlResponse.class);
-                List<LibraryCrawlResult> results = libraryCrawlResponse.resultData().item();
-                return libraryDomainService.createLibraries(results.stream()
-                    .filter(result -> !result.libraryHost().contains("dev"))
-                    .map(LibraryCrawlResult::toLibraryCreationInfo)
-                    .toList());
-            } else {
-                throw new IllegalStateException("다음 API에 대해 응답 실패: " + response.getStatusCode());
-            }
-        } catch (JsonProcessingException e) {
-            log.error("API 호출 중 오류 발생: {}", e);
+    public int crawLibrary(EbookPlatformCrawlRequest request) {
+        EbookPlatform ebookPlatform = EbookPlatform.valueOf(request.ebookPlatform().toUpperCase());
+        String targetUrl = determineUrl(request.url(), ebookPlatform);
+        EbookPlatformLibraryCrawler crawler = libraryCrawlerFactory.findByPlatformName(
+            ebookPlatform);
+        LibraryCrawlerTarget target = new LibraryCrawlerTarget(ebookPlatform, targetUrl);
+        List<LibraryCreationInfo> libraryCreationInfos = crawler.crawlLibrary(target);
+        return libraryDomainService.createLibraries(libraryCreationInfos);
+    }
+
+
+    private String determineUrl(String url, EbookPlatform ebookPlatform) {
+        if (url != null) {
+            return url;
         }
-        return 0;
+        return ebookPlatformUrlProperties.getPlatformUrls().get(ebookPlatform);
     }
 
     private void crawlCharacter(String character, Set<SimpleLibraryInfo> libraryNames,

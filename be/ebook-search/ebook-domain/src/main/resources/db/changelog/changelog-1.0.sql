@@ -1,6 +1,6 @@
 -- liquibase formatted sql
 
--- changeset author:jayden id:create-initial-schema
+-- changeset jayden:20240903_create_init_schema
 -- comment: 초기 스키마 생성 - book, library, book_library 테이블
 
 CREATE TABLE book
@@ -40,3 +40,9 @@ CREATE TABLE book_library
     FOREIGN KEY (library_id) REFERENCES library (id),
     CONSTRAINT unique_book_library UNIQUE (book_id, library_id)
 );
+
+-- changeset jayden:20240903_add_unique_key_library
+-- comment: library 테이블의 url에 unique key 추가
+
+ALTER TABLE library
+    ADD CONSTRAINT unique_library_url UNIQUE (url);

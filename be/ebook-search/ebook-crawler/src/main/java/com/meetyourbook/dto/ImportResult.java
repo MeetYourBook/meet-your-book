@@ -1,5 +1,5 @@
 package com.meetyourbook.dto;
 
-public record ImportResult (int importedCount, String message) {
+public record ImportResult(LibraryCreationResult result, String message) {
 
 }

@@ -10,6 +10,7 @@ import com.meetyourbook.dto.LibraryCrawlResult;
 import com.meetyourbook.dto.LibraryCrawlerRequest;
 import com.meetyourbook.dto.LibraryCrawlerTarget;
 import com.meetyourbook.dto.LibraryCreationInfo;
+import com.meetyourbook.dto.LibraryCreationResult;
 import com.meetyourbook.dto.SimpleLibraryInfo;
 import com.meetyourbook.entity.Library.EbookPlatform;
 import com.meetyourbook.util.EbookPlatformUrlProperties;
@@ -64,7 +65,7 @@ public class LibraryCrawlerService {
         saveToJson(libraryNames, request.libraryBaseUrl());
     }
 
-    public int crawLibrary(EbookPlatformCrawlRequest request) {
+    public LibraryCreationResult crawLibrary(EbookPlatformCrawlRequest request) {
         EbookPlatform ebookPlatform = EbookPlatform.valueOf(request.ebookPlatform().toUpperCase());
         String targetUrl = determineUrl(request.url(), ebookPlatform);
         EbookPlatformLibraryCrawler crawler = libraryCrawlerFactory.findByPlatformName(

@@ -24,13 +24,13 @@ public class Library extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
     private String name;
 
     @Enumerated(EnumType.STRING)
     private LibraryType type;
 
     @Embedded
+    @Column(unique = true)
     private LibraryUrl libraryUrl;
 
     @Enumerated(EnumType.STRING)

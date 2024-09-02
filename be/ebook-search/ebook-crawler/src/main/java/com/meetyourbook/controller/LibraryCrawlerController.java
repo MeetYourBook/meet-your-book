@@ -3,6 +3,7 @@ package com.meetyourbook.controller;
 import com.meetyourbook.dto.EbookPlatformCrawlRequest;
 import com.meetyourbook.dto.ImportResult;
 import com.meetyourbook.dto.LibraryCrawlerRequest;
+import com.meetyourbook.dto.LibraryCreationResult;
 import com.meetyourbook.service.LibraryCrawlerService;
 import com.meetyourbook.service.LibraryImportService;
 import jakarta.validation.Valid;
@@ -25,8 +26,8 @@ public class LibraryCrawlerController {
 
     @PostMapping("/import")
     public ResponseEntity<?> saveLibraryFromJson(@RequestPart("file") MultipartFile file) {
-        int importedCount = libraryImportService.importLibrariesFromJson(file);
-        return ResponseEntity.ok(new ImportResult(importedCount, "도서관 정보를 성공적으로 저장했습니다."));
+        LibraryCreationResult result = libraryImportService.importLibrariesFromJson(file);
+        return ResponseEntity.ok(new ImportResult(result, "도서관 정보를 성공적으로 저장했습니다."));
     }
 
     @PostMapping("/crawl")
@@ -38,7 +39,7 @@ public class LibraryCrawlerController {
     @PostMapping("/crawl-api")
     public ResponseEntity<?> startCrawlingApi(
         @Valid @RequestBody EbookPlatformCrawlRequest request) {
-        int crawledCount = libraryCrawlerService.crawLibrary(request);
+        LibraryCreationResult crawledCount = libraryCrawlerService.crawLibrary(request);
         return ResponseEntity.ok("총 " + crawledCount + "개의 도서관 정보를 크롤링했습니다.");
     }
 }

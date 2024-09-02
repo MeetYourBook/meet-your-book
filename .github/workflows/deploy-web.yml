@@ -64,5 +64,5 @@ jobs:
             echo "EC2_USERNAME=${{ secrets.EC2_USERNAME }}" >> .env
             echo "DB_USERNAME=${{ secrets.DB_USERNAME }}" >> .env
             echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
-            docker-compose pull
-            docker-compose up -d
+            docker compose pull
+            docker compose up -d

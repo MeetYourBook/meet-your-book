@@ -59,13 +59,10 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
           script: |
-            docker pull ${{ env.DOCKER_IMAGE }}
-            docker stop ebook-web || true
-            docker rm ebook-web || true
-            docker run -d --name ebook-web \
-              -p 8080:8080 \
-              -v /home/${{ secrets.EC2_USERNAME }}/ebook-config:/app/config \
-              -e DB_USERNAME=${{ secrets.DB_USERNAME }} \
-              -e DB_PASSWORD=${{ secrets.DB_PASSWORD }} \
-              -e SPRING_PROFILES_ACTIVE=prod \
-              ${{ env.DOCKER_IMAGE }}
+            echo "DOCKER_HUB_USERNAME=${{ secrets.DOCKER_HUB_USERNAME }}" > .env
+            echo "GITHUB_SHA=${{ github.sha }}" >> .env
+            echo "EC2_USERNAME=${{ secrets.EC2_USERNAME }}" >> .env
+            echo "DB_USERNAME=${{ secrets.DB_USERNAME }}" >> .env
+            echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
+            docker compose pull
+            docker compose up -d

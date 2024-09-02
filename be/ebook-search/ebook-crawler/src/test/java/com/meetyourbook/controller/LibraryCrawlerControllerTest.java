@@ -46,7 +46,7 @@ class LibraryCrawlerControllerTest {
         when(libraryImportService.importLibrariesFromJson(any(MultipartFile.class))).thenReturn(10);
 
         // when & then
-        mockMvc.perform(multipart("/api/library-crawler/import").file(file))
+        mockMvc.perform(multipart("/admin/library-crawler/import").file(file))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.importedCount").value(10))
             .andExpect(jsonPath("$.message").value("도서관 정보를 성공적으로 저장했습니다."));
@@ -56,7 +56,7 @@ class LibraryCrawlerControllerTest {
     @DisplayName("파일 없이 요청 시 BAD REQUEST 를 반환한다.")
     void saveLibraryFromJsonWithoutFile() throws Exception {
         // when & then
-        mockMvc.perform(multipart("/api/library-crawler/import"))
+        mockMvc.perform(multipart("/admin/library-crawler/import"))
             .andExpect(status().isBadRequest())
             .andExpect(result -> assertThat(
                 result.getResolvedException() instanceof MissingServletRequestPartException).isTrue())

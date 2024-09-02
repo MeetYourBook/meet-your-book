@@ -37,9 +37,9 @@ public class LibraryCrawlerController {
     }
 
     @PostMapping("/crawl-api")
-    public ResponseEntity<?> startCrawlingApi(
+    public ResponseEntity<LibraryCreationResult> startCrawlingApi(
         @Valid @RequestBody EbookPlatformCrawlRequest request) {
-        LibraryCreationResult crawledCount = libraryCrawlerService.crawLibrary(request);
-        return ResponseEntity.ok("총 " + crawledCount + "개의 도서관 정보를 크롤링했습니다.");
+        LibraryCreationResult result = libraryCrawlerService.crawLibrary(request);
+        return ResponseEntity.ok(result);
     }
 }

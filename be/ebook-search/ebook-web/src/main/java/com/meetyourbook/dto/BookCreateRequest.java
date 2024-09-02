@@ -16,9 +16,6 @@ public record BookCreateRequest(
     @NotBlank(message = "Publisher is required")
     String publisher,
 
-    @NotBlank(message = "Provider is required")
-    String provider,
-
     LocalDate publishDate,
     String url
 
@@ -29,7 +26,6 @@ public record BookCreateRequest(
             .title(title)
             .author(author)
             .publisher(publisher)
-            .provider(provider)
             .publishDate(publishDate)
             .url(url)
             .build();

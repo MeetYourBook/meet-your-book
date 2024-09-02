@@ -75,7 +75,6 @@ class BookControllerTest {
             .id(bookId1)
             .title("Book1")
             .author("Author1")
-            .provider("교보문고")
             .publisher("출판사1")
             .imageUrl("https://book1.com/image")
             .libraryResponses(Arrays.asList(bookLibraryResponse1, bookLibraryResponse2))
@@ -85,7 +84,6 @@ class BookControllerTest {
             .id(bookId2)
             .title("Book2")
             .author("Author2")
-            .provider("알라딘")
             .publisher("출판사2")
             .imageUrl("https://book2.com/image")
             .libraryResponses(Collections.singletonList(bookLibraryResponse3))
@@ -131,7 +129,6 @@ class BookControllerTest {
                     fieldWithPath("content[].id").description("책 ID"),
                     fieldWithPath("content[].title").description("책 제목"),
                     fieldWithPath("content[].author").description("책 저자"),
-                    fieldWithPath("content[].provider").description("책 공급업체"),
                     fieldWithPath("content[].publisher").description("책 출판사"),
                     fieldWithPath("content[].imageUrl").description("책 이미지 URL"),
                     fieldWithPath("content[].libraryResponses[].id").description("도서관 ID"),

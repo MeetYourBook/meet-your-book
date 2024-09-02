@@ -30,7 +30,12 @@ class BookLibraryJdbcRepositoryTest {
 
     @BeforeEach
     void setUp() {
+        disableForeignKey();
         repository = new BookLibraryJdbcRepository(namedParameterJdbcTemplate);
+    }
+
+    private void disableForeignKey() {
+        jdbcTemplate.execute("SET FOREIGN_KEY_CHECKS=0");
     }
 
     @Test

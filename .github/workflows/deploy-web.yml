@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 env:
-  DOCKER_IMAGE: ${{ secrets.DOCKER_HUB_USERNAME }}/ebook-web:${{ github.sha }}
+  DOCKER_IMAGE: ${{ secrets.DOCKER_HUB_USERNAME }}/ebook-web:${{ github.ref_name }}-${{ github.run_number }}
 
 jobs:
   build-and-deploy:
@@ -60,7 +60,6 @@ jobs:
           key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
           script: |
             echo "DOCKER_HUB_USERNAME=${{ secrets.DOCKER_HUB_USERNAME }}" > .env
-            echo "GITHUB_SHA=${{ github.sha }}" >> .env
             echo "EC2_USERNAME=${{ secrets.EC2_USERNAME }}" >> .env
             echo "DB_USERNAME=${{ secrets.DB_USERNAME }}" >> .env
             echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env

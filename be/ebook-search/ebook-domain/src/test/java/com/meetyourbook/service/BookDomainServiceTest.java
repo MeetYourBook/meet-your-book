@@ -9,7 +9,6 @@ import com.meetyourbook.entity.Book;
 import com.meetyourbook.repository.BookRepository;
 import java.time.LocalDate;
 import java.util.Optional;
-import java.util.UUID;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -44,7 +43,7 @@ class BookDomainServiceTest {
             .build();
 
         //when
-        UUID bookId = bookDomainService.createBook(request);
+        Long bookId = bookDomainService.createBook(request);
         Optional<Book> optionalBook = bookRepository.findById(bookId);
 
         //then

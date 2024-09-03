@@ -8,16 +8,17 @@ import com.meetyourbook.dto.BookRecord;
 import com.meetyourbook.dto.BookUniqueKey;
 import java.time.LocalDate;
 import java.util.Optional;
-import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.core.simple.JdbcClient;
 
 @JdbcTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class BookJdbcRepositoryTest {
 
     @Autowired
@@ -37,40 +38,40 @@ class BookJdbcRepositoryTest {
         BookUniqueKey bookUniqueKey = new BookUniqueKey("제목", "저자", "출판사", LocalDate.now());
 
         // When
-        Optional<UUID> optionalUUID = bookJdbcRepository.findIdByUniqueKey(bookUniqueKey);
+        Optional<Long> optionalId = bookJdbcRepository.findIdByUniqueKey(bookUniqueKey);
 
         // Then
-        assertThat(optionalUUID).isEmpty();
+        assertThat(optionalId).isEmpty();
     }
 
     @Test
-    @DisplayName("존재하는 책을 검색하면 해당 책의 UUID를 반환한다")
+    @DisplayName("존재하는 책을 검색하면 해당 책 ID를 반환한다")
     void findIdByUniqueKeyWhenBookExists() {
         // Given
         BookInfo bookInfo = createSampleBookInfo();
         BookRecord bookRecord = BookRecord.from(bookInfo);
-        UUID savedId = bookJdbcRepository.saveBook(bookRecord);
+        Long savedId = bookJdbcRepository.saveBook(bookRecord);
         BookUniqueKey bookUniqueKey = BookUniqueKey.from(bookRecord);
 
         // When
-        Optional<UUID> optionalUUID = bookJdbcRepository.findIdByUniqueKey(bookUniqueKey);
+        Optional<Long> optionalId = bookJdbcRepository.findIdByUniqueKey(bookUniqueKey);
 
         // Then
-        assertThat(optionalUUID)
+        assertThat(optionalId)
             .isPresent()
             .get()
             .isEqualTo(savedId);
     }
 
     @Test
-    @DisplayName("새로운 책 정보를 저장하면 UUID를 반환한다")
+    @DisplayName("새로운 책 정보를 저장하면 책 ID를 반환한다")
     void saveBookSuccessfully() {
         // Given
         BookInfo bookInfo = createSampleBookInfo();
         BookRecord bookRecord = BookRecord.from(bookInfo);
 
         // When
-        UUID savedId = bookJdbcRepository.saveBook(bookRecord);
+        Long savedId = bookJdbcRepository.saveBook(bookRecord);
 
         // Then
         assertThat(savedId).isNotNull();

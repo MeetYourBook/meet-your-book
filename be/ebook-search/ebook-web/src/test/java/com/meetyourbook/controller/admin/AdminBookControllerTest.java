@@ -18,7 +18,6 @@ import com.meetyourbook.dto.BookCreateRequest;
 import com.meetyourbook.dto.BookUpdateRequest;
 import com.meetyourbook.service.BookService;
 import java.time.LocalDate;
-import java.util.UUID;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -68,7 +67,7 @@ class AdminBookControllerTest {
     @DisplayName("책 삭제 요청 성공")
     void deleteBook_success() throws Exception {
         // Given
-        UUID bookId = UUID.randomUUID();
+        Long bookId = 1L;
 
         // When, Then
         mockMvc.perform(delete("/admin/books/{bookId}", bookId))
@@ -83,7 +82,7 @@ class AdminBookControllerTest {
     @DisplayName("책 수정 요청 성공")
     void updateBook_success() throws Exception {
         // Given
-        UUID bookId = UUID.randomUUID();
+        Long bookId = 1L;
         BookUpdateRequest bookUpdateRequest = new BookUpdateRequest("사피엔스", "유발 하라리", "김영사", "교보문고",
             LocalDate.of(2024, 1, 1), "https://test.com/image_sapiens");
         String requestBody = objectMapper.writeValueAsString(bookUpdateRequest);

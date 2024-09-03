@@ -6,7 +6,6 @@ import com.meetyourbook.dto.BookPageResponse;
 import com.meetyourbook.dto.BookSearchInfo;
 import com.meetyourbook.dto.BookSearchRequest;
 import com.meetyourbook.dto.BookUpdateRequest;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,16 +20,16 @@ public class BookService {
         return bookDomainService.searchBooks(bookSearchInfo);
     }
 
-    public UUID createBook(BookCreateRequest request) {
+    public Long createBook(BookCreateRequest request) {
         BookCreationInfo bookCreationInfo = request.toBookCreation();
         return bookDomainService.createBook(bookCreationInfo);
     }
 
-    public void deleteBook(UUID id) {
+    public void deleteBook(Long id) {
         bookDomainService.deleteBook(id);
     }
 
-    public void updateBook(UUID bookId, BookUpdateRequest request) {
+    public void updateBook(Long bookId, BookUpdateRequest request) {
         bookDomainService.updateBook(bookId, request.toBookUpdateInfo());
     }
 

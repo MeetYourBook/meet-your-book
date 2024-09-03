@@ -2,6 +2,7 @@ package com.meetyourbook.repository;
 
 import com.meetyourbook.dto.BookRecord;
 import com.meetyourbook.dto.BookUniqueKey;
+import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -46,7 +47,7 @@ public class BookJdbcRepository {
             .param("publishDate", bookRecord.publishDate())
             .param("imageUrl", bookRecord.imageUrl())
             .param("now", bookRecord.dateTime())
-            .update(keyHolder);
+            .update(keyHolder, "id");
 
         if (rowsAffected != 1) {
             log.error("BookInfo 저장 실패. BookInfo: {}", bookRecord);

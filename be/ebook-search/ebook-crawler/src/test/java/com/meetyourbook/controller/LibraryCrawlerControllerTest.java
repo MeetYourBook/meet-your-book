@@ -106,7 +106,7 @@ class LibraryCrawlerControllerTest {
         LibraryCreationResult expectedResult = new LibraryCreationResult(2, 1,
             List.of(new DuplicateLibrary(infos.get(1), infos.get(0))));
 
-        when(libraryCrawlerService.crawLibrary(any(EbookPlatformCrawlRequest.class)))
+        when(libraryCrawlerService.crawlLibrary(any(EbookPlatformCrawlRequest.class)))
             .thenReturn(expectedResult);
 
         String requestBody = objectMapper.writeValueAsString(request);

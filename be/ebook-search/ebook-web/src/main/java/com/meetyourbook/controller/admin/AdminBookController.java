@@ -41,7 +41,7 @@ public class AdminBookController {
     }
 
     @PatchMapping("/{bookId}")
-    public ResponseEntity<?> updateBook(@PathVariable Long bookId,
+    public ResponseEntity<Void> updateBook(@PathVariable Long bookId,
         @RequestBody @Valid BookUpdateRequest request) {
         bookService.updateBook(bookId, request);
         URI location = ServletUriComponentsBuilder

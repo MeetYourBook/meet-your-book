@@ -3,9 +3,7 @@ package com.meetyourbook.repository;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.meetyourbook.dto.BookLibraryRelation;
-import java.nio.ByteBuffer;
 import java.util.List;
-import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -31,8 +31,8 @@ CREATE TABLE library
 CREATE TABLE book_library
 (
     id         BIGINT PRIMARY KEY AUTO_INCREMENT,
-    book_id    BINARY(16) NOT NULL,
-    library_id BIGINT     NOT NULL,
+    book_id    BIGINT NOT NULL,
+    library_id BIGINT NOT NULL,
     url        VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const FilterContainer = styled.div`
-    min-width: 240px;
+    width: 240px;
 
     @media (max-width: 768px) {
         margin: auto;

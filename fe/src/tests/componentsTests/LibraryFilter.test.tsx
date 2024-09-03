@@ -31,7 +31,8 @@ describe("LibraryFilter 컴포넌트 테스트", () => {
             toggleFilter: vi.fn(),
             handleSearch: vi.fn(),
             isLoading: false,
-            filteredLibraries: mockLibraries,
+            getDisplayLibraries: mockLibraries,
+            observerRef: { current: null },
         });
     });
 

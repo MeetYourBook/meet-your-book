@@ -1,4 +1,3 @@
-import React from "react";
 import * as S from "@/styles/LibraryListStyle"
 import { LibrariesType } from "@/types/Libraries";
 
@@ -8,25 +7,24 @@ interface LibraryListProps {
     handleSelectLibrary: (id: string) => void;
 }
 
-const LibraryList = React.memo(
+const LibraryList = 
     ({ libraries, librariesFilter, handleSelectLibrary }: LibraryListProps) => (
         
         <>
             {libraries.map((library, index) => (
-                <S.ListItem key={library.id}>
+                <S.ListItem key={`${library.id}-${index}`}>
                     <S.Checkbox
                         type="checkbox"
-                        id={`library-${index}`}
+                        id={`${library.id}-${index}`}
                         checked={librariesFilter.includes(library.id)}
                         onChange={() => handleSelectLibrary(library.id)}
                     />
-                    <S.Label htmlFor={`library-${index}`}>
+                    <S.Label htmlFor={`${library.id}-${index}`}>
                         {library.name}
                     </S.Label>
                 </S.ListItem>
             ))}
         </>
-    )
-);
+    );
 
 export default LibraryList

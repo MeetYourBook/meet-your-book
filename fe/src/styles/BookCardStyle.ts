@@ -33,7 +33,8 @@ const ListCard = styled(Card)`
 `;
 
 const Image = styled.img`
-    object-fit: contain;
+    object-fit: cover;
+    width: 9rem;
     height: 13rem;
     border-radius: 0.375rem;
     margin: auto;

@@ -14,7 +14,8 @@ const LibraryFilter = () => {
         toggleFilter,
         handleSearch,
         isLoading,
-        filteredLibraries
+        getDisplayLibraries,
+        observerRef
     } = useLibraryFilter();
 
     return (
@@ -31,10 +32,11 @@ const LibraryFilter = () => {
                 />
                 {isLoading && <LoadingFallBack/>}
                 <LibraryList
-                    libraries={filteredLibraries as LibrariesType[]}
+                    libraries={getDisplayLibraries as LibrariesType[]}
                     librariesFilter={librariesFilter}
                     handleSelectLibrary={handleSelectLibrary}
-                />
+                    />
+                <div ref={observerRef} style={{ height: "10px" }} />
             </S.ListWrap>
         </S.Container>
     );

@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import LibrariesPaging from "@/components/Modal/LibrariesPaging/LibrariesPaging";
-import { LibrariesResponseType } from "@/types/LibrariesResponse";
+import { LibraryResponse } from "@/types/Books";
 import { vi } from "vitest";
 
 vi.mock("@/styles/LibrariesPagingStyle", () => ({
@@ -11,11 +11,11 @@ vi.mock("@/styles/LibrariesPagingStyle", () => ({
     PagingWrap: "div",
 }));
 
-const mockLibraries: LibrariesResponseType[] = [
-    {id: "Id A", LibraryName: "Library A", BookLibraryUrl: "http://library-a.com" },
-    {id: "Id B", LibraryName: "Library B", BookLibraryUrl: "http://library-b.com" },
-    {id: "Id C", LibraryName: "Library C", BookLibraryUrl: "http://library-c.com" },
-    {id: "Id D", LibraryName: "Library D", BookLibraryUrl: "http://library-d.com" },
+const mockLibraries: LibraryResponse[] = [
+    {id: "Id A", libraryName: "Library A", bookLibraryUrl: "http://library-a.com" },
+    {id: "Id B", libraryName: "Library B", bookLibraryUrl: "http://library-b.com" },
+    {id: "Id C", libraryName: "Library C", bookLibraryUrl: "http://library-c.com" },
+    {id: "Id D", libraryName: "Library D", bookLibraryUrl: "http://library-d.com" },
 ];
 
 describe("LibrariesPaging 컴포넌트 테스트", () => {

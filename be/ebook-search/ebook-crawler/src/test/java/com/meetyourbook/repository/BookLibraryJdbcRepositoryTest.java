@@ -42,9 +42,10 @@ class BookLibraryJdbcRepositoryTest {
     @DisplayName("BookLibrary 를 저장할 수 있다.")
     void testSaveAll() {
         // Given
+        Long id = 1L;
         List<BookLibraryRelation> relations = List.of(
-            new BookLibraryRelation(UUID.randomUUID(), 1L, "http://example.com/book1"),
-            new BookLibraryRelation(UUID.randomUUID(), 2L, "http://example.com/book2")
+            new BookLibraryRelation(id, 1L, "http://example.com/book1"),
+            new BookLibraryRelation(id, 2L, "http://example.com/book2")
         );
 
         // When
@@ -59,7 +60,7 @@ class BookLibraryJdbcRepositoryTest {
     @DisplayName("BookLibrary 저장 시 중복된 데이터는 업데이트되어야 한다")
     void shouldUpdateExistingBookLibraryWhenSaving() {
         // Given
-        UUID bookId = UUID.randomUUID();
+        Long bookId = 1L;
         long libraryId = 1L;
 
         List<BookLibraryRelation> oldRelations = List.of(
@@ -75,7 +76,7 @@ class BookLibraryJdbcRepositoryTest {
 
         // Then
         String sql = "SELECT url FROM book_library WHERE book_id = ? AND library_id = ?";
-        String url = jdbcTemplate.queryForObject(sql, String.class, uuidToBytes(bookId), libraryId);
+        String url = jdbcTemplate.queryForObject(sql, String.class, bookId, libraryId);
         assertThat(url).isEqualTo("http://newUrl.com");
     }
 
@@ -83,7 +84,7 @@ class BookLibraryJdbcRepositoryTest {
     @DisplayName("BookLibrary 저장 시 생성시간, 수정시간을 저장한다")
     void createdAtUpdatedAt() {
         // Given
-        UUID bookId = UUID.randomUUID();
+        Long bookId = 1L;
         long libraryId = 1L;
 
         List<BookLibraryRelation> oldRelations = List.of(
@@ -99,16 +100,8 @@ class BookLibraryJdbcRepositoryTest {
 
         // Then
         String sql = "SELECT url FROM book_library WHERE book_id = ? AND library_id = ?";
-        String url = jdbcTemplate.queryForObject(sql, String.class, uuidToBytes(bookId), libraryId);
+        String url = jdbcTemplate.queryForObject(sql, String.class, bookId, libraryId);
         assertThat(url).isEqualTo("http://newUrl.com");
     }
-
-    private byte[] uuidToBytes(UUID uuid) {
-        ByteBuffer bb = ByteBuffer.wrap(new byte[16]);
-        bb.putLong(uuid.getMostSignificantBits());
-        bb.putLong(uuid.getLeastSignificantBits());
-        return bb.array();
-    }
-
 
 }

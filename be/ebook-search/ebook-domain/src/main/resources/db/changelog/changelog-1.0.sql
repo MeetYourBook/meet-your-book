@@ -5,7 +5,7 @@
 
 CREATE TABLE book
 (
-    id           BINARY(16) PRIMARY KEY,
+    id           BIGINT PRIMARY KEY AUTO_INCREMENT,
     title        VARCHAR(255) NOT NULL,
     author       VARCHAR(255) NOT NULL,
     publisher    VARCHAR(255),

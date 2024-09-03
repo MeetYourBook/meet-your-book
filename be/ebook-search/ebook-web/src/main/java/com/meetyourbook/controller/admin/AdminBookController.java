@@ -5,7 +5,6 @@ import com.meetyourbook.dto.BookUpdateRequest;
 import com.meetyourbook.service.BookService;
 import jakarta.validation.Valid;
 import java.net.URI;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,7 +25,7 @@ public class AdminBookController {
 
     @PostMapping
     public ResponseEntity<Void> createBook(@RequestBody @Valid BookCreateRequest request) {
-        UUID id = bookService.createBook(request);
+        Long id = bookService.createBook(request);
         URI location = ServletUriComponentsBuilder
             .fromCurrentRequest()
             .path("/{id}")
@@ -36,13 +35,13 @@ public class AdminBookController {
     }
 
     @DeleteMapping("/{bookId}")
-    public ResponseEntity<Void> deleteBook(@PathVariable UUID bookId) {
+    public ResponseEntity<Void> deleteBook(@PathVariable Long bookId) {
         bookService.deleteBook(bookId);
         return ResponseEntity.noContent().build();
     }
 
     @PatchMapping("/{bookId}")
-    public ResponseEntity<?> updateBook(@PathVariable UUID bookId,
+    public ResponseEntity<?> updateBook(@PathVariable Long bookId,
         @RequestBody @Valid BookUpdateRequest request) {
         bookService.updateBook(bookId, request);
         URI location = ServletUriComponentsBuilder

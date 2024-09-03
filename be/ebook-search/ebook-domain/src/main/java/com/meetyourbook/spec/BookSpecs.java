@@ -6,7 +6,6 @@ import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.Root;
 import jakarta.persistence.criteria.Subquery;
 import java.util.List;
-import java.util.UUID;
 import org.springframework.data.jpa.domain.Specification;
 
 public class BookSpecs {
@@ -28,7 +27,7 @@ public class BookSpecs {
 
     public static Specification<Book> inLibraries(List<Long> libraryIds) {
         return (root, query, cb) -> {
-            Subquery<UUID> subquery = query.subquery(UUID.class);
+            Subquery<Long> subquery = query.subquery(Long.class);
             Root<Book> subRoot = subquery.from(Book.class);
             Join<Book, BookLibrary> subJoin = subRoot.join("bookLibraries");
 

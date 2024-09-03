@@ -9,7 +9,6 @@ import com.meetyourbook.exception.ResourceNotFoundException;
 import com.meetyourbook.repository.BookRepository;
 import com.meetyourbook.spec.BookSpecs;
 import com.meetyourbook.spec.SpecBuilder;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.domain.Specification;
@@ -30,25 +29,25 @@ public class BookDomainService {
     }
 
     @Transactional
-    public UUID createBook(BookCreationInfo bookCreationInfo) {
+    public Long createBook(BookCreationInfo bookCreationInfo) {
         Book book = bookCreationInfo.toEntity();
         bookRepository.save(book);
         return book.getId();
     }
 
     @Transactional
-    public void deleteBook(UUID id) {
+    public void deleteBook(Long id) {
         Book book = findBook(id);
         bookRepository.delete(book);
     }
 
     @Transactional
-    public void updateBook(UUID bookId, BookUpdateInfo bookUpdateInfo) {
+    public void updateBook(Long bookId, BookUpdateInfo bookUpdateInfo) {
         Book book = findBook(bookId);
         book.update(bookUpdateInfo);
     }
 
-    private Book findBook(UUID id) {
+    private Book findBook(Long id) {
         return bookRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("Book not found with id: " + id));
     }

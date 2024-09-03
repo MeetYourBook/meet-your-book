@@ -6,7 +6,6 @@ import com.meetyourbook.dto.BookRecord;
 import com.meetyourbook.dto.BookUniqueKey;
 import com.meetyourbook.repository.BookLibraryJdbcRepository;
 import java.util.List;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -37,7 +36,7 @@ public class BookLibraryService {
     }
 
     private BookLibraryRelation createBookLibraryRelation(BookRecord bookRecord) {
-        UUID bookId = bookCacheService.getBookIdFromCache(BookUniqueKey.from(bookRecord), bookRecord);
+        Long bookId = bookCacheService.getBookIdFromCache(BookUniqueKey.from(bookRecord), bookRecord);
         Long libraryId = libraryCacheService.getLibraryFromCache(bookRecord.baseUrl());
 
         return new BookLibraryRelation(bookId, libraryId, bookRecord.bookUrl());

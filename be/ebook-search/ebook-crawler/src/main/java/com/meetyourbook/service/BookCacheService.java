@@ -3,7 +3,6 @@ package com.meetyourbook.service;
 import com.meetyourbook.dto.BookRecord;
 import com.meetyourbook.dto.BookUniqueKey;
 import com.meetyourbook.repository.BookJdbcRepository;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
@@ -20,7 +19,7 @@ public class BookCacheService {
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     @Cacheable(value = "bookCache", key = "#bookUniqueKey")
-    public UUID getBookIdFromCache(BookUniqueKey bookUniqueKey, BookRecord bookRecord) {
+    public Long getBookIdFromCache(BookUniqueKey bookUniqueKey, BookRecord bookRecord) {
         return bookJdbcRepository.findIdByUniqueKey(bookUniqueKey)
             .orElseGet(() -> bookJdbcRepository.saveBook(bookRecord));
     }

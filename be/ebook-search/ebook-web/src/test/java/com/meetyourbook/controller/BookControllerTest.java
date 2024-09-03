@@ -21,7 +21,6 @@ import com.meetyourbook.service.BookService;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
-import java.util.UUID;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -47,8 +46,7 @@ class BookControllerTest {
     @DisplayName("책 검색 요청 성공")
     void searchBooks_success() throws Exception {
         // Given
-        UUID bookId1 = UUID.randomUUID();
-        UUID bookId2 = UUID.randomUUID();
+        Long bookIdSeq = 1L;
 
         Long libraryId1 = new Random().nextLong(100);
         Long libraryId2 = new Random().nextLong(100);
@@ -72,7 +70,7 @@ class BookControllerTest {
             .build();
 
         SimpleBookResponse simpleBookResponse1 = SimpleBookResponse.builder()
-            .id(bookId1)
+            .id(bookIdSeq++)
             .title("Book1")
             .author("Author1")
             .publisher("출판사1")
@@ -81,7 +79,7 @@ class BookControllerTest {
             .build();
 
         SimpleBookResponse simpleBookResponse2 = SimpleBookResponse.builder()
-            .id(bookId2)
+            .id(bookIdSeq)
             .title("Book2")
             .author("Author2")
             .publisher("출판사2")

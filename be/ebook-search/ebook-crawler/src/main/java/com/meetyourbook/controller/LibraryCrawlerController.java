@@ -39,7 +39,7 @@ public class LibraryCrawlerController {
     @PostMapping("/crawl-api")
     public ResponseEntity<LibraryCreationResult> startCrawlingApi(
         @Valid @RequestBody EbookPlatformCrawlRequest request) {
-        LibraryCreationResult result = libraryCrawlerService.crawLibrary(request);
+        LibraryCreationResult result = libraryCrawlerService.crawlLibrary(request);
         return ResponseEntity.ok(result);
     }
 }

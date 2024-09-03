@@ -37,6 +37,9 @@ public class KyoboLibraryCrawler implements EbookPlatformLibraryCrawler {
 
                 return results.stream()
                     .filter(result -> !result.libraryHost().contains("dev"))
+                    .filter(result -> !result.libraryHost().contains("test"))
+                    .filter(result -> !result.libraryName().contains("test"))
+                    .filter(result -> !result.libraryName().contains("테스트"))
                     .map(result -> result.toLibraryCreationInfo(target.platform()))
                     .toList();
             } else {

@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Navigation from "@/components/Navigation/Navigation";
+import DefaultLayout from "@/components/Layout/DefaultLayout";
 
 const meta = {
-    title: "Components/Navigation",
-    component: Navigation,
+    title: "Components/DefaultLayout",
+    component: DefaultLayout,
     parameters: {
         layout: "center",
     },
-} as Meta<typeof Navigation>;
+} as Meta<typeof DefaultLayout>;
 
 export default meta;
 

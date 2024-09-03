@@ -15,7 +15,7 @@ export const useLibraryFilter = () => {
     const [disPlayLibraries, setDisplayLibraries] = useState<LibrariesType[]>([])
     const { librariesFilter, setLibrariesFilter, setPage } = useQueryStore();
     const { data = [], isLoading } = useQueryData("libraries");
-    const { searchValue, setSearchValue, filteredLibraries } = useSearchFilter({
+    const { searchValue, setSearchValue, filteredLibraries } = useSearchFilter<LibrariesType>({
         libraries: data,
         keyName: "name",
     });

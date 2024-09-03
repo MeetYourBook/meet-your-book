@@ -1,7 +1,7 @@
 export interface LibraryResponse {
     id: string;
-    LibraryName: string;
-    BookLibraryUrl: string;
+    libraryName: string;
+    bookLibraryUrl: string;
 }
 export interface BookContent {
     id: string;

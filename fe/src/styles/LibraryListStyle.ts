@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const ListItem = styled.li`
+    width: 100%;
     display: flex;
     align-items: center;
     margin-bottom: 0.5rem;
@@ -8,6 +9,7 @@ const ListItem = styled.li`
 
 const Checkbox = styled.input`
     margin-right: 0.5rem;
+    flex-shrink: 0;
     appearance: none;
     width: 1rem;
     height: 1rem;
@@ -26,6 +28,9 @@ const Checkbox = styled.input`
 const Label = styled.label`
     flex-grow: 1;
     font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `;
 
 export { ListItem, Checkbox, Label };

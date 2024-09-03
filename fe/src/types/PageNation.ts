@@ -1,1 +1,0 @@
-export const LIBRARIES_PER_PAGE = 5;

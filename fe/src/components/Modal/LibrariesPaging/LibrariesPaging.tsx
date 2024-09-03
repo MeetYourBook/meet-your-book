@@ -3,7 +3,7 @@ import * as S from "@/styles/LibrariesPagingStyle";
 import { useEffect, useState } from "react";
 import { PAGINATION_FIRST_PAGE } from "@/constants";
 import { Pagination } from "antd";
-import { LIBRARIES_PER_PAGE } from "@/types/PageNation";
+import { LIBRARIES_PER_PAGE } from "@/constants";
 import useSearchFilter from "@/hooks/useFilterSearch";
 import { getCurrentPageItems } from "@/utils";
 interface LibrariesPagingProps {

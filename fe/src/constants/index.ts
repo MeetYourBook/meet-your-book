@@ -7,5 +7,6 @@ export const DROP_DOWN_INITIAL_ITEMS = [
 export const PAGINATION_FIRST_PAGE = 1
 export const FIRST_PAGE = 0;
 export const ANIMATION_TIME = 100;
-
+export const LIBRARIES_PER_PAGE = 5;
+export const LIBRARIES_FILTER_PER_PAGE = 20;
 export const DEBOUNCE_TIME = 300;

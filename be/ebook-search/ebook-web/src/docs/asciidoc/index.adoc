@@ -3,13 +3,15 @@
 == 목차
 
 === User API
+
 * link:book.html[도서 API]
 * link:library.html[도서관 API]
 
 === Admin API
-* link:admin-book.adoc[관리자 도서 API]
-* link:admin-library.adoc[관리자 도서관 API]
-* link:admin-verification.adoc[검증 API]
+
+* link:admin-book.html[관리자 도서 API]
+* link:admin-library.html[관리자 도서관 API]
+* link:admin-verification.html[검증 API]
 
 == 개요
 

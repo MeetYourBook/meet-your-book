@@ -2,9 +2,11 @@ package com.meetyourbook.dto;
 
 import jakarta.validation.constraints.NotNull;
 
-public record KyoboLibraryApiRequest(
+public record EbookPlatformCrawlRequest(
 
     @NotNull
+    String ebookPlatform,
+
     String url
 
 ) {

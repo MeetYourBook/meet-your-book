@@ -1,5 +1,7 @@
 package com.meetyourbook.dto;
 
+import com.meetyourbook.entity.Library.EbookPlatform;
+
 public record LibraryCrawlResult(
 
     String libraryCode,
@@ -12,8 +14,8 @@ public record LibraryCrawlResult(
 
 ) {
 
-    public LibraryCreationInfo toLibraryCreationInfo() {
-        return new LibraryCreationInfo(libraryName, libraryHost);
+    public LibraryCreationInfo toLibraryCreationInfo(EbookPlatform ebookPlatform) {
+        return new LibraryCreationInfo(libraryName, libraryHost, ebookPlatform);
     }
 
 }

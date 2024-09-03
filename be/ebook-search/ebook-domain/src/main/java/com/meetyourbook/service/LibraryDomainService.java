@@ -1,12 +1,17 @@
 package com.meetyourbook.service;
 
+import com.meetyourbook.dto.DuplicateLibrary;
 import com.meetyourbook.dto.LibraryCreationInfo;
+import com.meetyourbook.dto.LibraryCreationResult;
 import com.meetyourbook.dto.LibraryResponse;
 import com.meetyourbook.dto.LibraryUpdateInfo;
 import com.meetyourbook.entity.Library;
 import com.meetyourbook.exception.ResourceNotFoundException;
 import com.meetyourbook.repository.LibraryRepository;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,14 +37,28 @@ public class LibraryDomainService {
     }
 
     @Transactional
-    public int createLibraries(List<LibraryCreationInfo> libraryCreationInfos) {
-        List<Library> libraries = libraryCreationInfos.stream()
+    public LibraryCreationResult createLibraries(List<LibraryCreationInfo> libraryCreationInfos) {
+        Map<String, LibraryCreationInfo> uniqueLibraries = new HashMap<>();
+        List<DuplicateLibrary> duplicates = new ArrayList<>();
+
+        for (LibraryCreationInfo info : libraryCreationInfos) {
+            String key = info.url();
+            if (uniqueLibraries.containsKey(key)) {
+                duplicates.add(new DuplicateLibrary(info, uniqueLibraries.get(key)));
+            }
+            uniqueLibraries.put(key, info);
+        }
+
+        List<Library> libraries = uniqueLibraries.values().stream()
             .map(LibraryCreationInfo::toEntity)
             .toList();
 
         List<Library> savedLibraries = libraryRepository.saveAll(libraries);
-        log.info("총 {}개의 도서관을 저장했습니다.", savedLibraries.size());
-        return savedLibraries.size();
+        int savedCount = savedLibraries.size();
+        int duplicateCount = duplicates.size();
+
+        log.info("총 {}개의 도서관을 저장했습니다. {}개의 중복된 도서관이 발견되었습니다.", savedCount, duplicateCount);
+        return new LibraryCreationResult(savedCount, duplicateCount, duplicates);
     }
 
     @Transactional

@@ -7,11 +7,18 @@ public record BookSearchRequest(
     String author,
     String publisher,
     List<Long> libraries,
-    int page,
-    int size,
+    Integer page,
+    Integer size,
     String sort
 
 ) {
+
+    public BookSearchRequest {
+        sort = sort != null ? sort : "publishDate";
+        page = page != null ? page : 0;
+        size = size != null ? size : 10;
+
+    }
 
     public BookSearchInfo toBookSearchInfo() {
         return BookSearchInfo.builder()

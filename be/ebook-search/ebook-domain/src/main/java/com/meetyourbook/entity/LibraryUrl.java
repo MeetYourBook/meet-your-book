@@ -39,7 +39,7 @@ public class LibraryUrl {
     }
 
     public boolean hasMainInk() {
-        return url.contains("main.ink");
+        return !url.contains("T3");
     }
 
     public String getBaseUrl() {

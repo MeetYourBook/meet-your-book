@@ -1,0 +1,19 @@
+= 책 크롤러 API
+
+== 크롤링 시작 요청 성공
+
+operation::start-crawler[]
+
+== 크롤링 시작 요청 실패
+
+operation::start-crawler-already-running[]
+
+== 크롤링 중단 요청 성공
+
+operation::stop-crawler[]
+
+== 크롤링 중단 요청 실패
+
+=== 요청한 크롤러가 존재하지 않는 경우
+
+operation::stop-crawler-not-found[]

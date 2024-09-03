@@ -65,7 +65,7 @@ public class LibraryCrawlerService {
         saveToJson(libraryNames, request.libraryBaseUrl());
     }
 
-    public LibraryCreationResult crawLibrary(EbookPlatformCrawlRequest request) {
+    public LibraryCreationResult crawlLibrary(EbookPlatformCrawlRequest request) {
         EbookPlatform ebookPlatform = EbookPlatform.valueOf(request.ebookPlatform().toUpperCase());
         String targetUrl = determineUrl(request.url(), ebookPlatform);
         EbookPlatformLibraryCrawler crawler = libraryCrawlerFactory.findByPlatformName(

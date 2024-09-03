@@ -29,7 +29,7 @@ const BookCard = ({ bookData, viewMode }: BookItemProps) => {
             {viewMode === "grid" ? (
                 <S.GridCard $isVisible={isVisible} onClick={handleModalOpen}>
                     <S.Image
-                        src={`http://${imageUrl}`}
+                        src={`//${imageUrl}`}
                         alt={title}
                         onError={handleImageError}
                         loading="lazy"
@@ -42,7 +42,7 @@ const BookCard = ({ bookData, viewMode }: BookItemProps) => {
             ) : (
                 <S.ListCard $isVisible={isVisible} onClick={handleModalOpen}>
                     <S.Image
-                        src={`http://${imageUrl}`}
+                        src={`//${imageUrl}`}
                         alt={title}
                         onError={handleImageError}
                     />

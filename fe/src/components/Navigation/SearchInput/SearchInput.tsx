@@ -1,7 +1,6 @@
 import * as S from "@/styles/SearchInputStyle";
 import { KeyboardEvent, useRef } from "react";
 import useQueryStore from "@/stores/queryStore";
-import { SearchOutlined } from "@ant-design/icons";
 import { FIRST_PAGE } from "@/constants";
 import DropDownBox from "../DropDownBox/DropDownBox";
 
@@ -28,9 +27,7 @@ const SearchInput = () => {
                 onKeyDown={handleKeyDown}
                 placeholder="Search For Book..."
             />
-            <S.SearchField onClick={handleSearchClick}>
-                <SearchOutlined />
-            </S.SearchField>
+            <S.SearchField onClick={handleSearchClick}/>
         </S.InputWrap>
     );
 };

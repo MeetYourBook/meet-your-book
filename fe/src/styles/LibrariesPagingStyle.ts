@@ -9,11 +9,13 @@ const Container = styled.div`
 const Input = styled.input`
     width: 60%;
     height: 2rem;
-    border: 1px solid var(--border-color);
+    border: ${({ theme }) => theme.border};
     border-radius: 8px;
     margin: 15px auto;
     padding: 0 0.6rem;
     outline: none;
+    background-color: ${({ theme }) => theme.input};
+    color: ${({ theme }) => theme.text};
 `
 const LibrariesWrap = styled.div`
     display: flex;
@@ -24,7 +26,7 @@ const LibrariesWrap = styled.div`
 const LibraryItem = styled.a`
     font-size: 13px;
     margin: 2px 0;
-    color: black;
+    color: ${({ theme }) => theme.text};
     text-decoration: none;
     cursor: pointer;
     &:hover {

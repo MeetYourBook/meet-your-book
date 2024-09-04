@@ -86,7 +86,7 @@ const Input = styled.input`
     padding: 0 0.6rem;
     outline: none;
     background-color: ${({ theme }) => theme.input};
-
+    color: ${({ theme }) => theme.text};
 `
 
 export { Container, Header, ListWrap, ListUl, Input, Title };

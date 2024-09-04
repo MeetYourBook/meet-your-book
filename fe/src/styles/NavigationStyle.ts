@@ -47,10 +47,17 @@ const SearchWrap = styled.div`
     }
 `
 
+const ThemeSwitcherWrap = styled.span`
+    @media (max-width: 1000px) {
+        display: none;
+    }
+`
+
 export {
     NavContainer,
     NavWrap,
     LogoName,
     LogoWrap,
     SearchWrap,
+    ThemeSwitcherWrap,
 };

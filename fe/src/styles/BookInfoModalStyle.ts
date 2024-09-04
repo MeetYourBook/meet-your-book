@@ -20,7 +20,7 @@ const PopupOverlay = styled.div`
 `;
 
 const PopupCard = styled.div`
-    background-color: #ffffff;
+    background-color: ${({ theme }) => theme.body};
     border-radius: 16px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     padding: 24px;
@@ -70,19 +70,16 @@ const Title = styled.h2`
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 12px;
-    color: #333;
 `;
 
 const MetaInfo = styled.p`
     font-size: 14px;
-    color: #666;
     margin: 4px 0;
 `;
 
 const Description = styled.p`
     font-size: 16px;
     line-height: 1.6;
-    color: #444;
     margin-bottom: 24px;
     padding-bottom: 24px;
     border-bottom: 1px solid #eee;

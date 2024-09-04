@@ -15,7 +15,9 @@ const DefaultLayout = () => {
                         <SearchInput />
                     </S.SearchWrap>
                     <MobileSearchFilterPanel />
-                    <ThemeSwitcher/>
+                    <S.ThemeSwitcherWrap>
+                        <ThemeSwitcher />
+                    </S.ThemeSwitcherWrap>
                 </S.NavWrap>
             </S.NavContainer>
             <Outlet />

@@ -12,7 +12,6 @@ const GlobalStyle = createGlobalStyle`
     body {
         background-color: ${({ theme }) => theme.body};
         color: ${({ theme }) => theme.text};
-        transition: background 0.15s ease-in, color 0.15s ease-in;
     }
     
     body,

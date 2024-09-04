@@ -1,5 +1,5 @@
 import {http, HttpResponse} from "msw";
-import libraryData from "../mockData/library.json";
+import libraryData from "../mockData/library.json" assert { type: "json" };
 
 
 export const libraryHandlers = [

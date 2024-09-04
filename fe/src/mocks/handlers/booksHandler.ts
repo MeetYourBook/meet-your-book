@@ -1,5 +1,5 @@
 import { http, HttpResponse } from "msw";
-import booksData from "../mockData/books.json";
+import booksData from "../mockData/books.json" assert { type: "json" };
 import { BookContent } from "@/types/Books";
 
 interface Params {

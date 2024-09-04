@@ -6,6 +6,13 @@ const GlobalStyle = createGlobalStyle`
 
     :root {
     --border-color: #e9e7e7;
+    --border-dark-color: "#374151";
+    }
+
+    body {
+        background-color: ${({ theme }) => theme.body};
+        color: ${({ theme }) => theme.text};
+        transition: background 0.15s ease-in, color 0.15s ease-in;
     }
     
     body,

@@ -1,0 +1,4194 @@
+{
+    "content": [
+        {
+            "id": "9ec7728b-f245-4584-89a5-4b160af02e09",
+            "title": "책 제목 1",
+            "author": "작가 1",
+            "provider": "교보문고",
+            "publisher": "출판사 1",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "965d74c3-0b5f-4d67-95dd-acedfb9c857d",
+                    "libraryName": "한국과학기술원 도서관",
+                    "bookLibraryUrl": "http://example.com/book/9ec7728b-f245-4584-89a5-4b160af02e09"
+                },
+                {
+                    "id": "87ee69d9-d13f-465d-aa4e-a7b3a9c14fa7",
+                    "libraryName": "전북도서관",
+                    "bookLibraryUrl": "http://example.com/book/9ec7728b-f245-4584-89a5-4b160af02e09"
+                },
+                {
+                    "id": "a72d4747-d2c4-48d8-9ba6-e2b1d9bf2db9",
+                    "libraryName": "서울특별시 도서관",
+                    "bookLibraryUrl": "http://example.com/book/1"
+                },
+                {
+                    "id": "4bf09a45-8530-488b-9a3d-414bd7b4ff0e",
+                    "libraryName": "부산시립도서관",
+                    "bookLibraryUrl": "http://example.com/book/2"
+                },
+                {
+                    "id": "6e5f2e36-6f7c-4e72-bdb4-b5f5af7a3d50",
+                    "libraryName": "대구시립도서관",
+                    "bookLibraryUrl": "http://example.com/book/3"
+                },
+                {
+                    "id": "e62394d1-d54f-43c7-b43e-84a9b8cb5ae3",
+                    "libraryName": "광주시립도서관",
+                    "bookLibraryUrl": "http://example.com/book/4"
+                },
+                {
+                    "id": "d8452fcf-70d8-4633-b83c-3b86a96b6f3e",
+                    "libraryName": "인천광역시 도서관",
+                    "bookLibraryUrl": "http://example.com/book/5"
+                },
+                {
+                    "id": "87c739be-4695-46fa-a11b-b48da9f78f1c",
+                    "libraryName": "대전광역시 도서관",
+                    "bookLibraryUrl": "http://example.com/book/6"
+                },
+                {
+                    "id": "35d18e8c-0476-48a9-9832-0a4ae9b61c95",
+                    "libraryName": "울산광역시 도서관",
+                    "bookLibraryUrl": "http://example.com/book/7"
+                },
+                {
+                    "id": "f7a23fd0-6d91-46d6-bf16-0e82f9a499d5",
+                    "libraryName": "경기도립 도서관",
+                    "bookLibraryUrl": "http://example.com/book/8"
+                },
+                {
+                    "id": "e2b7d509-b3b1-46ea-a7f9-d18c7bb9f372",
+                    "libraryName": "충청북도 도서관",
+                    "bookLibraryUrl": "http://example.com/book/9"
+                },
+                {
+                    "id": "8d8b7a1e-e3f9-4a4b-badf-abbc05b96289",
+                    "libraryName": "충청남도 도서관",
+                    "bookLibraryUrl": "http://example.com/book/10"
+                },
+                {
+                    "id": "b6a0277a-c56f-4321-9886-462752ecaf23",
+                    "libraryName": "전라북도 도서관",
+                    "bookLibraryUrl": "http://example.com/book/11"
+                },
+                {
+                    "id": "653b7e83-7ecf-495f-953d-3e322af3420e",
+                    "libraryName": "전라남도 도서관",
+                    "bookLibraryUrl": "http://example.com/book/12"
+                },
+                {
+                    "id": "27fbf034-5a82-4136-b5bc-c6d8263e91c5",
+                    "libraryName": "경상북도 도서관",
+                    "bookLibraryUrl": "http://example.com/book/13"
+                },
+                {
+                    "id": "9e2930ac-2b44-4f26-a28e-0a7da66549a0",
+                    "libraryName": "경상남도 도서관",
+                    "bookLibraryUrl": "http://example.com/book/14"
+                },
+                {
+                    "id": "1765f0d4-5e1f-4532-9233-70de6af43d22",
+                    "libraryName": "제주특별자치도 도서관",
+                    "bookLibraryUrl": "http://example.com/book/15"
+                },
+                {
+                    "id": "d0c368b1-bd9a-4689-9995-26f35d7a1c77",
+                    "libraryName": "세종특별자치시 도서관",
+                    "bookLibraryUrl": "http://example.com/book/16"
+                },
+                {
+                    "id": "046a8f85-61a4-4c89-85d7-167571058f41",
+                    "libraryName": "강원도 도서관",
+                    "bookLibraryUrl": "http://example.com/book/17"
+                },
+                {
+                    "id": "e0d5f9c1-57cb-4b9b-b78a-c2c15fcb4163",
+                    "libraryName": "서울대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/18"
+                },
+                {
+                    "id": "d0cc57a7-1dd2-457e-8ae4-e9c4d678c0f2",
+                    "libraryName": "고려대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/19"
+                },
+                {
+                    "id": "92ecb022-89f1-4b6c-99b4-5f7fd48c7c31",
+                    "libraryName": "연세대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/20"
+                },
+                {
+                    "id": "c874ec92-7c8b-4fe4-b07d-36da8a67b79c",
+                    "libraryName": "한양대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/21"
+                },
+                {
+                    "id": "d8a35421-38c4-4824-92a7-0e6b139c0d13",
+                    "libraryName": "성균관대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/22"
+                },
+                {
+                    "id": "a5e9161c-42f5-4b5f-8d6c-9d48c79f8d53",
+                    "libraryName": "경희대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/23"
+                },
+                {
+                    "id": "f0b9d17d-cbc0-43c8-b4fa-e85ba4b37f5a",
+                    "libraryName": "이화여자대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/24"
+                },
+                {
+                    "id": "eec9082a-2b3f-478b-bb9e-f6450dafeed4",
+                    "libraryName": "포항공과대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/25"
+                },
+                {
+                    "id": "f18f5463-ef80-45ab-88d8-402b67ac5f8d",
+                    "libraryName": "충남대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/26"
+                },
+                {
+                    "id": "0512684a-d384-4a16-870d-3f91a9dfcf6c",
+                    "libraryName": "전남대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/27"
+                },
+                {
+                    "id": "e36c2af8-e59c-4d3d-bb9d-9ae889537bb8",
+                    "libraryName": "경북대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/28"
+                },
+                {
+                    "id": "ca04f934-8c2e-45b5-91f9-0b0d3bba57a1",
+                    "libraryName": "부산대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/29"
+                },
+                {
+                    "id": "ad5c5c93-8703-4db0-b9b7-4e76418d0b65",
+                    "libraryName": "한밭대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/30"
+                }
+            ]
+        },
+        {
+            "id": "9c130bd9-954b-4414-96a4-891e6ef20de4",
+            "title": "책 제목 2",
+            "author": "작가 2",
+            "provider": "교보문고",
+            "publisher": "출판사 2",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "1847852a-b91b-42c8-986f-29064d85f433",
+                    "libraryName": "세종도서관",
+                    "bookLibraryUrl": "http://example.com/book/9c130bd9-954b-4414-96a4-891e6ef20de4"
+                },
+                {
+                    "id": "e1339922-5fbe-4ffa-8607-ccea60d14041",
+                    "libraryName": "국회도서관",
+                    "bookLibraryUrl": "http://example.com/book/9c130bd9-954b-4414-96a4-891e6ef20de4"
+                }
+            ]
+        },
+        {
+            "id": "a36cbc1f-10d4-4bf4-be8f-ec63eb849591",
+            "title": "책 제목 3",
+            "author": "작가 3",
+            "provider": "교보문고",
+            "publisher": "출판사 3",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "d512bb86-af60-4459-97a8-dca90d36984f",
+                    "libraryName": "대구도서관",
+                    "bookLibraryUrl": "http://example.com/book/a36cbc1f-10d4-4bf4-be8f-ec63eb849591"
+                },
+                {
+                    "id": "f3244be1-5b36-4d35-8952-c88a19d7be50",
+                    "libraryName": "경기중앙도서관",
+                    "bookLibraryUrl": "http://example.com/book/a36cbc1f-10d4-4bf4-be8f-ec63eb849591"
+                }
+            ]
+        },
+        {
+            "id": "23242487-c995-47d3-99a0-c8e5cc96a776",
+            "title": "책 제목 4",
+            "author": "작가 4",
+            "provider": "교보문고",
+            "publisher": "출판사 4",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "b458afe7-3b8d-4a8c-8712-4b46a1fd57f0",
+                    "libraryName": "교보문고",
+                    "bookLibraryUrl": "http://example.com/book/23242487-c995-47d3-99a0-c8e5cc96a776"
+                }
+            ]
+        },
+        {
+            "id": "b4bef7a4-f474-409b-abe6-7b648bc3ae4d",
+            "title": "책 제목 5",
+            "author": "작가 5",
+            "provider": "교보문고",
+            "publisher": "출판사 5",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "e889f427-758d-4b38-8f73-3d394bd7af3a",
+                    "libraryName": "부산도서관",
+                    "bookLibraryUrl": "http://example.com/book/b4bef7a4-f474-409b-abe6-7b648bc3ae4d"
+                }
+            ]
+        },
+        {
+            "id": "1122af63-3d1f-47f8-b3e3-1d009abe8e2e",
+            "title": "책 제목 6",
+            "author": "작가 6",
+            "provider": "교보문고",
+            "publisher": "출판사 6",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "23399f2c-76d6-4dbc-a024-e29d5ee1e141",
+                    "libraryName": "울산도서관",
+                    "bookLibraryUrl": "http://example.com/book/1122af63-3d1f-47f8-b3e3-1d009abe8e2e"
+                },
+                {
+                    "id": "dc494969-03cb-436f-b776-ac007d10e965",
+                    "libraryName": "경남도서관",
+                    "bookLibraryUrl": "http://example.com/book/1122af63-3d1f-47f8-b3e3-1d009abe8e2e"
+                },
+                {
+                    "id": "ed615093-4be4-4f65-8ad2-36de6ce319b0",
+                    "libraryName": "대전도서관",
+                    "bookLibraryUrl": "http://example.com/book/1122af63-3d1f-47f8-b3e3-1d009abe8e2e"
+                }
+            ]
+        },
+        {
+            "id": "3fb9a83e-ed7a-4690-ba20-5b3854cbeb4c",
+            "title": "책 제목 7",
+            "author": "작가 7",
+            "provider": "교보문고",
+            "publisher": "출판사 7",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "b754f742-82ff-4618-b7fb-38b13f14ffb1",
+                    "libraryName": "양자출판사",
+                    "bookLibraryUrl": "http://example.com/book/3fb9a83e-ed7a-4690-ba20-5b3854cbeb4c"
+                },
+                {
+                    "id": "12ee40d1-a3a7-4cb9-a230-cd401b21808c",
+                    "libraryName": "연세대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/3fb9a83e-ed7a-4690-ba20-5b3854cbeb4c"
+                },
+                {
+                    "id": "965d74c3-0b5f-4d67-95dd-acedfb9c857d",
+                    "libraryName": "한국과학기술원 도서관",
+                    "bookLibraryUrl": "http://example.com/book/3fb9a83e-ed7a-4690-ba20-5b3854cbeb4c"
+                }
+            ]
+        },
+        {
+            "id": "cb6f7c2a-7363-47fe-8b09-33fedd544913",
+            "title": "책 제목 8",
+            "author": "작가 8",
+            "provider": "교보문고",
+            "publisher": "출판사 8",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "6c6fd174-a08f-48eb-a8cf-ee37d02aa699",
+                    "libraryName": "포항공과대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/cb6f7c2a-7363-47fe-8b09-33fedd544913"
+                },
+                {
+                    "id": "f89f7574-a751-4160-b1a0-78e5319356b1",
+                    "libraryName": "한동대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/cb6f7c2a-7363-47fe-8b09-33fedd544913"
+                }
+            ]
+        },
+        {
+            "id": "d1e582cb-9a99-45c2-8fdc-5e3f9cf2f06d",
+            "title": "책 제목 9",
+            "author": "작가 9",
+            "provider": "교보문고",
+            "publisher": "출판사 9",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "5381d53f-4834-42be-9db5-38734cf90857",
+                    "libraryName": "전남대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/d1e582cb-9a99-45c2-8fdc-5e3f9cf2f06d"
+                },
+                {
+                    "id": "f3244be1-5b36-4d35-8952-c88a19d7be50",
+                    "libraryName": "경기중앙도서관",
+                    "bookLibraryUrl": "http://example.com/book/d1e582cb-9a99-45c2-8fdc-5e3f9cf2f06d"
+                },
+                {
+                    "id": "1847852a-b91b-42c8-986f-29064d85f433",
+                    "libraryName": "세종도서관",
+                    "bookLibraryUrl": "http://example.com/book/d1e582cb-9a99-45c2-8fdc-5e3f9cf2f06d"
+                }
+            ]
+        },
+        {
+            "id": "08b24fd1-9433-472a-b55b-c8f9298b50fe",
+            "title": "책 제목 10",
+            "author": "작가 10",
+            "provider": "교보문고",
+            "publisher": "출판사 10",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "22e3c3ba-be0d-4157-bea5-5600d56cf137",
+                    "libraryName": "충남대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/08b24fd1-9433-472a-b55b-c8f9298b50fe"
+                },
+                {
+                    "id": "5381d53f-4834-42be-9db5-38734cf90857",
+                    "libraryName": "전남대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/08b24fd1-9433-472a-b55b-c8f9298b50fe"
+                },
+                {
+                    "id": "d0bc4ab1-a150-49e0-b32d-d290e528b29c",
+                    "libraryName": "헌법재판소 도서관",
+                    "bookLibraryUrl": "http://example.com/book/08b24fd1-9433-472a-b55b-c8f9298b50fe"
+                }
+            ]
+        },
+        {
+            "id": "da178a11-990d-47d3-b2d6-46b4059b703b",
+            "title": "책 제목 11",
+            "author": "작가 11",
+            "provider": "교보문고",
+            "publisher": "출판사 11",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "a85e69bf-c440-49a6-b592-4624ef9e18b7",
+                    "libraryName": "인천도서관",
+                    "bookLibraryUrl": "http://example.com/book/da178a11-990d-47d3-b2d6-46b4059b703b"
+                },
+                {
+                    "id": "217b159c-7806-4401-b0bf-ef4be44abba3",
+                    "libraryName": "부산대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/da178a11-990d-47d3-b2d6-46b4059b703b"
+                },
+                {
+                    "id": "dc494969-03cb-436f-b776-ac007d10e965",
+                    "libraryName": "경남도서관",
+                    "bookLibraryUrl": "http://example.com/book/da178a11-990d-47d3-b2d6-46b4059b703b"
+                }
+            ]
+        },
+        {
+            "id": "18f22ca0-fc47-42c0-9f53-f90e885e2a87",
+            "title": "책 제목 12",
+            "author": "작가 12",
+            "provider": "교보문고",
+            "publisher": "출판사 12",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "fb61f88e-7c29-4424-b0ea-f9fea2e0d24f",
+                    "libraryName": "울산과학기술원 도서관",
+                    "bookLibraryUrl": "http://example.com/book/18f22ca0-fc47-42c0-9f53-f90e885e2a87"
+                }
+            ]
+        },
+        {
+            "id": "c545a2bc-1f08-43b2-813d-d87a2ce3ae1f",
+            "title": "책 제목 13",
+            "author": "작가 13",
+            "provider": "교보문고",
+            "publisher": "출판사 13",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "533a8d51-9daa-4400-8248-05d4f90340f0",
+                    "libraryName": "(주)누리달",
+                    "bookLibraryUrl": "http://example.com/book/c545a2bc-1f08-43b2-813d-d87a2ce3ae1f"
+                }
+            ]
+        },
+        {
+            "id": "913c5270-6129-4018-b795-ee31cdfaa57b",
+            "title": "책 제목 14",
+            "author": "작가 14",
+            "provider": "교보문고",
+            "publisher": "출판사 14",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "2c6a6952-284e-4cf4-a755-f0c6cbc3ddf2",
+                    "libraryName": "광주도서관",
+                    "bookLibraryUrl": "http://example.com/book/913c5270-6129-4018-b795-ee31cdfaa57b"
+                },
+                {
+                    "id": "22e3c3ba-be0d-4157-bea5-5600d56cf137",
+                    "libraryName": "충남대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/913c5270-6129-4018-b795-ee31cdfaa57b"
+                },
+                {
+                    "id": "5381d53f-4834-42be-9db5-38734cf90857",
+                    "libraryName": "전남대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/913c5270-6129-4018-b795-ee31cdfaa57b"
+                }
+            ]
+        },
+        {
+            "id": "c9c627a3-b9ba-42ab-bc46-0ab5c74d0aa0",
+            "title": "책 제목 15",
+            "author": "작가 15",
+            "provider": "교보문고",
+            "publisher": "출판사 15",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "b754f742-82ff-4618-b7fb-38b13f14ffb1",
+                    "libraryName": "양자출판사",
+                    "bookLibraryUrl": "http://example.com/book/c9c627a3-b9ba-42ab-bc46-0ab5c74d0aa0"
+                },
+                {
+                    "id": "3d2e83d2-e5d8-4be4-98c9-40ea6300f59d",
+                    "libraryName": "충북도서관",
+                    "bookLibraryUrl": "http://example.com/book/c9c627a3-b9ba-42ab-bc46-0ab5c74d0aa0"
+                }
+            ]
+        },
+        {
+            "id": "0cd16822-2762-4efa-a024-41e6ec38ff6f",
+            "title": "책 제목 16",
+            "author": "작가 16",
+            "provider": "교보문고",
+            "publisher": "출판사 16",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "9730f992-925b-47dc-a3b6-ae3e24f9c448",
+                    "libraryName": "고려대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/0cd16822-2762-4efa-a024-41e6ec38ff6f"
+                }
+            ]
+        },
+        {
+            "id": "775c2db5-ec1c-4317-9bd3-2d3713bd8a86",
+            "title": "책 제목 17",
+            "author": "작가 17",
+            "provider": "교보문고",
+            "publisher": "출판사 17",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f019d34b-32de-4593-a68f-08efa31c2c53",
+                    "libraryName": "성균관대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/775c2db5-ec1c-4317-9bd3-2d3713bd8a86"
+                },
+                {
+                    "id": "e889f427-758d-4b38-8f73-3d394bd7af3a",
+                    "libraryName": "부산도서관",
+                    "bookLibraryUrl": "http://example.com/book/775c2db5-ec1c-4317-9bd3-2d3713bd8a86"
+                }
+            ]
+        },
+        {
+            "id": "51706a4a-1ae3-4868-95a4-18ad0e17062d",
+            "title": "책 제목 18",
+            "author": "작가 18",
+            "provider": "교보문고",
+            "publisher": "출판사 18",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "d512bb86-af60-4459-97a8-dca90d36984f",
+                    "libraryName": "대구도서관",
+                    "bookLibraryUrl": "http://example.com/book/51706a4a-1ae3-4868-95a4-18ad0e17062d"
+                },
+                {
+                    "id": "f8d046db-4f6f-4e23-b741-71762fbde179",
+                    "libraryName": "경북도서관",
+                    "bookLibraryUrl": "http://example.com/book/51706a4a-1ae3-4868-95a4-18ad0e17062d"
+                },
+                {
+                    "id": "6946380b-e5e0-45aa-8ff4-b9655979ac84",
+                    "libraryName": "법원도서관",
+                    "bookLibraryUrl": "http://example.com/book/51706a4a-1ae3-4868-95a4-18ad0e17062d"
+                }
+            ]
+        },
+        {
+            "id": "8da19ef2-898a-4775-9542-ff05b52979d0",
+            "title": "책 제목 19",
+            "author": "작가 19",
+            "provider": "교보문고",
+            "publisher": "출판사 19",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f32842a7-7f14-47be-8900-d050839ba140",
+                    "libraryName": "경상대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/8da19ef2-898a-4775-9542-ff05b52979d0"
+                },
+                {
+                    "id": "d0bc4ab1-a150-49e0-b32d-d290e528b29c",
+                    "libraryName": "헌법재판소 도서관",
+                    "bookLibraryUrl": "http://example.com/book/8da19ef2-898a-4775-9542-ff05b52979d0"
+                }
+            ]
+        },
+        {
+            "id": "8efa451b-9c05-48c7-b76c-1407e33607b9",
+            "title": "책 제목 20",
+            "author": "작가 20",
+            "provider": "교보문고",
+            "publisher": "출판사 20",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "ab306db4-08ad-46b1-9b58-9405fa926d62",
+                    "libraryName": "국립중앙도서관",
+                    "bookLibraryUrl": "http://example.com/book/8efa451b-9c05-48c7-b76c-1407e33607b9"
+                },
+                {
+                    "id": "d512bb86-af60-4459-97a8-dca90d36984f",
+                    "libraryName": "대구도서관",
+                    "bookLibraryUrl": "http://example.com/book/8efa451b-9c05-48c7-b76c-1407e33607b9"
+                },
+                {
+                    "id": "a6090650-8bf9-4da4-9360-4ca72b3eb24a",
+                    "libraryName": "고렘팩토리",
+                    "bookLibraryUrl": "http://example.com/book/8efa451b-9c05-48c7-b76c-1407e33607b9"
+                }
+            ]
+        },
+        {
+            "id": "19a88605-4bbd-4210-a8b9-f30161798d9c",
+            "title": "책 제목 21",
+            "author": "작가 21",
+            "provider": "교보문고",
+            "publisher": "출판사 21",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "6946380b-e5e0-45aa-8ff4-b9655979ac84",
+                    "libraryName": "법원도서관",
+                    "bookLibraryUrl": "http://example.com/book/19a88605-4bbd-4210-a8b9-f30161798d9c"
+                },
+                {
+                    "id": "b6387c4b-de2c-406f-975e-c9eb5c589027",
+                    "libraryName": "경북대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/19a88605-4bbd-4210-a8b9-f30161798d9c"
+                },
+                {
+                    "id": "1847852a-b91b-42c8-986f-29064d85f433",
+                    "libraryName": "세종도서관",
+                    "bookLibraryUrl": "http://example.com/book/19a88605-4bbd-4210-a8b9-f30161798d9c"
+                }
+            ]
+        },
+        {
+            "id": "201617b5-3154-45e7-b7e2-76ed6ed188d2",
+            "title": "책 제목 22",
+            "author": "작가 22",
+            "provider": "교보문고",
+            "publisher": "출판사 22",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "5381d53f-4834-42be-9db5-38734cf90857",
+                    "libraryName": "전남대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/201617b5-3154-45e7-b7e2-76ed6ed188d2"
+                },
+                {
+                    "id": "f89f7574-a751-4160-b1a0-78e5319356b1",
+                    "libraryName": "한동대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/201617b5-3154-45e7-b7e2-76ed6ed188d2"
+                }
+            ]
+        },
+        {
+            "id": "f9fd9294-f7f5-432f-be52-6e4fdca53f25",
+            "title": "책 제목 23",
+            "author": "작가 23",
+            "provider": "교보문고",
+            "publisher": "출판사 23",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "dcb61e1c-ee11-416b-b654-90827f02d713",
+                    "libraryName": "서울도서관",
+                    "bookLibraryUrl": "http://example.com/book/f9fd9294-f7f5-432f-be52-6e4fdca53f25"
+                },
+                {
+                    "id": "a6090650-8bf9-4da4-9360-4ca72b3eb24a",
+                    "libraryName": "고렘팩토리",
+                    "bookLibraryUrl": "http://example.com/book/f9fd9294-f7f5-432f-be52-6e4fdca53f25"
+                }
+            ]
+        },
+        {
+            "id": "f6577eb6-e760-4683-a08e-573f4b79340e",
+            "title": "책 제목 24",
+            "author": "작가 24",
+            "provider": "교보문고",
+            "publisher": "출판사 24",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "6946380b-e5e0-45aa-8ff4-b9655979ac84",
+                    "libraryName": "법원도서관",
+                    "bookLibraryUrl": "http://example.com/book/f6577eb6-e760-4683-a08e-573f4b79340e"
+                },
+                {
+                    "id": "dc494969-03cb-436f-b776-ac007d10e965",
+                    "libraryName": "경남도서관",
+                    "bookLibraryUrl": "http://example.com/book/f6577eb6-e760-4683-a08e-573f4b79340e"
+                }
+            ]
+        },
+        {
+            "id": "dcd4a787-72d8-4cdb-97f4-040e2ac40d88",
+            "title": "책 제목 25",
+            "author": "작가 25",
+            "provider": "교보문고",
+            "publisher": "출판사 25",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "b754f742-82ff-4618-b7fb-38b13f14ffb1",
+                    "libraryName": "양자출판사",
+                    "bookLibraryUrl": "http://example.com/book/dcd4a787-72d8-4cdb-97f4-040e2ac40d88"
+                }
+            ]
+        },
+        {
+            "id": "be80be78-dfdc-403b-9ccf-27a5354d2836",
+            "title": "책 제목 26",
+            "author": "작가 26",
+            "provider": "교보문고",
+            "publisher": "출판사 26",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "533a8d51-9daa-4400-8248-05d4f90340f0",
+                    "libraryName": "(주)누리달",
+                    "bookLibraryUrl": "http://example.com/book/be80be78-dfdc-403b-9ccf-27a5354d2836"
+                },
+                {
+                    "id": "2c6a6952-284e-4cf4-a755-f0c6cbc3ddf2",
+                    "libraryName": "광주도서관",
+                    "bookLibraryUrl": "http://example.com/book/be80be78-dfdc-403b-9ccf-27a5354d2836"
+                },
+                {
+                    "id": "dd53aab6-de5b-4d72-9ecd-16e980115fb8",
+                    "libraryName": "중앙대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/be80be78-dfdc-403b-9ccf-27a5354d2836"
+                }
+            ]
+        },
+        {
+            "id": "cd6605b1-0e16-4b96-be56-0d93ed2f9025",
+            "title": "책 제목 27",
+            "author": "작가 27",
+            "provider": "교보문고",
+            "publisher": "출판사 27",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f019d34b-32de-4593-a68f-08efa31c2c53",
+                    "libraryName": "성균관대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/cd6605b1-0e16-4b96-be56-0d93ed2f9025"
+                },
+                {
+                    "id": "23399f2c-76d6-4dbc-a024-e29d5ee1e141",
+                    "libraryName": "울산도서관",
+                    "bookLibraryUrl": "http://example.com/book/cd6605b1-0e16-4b96-be56-0d93ed2f9025"
+                }
+            ]
+        },
+        {
+            "id": "890eb6b5-a440-48ff-a34c-f9ebb6e9c829",
+            "title": "책 제목 28",
+            "author": "작가 28",
+            "provider": "교보문고",
+            "publisher": "출판사 28",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f89f7574-a751-4160-b1a0-78e5319356b1",
+                    "libraryName": "한동대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/890eb6b5-a440-48ff-a34c-f9ebb6e9c829"
+                },
+                {
+                    "id": "f8d046db-4f6f-4e23-b741-71762fbde179",
+                    "libraryName": "경북도서관",
+                    "bookLibraryUrl": "http://example.com/book/890eb6b5-a440-48ff-a34c-f9ebb6e9c829"
+                },
+                {
+                    "id": "f32842a7-7f14-47be-8900-d050839ba140",
+                    "libraryName": "경상대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/890eb6b5-a440-48ff-a34c-f9ebb6e9c829"
+                }
+            ]
+        },
+        {
+            "id": "e6ac0e70-84fc-4d65-80d2-6af88aa471d7",
+            "title": "책 제목 29",
+            "author": "작가 29",
+            "provider": "교보문고",
+            "publisher": "출판사 29",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "cbe4500e-3a78-46e8-84e0-bb8d5d725da9",
+                    "libraryName": "충남도서관",
+                    "bookLibraryUrl": "http://example.com/book/e6ac0e70-84fc-4d65-80d2-6af88aa471d7"
+                },
+                {
+                    "id": "b6387c4b-de2c-406f-975e-c9eb5c589027",
+                    "libraryName": "경북대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/e6ac0e70-84fc-4d65-80d2-6af88aa471d7"
+                }
+            ]
+        },
+        {
+            "id": "0dd94093-98c9-49d6-ae9e-1c8f1fb1d2b2",
+            "title": "책 제목 30",
+            "author": "작가 30",
+            "provider": "교보문고",
+            "publisher": "출판사 30",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "217b159c-7806-4401-b0bf-ef4be44abba3",
+                    "libraryName": "부산대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/0dd94093-98c9-49d6-ae9e-1c8f1fb1d2b2"
+                },
+                {
+                    "id": "2c6a6952-284e-4cf4-a755-f0c6cbc3ddf2",
+                    "libraryName": "광주도서관",
+                    "bookLibraryUrl": "http://example.com/book/0dd94093-98c9-49d6-ae9e-1c8f1fb1d2b2"
+                },
+                {
+                    "id": "b6387c4b-de2c-406f-975e-c9eb5c589027",
+                    "libraryName": "경북대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/0dd94093-98c9-49d6-ae9e-1c8f1fb1d2b2"
+                }
+            ]
+        },
+        {
+            "id": "e1b0454d-311f-4110-8546-b696eabcdf88",
+            "title": "책 제목 31",
+            "author": "작가 31",
+            "provider": "교보문고",
+            "publisher": "출판사 31",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "ab306db4-08ad-46b1-9b58-9405fa926d62",
+                    "libraryName": "국립중앙도서관",
+                    "bookLibraryUrl": "http://example.com/book/e1b0454d-311f-4110-8546-b696eabcdf88"
+                }
+            ]
+        },
+        {
+            "id": "3c90d5dd-1164-4e85-b397-a33ba13ad671",
+            "title": "책 제목 32",
+            "author": "작가 32",
+            "provider": "교보문고",
+            "publisher": "출판사 32",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "2a6ab9f8-d7d1-4574-a7c0-e55d120d8d89",
+                    "libraryName": "이화여자대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/3c90d5dd-1164-4e85-b397-a33ba13ad671"
+                }
+            ]
+        },
+        {
+            "id": "5c7c6e54-5c6b-45e2-89a9-b7d0f26c698a",
+            "title": "책 제목 33",
+            "author": "작가 33",
+            "provider": "교보문고",
+            "publisher": "출판사 33",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "a85e69bf-c440-49a6-b592-4624ef9e18b7",
+                    "libraryName": "인천도서관",
+                    "bookLibraryUrl": "http://example.com/book/5c7c6e54-5c6b-45e2-89a9-b7d0f26c698a"
+                },
+                {
+                    "id": "533a8d51-9daa-4400-8248-05d4f90340f0",
+                    "libraryName": "(주)누리달",
+                    "bookLibraryUrl": "http://example.com/book/5c7c6e54-5c6b-45e2-89a9-b7d0f26c698a"
+                },
+                {
+                    "id": "f32842a7-7f14-47be-8900-d050839ba140",
+                    "libraryName": "경상대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/5c7c6e54-5c6b-45e2-89a9-b7d0f26c698a"
+                }
+            ]
+        },
+        {
+            "id": "d1bf7c15-4713-459f-b1cc-70bb33c70172",
+            "title": "책 제목 34",
+            "author": "작가 34",
+            "provider": "교보문고",
+            "publisher": "출판사 34",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "217b159c-7806-4401-b0bf-ef4be44abba3",
+                    "libraryName": "부산대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/d1bf7c15-4713-459f-b1cc-70bb33c70172"
+                },
+                {
+                    "id": "533a8d51-9daa-4400-8248-05d4f90340f0",
+                    "libraryName": "(주)누리달",
+                    "bookLibraryUrl": "http://example.com/book/d1bf7c15-4713-459f-b1cc-70bb33c70172"
+                },
+                {
+                    "id": "dc494969-03cb-436f-b776-ac007d10e965",
+                    "libraryName": "경남도서관",
+                    "bookLibraryUrl": "http://example.com/book/d1bf7c15-4713-459f-b1cc-70bb33c70172"
+                }
+            ]
+        },
+        {
+            "id": "dec5356a-e6ff-433c-ab55-d843b83a3f10",
+            "title": "책 제목 35",
+            "author": "작가 35",
+            "provider": "교보문고",
+            "publisher": "출판사 35",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "787a0e6d-fed2-4093-87a0-ef232a06e3b6",
+                    "libraryName": "바톤핑크",
+                    "bookLibraryUrl": "http://example.com/book/dec5356a-e6ff-433c-ab55-d843b83a3f10"
+                },
+                {
+                    "id": "1847852a-b91b-42c8-986f-29064d85f433",
+                    "libraryName": "세종도서관",
+                    "bookLibraryUrl": "http://example.com/book/dec5356a-e6ff-433c-ab55-d843b83a3f10"
+                }
+            ]
+        },
+        {
+            "id": "3434de81-73b0-4105-a114-3a592143957f",
+            "title": "책 제목 36",
+            "author": "작가 36",
+            "provider": "교보문고",
+            "publisher": "출판사 36",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "2a6ab9f8-d7d1-4574-a7c0-e55d120d8d89",
+                    "libraryName": "이화여자대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/3434de81-73b0-4105-a114-3a592143957f"
+                }
+            ]
+        },
+        {
+            "id": "70cd16b8-7beb-47f4-910e-cc8075b5c46a",
+            "title": "책 제목 37",
+            "author": "작가 37",
+            "provider": "교보문고",
+            "publisher": "출판사 37",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "965d74c3-0b5f-4d67-95dd-acedfb9c857d",
+                    "libraryName": "한국과학기술원 도서관",
+                    "bookLibraryUrl": "http://example.com/book/70cd16b8-7beb-47f4-910e-cc8075b5c46a"
+                },
+                {
+                    "id": "de3342c8-8a49-41a9-bd8f-454b4c3d3564",
+                    "libraryName": "서울대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/70cd16b8-7beb-47f4-910e-cc8075b5c46a"
+                }
+            ]
+        },
+        {
+            "id": "f7ef9120-f7a2-4d24-b252-88bbef918f34",
+            "title": "책 제목 38",
+            "author": "작가 38",
+            "provider": "교보문고",
+            "publisher": "출판사 38",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f3244be1-5b36-4d35-8952-c88a19d7be50",
+                    "libraryName": "경기중앙도서관",
+                    "bookLibraryUrl": "http://example.com/book/f7ef9120-f7a2-4d24-b252-88bbef918f34"
+                },
+                {
+                    "id": "3d2e83d2-e5d8-4be4-98c9-40ea6300f59d",
+                    "libraryName": "충북도서관",
+                    "bookLibraryUrl": "http://example.com/book/f7ef9120-f7a2-4d24-b252-88bbef918f34"
+                }
+            ]
+        },
+        {
+            "id": "dfeb8ffb-89de-4141-9546-c7d97eb4e907",
+            "title": "책 제목 39",
+            "author": "작가 39",
+            "provider": "교보문고",
+            "publisher": "출판사 39",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f32842a7-7f14-47be-8900-d050839ba140",
+                    "libraryName": "경상대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/dfeb8ffb-89de-4141-9546-c7d97eb4e907"
+                }
+            ]
+        },
+        {
+            "id": "c34d5d1b-ee03-4eb0-a94d-7eb0d3e240b7",
+            "title": "책 제목 40",
+            "author": "작가 40",
+            "provider": "교보문고",
+            "publisher": "출판사 40",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "6946380b-e5e0-45aa-8ff4-b9655979ac84",
+                    "libraryName": "법원도서관",
+                    "bookLibraryUrl": "http://example.com/book/c34d5d1b-ee03-4eb0-a94d-7eb0d3e240b7"
+                }
+            ]
+        },
+        {
+            "id": "31c44cb8-e332-4873-8c07-aad87c6192eb",
+            "title": "책 제목 41",
+            "author": "작가 41",
+            "provider": "교보문고",
+            "publisher": "출판사 41",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f89f7574-a751-4160-b1a0-78e5319356b1",
+                    "libraryName": "한동대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/31c44cb8-e332-4873-8c07-aad87c6192eb"
+                },
+                {
+                    "id": "217b159c-7806-4401-b0bf-ef4be44abba3",
+                    "libraryName": "부산대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/31c44cb8-e332-4873-8c07-aad87c6192eb"
+                },
+                {
+                    "id": "24901c6b-fa13-4338-b37d-296a201dd4da",
+                    "libraryName": "강원도서관",
+                    "bookLibraryUrl": "http://example.com/book/31c44cb8-e332-4873-8c07-aad87c6192eb"
+                }
+            ]
+        },
+        {
+            "id": "8cd5e11a-e748-4d79-b701-82fc506346de",
+            "title": "책 제목 42",
+            "author": "작가 42",
+            "provider": "교보문고",
+            "publisher": "출판사 42",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "e889f427-758d-4b38-8f73-3d394bd7af3a",
+                    "libraryName": "부산도서관",
+                    "bookLibraryUrl": "http://example.com/book/8cd5e11a-e748-4d79-b701-82fc506346de"
+                },
+                {
+                    "id": "a85e69bf-c440-49a6-b592-4624ef9e18b7",
+                    "libraryName": "인천도서관",
+                    "bookLibraryUrl": "http://example.com/book/8cd5e11a-e748-4d79-b701-82fc506346de"
+                },
+                {
+                    "id": "d0bc4ab1-a150-49e0-b32d-d290e528b29c",
+                    "libraryName": "헌법재판소 도서관",
+                    "bookLibraryUrl": "http://example.com/book/8cd5e11a-e748-4d79-b701-82fc506346de"
+                }
+            ]
+        },
+        {
+            "id": "d6d5cb77-7374-4619-b374-f67d193cadd4",
+            "title": "책 제목 43",
+            "author": "작가 43",
+            "provider": "교보문고",
+            "publisher": "출판사 43",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f3244be1-5b36-4d35-8952-c88a19d7be50",
+                    "libraryName": "경기중앙도서관",
+                    "bookLibraryUrl": "http://example.com/book/d6d5cb77-7374-4619-b374-f67d193cadd4"
+                },
+                {
+                    "id": "fb0101ab-340f-4dbb-8864-d0c43b480c06",
+                    "libraryName": "한양대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/d6d5cb77-7374-4619-b374-f67d193cadd4"
+                },
+                {
+                    "id": "d0bc4ab1-a150-49e0-b32d-d290e528b29c",
+                    "libraryName": "헌법재판소 도서관",
+                    "bookLibraryUrl": "http://example.com/book/d6d5cb77-7374-4619-b374-f67d193cadd4"
+                }
+            ]
+        },
+        {
+            "id": "fd47fb62-64be-4400-8220-a411d90c730e",
+            "title": "책 제목 44",
+            "author": "작가 44",
+            "provider": "교보문고",
+            "publisher": "출판사 44",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "e1339922-5fbe-4ffa-8607-ccea60d14041",
+                    "libraryName": "국회도서관",
+                    "bookLibraryUrl": "http://example.com/book/fd47fb62-64be-4400-8220-a411d90c730e"
+                },
+                {
+                    "id": "22e3c3ba-be0d-4157-bea5-5600d56cf137",
+                    "libraryName": "충남대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/fd47fb62-64be-4400-8220-a411d90c730e"
+                },
+                {
+                    "id": "533a8d51-9daa-4400-8248-05d4f90340f0",
+                    "libraryName": "(주)누리달",
+                    "bookLibraryUrl": "http://example.com/book/fd47fb62-64be-4400-8220-a411d90c730e"
+                }
+            ]
+        },
+        {
+            "id": "79fbe2ac-919b-4662-bcdf-6aa7fb579c42",
+            "title": "책 제목 45",
+            "author": "작가 45",
+            "provider": "교보문고",
+            "publisher": "출판사 45",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "e1339922-5fbe-4ffa-8607-ccea60d14041",
+                    "libraryName": "국회도서관",
+                    "bookLibraryUrl": "http://example.com/book/79fbe2ac-919b-4662-bcdf-6aa7fb579c42"
+                }
+            ]
+        },
+        {
+            "id": "c3785f2a-6ce1-496c-95df-e2548ab90163",
+            "title": "책 제목 46",
+            "author": "작가 46",
+            "provider": "교보문고",
+            "publisher": "출판사 46",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "12ee40d1-a3a7-4cb9-a230-cd401b21808c",
+                    "libraryName": "연세대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/c3785f2a-6ce1-496c-95df-e2548ab90163"
+                },
+                {
+                    "id": "a85e69bf-c440-49a6-b592-4624ef9e18b7",
+                    "libraryName": "인천도서관",
+                    "bookLibraryUrl": "http://example.com/book/c3785f2a-6ce1-496c-95df-e2548ab90163"
+                }
+            ]
+        },
+        {
+            "id": "c6578bc7-e87e-4182-b6fd-a14b7f955bd3",
+            "title": "책 제목 47",
+            "author": "작가 47",
+            "provider": "교보문고",
+            "publisher": "출판사 47",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "965d74c3-0b5f-4d67-95dd-acedfb9c857d",
+                    "libraryName": "한국과학기술원 도서관",
+                    "bookLibraryUrl": "http://example.com/book/c6578bc7-e87e-4182-b6fd-a14b7f955bd3"
+                }
+            ]
+        },
+        {
+            "id": "2f16e2ad-8e06-4ea1-8aca-4a1fb53ae37f",
+            "title": "책 제목 48",
+            "author": "작가 48",
+            "provider": "교보문고",
+            "publisher": "출판사 48",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "1847852a-b91b-42c8-986f-29064d85f433",
+                    "libraryName": "세종도서관",
+                    "bookLibraryUrl": "http://example.com/book/2f16e2ad-8e06-4ea1-8aca-4a1fb53ae37f"
+                }
+            ]
+        },
+        {
+            "id": "cd343477-f724-412e-bf8e-f0bd7575d2e4",
+            "title": "책 제목 49",
+            "author": "작가 49",
+            "provider": "교보문고",
+            "publisher": "출판사 49",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "b6387c4b-de2c-406f-975e-c9eb5c589027",
+                    "libraryName": "경북대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/cd343477-f724-412e-bf8e-f0bd7575d2e4"
+                },
+                {
+                    "id": "ab306db4-08ad-46b1-9b58-9405fa926d62",
+                    "libraryName": "국립중앙도서관",
+                    "bookLibraryUrl": "http://example.com/book/cd343477-f724-412e-bf8e-f0bd7575d2e4"
+                },
+                {
+                    "id": "12ee40d1-a3a7-4cb9-a230-cd401b21808c",
+                    "libraryName": "연세대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/cd343477-f724-412e-bf8e-f0bd7575d2e4"
+                }
+            ]
+        },
+        {
+            "id": "d378013e-5c30-4484-b193-b9d5ba7852fe",
+            "title": "책 제목 50",
+            "author": "작가 50",
+            "provider": "교보문고",
+            "publisher": "출판사 50",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "2a6ab9f8-d7d1-4574-a7c0-e55d120d8d89",
+                    "libraryName": "이화여자대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/d378013e-5c30-4484-b193-b9d5ba7852fe"
+                }
+            ]
+        },
+        {
+            "id": "66cb71c0-882b-47c9-badd-959fd9ac72a2",
+            "title": "책 제목 51",
+            "author": "작가 51",
+            "provider": "교보문고",
+            "publisher": "출판사 51",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "3ad6e609-45f8-4e1e-938c-d692f694974f",
+                    "libraryName": "충북대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/66cb71c0-882b-47c9-badd-959fd9ac72a2"
+                }
+            ]
+        },
+        {
+            "id": "105f87bc-18b4-4714-bfa2-03fce530ac67",
+            "title": "책 제목 52",
+            "author": "작가 52",
+            "provider": "교보문고",
+            "publisher": "출판사 52",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "a85e69bf-c440-49a6-b592-4624ef9e18b7",
+                    "libraryName": "인천도서관",
+                    "bookLibraryUrl": "http://example.com/book/105f87bc-18b4-4714-bfa2-03fce530ac67"
+                },
+                {
+                    "id": "b458afe7-3b8d-4a8c-8712-4b46a1fd57f0",
+                    "libraryName": "교보문고",
+                    "bookLibraryUrl": "http://example.com/book/105f87bc-18b4-4714-bfa2-03fce530ac67"
+                }
+            ]
+        },
+        {
+            "id": "4ee66709-cd5d-4ca0-b0b5-8464f3a5546d",
+            "title": "책 제목 53",
+            "author": "작가 53",
+            "provider": "교보문고",
+            "publisher": "출판사 53",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "87ee69d9-d13f-465d-aa4e-a7b3a9c14fa7",
+                    "libraryName": "전북도서관",
+                    "bookLibraryUrl": "http://example.com/book/4ee66709-cd5d-4ca0-b0b5-8464f3a5546d"
+                }
+            ]
+        },
+        {
+            "id": "d7f6b2d1-c50e-4b95-8296-00b9dbda4763",
+            "title": "책 제목 54",
+            "author": "작가 54",
+            "provider": "교보문고",
+            "publisher": "출판사 54",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f3244be1-5b36-4d35-8952-c88a19d7be50",
+                    "libraryName": "경기중앙도서관",
+                    "bookLibraryUrl": "http://example.com/book/d7f6b2d1-c50e-4b95-8296-00b9dbda4763"
+                }
+            ]
+        },
+        {
+            "id": "0fd3f8bb-458d-467d-ab71-b9fac5cea601",
+            "title": "책 제목 55",
+            "author": "작가 55",
+            "provider": "교보문고",
+            "publisher": "출판사 55",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f3244be1-5b36-4d35-8952-c88a19d7be50",
+                    "libraryName": "경기중앙도서관",
+                    "bookLibraryUrl": "http://example.com/book/0fd3f8bb-458d-467d-ab71-b9fac5cea601"
+                }
+            ]
+        },
+        {
+            "id": "01186b5a-14da-4a14-b45b-b8d12951b09f",
+            "title": "책 제목 56",
+            "author": "작가 56",
+            "provider": "교보문고",
+            "publisher": "출판사 56",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f729dbb7-6683-4033-9ede-6d1f627494b4",
+                    "libraryName": "전남도서관",
+                    "bookLibraryUrl": "http://example.com/book/01186b5a-14da-4a14-b45b-b8d12951b09f"
+                },
+                {
+                    "id": "dc494969-03cb-436f-b776-ac007d10e965",
+                    "libraryName": "경남도서관",
+                    "bookLibraryUrl": "http://example.com/book/01186b5a-14da-4a14-b45b-b8d12951b09f"
+                },
+                {
+                    "id": "b6387c4b-de2c-406f-975e-c9eb5c589027",
+                    "libraryName": "경북대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/01186b5a-14da-4a14-b45b-b8d12951b09f"
+                }
+            ]
+        },
+        {
+            "id": "e52043c7-2e26-4e51-bef4-b7e15cc11ffc",
+            "title": "책 제목 57",
+            "author": "작가 57",
+            "provider": "교보문고",
+            "publisher": "출판사 57",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "dc494969-03cb-436f-b776-ac007d10e965",
+                    "libraryName": "경남도서관",
+                    "bookLibraryUrl": "http://example.com/book/e52043c7-2e26-4e51-bef4-b7e15cc11ffc"
+                },
+                {
+                    "id": "d0bc4ab1-a150-49e0-b32d-d290e528b29c",
+                    "libraryName": "헌법재판소 도서관",
+                    "bookLibraryUrl": "http://example.com/book/e52043c7-2e26-4e51-bef4-b7e15cc11ffc"
+                }
+            ]
+        },
+        {
+            "id": "ad82db0e-0927-4a96-bd2c-c4147384927b",
+            "title": "책 제목 58",
+            "author": "작가 58",
+            "provider": "교보문고",
+            "publisher": "출판사 58",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "b458afe7-3b8d-4a8c-8712-4b46a1fd57f0",
+                    "libraryName": "교보문고",
+                    "bookLibraryUrl": "http://example.com/book/ad82db0e-0927-4a96-bd2c-c4147384927b"
+                },
+                {
+                    "id": "787a0e6d-fed2-4093-87a0-ef232a06e3b6",
+                    "libraryName": "바톤핑크",
+                    "bookLibraryUrl": "http://example.com/book/ad82db0e-0927-4a96-bd2c-c4147384927b"
+                },
+                {
+                    "id": "217b159c-7806-4401-b0bf-ef4be44abba3",
+                    "libraryName": "부산대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/ad82db0e-0927-4a96-bd2c-c4147384927b"
+                }
+            ]
+        },
+        {
+            "id": "0fc06677-527b-43b4-8298-86c99e7d49c0",
+            "title": "책 제목 59",
+            "author": "작가 59",
+            "provider": "교보문고",
+            "publisher": "출판사 59",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "de3342c8-8a49-41a9-bd8f-454b4c3d3564",
+                    "libraryName": "서울대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/0fc06677-527b-43b4-8298-86c99e7d49c0"
+                },
+                {
+                    "id": "fb0101ab-340f-4dbb-8864-d0c43b480c06",
+                    "libraryName": "한양대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/0fc06677-527b-43b4-8298-86c99e7d49c0"
+                }
+            ]
+        },
+        {
+            "id": "2c599c93-a853-487c-85e2-23f9536f7b67",
+            "title": "책 제목 60",
+            "author": "작가 60",
+            "provider": "교보문고",
+            "publisher": "출판사 60",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "9730f992-925b-47dc-a3b6-ae3e24f9c448",
+                    "libraryName": "고려대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/2c599c93-a853-487c-85e2-23f9536f7b67"
+                }
+            ]
+        },
+        {
+            "id": "ea0dee27-0dca-4767-a5fd-11e7afab7acd",
+            "title": "책 제목 61",
+            "author": "작가 61",
+            "provider": "교보문고",
+            "publisher": "출판사 61",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "1847852a-b91b-42c8-986f-29064d85f433",
+                    "libraryName": "세종도서관",
+                    "bookLibraryUrl": "http://example.com/book/ea0dee27-0dca-4767-a5fd-11e7afab7acd"
+                },
+                {
+                    "id": "ed615093-4be4-4f65-8ad2-36de6ce319b0",
+                    "libraryName": "대전도서관",
+                    "bookLibraryUrl": "http://example.com/book/ea0dee27-0dca-4767-a5fd-11e7afab7acd"
+                }
+            ]
+        },
+        {
+            "id": "e93956e0-c21b-488b-ad18-e5483a12e359",
+            "title": "책 제목 62",
+            "author": "작가 62",
+            "provider": "교보문고",
+            "publisher": "출판사 62",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "23399f2c-76d6-4dbc-a024-e29d5ee1e141",
+                    "libraryName": "울산도서관",
+                    "bookLibraryUrl": "http://example.com/book/e93956e0-c21b-488b-ad18-e5483a12e359"
+                },
+                {
+                    "id": "f89f7574-a751-4160-b1a0-78e5319356b1",
+                    "libraryName": "한동대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/e93956e0-c21b-488b-ad18-e5483a12e359"
+                }
+            ]
+        },
+        {
+            "id": "fbd735c5-286e-4344-a185-de363f693207",
+            "title": "책 제목 63",
+            "author": "작가 63",
+            "provider": "교보문고",
+            "publisher": "출판사 63",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "24901c6b-fa13-4338-b37d-296a201dd4da",
+                    "libraryName": "강원도서관",
+                    "bookLibraryUrl": "http://example.com/book/fbd735c5-286e-4344-a185-de363f693207"
+                },
+                {
+                    "id": "217b159c-7806-4401-b0bf-ef4be44abba3",
+                    "libraryName": "부산대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/fbd735c5-286e-4344-a185-de363f693207"
+                },
+                {
+                    "id": "787a0e6d-fed2-4093-87a0-ef232a06e3b6",
+                    "libraryName": "바톤핑크",
+                    "bookLibraryUrl": "http://example.com/book/fbd735c5-286e-4344-a185-de363f693207"
+                }
+            ]
+        },
+        {
+            "id": "5b773d4c-9f07-4cc2-975f-06a6fcbaf60b",
+            "title": "책 제목 64",
+            "author": "작가 64",
+            "provider": "교보문고",
+            "publisher": "출판사 64",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "b754f742-82ff-4618-b7fb-38b13f14ffb1",
+                    "libraryName": "양자출판사",
+                    "bookLibraryUrl": "http://example.com/book/5b773d4c-9f07-4cc2-975f-06a6fcbaf60b"
+                },
+                {
+                    "id": "5381d53f-4834-42be-9db5-38734cf90857",
+                    "libraryName": "전남대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/5b773d4c-9f07-4cc2-975f-06a6fcbaf60b"
+                }
+            ]
+        },
+        {
+            "id": "e8a4fa11-1c3e-4e77-9c33-cf1fbf1f0c8b",
+            "title": "책 제목 65",
+            "author": "작가 65",
+            "provider": "교보문고",
+            "publisher": "출판사 65",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "b458afe7-3b8d-4a8c-8712-4b46a1fd57f0",
+                    "libraryName": "교보문고",
+                    "bookLibraryUrl": "http://example.com/book/e8a4fa11-1c3e-4e77-9c33-cf1fbf1f0c8b"
+                },
+                {
+                    "id": "f8d046db-4f6f-4e23-b741-71762fbde179",
+                    "libraryName": "경북도서관",
+                    "bookLibraryUrl": "http://example.com/book/e8a4fa11-1c3e-4e77-9c33-cf1fbf1f0c8b"
+                }
+            ]
+        },
+        {
+            "id": "3eb30cf5-44a9-4afc-8140-93f6ebd837b0",
+            "title": "책 제목 66",
+            "author": "작가 66",
+            "provider": "교보문고",
+            "publisher": "출판사 66",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "3ad6e609-45f8-4e1e-938c-d692f694974f",
+                    "libraryName": "충북대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/3eb30cf5-44a9-4afc-8140-93f6ebd837b0"
+                },
+                {
+                    "id": "b458afe7-3b8d-4a8c-8712-4b46a1fd57f0",
+                    "libraryName": "교보문고",
+                    "bookLibraryUrl": "http://example.com/book/3eb30cf5-44a9-4afc-8140-93f6ebd837b0"
+                },
+                {
+                    "id": "6946380b-e5e0-45aa-8ff4-b9655979ac84",
+                    "libraryName": "법원도서관",
+                    "bookLibraryUrl": "http://example.com/book/3eb30cf5-44a9-4afc-8140-93f6ebd837b0"
+                }
+            ]
+        },
+        {
+            "id": "62b6197b-b7d5-4efd-98bc-bf8feb0d1c8d",
+            "title": "책 제목 67",
+            "author": "작가 67",
+            "provider": "교보문고",
+            "publisher": "출판사 67",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "ab306db4-08ad-46b1-9b58-9405fa926d62",
+                    "libraryName": "국립중앙도서관",
+                    "bookLibraryUrl": "http://example.com/book/62b6197b-b7d5-4efd-98bc-bf8feb0d1c8d"
+                },
+                {
+                    "id": "9730f992-925b-47dc-a3b6-ae3e24f9c448",
+                    "libraryName": "고려대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/62b6197b-b7d5-4efd-98bc-bf8feb0d1c8d"
+                }
+            ]
+        },
+        {
+            "id": "22a8f216-a895-4933-88c1-9c7d771a59d5",
+            "title": "책 제목 68",
+            "author": "작가 68",
+            "provider": "교보문고",
+            "publisher": "출판사 68",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f019d34b-32de-4593-a68f-08efa31c2c53",
+                    "libraryName": "성균관대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/22a8f216-a895-4933-88c1-9c7d771a59d5"
+                }
+            ]
+        },
+        {
+            "id": "effe8fbe-ebdb-416f-978a-a16f5c6f2ca1",
+            "title": "책 제목 69",
+            "author": "작가 69",
+            "provider": "교보문고",
+            "publisher": "출판사 69",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "ed615093-4be4-4f65-8ad2-36de6ce319b0",
+                    "libraryName": "대전도서관",
+                    "bookLibraryUrl": "http://example.com/book/effe8fbe-ebdb-416f-978a-a16f5c6f2ca1"
+                },
+                {
+                    "id": "d0bc4ab1-a150-49e0-b32d-d290e528b29c",
+                    "libraryName": "헌법재판소 도서관",
+                    "bookLibraryUrl": "http://example.com/book/effe8fbe-ebdb-416f-978a-a16f5c6f2ca1"
+                }
+            ]
+        },
+        {
+            "id": "045a497c-4a03-401a-941d-e10c15f786f7",
+            "title": "책 제목 70",
+            "author": "작가 70",
+            "provider": "교보문고",
+            "publisher": "출판사 70",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "12ee40d1-a3a7-4cb9-a230-cd401b21808c",
+                    "libraryName": "연세대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/045a497c-4a03-401a-941d-e10c15f786f7"
+                },
+                {
+                    "id": "533a8d51-9daa-4400-8248-05d4f90340f0",
+                    "libraryName": "(주)누리달",
+                    "bookLibraryUrl": "http://example.com/book/045a497c-4a03-401a-941d-e10c15f786f7"
+                },
+                {
+                    "id": "dcb61e1c-ee11-416b-b654-90827f02d713",
+                    "libraryName": "서울도서관",
+                    "bookLibraryUrl": "http://example.com/book/045a497c-4a03-401a-941d-e10c15f786f7"
+                }
+            ]
+        },
+        {
+            "id": "72443c98-4d41-4661-b2e4-e1b57819f7c8",
+            "title": "책 제목 71",
+            "author": "작가 71",
+            "provider": "교보문고",
+            "publisher": "출판사 71",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "cbe4500e-3a78-46e8-84e0-bb8d5d725da9",
+                    "libraryName": "충남도서관",
+                    "bookLibraryUrl": "http://example.com/book/72443c98-4d41-4661-b2e4-e1b57819f7c8"
+                }
+            ]
+        },
+        {
+            "id": "2f7f74aa-6124-4063-9de6-f0417ff7729f",
+            "title": "책 제목 72",
+            "author": "작가 72",
+            "provider": "교보문고",
+            "publisher": "출판사 72",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "9730f992-925b-47dc-a3b6-ae3e24f9c448",
+                    "libraryName": "고려대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/2f7f74aa-6124-4063-9de6-f0417ff7729f"
+                }
+            ]
+        },
+        {
+            "id": "73eb40bf-3170-4594-a904-09b277489207",
+            "title": "책 제목 73",
+            "author": "작가 73",
+            "provider": "교보문고",
+            "publisher": "출판사 73",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "ed615093-4be4-4f65-8ad2-36de6ce319b0",
+                    "libraryName": "대전도서관",
+                    "bookLibraryUrl": "http://example.com/book/73eb40bf-3170-4594-a904-09b277489207"
+                },
+                {
+                    "id": "1847852a-b91b-42c8-986f-29064d85f433",
+                    "libraryName": "세종도서관",
+                    "bookLibraryUrl": "http://example.com/book/73eb40bf-3170-4594-a904-09b277489207"
+                }
+            ]
+        },
+        {
+            "id": "eca3e148-16da-41e6-9847-502a00421b81",
+            "title": "책 제목 74",
+            "author": "작가 74",
+            "provider": "교보문고",
+            "publisher": "출판사 74",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "1847852a-b91b-42c8-986f-29064d85f433",
+                    "libraryName": "세종도서관",
+                    "bookLibraryUrl": "http://example.com/book/eca3e148-16da-41e6-9847-502a00421b81"
+                },
+                {
+                    "id": "ed615093-4be4-4f65-8ad2-36de6ce319b0",
+                    "libraryName": "대전도서관",
+                    "bookLibraryUrl": "http://example.com/book/eca3e148-16da-41e6-9847-502a00421b81"
+                },
+                {
+                    "id": "2c6a6952-284e-4cf4-a755-f0c6cbc3ddf2",
+                    "libraryName": "광주도서관",
+                    "bookLibraryUrl": "http://example.com/book/eca3e148-16da-41e6-9847-502a00421b81"
+                }
+            ]
+        },
+        {
+            "id": "998a2304-2d01-475b-8c0f-f546009c4918",
+            "title": "책 제목 75",
+            "author": "작가 75",
+            "provider": "교보문고",
+            "publisher": "출판사 75",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "965d74c3-0b5f-4d67-95dd-acedfb9c857d",
+                    "libraryName": "한국과학기술원 도서관",
+                    "bookLibraryUrl": "http://example.com/book/998a2304-2d01-475b-8c0f-f546009c4918"
+                },
+                {
+                    "id": "5381d53f-4834-42be-9db5-38734cf90857",
+                    "libraryName": "전남대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/998a2304-2d01-475b-8c0f-f546009c4918"
+                }
+            ]
+        },
+        {
+            "id": "9d2b0f6d-0fb8-45a9-a006-583dfc184c43",
+            "title": "책 제목 76",
+            "author": "작가 76",
+            "provider": "교보문고",
+            "publisher": "출판사 76",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "12ee40d1-a3a7-4cb9-a230-cd401b21808c",
+                    "libraryName": "연세대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/9d2b0f6d-0fb8-45a9-a006-583dfc184c43"
+                },
+                {
+                    "id": "b6387c4b-de2c-406f-975e-c9eb5c589027",
+                    "libraryName": "경북대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/9d2b0f6d-0fb8-45a9-a006-583dfc184c43"
+                },
+                {
+                    "id": "dc494969-03cb-436f-b776-ac007d10e965",
+                    "libraryName": "경남도서관",
+                    "bookLibraryUrl": "http://example.com/book/9d2b0f6d-0fb8-45a9-a006-583dfc184c43"
+                }
+            ]
+        },
+        {
+            "id": "3f3fda75-363a-43f5-a28f-7db38ef6b64f",
+            "title": "책 제목 77",
+            "author": "작가 77",
+            "provider": "교보문고",
+            "publisher": "출판사 77",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "a6090650-8bf9-4da4-9360-4ca72b3eb24a",
+                    "libraryName": "고렘팩토리",
+                    "bookLibraryUrl": "http://example.com/book/3f3fda75-363a-43f5-a28f-7db38ef6b64f"
+                },
+                {
+                    "id": "dcb61e1c-ee11-416b-b654-90827f02d713",
+                    "libraryName": "서울도서관",
+                    "bookLibraryUrl": "http://example.com/book/3f3fda75-363a-43f5-a28f-7db38ef6b64f"
+                }
+            ]
+        },
+        {
+            "id": "46deb15d-2cf9-4be3-9de5-c603f8575061",
+            "title": "책 제목 78",
+            "author": "작가 78",
+            "provider": "교보문고",
+            "publisher": "출판사 78",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "965d74c3-0b5f-4d67-95dd-acedfb9c857d",
+                    "libraryName": "한국과학기술원 도서관",
+                    "bookLibraryUrl": "http://example.com/book/46deb15d-2cf9-4be3-9de5-c603f8575061"
+                }
+            ]
+        },
+        {
+            "id": "10667abb-2a57-4722-90dc-788e96c3591c",
+            "title": "책 제목 79",
+            "author": "작가 79",
+            "provider": "교보문고",
+            "publisher": "출판사 79",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "a6090650-8bf9-4da4-9360-4ca72b3eb24a",
+                    "libraryName": "고렘팩토리",
+                    "bookLibraryUrl": "http://example.com/book/10667abb-2a57-4722-90dc-788e96c3591c"
+                },
+                {
+                    "id": "e889f427-758d-4b38-8f73-3d394bd7af3a",
+                    "libraryName": "부산도서관",
+                    "bookLibraryUrl": "http://example.com/book/10667abb-2a57-4722-90dc-788e96c3591c"
+                },
+                {
+                    "id": "dcb61e1c-ee11-416b-b654-90827f02d713",
+                    "libraryName": "서울도서관",
+                    "bookLibraryUrl": "http://example.com/book/10667abb-2a57-4722-90dc-788e96c3591c"
+                }
+            ]
+        },
+        {
+            "id": "918d7047-5db2-48e3-b05b-1301bfa8e0c8",
+            "title": "책 제목 80",
+            "author": "작가 80",
+            "provider": "교보문고",
+            "publisher": "출판사 80",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f8d046db-4f6f-4e23-b741-71762fbde179",
+                    "libraryName": "경북도서관",
+                    "bookLibraryUrl": "http://example.com/book/918d7047-5db2-48e3-b05b-1301bfa8e0c8"
+                },
+                {
+                    "id": "217b159c-7806-4401-b0bf-ef4be44abba3",
+                    "libraryName": "부산대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/918d7047-5db2-48e3-b05b-1301bfa8e0c8"
+                }
+            ]
+        },
+        {
+            "id": "7e6fdea7-9e6e-48a5-a1c8-f2f79f6ad252",
+            "title": "책 제목 81",
+            "author": "작가 81",
+            "provider": "교보문고",
+            "publisher": "출판사 81",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "3d2e83d2-e5d8-4be4-98c9-40ea6300f59d",
+                    "libraryName": "충북도서관",
+                    "bookLibraryUrl": "http://example.com/book/7e6fdea7-9e6e-48a5-a1c8-f2f79f6ad252"
+                }
+            ]
+        },
+        {
+            "id": "5764c971-6642-4992-9cc2-a09f8a8d9f80",
+            "title": "책 제목 82",
+            "author": "작가 82",
+            "provider": "교보문고",
+            "publisher": "출판사 82",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f89f7574-a751-4160-b1a0-78e5319356b1",
+                    "libraryName": "한동대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/5764c971-6642-4992-9cc2-a09f8a8d9f80"
+                },
+                {
+                    "id": "5381d53f-4834-42be-9db5-38734cf90857",
+                    "libraryName": "전남대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/5764c971-6642-4992-9cc2-a09f8a8d9f80"
+                }
+            ]
+        },
+        {
+            "id": "a6f19d8f-a0e9-46bf-bef0-ab47c08d58e6",
+            "title": "책 제목 83",
+            "author": "작가 83",
+            "provider": "교보문고",
+            "publisher": "출판사 83",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "87ee69d9-d13f-465d-aa4e-a7b3a9c14fa7",
+                    "libraryName": "전북도서관",
+                    "bookLibraryUrl": "http://example.com/book/a6f19d8f-a0e9-46bf-bef0-ab47c08d58e6"
+                },
+                {
+                    "id": "2a6ab9f8-d7d1-4574-a7c0-e55d120d8d89",
+                    "libraryName": "이화여자대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/a6f19d8f-a0e9-46bf-bef0-ab47c08d58e6"
+                },
+                {
+                    "id": "cbe4500e-3a78-46e8-84e0-bb8d5d725da9",
+                    "libraryName": "충남도서관",
+                    "bookLibraryUrl": "http://example.com/book/a6f19d8f-a0e9-46bf-bef0-ab47c08d58e6"
+                }
+            ]
+        },
+        {
+            "id": "844bac9b-56d0-4f97-83db-06cf47457b39",
+            "title": "책 제목 84",
+            "author": "작가 84",
+            "provider": "교보문고",
+            "publisher": "출판사 84",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "d512bb86-af60-4459-97a8-dca90d36984f",
+                    "libraryName": "대구도서관",
+                    "bookLibraryUrl": "http://example.com/book/844bac9b-56d0-4f97-83db-06cf47457b39"
+                }
+            ]
+        },
+        {
+            "id": "4c809c95-a77b-4a5f-ade1-4472ef3b06df",
+            "title": "책 제목 85",
+            "author": "작가 85",
+            "provider": "교보문고",
+            "publisher": "출판사 85",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "6c6fd174-a08f-48eb-a8cf-ee37d02aa699",
+                    "libraryName": "포항공과대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/4c809c95-a77b-4a5f-ade1-4472ef3b06df"
+                },
+                {
+                    "id": "87ee69d9-d13f-465d-aa4e-a7b3a9c14fa7",
+                    "libraryName": "전북도서관",
+                    "bookLibraryUrl": "http://example.com/book/4c809c95-a77b-4a5f-ade1-4472ef3b06df"
+                }
+            ]
+        },
+        {
+            "id": "576d5633-d41f-4fe1-ad96-a6c71b8e6942",
+            "title": "책 제목 86",
+            "author": "작가 86",
+            "provider": "교보문고",
+            "publisher": "출판사 86",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "ed615093-4be4-4f65-8ad2-36de6ce319b0",
+                    "libraryName": "대전도서관",
+                    "bookLibraryUrl": "http://example.com/book/576d5633-d41f-4fe1-ad96-a6c71b8e6942"
+                },
+                {
+                    "id": "f729dbb7-6683-4033-9ede-6d1f627494b4",
+                    "libraryName": "전남도서관",
+                    "bookLibraryUrl": "http://example.com/book/576d5633-d41f-4fe1-ad96-a6c71b8e6942"
+                }
+            ]
+        },
+        {
+            "id": "0e965018-34a9-433d-80f4-4a8a25dedc99",
+            "title": "책 제목 87",
+            "author": "작가 87",
+            "provider": "교보문고",
+            "publisher": "출판사 87",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f019d34b-32de-4593-a68f-08efa31c2c53",
+                    "libraryName": "성균관대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/0e965018-34a9-433d-80f4-4a8a25dedc99"
+                }
+            ]
+        },
+        {
+            "id": "ba9ecf3c-0009-4a9c-adeb-8d6b3ee1f25c",
+            "title": "책 제목 88",
+            "author": "작가 88",
+            "provider": "교보문고",
+            "publisher": "출판사 88",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "b458afe7-3b8d-4a8c-8712-4b46a1fd57f0",
+                    "libraryName": "교보문고",
+                    "bookLibraryUrl": "http://example.com/book/ba9ecf3c-0009-4a9c-adeb-8d6b3ee1f25c"
+                },
+                {
+                    "id": "12ee40d1-a3a7-4cb9-a230-cd401b21808c",
+                    "libraryName": "연세대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/ba9ecf3c-0009-4a9c-adeb-8d6b3ee1f25c"
+                }
+            ]
+        },
+        {
+            "id": "208c7dff-8a73-44e1-a2a7-016a4f70af32",
+            "title": "책 제목 89",
+            "author": "작가 89",
+            "provider": "교보문고",
+            "publisher": "출판사 89",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f019d34b-32de-4593-a68f-08efa31c2c53",
+                    "libraryName": "성균관대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/208c7dff-8a73-44e1-a2a7-016a4f70af32"
+                },
+                {
+                    "id": "6c6fd174-a08f-48eb-a8cf-ee37d02aa699",
+                    "libraryName": "포항공과대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/208c7dff-8a73-44e1-a2a7-016a4f70af32"
+                }
+            ]
+        },
+        {
+            "id": "16b69aaf-ed2b-4954-acc5-873e3c57632e",
+            "title": "책 제목 90",
+            "author": "작가 90",
+            "provider": "교보문고",
+            "publisher": "출판사 90",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "5381d53f-4834-42be-9db5-38734cf90857",
+                    "libraryName": "전남대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/16b69aaf-ed2b-4954-acc5-873e3c57632e"
+                },
+                {
+                    "id": "6c6fd174-a08f-48eb-a8cf-ee37d02aa699",
+                    "libraryName": "포항공과대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/16b69aaf-ed2b-4954-acc5-873e3c57632e"
+                }
+            ]
+        },
+        {
+            "id": "1fc97e39-8589-4e30-8c05-df785e52bb1f",
+            "title": "책 제목 91",
+            "author": "작가 91",
+            "provider": "교보문고",
+            "publisher": "출판사 91",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "12ee40d1-a3a7-4cb9-a230-cd401b21808c",
+                    "libraryName": "연세대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/1fc97e39-8589-4e30-8c05-df785e52bb1f"
+                }
+            ]
+        },
+        {
+            "id": "97eaa3dd-c239-472a-838a-5b50910e3b54",
+            "title": "책 제목 92",
+            "author": "작가 92",
+            "provider": "교보문고",
+            "publisher": "출판사 92",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f89f7574-a751-4160-b1a0-78e5319356b1",
+                    "libraryName": "한동대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/97eaa3dd-c239-472a-838a-5b50910e3b54"
+                },
+                {
+                    "id": "f8d046db-4f6f-4e23-b741-71762fbde179",
+                    "libraryName": "경북도서관",
+                    "bookLibraryUrl": "http://example.com/book/97eaa3dd-c239-472a-838a-5b50910e3b54"
+                }
+            ]
+        },
+        {
+            "id": "21cd16db-77cc-43bb-af77-dc1e47563f4b",
+            "title": "책 제목 93",
+            "author": "작가 93",
+            "provider": "교보문고",
+            "publisher": "출판사 93",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "3d2e83d2-e5d8-4be4-98c9-40ea6300f59d",
+                    "libraryName": "충북도서관",
+                    "bookLibraryUrl": "http://example.com/book/21cd16db-77cc-43bb-af77-dc1e47563f4b"
+                },
+                {
+                    "id": "dd53aab6-de5b-4d72-9ecd-16e980115fb8",
+                    "libraryName": "중앙대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/21cd16db-77cc-43bb-af77-dc1e47563f4b"
+                }
+            ]
+        },
+        {
+            "id": "63b5820c-f972-4b56-a2c5-99328a778cbc",
+            "title": "책 제목 94",
+            "author": "작가 94",
+            "provider": "교보문고",
+            "publisher": "출판사 94",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f8d046db-4f6f-4e23-b741-71762fbde179",
+                    "libraryName": "경북도서관",
+                    "bookLibraryUrl": "http://example.com/book/63b5820c-f972-4b56-a2c5-99328a778cbc"
+                },
+                {
+                    "id": "ab306db4-08ad-46b1-9b58-9405fa926d62",
+                    "libraryName": "국립중앙도서관",
+                    "bookLibraryUrl": "http://example.com/book/63b5820c-f972-4b56-a2c5-99328a778cbc"
+                },
+                {
+                    "id": "fb0101ab-340f-4dbb-8864-d0c43b480c06",
+                    "libraryName": "한양대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/63b5820c-f972-4b56-a2c5-99328a778cbc"
+                }
+            ]
+        },
+        {
+            "id": "1d7a8905-0e78-4e5c-9e50-d9f43629dac2",
+            "title": "책 제목 95",
+            "author": "작가 95",
+            "provider": "교보문고",
+            "publisher": "출판사 95",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f32842a7-7f14-47be-8900-d050839ba140",
+                    "libraryName": "경상대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/1d7a8905-0e78-4e5c-9e50-d9f43629dac2"
+                },
+                {
+                    "id": "dcb61e1c-ee11-416b-b654-90827f02d713",
+                    "libraryName": "서울도서관",
+                    "bookLibraryUrl": "http://example.com/book/1d7a8905-0e78-4e5c-9e50-d9f43629dac2"
+                }
+            ]
+        },
+        {
+            "id": "f66f4604-f45f-4d11-b944-6e0094d4bb75",
+            "title": "책 제목 96",
+            "author": "작가 96",
+            "provider": "교보문고",
+            "publisher": "출판사 96",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "9730f992-925b-47dc-a3b6-ae3e24f9c448",
+                    "libraryName": "고려대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/f66f4604-f45f-4d11-b944-6e0094d4bb75"
+                },
+                {
+                    "id": "f32842a7-7f14-47be-8900-d050839ba140",
+                    "libraryName": "경상대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/f66f4604-f45f-4d11-b944-6e0094d4bb75"
+                },
+                {
+                    "id": "24901c6b-fa13-4338-b37d-296a201dd4da",
+                    "libraryName": "강원도서관",
+                    "bookLibraryUrl": "http://example.com/book/f66f4604-f45f-4d11-b944-6e0094d4bb75"
+                }
+            ]
+        },
+        {
+            "id": "63c992e3-9af0-4e9b-9cb1-7f5f7229bd39",
+            "title": "책 제목 97",
+            "author": "작가 97",
+            "provider": "교보문고",
+            "publisher": "출판사 97",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "2a6ab9f8-d7d1-4574-a7c0-e55d120d8d89",
+                    "libraryName": "이화여자대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/63c992e3-9af0-4e9b-9cb1-7f5f7229bd39"
+                }
+            ]
+        },
+        {
+            "id": "3a2326f3-e74b-4d16-add0-ac0c5677af77",
+            "title": "책 제목 98",
+            "author": "작가 98",
+            "provider": "교보문고",
+            "publisher": "출판사 98",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "b458afe7-3b8d-4a8c-8712-4b46a1fd57f0",
+                    "libraryName": "교보문고",
+                    "bookLibraryUrl": "http://example.com/book/3a2326f3-e74b-4d16-add0-ac0c5677af77"
+                },
+                {
+                    "id": "a6090650-8bf9-4da4-9360-4ca72b3eb24a",
+                    "libraryName": "고렘팩토리",
+                    "bookLibraryUrl": "http://example.com/book/3a2326f3-e74b-4d16-add0-ac0c5677af77"
+                }
+            ]
+        },
+        {
+            "id": "1cb83ee1-07d2-41f6-8f03-5b517aacfc1d",
+            "title": "책 제목 99",
+            "author": "작가 99",
+            "provider": "교보문고",
+            "publisher": "출판사 99",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "12ee40d1-a3a7-4cb9-a230-cd401b21808c",
+                    "libraryName": "연세대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/1cb83ee1-07d2-41f6-8f03-5b517aacfc1d"
+                }
+            ]
+        },
+        {
+            "id": "072d8e3d-aa8b-4a54-b56a-ccaa445f8894",
+            "title": "책 제목 100",
+            "author": "작가 100",
+            "provider": "교보문고",
+            "publisher": "출판사 100",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "b754f742-82ff-4618-b7fb-38b13f14ffb1",
+                    "libraryName": "양자출판사",
+                    "bookLibraryUrl": "http://example.com/book/072d8e3d-aa8b-4a54-b56a-ccaa445f8894"
+                }
+            ]
+        },
+        {
+            "id": "69a00f5c-40f8-4ef9-944a-1f79dcfc2c5c",
+            "title": "책 제목 101",
+            "author": "작가 101",
+            "provider": "교보문고",
+            "publisher": "출판사 101",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "2a6ab9f8-d7d1-4574-a7c0-e55d120d8d89",
+                    "libraryName": "이화여자대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/69a00f5c-40f8-4ef9-944a-1f79dcfc2c5c"
+                }
+            ]
+        },
+        {
+            "id": "2db2a86b-6174-41f3-9fe9-1e58f4796458",
+            "title": "책 제목 102",
+            "author": "작가 102",
+            "provider": "교보문고",
+            "publisher": "출판사 102",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f8d046db-4f6f-4e23-b741-71762fbde179",
+                    "libraryName": "경북도서관",
+                    "bookLibraryUrl": "http://example.com/book/2db2a86b-6174-41f3-9fe9-1e58f4796458"
+                },
+                {
+                    "id": "12ee40d1-a3a7-4cb9-a230-cd401b21808c",
+                    "libraryName": "연세대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/2db2a86b-6174-41f3-9fe9-1e58f4796458"
+                }
+            ]
+        },
+        {
+            "id": "5b39cbbd-4151-47a1-b9e8-15ccc935f606",
+            "title": "책 제목 103",
+            "author": "작가 103",
+            "provider": "교보문고",
+            "publisher": "출판사 103",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "b458afe7-3b8d-4a8c-8712-4b46a1fd57f0",
+                    "libraryName": "교보문고",
+                    "bookLibraryUrl": "http://example.com/book/5b39cbbd-4151-47a1-b9e8-15ccc935f606"
+                },
+                {
+                    "id": "12ee40d1-a3a7-4cb9-a230-cd401b21808c",
+                    "libraryName": "연세대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/5b39cbbd-4151-47a1-b9e8-15ccc935f606"
+                }
+            ]
+        },
+        {
+            "id": "366e3f8a-93b1-4c34-ac6d-67b54bfba6f6",
+            "title": "책 제목 104",
+            "author": "작가 104",
+            "provider": "교보문고",
+            "publisher": "출판사 104",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "533a8d51-9daa-4400-8248-05d4f90340f0",
+                    "libraryName": "(주)누리달",
+                    "bookLibraryUrl": "http://example.com/book/366e3f8a-93b1-4c34-ac6d-67b54bfba6f6"
+                },
+                {
+                    "id": "9730f992-925b-47dc-a3b6-ae3e24f9c448",
+                    "libraryName": "고려대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/366e3f8a-93b1-4c34-ac6d-67b54bfba6f6"
+                },
+                {
+                    "id": "217b159c-7806-4401-b0bf-ef4be44abba3",
+                    "libraryName": "부산대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/366e3f8a-93b1-4c34-ac6d-67b54bfba6f6"
+                }
+            ]
+        },
+        {
+            "id": "202c3ca6-8156-4045-81ad-bf8b3de3e7e3",
+            "title": "책 제목 105",
+            "author": "작가 105",
+            "provider": "교보문고",
+            "publisher": "출판사 105",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "22e3c3ba-be0d-4157-bea5-5600d56cf137",
+                    "libraryName": "충남대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/202c3ca6-8156-4045-81ad-bf8b3de3e7e3"
+                },
+                {
+                    "id": "dd53aab6-de5b-4d72-9ecd-16e980115fb8",
+                    "libraryName": "중앙대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/202c3ca6-8156-4045-81ad-bf8b3de3e7e3"
+                }
+            ]
+        },
+        {
+            "id": "5251b7b8-9b81-4b10-9269-f7f54f7c55e6",
+            "title": "책 제목 106",
+            "author": "작가 106",
+            "provider": "교보문고",
+            "publisher": "출판사 106",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f019d34b-32de-4593-a68f-08efa31c2c53",
+                    "libraryName": "성균관대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/5251b7b8-9b81-4b10-9269-f7f54f7c55e6"
+                },
+                {
+                    "id": "5381d53f-4834-42be-9db5-38734cf90857",
+                    "libraryName": "전남대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/5251b7b8-9b81-4b10-9269-f7f54f7c55e6"
+                },
+                {
+                    "id": "f3244be1-5b36-4d35-8952-c88a19d7be50",
+                    "libraryName": "경기중앙도서관",
+                    "bookLibraryUrl": "http://example.com/book/5251b7b8-9b81-4b10-9269-f7f54f7c55e6"
+                }
+            ]
+        },
+        {
+            "id": "968566aa-250b-4c24-a797-67c362972287",
+            "title": "책 제목 107",
+            "author": "작가 107",
+            "provider": "교보문고",
+            "publisher": "출판사 107",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f8d046db-4f6f-4e23-b741-71762fbde179",
+                    "libraryName": "경북도서관",
+                    "bookLibraryUrl": "http://example.com/book/968566aa-250b-4c24-a797-67c362972287"
+                },
+                {
+                    "id": "12ee40d1-a3a7-4cb9-a230-cd401b21808c",
+                    "libraryName": "연세대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/968566aa-250b-4c24-a797-67c362972287"
+                },
+                {
+                    "id": "f019d34b-32de-4593-a68f-08efa31c2c53",
+                    "libraryName": "성균관대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/968566aa-250b-4c24-a797-67c362972287"
+                }
+            ]
+        },
+        {
+            "id": "e75cfc83-bb47-430d-abd7-8e968bae6455",
+            "title": "책 제목 108",
+            "author": "작가 108",
+            "provider": "교보문고",
+            "publisher": "출판사 108",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "965d74c3-0b5f-4d67-95dd-acedfb9c857d",
+                    "libraryName": "한국과학기술원 도서관",
+                    "bookLibraryUrl": "http://example.com/book/e75cfc83-bb47-430d-abd7-8e968bae6455"
+                },
+                {
+                    "id": "3d2e83d2-e5d8-4be4-98c9-40ea6300f59d",
+                    "libraryName": "충북도서관",
+                    "bookLibraryUrl": "http://example.com/book/e75cfc83-bb47-430d-abd7-8e968bae6455"
+                }
+            ]
+        },
+        {
+            "id": "1aa542ba-10fa-4871-9792-341e0aeaaa29",
+            "title": "책 제목 109",
+            "author": "작가 109",
+            "provider": "교보문고",
+            "publisher": "출판사 109",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "23399f2c-76d6-4dbc-a024-e29d5ee1e141",
+                    "libraryName": "울산도서관",
+                    "bookLibraryUrl": "http://example.com/book/1aa542ba-10fa-4871-9792-341e0aeaaa29"
+                },
+                {
+                    "id": "12ee40d1-a3a7-4cb9-a230-cd401b21808c",
+                    "libraryName": "연세대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/1aa542ba-10fa-4871-9792-341e0aeaaa29"
+                },
+                {
+                    "id": "3d2e83d2-e5d8-4be4-98c9-40ea6300f59d",
+                    "libraryName": "충북도서관",
+                    "bookLibraryUrl": "http://example.com/book/1aa542ba-10fa-4871-9792-341e0aeaaa29"
+                }
+            ]
+        },
+        {
+            "id": "5703a1e2-1b87-4620-9d34-75058ebfc475",
+            "title": "책 제목 110",
+            "author": "작가 110",
+            "provider": "교보문고",
+            "publisher": "출판사 110",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "de3342c8-8a49-41a9-bd8f-454b4c3d3564",
+                    "libraryName": "서울대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/5703a1e2-1b87-4620-9d34-75058ebfc475"
+                }
+            ]
+        },
+        {
+            "id": "4de7394d-9eb2-40c5-a41f-cb533ea4a2e3",
+            "title": "책 제목 111",
+            "author": "작가 111",
+            "provider": "교보문고",
+            "publisher": "출판사 111",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "22e3c3ba-be0d-4157-bea5-5600d56cf137",
+                    "libraryName": "충남대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/4de7394d-9eb2-40c5-a41f-cb533ea4a2e3"
+                }
+            ]
+        },
+        {
+            "id": "4eeb531f-3dc0-4cb2-bd4d-8350cff56c9b",
+            "title": "책 제목 112",
+            "author": "작가 112",
+            "provider": "교보문고",
+            "publisher": "출판사 112",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "e889f427-758d-4b38-8f73-3d394bd7af3a",
+                    "libraryName": "부산도서관",
+                    "bookLibraryUrl": "http://example.com/book/4eeb531f-3dc0-4cb2-bd4d-8350cff56c9b"
+                },
+                {
+                    "id": "f729dbb7-6683-4033-9ede-6d1f627494b4",
+                    "libraryName": "전남도서관",
+                    "bookLibraryUrl": "http://example.com/book/4eeb531f-3dc0-4cb2-bd4d-8350cff56c9b"
+                },
+                {
+                    "id": "f8d046db-4f6f-4e23-b741-71762fbde179",
+                    "libraryName": "경북도서관",
+                    "bookLibraryUrl": "http://example.com/book/4eeb531f-3dc0-4cb2-bd4d-8350cff56c9b"
+                }
+            ]
+        },
+        {
+            "id": "3aaffc19-9e56-491e-b0f2-692556443e9f",
+            "title": "책 제목 113",
+            "author": "작가 113",
+            "provider": "교보문고",
+            "publisher": "출판사 113",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "22e3c3ba-be0d-4157-bea5-5600d56cf137",
+                    "libraryName": "충남대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/3aaffc19-9e56-491e-b0f2-692556443e9f"
+                },
+                {
+                    "id": "787a0e6d-fed2-4093-87a0-ef232a06e3b6",
+                    "libraryName": "바톤핑크",
+                    "bookLibraryUrl": "http://example.com/book/3aaffc19-9e56-491e-b0f2-692556443e9f"
+                }
+            ]
+        },
+        {
+            "id": "e543b3cd-f240-4e4c-8c33-9c05a74a1497",
+            "title": "책 제목 114",
+            "author": "작가 114",
+            "provider": "교보문고",
+            "publisher": "출판사 114",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "533a8d51-9daa-4400-8248-05d4f90340f0",
+                    "libraryName": "(주)누리달",
+                    "bookLibraryUrl": "http://example.com/book/e543b3cd-f240-4e4c-8c33-9c05a74a1497"
+                },
+                {
+                    "id": "217b159c-7806-4401-b0bf-ef4be44abba3",
+                    "libraryName": "부산대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/e543b3cd-f240-4e4c-8c33-9c05a74a1497"
+                }
+            ]
+        },
+        {
+            "id": "db5b5a21-5d81-4063-a026-586bb39b7185",
+            "title": "책 제목 115",
+            "author": "작가 115",
+            "provider": "교보문고",
+            "publisher": "출판사 115",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "5381d53f-4834-42be-9db5-38734cf90857",
+                    "libraryName": "전남대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/db5b5a21-5d81-4063-a026-586bb39b7185"
+                },
+                {
+                    "id": "a6090650-8bf9-4da4-9360-4ca72b3eb24a",
+                    "libraryName": "고렘팩토리",
+                    "bookLibraryUrl": "http://example.com/book/db5b5a21-5d81-4063-a026-586bb39b7185"
+                },
+                {
+                    "id": "3d2e83d2-e5d8-4be4-98c9-40ea6300f59d",
+                    "libraryName": "충북도서관",
+                    "bookLibraryUrl": "http://example.com/book/db5b5a21-5d81-4063-a026-586bb39b7185"
+                }
+            ]
+        },
+        {
+            "id": "0c5b27b7-ca29-4fec-80cc-1f11dd905886",
+            "title": "책 제목 116",
+            "author": "작가 116",
+            "provider": "교보문고",
+            "publisher": "출판사 116",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "2a6ab9f8-d7d1-4574-a7c0-e55d120d8d89",
+                    "libraryName": "이화여자대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/0c5b27b7-ca29-4fec-80cc-1f11dd905886"
+                },
+                {
+                    "id": "12ee40d1-a3a7-4cb9-a230-cd401b21808c",
+                    "libraryName": "연세대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/0c5b27b7-ca29-4fec-80cc-1f11dd905886"
+                }
+            ]
+        },
+        {
+            "id": "75527079-5567-4d38-b1c2-21a0eccc23c7",
+            "title": "책 제목 117",
+            "author": "작가 117",
+            "provider": "교보문고",
+            "publisher": "출판사 117",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "ab306db4-08ad-46b1-9b58-9405fa926d62",
+                    "libraryName": "국립중앙도서관",
+                    "bookLibraryUrl": "http://example.com/book/75527079-5567-4d38-b1c2-21a0eccc23c7"
+                },
+                {
+                    "id": "f32842a7-7f14-47be-8900-d050839ba140",
+                    "libraryName": "경상대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/75527079-5567-4d38-b1c2-21a0eccc23c7"
+                },
+                {
+                    "id": "de3342c8-8a49-41a9-bd8f-454b4c3d3564",
+                    "libraryName": "서울대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/75527079-5567-4d38-b1c2-21a0eccc23c7"
+                }
+            ]
+        },
+        {
+            "id": "fb6c6979-31c7-42f7-921c-abc002faf1a6",
+            "title": "책 제목 118",
+            "author": "작가 118",
+            "provider": "교보문고",
+            "publisher": "출판사 118",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "24901c6b-fa13-4338-b37d-296a201dd4da",
+                    "libraryName": "강원도서관",
+                    "bookLibraryUrl": "http://example.com/book/fb6c6979-31c7-42f7-921c-abc002faf1a6"
+                },
+                {
+                    "id": "f729dbb7-6683-4033-9ede-6d1f627494b4",
+                    "libraryName": "전남도서관",
+                    "bookLibraryUrl": "http://example.com/book/fb6c6979-31c7-42f7-921c-abc002faf1a6"
+                },
+                {
+                    "id": "b6387c4b-de2c-406f-975e-c9eb5c589027",
+                    "libraryName": "경북대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/fb6c6979-31c7-42f7-921c-abc002faf1a6"
+                }
+            ]
+        },
+        {
+            "id": "fc12b496-75a0-4751-bb5a-c8ca4a427955",
+            "title": "책 제목 119",
+            "author": "작가 119",
+            "provider": "교보문고",
+            "publisher": "출판사 119",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "b6387c4b-de2c-406f-975e-c9eb5c589027",
+                    "libraryName": "경북대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/fc12b496-75a0-4751-bb5a-c8ca4a427955"
+                },
+                {
+                    "id": "6c6fd174-a08f-48eb-a8cf-ee37d02aa699",
+                    "libraryName": "포항공과대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/fc12b496-75a0-4751-bb5a-c8ca4a427955"
+                }
+            ]
+        },
+        {
+            "id": "9cb87398-a29f-4e44-9dec-8cb3985bff90",
+            "title": "책 제목 120",
+            "author": "작가 120",
+            "provider": "교보문고",
+            "publisher": "출판사 120",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "d0bc4ab1-a150-49e0-b32d-d290e528b29c",
+                    "libraryName": "헌법재판소 도서관",
+                    "bookLibraryUrl": "http://example.com/book/9cb87398-a29f-4e44-9dec-8cb3985bff90"
+                }
+            ]
+        },
+        {
+            "id": "51c3154e-9f91-40e9-94b9-5b468f283b21",
+            "title": "책 제목 121",
+            "author": "작가 121",
+            "provider": "교보문고",
+            "publisher": "출판사 121",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "12ee40d1-a3a7-4cb9-a230-cd401b21808c",
+                    "libraryName": "연세대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/51c3154e-9f91-40e9-94b9-5b468f283b21"
+                },
+                {
+                    "id": "87ee69d9-d13f-465d-aa4e-a7b3a9c14fa7",
+                    "libraryName": "전북도서관",
+                    "bookLibraryUrl": "http://example.com/book/51c3154e-9f91-40e9-94b9-5b468f283b21"
+                }
+            ]
+        },
+        {
+            "id": "0ccaf011-5553-42e7-a171-a552197e4f2c",
+            "title": "책 제목 122",
+            "author": "작가 122",
+            "provider": "교보문고",
+            "publisher": "출판사 122",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "9730f992-925b-47dc-a3b6-ae3e24f9c448",
+                    "libraryName": "고려대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/0ccaf011-5553-42e7-a171-a552197e4f2c"
+                }
+            ]
+        },
+        {
+            "id": "a982646f-b699-49ec-b6b1-86680c7f05b6",
+            "title": "책 제목 123",
+            "author": "작가 123",
+            "provider": "교보문고",
+            "publisher": "출판사 123",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f729dbb7-6683-4033-9ede-6d1f627494b4",
+                    "libraryName": "전남도서관",
+                    "bookLibraryUrl": "http://example.com/book/a982646f-b699-49ec-b6b1-86680c7f05b6"
+                }
+            ]
+        },
+        {
+            "id": "82cd0274-29e4-473b-aac1-dc5ebeafb8e2",
+            "title": "책 제목 124",
+            "author": "작가 124",
+            "provider": "교보문고",
+            "publisher": "출판사 124",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "6c6fd174-a08f-48eb-a8cf-ee37d02aa699",
+                    "libraryName": "포항공과대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/82cd0274-29e4-473b-aac1-dc5ebeafb8e2"
+                },
+                {
+                    "id": "f729dbb7-6683-4033-9ede-6d1f627494b4",
+                    "libraryName": "전남도서관",
+                    "bookLibraryUrl": "http://example.com/book/82cd0274-29e4-473b-aac1-dc5ebeafb8e2"
+                }
+            ]
+        },
+        {
+            "id": "6d4e97b8-eb71-4d13-bbb5-56501c9e13bd",
+            "title": "책 제목 125",
+            "author": "작가 125",
+            "provider": "교보문고",
+            "publisher": "출판사 125",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f32842a7-7f14-47be-8900-d050839ba140",
+                    "libraryName": "경상대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/6d4e97b8-eb71-4d13-bbb5-56501c9e13bd"
+                },
+                {
+                    "id": "dcb61e1c-ee11-416b-b654-90827f02d713",
+                    "libraryName": "서울도서관",
+                    "bookLibraryUrl": "http://example.com/book/6d4e97b8-eb71-4d13-bbb5-56501c9e13bd"
+                },
+                {
+                    "id": "f89f7574-a751-4160-b1a0-78e5319356b1",
+                    "libraryName": "한동대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/6d4e97b8-eb71-4d13-bbb5-56501c9e13bd"
+                }
+            ]
+        },
+        {
+            "id": "0316f421-83c2-44e4-864a-59905b69f693",
+            "title": "책 제목 126",
+            "author": "작가 126",
+            "provider": "교보문고",
+            "publisher": "출판사 126",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "12ee40d1-a3a7-4cb9-a230-cd401b21808c",
+                    "libraryName": "연세대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/0316f421-83c2-44e4-864a-59905b69f693"
+                }
+            ]
+        },
+        {
+            "id": "42860ede-f4af-41b1-ad66-3ccffeebb29b",
+            "title": "책 제목 127",
+            "author": "작가 127",
+            "provider": "교보문고",
+            "publisher": "출판사 127",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "e1339922-5fbe-4ffa-8607-ccea60d14041",
+                    "libraryName": "국회도서관",
+                    "bookLibraryUrl": "http://example.com/book/42860ede-f4af-41b1-ad66-3ccffeebb29b"
+                },
+                {
+                    "id": "9730f992-925b-47dc-a3b6-ae3e24f9c448",
+                    "libraryName": "고려대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/42860ede-f4af-41b1-ad66-3ccffeebb29b"
+                }
+            ]
+        },
+        {
+            "id": "62319176-cff3-4e9d-ae53-8530454e2910",
+            "title": "책 제목 128",
+            "author": "작가 128",
+            "provider": "교보문고",
+            "publisher": "출판사 128",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "5381d53f-4834-42be-9db5-38734cf90857",
+                    "libraryName": "전남대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/62319176-cff3-4e9d-ae53-8530454e2910"
+                },
+                {
+                    "id": "f32842a7-7f14-47be-8900-d050839ba140",
+                    "libraryName": "경상대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/62319176-cff3-4e9d-ae53-8530454e2910"
+                },
+                {
+                    "id": "787a0e6d-fed2-4093-87a0-ef232a06e3b6",
+                    "libraryName": "바톤핑크",
+                    "bookLibraryUrl": "http://example.com/book/62319176-cff3-4e9d-ae53-8530454e2910"
+                }
+            ]
+        },
+        {
+            "id": "6271592c-1bcd-466d-b94f-991d8b869505",
+            "title": "책 제목 129",
+            "author": "작가 129",
+            "provider": "교보문고",
+            "publisher": "출판사 129",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "3ad6e609-45f8-4e1e-938c-d692f694974f",
+                    "libraryName": "충북대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/6271592c-1bcd-466d-b94f-991d8b869505"
+                },
+                {
+                    "id": "533a8d51-9daa-4400-8248-05d4f90340f0",
+                    "libraryName": "(주)누리달",
+                    "bookLibraryUrl": "http://example.com/book/6271592c-1bcd-466d-b94f-991d8b869505"
+                }
+            ]
+        },
+        {
+            "id": "14ce3507-256a-447d-a528-2591d5afd0d1",
+            "title": "책 제목 130",
+            "author": "작가 130",
+            "provider": "교보문고",
+            "publisher": "출판사 130",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "2a6ab9f8-d7d1-4574-a7c0-e55d120d8d89",
+                    "libraryName": "이화여자대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/14ce3507-256a-447d-a528-2591d5afd0d1"
+                }
+            ]
+        },
+        {
+            "id": "7226fa0d-01b1-467f-a9b6-72c2b5a8e1dd",
+            "title": "책 제목 131",
+            "author": "작가 131",
+            "provider": "교보문고",
+            "publisher": "출판사 131",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "2a6ab9f8-d7d1-4574-a7c0-e55d120d8d89",
+                    "libraryName": "이화여자대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/7226fa0d-01b1-467f-a9b6-72c2b5a8e1dd"
+                },
+                {
+                    "id": "f019d34b-32de-4593-a68f-08efa31c2c53",
+                    "libraryName": "성균관대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/7226fa0d-01b1-467f-a9b6-72c2b5a8e1dd"
+                }
+            ]
+        },
+        {
+            "id": "b3c33ec2-5e38-49f4-9fc1-bc29faa48596",
+            "title": "책 제목 132",
+            "author": "작가 132",
+            "provider": "교보문고",
+            "publisher": "출판사 132",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "b754f742-82ff-4618-b7fb-38b13f14ffb1",
+                    "libraryName": "양자출판사",
+                    "bookLibraryUrl": "http://example.com/book/b3c33ec2-5e38-49f4-9fc1-bc29faa48596"
+                },
+                {
+                    "id": "2a6ab9f8-d7d1-4574-a7c0-e55d120d8d89",
+                    "libraryName": "이화여자대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/b3c33ec2-5e38-49f4-9fc1-bc29faa48596"
+                },
+                {
+                    "id": "fb61f88e-7c29-4424-b0ea-f9fea2e0d24f",
+                    "libraryName": "울산과학기술원 도서관",
+                    "bookLibraryUrl": "http://example.com/book/b3c33ec2-5e38-49f4-9fc1-bc29faa48596"
+                }
+            ]
+        },
+        {
+            "id": "3566dcaa-6ae4-40c9-868f-2825ec811677",
+            "title": "책 제목 133",
+            "author": "작가 133",
+            "provider": "교보문고",
+            "publisher": "출판사 133",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "6946380b-e5e0-45aa-8ff4-b9655979ac84",
+                    "libraryName": "법원도서관",
+                    "bookLibraryUrl": "http://example.com/book/3566dcaa-6ae4-40c9-868f-2825ec811677"
+                }
+            ]
+        },
+        {
+            "id": "80ad84d7-fef6-42c0-91aa-db4c41e79cb9",
+            "title": "책 제목 134",
+            "author": "작가 134",
+            "provider": "교보문고",
+            "publisher": "출판사 134",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "fb0101ab-340f-4dbb-8864-d0c43b480c06",
+                    "libraryName": "한양대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/80ad84d7-fef6-42c0-91aa-db4c41e79cb9"
+                },
+                {
+                    "id": "e1339922-5fbe-4ffa-8607-ccea60d14041",
+                    "libraryName": "국회도서관",
+                    "bookLibraryUrl": "http://example.com/book/80ad84d7-fef6-42c0-91aa-db4c41e79cb9"
+                }
+            ]
+        },
+        {
+            "id": "51902829-c1ba-4156-9941-2537a81bb328",
+            "title": "책 제목 135",
+            "author": "작가 135",
+            "provider": "교보문고",
+            "publisher": "출판사 135",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "87ee69d9-d13f-465d-aa4e-a7b3a9c14fa7",
+                    "libraryName": "전북도서관",
+                    "bookLibraryUrl": "http://example.com/book/51902829-c1ba-4156-9941-2537a81bb328"
+                },
+                {
+                    "id": "dd53aab6-de5b-4d72-9ecd-16e980115fb8",
+                    "libraryName": "중앙대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/51902829-c1ba-4156-9941-2537a81bb328"
+                },
+                {
+                    "id": "f019d34b-32de-4593-a68f-08efa31c2c53",
+                    "libraryName": "성균관대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/51902829-c1ba-4156-9941-2537a81bb328"
+                }
+            ]
+        },
+        {
+            "id": "5184800b-c918-42d0-9c1c-a35b8f32a908",
+            "title": "책 제목 136",
+            "author": "작가 136",
+            "provider": "교보문고",
+            "publisher": "출판사 136",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "cbe4500e-3a78-46e8-84e0-bb8d5d725da9",
+                    "libraryName": "충남도서관",
+                    "bookLibraryUrl": "http://example.com/book/5184800b-c918-42d0-9c1c-a35b8f32a908"
+                },
+                {
+                    "id": "ed615093-4be4-4f65-8ad2-36de6ce319b0",
+                    "libraryName": "대전도서관",
+                    "bookLibraryUrl": "http://example.com/book/5184800b-c918-42d0-9c1c-a35b8f32a908"
+                },
+                {
+                    "id": "b458afe7-3b8d-4a8c-8712-4b46a1fd57f0",
+                    "libraryName": "교보문고",
+                    "bookLibraryUrl": "http://example.com/book/5184800b-c918-42d0-9c1c-a35b8f32a908"
+                }
+            ]
+        },
+        {
+            "id": "a6d4a683-e7fd-4ac3-9add-a9a3a56f7ebc",
+            "title": "책 제목 137",
+            "author": "작가 137",
+            "provider": "교보문고",
+            "publisher": "출판사 137",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "e889f427-758d-4b38-8f73-3d394bd7af3a",
+                    "libraryName": "부산도서관",
+                    "bookLibraryUrl": "http://example.com/book/a6d4a683-e7fd-4ac3-9add-a9a3a56f7ebc"
+                },
+                {
+                    "id": "fb0101ab-340f-4dbb-8864-d0c43b480c06",
+                    "libraryName": "한양대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/a6d4a683-e7fd-4ac3-9add-a9a3a56f7ebc"
+                }
+            ]
+        },
+        {
+            "id": "76c76f6f-ae27-4ece-b023-b802395ee17e",
+            "title": "책 제목 138",
+            "author": "작가 138",
+            "provider": "교보문고",
+            "publisher": "출판사 138",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "b458afe7-3b8d-4a8c-8712-4b46a1fd57f0",
+                    "libraryName": "교보문고",
+                    "bookLibraryUrl": "http://example.com/book/76c76f6f-ae27-4ece-b023-b802395ee17e"
+                },
+                {
+                    "id": "5381d53f-4834-42be-9db5-38734cf90857",
+                    "libraryName": "전남대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/76c76f6f-ae27-4ece-b023-b802395ee17e"
+                },
+                {
+                    "id": "24901c6b-fa13-4338-b37d-296a201dd4da",
+                    "libraryName": "강원도서관",
+                    "bookLibraryUrl": "http://example.com/book/76c76f6f-ae27-4ece-b023-b802395ee17e"
+                }
+            ]
+        },
+        {
+            "id": "ff5e68c8-c2fa-4e44-a668-cb6ea49a8a55",
+            "title": "책 제목 139",
+            "author": "작가 139",
+            "provider": "교보문고",
+            "publisher": "출판사 139",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f89f7574-a751-4160-b1a0-78e5319356b1",
+                    "libraryName": "한동대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/ff5e68c8-c2fa-4e44-a668-cb6ea49a8a55"
+                },
+                {
+                    "id": "533a8d51-9daa-4400-8248-05d4f90340f0",
+                    "libraryName": "(주)누리달",
+                    "bookLibraryUrl": "http://example.com/book/ff5e68c8-c2fa-4e44-a668-cb6ea49a8a55"
+                },
+                {
+                    "id": "ed615093-4be4-4f65-8ad2-36de6ce319b0",
+                    "libraryName": "대전도서관",
+                    "bookLibraryUrl": "http://example.com/book/ff5e68c8-c2fa-4e44-a668-cb6ea49a8a55"
+                }
+            ]
+        },
+        {
+            "id": "5e09c118-fd9d-4a95-8fc9-7ac3cf7c1f80",
+            "title": "책 제목 140",
+            "author": "작가 140",
+            "provider": "교보문고",
+            "publisher": "출판사 140",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "cbe4500e-3a78-46e8-84e0-bb8d5d725da9",
+                    "libraryName": "충남도서관",
+                    "bookLibraryUrl": "http://example.com/book/5e09c118-fd9d-4a95-8fc9-7ac3cf7c1f80"
+                },
+                {
+                    "id": "6c6fd174-a08f-48eb-a8cf-ee37d02aa699",
+                    "libraryName": "포항공과대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/5e09c118-fd9d-4a95-8fc9-7ac3cf7c1f80"
+                }
+            ]
+        },
+        {
+            "id": "d5bb2777-2ff8-4e85-b8b7-f39e8470633d",
+            "title": "책 제목 141",
+            "author": "작가 141",
+            "provider": "교보문고",
+            "publisher": "출판사 141",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "1847852a-b91b-42c8-986f-29064d85f433",
+                    "libraryName": "세종도서관",
+                    "bookLibraryUrl": "http://example.com/book/d5bb2777-2ff8-4e85-b8b7-f39e8470633d"
+                },
+                {
+                    "id": "6946380b-e5e0-45aa-8ff4-b9655979ac84",
+                    "libraryName": "법원도서관",
+                    "bookLibraryUrl": "http://example.com/book/d5bb2777-2ff8-4e85-b8b7-f39e8470633d"
+                },
+                {
+                    "id": "a85e69bf-c440-49a6-b592-4624ef9e18b7",
+                    "libraryName": "인천도서관",
+                    "bookLibraryUrl": "http://example.com/book/d5bb2777-2ff8-4e85-b8b7-f39e8470633d"
+                }
+            ]
+        },
+        {
+            "id": "00d879d6-8e83-4a98-a64b-daa932af256e",
+            "title": "책 제목 142",
+            "author": "작가 142",
+            "provider": "교보문고",
+            "publisher": "출판사 142",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "fb61f88e-7c29-4424-b0ea-f9fea2e0d24f",
+                    "libraryName": "울산과학기술원 도서관",
+                    "bookLibraryUrl": "http://example.com/book/00d879d6-8e83-4a98-a64b-daa932af256e"
+                },
+                {
+                    "id": "b458afe7-3b8d-4a8c-8712-4b46a1fd57f0",
+                    "libraryName": "교보문고",
+                    "bookLibraryUrl": "http://example.com/book/00d879d6-8e83-4a98-a64b-daa932af256e"
+                },
+                {
+                    "id": "dcb61e1c-ee11-416b-b654-90827f02d713",
+                    "libraryName": "서울도서관",
+                    "bookLibraryUrl": "http://example.com/book/00d879d6-8e83-4a98-a64b-daa932af256e"
+                }
+            ]
+        },
+        {
+            "id": "00b5274b-dae3-4f71-951a-fd039de5b8ea",
+            "title": "책 제목 143",
+            "author": "작가 143",
+            "provider": "교보문고",
+            "publisher": "출판사 143",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "23399f2c-76d6-4dbc-a024-e29d5ee1e141",
+                    "libraryName": "울산도서관",
+                    "bookLibraryUrl": "http://example.com/book/00b5274b-dae3-4f71-951a-fd039de5b8ea"
+                },
+                {
+                    "id": "cbe4500e-3a78-46e8-84e0-bb8d5d725da9",
+                    "libraryName": "충남도서관",
+                    "bookLibraryUrl": "http://example.com/book/00b5274b-dae3-4f71-951a-fd039de5b8ea"
+                }
+            ]
+        },
+        {
+            "id": "4c53d38c-56cb-4419-bcfc-058f3574dbf8",
+            "title": "책 제목 144",
+            "author": "작가 144",
+            "provider": "교보문고",
+            "publisher": "출판사 144",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "217b159c-7806-4401-b0bf-ef4be44abba3",
+                    "libraryName": "부산대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/4c53d38c-56cb-4419-bcfc-058f3574dbf8"
+                },
+                {
+                    "id": "ed615093-4be4-4f65-8ad2-36de6ce319b0",
+                    "libraryName": "대전도서관",
+                    "bookLibraryUrl": "http://example.com/book/4c53d38c-56cb-4419-bcfc-058f3574dbf8"
+                }
+            ]
+        },
+        {
+            "id": "5bc0a9cd-1ac8-41cb-8d35-bb31b0dfedc0",
+            "title": "책 제목 145",
+            "author": "작가 145",
+            "provider": "교보문고",
+            "publisher": "출판사 145",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "b6387c4b-de2c-406f-975e-c9eb5c589027",
+                    "libraryName": "경북대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/5bc0a9cd-1ac8-41cb-8d35-bb31b0dfedc0"
+                }
+            ]
+        },
+        {
+            "id": "713e240a-d035-496f-8ddd-869e6113820a",
+            "title": "책 제목 146",
+            "author": "작가 146",
+            "provider": "교보문고",
+            "publisher": "출판사 146",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "6946380b-e5e0-45aa-8ff4-b9655979ac84",
+                    "libraryName": "법원도서관",
+                    "bookLibraryUrl": "http://example.com/book/713e240a-d035-496f-8ddd-869e6113820a"
+                }
+            ]
+        },
+        {
+            "id": "d810dae4-29b7-4bb9-a5ca-05df88074472",
+            "title": "책 제목 147",
+            "author": "작가 147",
+            "provider": "교보문고",
+            "publisher": "출판사 147",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f729dbb7-6683-4033-9ede-6d1f627494b4",
+                    "libraryName": "전남도서관",
+                    "bookLibraryUrl": "http://example.com/book/d810dae4-29b7-4bb9-a5ca-05df88074472"
+                },
+                {
+                    "id": "e889f427-758d-4b38-8f73-3d394bd7af3a",
+                    "libraryName": "부산도서관",
+                    "bookLibraryUrl": "http://example.com/book/d810dae4-29b7-4bb9-a5ca-05df88074472"
+                },
+                {
+                    "id": "965d74c3-0b5f-4d67-95dd-acedfb9c857d",
+                    "libraryName": "한국과학기술원 도서관",
+                    "bookLibraryUrl": "http://example.com/book/d810dae4-29b7-4bb9-a5ca-05df88074472"
+                }
+            ]
+        },
+        {
+            "id": "a0f8605a-02dd-4fb2-a1cc-40c0d99efb36",
+            "title": "책 제목 148",
+            "author": "작가 148",
+            "provider": "교보문고",
+            "publisher": "출판사 148",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f3244be1-5b36-4d35-8952-c88a19d7be50",
+                    "libraryName": "경기중앙도서관",
+                    "bookLibraryUrl": "http://example.com/book/a0f8605a-02dd-4fb2-a1cc-40c0d99efb36"
+                },
+                {
+                    "id": "1847852a-b91b-42c8-986f-29064d85f433",
+                    "libraryName": "세종도서관",
+                    "bookLibraryUrl": "http://example.com/book/a0f8605a-02dd-4fb2-a1cc-40c0d99efb36"
+                }
+            ]
+        },
+        {
+            "id": "9630b082-dd35-4768-9740-61e17f7c356e",
+            "title": "책 제목 149",
+            "author": "작가 149",
+            "provider": "교보문고",
+            "publisher": "출판사 149",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "2a6ab9f8-d7d1-4574-a7c0-e55d120d8d89",
+                    "libraryName": "이화여자대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/9630b082-dd35-4768-9740-61e17f7c356e"
+                },
+                {
+                    "id": "f8d046db-4f6f-4e23-b741-71762fbde179",
+                    "libraryName": "경북도서관",
+                    "bookLibraryUrl": "http://example.com/book/9630b082-dd35-4768-9740-61e17f7c356e"
+                }
+            ]
+        },
+        {
+            "id": "0830356b-75c1-43f3-9784-84e449a142a4",
+            "title": "책 제목 150",
+            "author": "작가 150",
+            "provider": "교보문고",
+            "publisher": "출판사 150",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "a6090650-8bf9-4da4-9360-4ca72b3eb24a",
+                    "libraryName": "고렘팩토리",
+                    "bookLibraryUrl": "http://example.com/book/0830356b-75c1-43f3-9784-84e449a142a4"
+                },
+                {
+                    "id": "d0bc4ab1-a150-49e0-b32d-d290e528b29c",
+                    "libraryName": "헌법재판소 도서관",
+                    "bookLibraryUrl": "http://example.com/book/0830356b-75c1-43f3-9784-84e449a142a4"
+                }
+            ]
+        },
+        {
+            "id": "4f0299b2-51af-43a6-a8fe-7b211d0e30df",
+            "title": "책 제목 151",
+            "author": "작가 151",
+            "provider": "교보문고",
+            "publisher": "출판사 151",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "6c6fd174-a08f-48eb-a8cf-ee37d02aa699",
+                    "libraryName": "포항공과대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/4f0299b2-51af-43a6-a8fe-7b211d0e30df"
+                },
+                {
+                    "id": "fb61f88e-7c29-4424-b0ea-f9fea2e0d24f",
+                    "libraryName": "울산과학기술원 도서관",
+                    "bookLibraryUrl": "http://example.com/book/4f0299b2-51af-43a6-a8fe-7b211d0e30df"
+                },
+                {
+                    "id": "2a6ab9f8-d7d1-4574-a7c0-e55d120d8d89",
+                    "libraryName": "이화여자대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/4f0299b2-51af-43a6-a8fe-7b211d0e30df"
+                }
+            ]
+        },
+        {
+            "id": "637d13d8-0d42-43ba-bf42-1031e131413a",
+            "title": "책 제목 152",
+            "author": "작가 152",
+            "provider": "교보문고",
+            "publisher": "출판사 152",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "787a0e6d-fed2-4093-87a0-ef232a06e3b6",
+                    "libraryName": "바톤핑크",
+                    "bookLibraryUrl": "http://example.com/book/637d13d8-0d42-43ba-bf42-1031e131413a"
+                },
+                {
+                    "id": "e1339922-5fbe-4ffa-8607-ccea60d14041",
+                    "libraryName": "국회도서관",
+                    "bookLibraryUrl": "http://example.com/book/637d13d8-0d42-43ba-bf42-1031e131413a"
+                },
+                {
+                    "id": "a6090650-8bf9-4da4-9360-4ca72b3eb24a",
+                    "libraryName": "고렘팩토리",
+                    "bookLibraryUrl": "http://example.com/book/637d13d8-0d42-43ba-bf42-1031e131413a"
+                }
+            ]
+        },
+        {
+            "id": "ea808a88-2daf-44e9-9e9f-b6e39dec052a",
+            "title": "책 제목 153",
+            "author": "작가 153",
+            "provider": "교보문고",
+            "publisher": "출판사 153",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "12ee40d1-a3a7-4cb9-a230-cd401b21808c",
+                    "libraryName": "연세대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/ea808a88-2daf-44e9-9e9f-b6e39dec052a"
+                },
+                {
+                    "id": "b6387c4b-de2c-406f-975e-c9eb5c589027",
+                    "libraryName": "경북대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/ea808a88-2daf-44e9-9e9f-b6e39dec052a"
+                }
+            ]
+        },
+        {
+            "id": "dcae990c-01d7-4028-87df-edfa1ddceb2c",
+            "title": "책 제목 154",
+            "author": "작가 154",
+            "provider": "교보문고",
+            "publisher": "출판사 154",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f8d046db-4f6f-4e23-b741-71762fbde179",
+                    "libraryName": "경북도서관",
+                    "bookLibraryUrl": "http://example.com/book/dcae990c-01d7-4028-87df-edfa1ddceb2c"
+                }
+            ]
+        },
+        {
+            "id": "7b532268-00f4-4460-990c-5ae7904894b9",
+            "title": "책 제목 155",
+            "author": "작가 155",
+            "provider": "교보문고",
+            "publisher": "출판사 155",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "ab306db4-08ad-46b1-9b58-9405fa926d62",
+                    "libraryName": "국립중앙도서관",
+                    "bookLibraryUrl": "http://example.com/book/7b532268-00f4-4460-990c-5ae7904894b9"
+                },
+                {
+                    "id": "a6090650-8bf9-4da4-9360-4ca72b3eb24a",
+                    "libraryName": "고렘팩토리",
+                    "bookLibraryUrl": "http://example.com/book/7b532268-00f4-4460-990c-5ae7904894b9"
+                },
+                {
+                    "id": "ed615093-4be4-4f65-8ad2-36de6ce319b0",
+                    "libraryName": "대전도서관",
+                    "bookLibraryUrl": "http://example.com/book/7b532268-00f4-4460-990c-5ae7904894b9"
+                }
+            ]
+        },
+        {
+            "id": "bf0a51df-073b-4c29-83df-a5aab9f038ae",
+            "title": "책 제목 156",
+            "author": "작가 156",
+            "provider": "교보문고",
+            "publisher": "출판사 156",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "cbe4500e-3a78-46e8-84e0-bb8d5d725da9",
+                    "libraryName": "충남도서관",
+                    "bookLibraryUrl": "http://example.com/book/bf0a51df-073b-4c29-83df-a5aab9f038ae"
+                }
+            ]
+        },
+        {
+            "id": "da80f391-2ccc-4fd2-97ba-ac3c16ddbccd",
+            "title": "책 제목 157",
+            "author": "작가 157",
+            "provider": "교보문고",
+            "publisher": "출판사 157",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f32842a7-7f14-47be-8900-d050839ba140",
+                    "libraryName": "경상대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/da80f391-2ccc-4fd2-97ba-ac3c16ddbccd"
+                },
+                {
+                    "id": "9730f992-925b-47dc-a3b6-ae3e24f9c448",
+                    "libraryName": "고려대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/da80f391-2ccc-4fd2-97ba-ac3c16ddbccd"
+                }
+            ]
+        },
+        {
+            "id": "5ccbef9a-dab2-4380-81d0-e676413ef04e",
+            "title": "책 제목 158",
+            "author": "작가 158",
+            "provider": "교보문고",
+            "publisher": "출판사 158",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "cbe4500e-3a78-46e8-84e0-bb8d5d725da9",
+                    "libraryName": "충남도서관",
+                    "bookLibraryUrl": "http://example.com/book/5ccbef9a-dab2-4380-81d0-e676413ef04e"
+                },
+                {
+                    "id": "3ad6e609-45f8-4e1e-938c-d692f694974f",
+                    "libraryName": "충북대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/5ccbef9a-dab2-4380-81d0-e676413ef04e"
+                },
+                {
+                    "id": "22e3c3ba-be0d-4157-bea5-5600d56cf137",
+                    "libraryName": "충남대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/5ccbef9a-dab2-4380-81d0-e676413ef04e"
+                }
+            ]
+        },
+        {
+            "id": "b3ebc0cd-202b-4ebe-8472-a2c691f4f668",
+            "title": "책 제목 159",
+            "author": "작가 159",
+            "provider": "교보문고",
+            "publisher": "출판사 159",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "12ee40d1-a3a7-4cb9-a230-cd401b21808c",
+                    "libraryName": "연세대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/b3ebc0cd-202b-4ebe-8472-a2c691f4f668"
+                },
+                {
+                    "id": "23399f2c-76d6-4dbc-a024-e29d5ee1e141",
+                    "libraryName": "울산도서관",
+                    "bookLibraryUrl": "http://example.com/book/b3ebc0cd-202b-4ebe-8472-a2c691f4f668"
+                },
+                {
+                    "id": "e889f427-758d-4b38-8f73-3d394bd7af3a",
+                    "libraryName": "부산도서관",
+                    "bookLibraryUrl": "http://example.com/book/b3ebc0cd-202b-4ebe-8472-a2c691f4f668"
+                }
+            ]
+        },
+        {
+            "id": "79946f36-f04c-4c8a-9c0c-2ed8e3e66961",
+            "title": "책 제목 160",
+            "author": "작가 160",
+            "provider": "교보문고",
+            "publisher": "출판사 160",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "5381d53f-4834-42be-9db5-38734cf90857",
+                    "libraryName": "전남대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/79946f36-f04c-4c8a-9c0c-2ed8e3e66961"
+                },
+                {
+                    "id": "cbe4500e-3a78-46e8-84e0-bb8d5d725da9",
+                    "libraryName": "충남도서관",
+                    "bookLibraryUrl": "http://example.com/book/79946f36-f04c-4c8a-9c0c-2ed8e3e66961"
+                }
+            ]
+        },
+        {
+            "id": "d556f511-73bf-46a0-b8c8-424219796ae4",
+            "title": "책 제목 161",
+            "author": "작가 161",
+            "provider": "교보문고",
+            "publisher": "출판사 161",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "3d2e83d2-e5d8-4be4-98c9-40ea6300f59d",
+                    "libraryName": "충북도서관",
+                    "bookLibraryUrl": "http://example.com/book/d556f511-73bf-46a0-b8c8-424219796ae4"
+                }
+            ]
+        },
+        {
+            "id": "bd10d357-6fed-4fa3-b0e1-a82b983d2eea",
+            "title": "책 제목 162",
+            "author": "작가 162",
+            "provider": "교보문고",
+            "publisher": "출판사 162",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "24901c6b-fa13-4338-b37d-296a201dd4da",
+                    "libraryName": "강원도서관",
+                    "bookLibraryUrl": "http://example.com/book/bd10d357-6fed-4fa3-b0e1-a82b983d2eea"
+                }
+            ]
+        },
+        {
+            "id": "45ef65bf-197b-4808-b82e-434a1d58c41b",
+            "title": "책 제목 163",
+            "author": "작가 163",
+            "provider": "교보문고",
+            "publisher": "출판사 163",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "e1339922-5fbe-4ffa-8607-ccea60d14041",
+                    "libraryName": "국회도서관",
+                    "bookLibraryUrl": "http://example.com/book/45ef65bf-197b-4808-b82e-434a1d58c41b"
+                },
+                {
+                    "id": "2a6ab9f8-d7d1-4574-a7c0-e55d120d8d89",
+                    "libraryName": "이화여자대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/45ef65bf-197b-4808-b82e-434a1d58c41b"
+                }
+            ]
+        },
+        {
+            "id": "5d60ec20-c80b-4e2a-a1ee-b9fb84e00b4c",
+            "title": "책 제목 164",
+            "author": "작가 164",
+            "provider": "교보문고",
+            "publisher": "출판사 164",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "e1339922-5fbe-4ffa-8607-ccea60d14041",
+                    "libraryName": "국회도서관",
+                    "bookLibraryUrl": "http://example.com/book/5d60ec20-c80b-4e2a-a1ee-b9fb84e00b4c"
+                },
+                {
+                    "id": "f3244be1-5b36-4d35-8952-c88a19d7be50",
+                    "libraryName": "경기중앙도서관",
+                    "bookLibraryUrl": "http://example.com/book/5d60ec20-c80b-4e2a-a1ee-b9fb84e00b4c"
+                },
+                {
+                    "id": "a85e69bf-c440-49a6-b592-4624ef9e18b7",
+                    "libraryName": "인천도서관",
+                    "bookLibraryUrl": "http://example.com/book/5d60ec20-c80b-4e2a-a1ee-b9fb84e00b4c"
+                }
+            ]
+        },
+        {
+            "id": "c95ea99f-fb3f-4275-ba1e-cd7183d6724d",
+            "title": "책 제목 165",
+            "author": "작가 165",
+            "provider": "교보문고",
+            "publisher": "출판사 165",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "cbe4500e-3a78-46e8-84e0-bb8d5d725da9",
+                    "libraryName": "충남도서관",
+                    "bookLibraryUrl": "http://example.com/book/c95ea99f-fb3f-4275-ba1e-cd7183d6724d"
+                },
+                {
+                    "id": "f32842a7-7f14-47be-8900-d050839ba140",
+                    "libraryName": "경상대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/c95ea99f-fb3f-4275-ba1e-cd7183d6724d"
+                }
+            ]
+        },
+        {
+            "id": "5e28d467-ff76-4ff6-abef-2fb5562e0593",
+            "title": "책 제목 166",
+            "author": "작가 166",
+            "provider": "교보문고",
+            "publisher": "출판사 166",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "1847852a-b91b-42c8-986f-29064d85f433",
+                    "libraryName": "세종도서관",
+                    "bookLibraryUrl": "http://example.com/book/5e28d467-ff76-4ff6-abef-2fb5562e0593"
+                }
+            ]
+        },
+        {
+            "id": "c90cbe91-6726-4fe7-9fcb-ee217c2fbbad",
+            "title": "책 제목 167",
+            "author": "작가 167",
+            "provider": "교보문고",
+            "publisher": "출판사 167",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f8d046db-4f6f-4e23-b741-71762fbde179",
+                    "libraryName": "경북도서관",
+                    "bookLibraryUrl": "http://example.com/book/c90cbe91-6726-4fe7-9fcb-ee217c2fbbad"
+                },
+                {
+                    "id": "965d74c3-0b5f-4d67-95dd-acedfb9c857d",
+                    "libraryName": "한국과학기술원 도서관",
+                    "bookLibraryUrl": "http://example.com/book/c90cbe91-6726-4fe7-9fcb-ee217c2fbbad"
+                },
+                {
+                    "id": "3d2e83d2-e5d8-4be4-98c9-40ea6300f59d",
+                    "libraryName": "충북도서관",
+                    "bookLibraryUrl": "http://example.com/book/c90cbe91-6726-4fe7-9fcb-ee217c2fbbad"
+                }
+            ]
+        },
+        {
+            "id": "69bbc3d0-2a78-47cc-a944-e86ac5fa5e8d",
+            "title": "책 제목 168",
+            "author": "작가 168",
+            "provider": "교보문고",
+            "publisher": "출판사 168",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "87ee69d9-d13f-465d-aa4e-a7b3a9c14fa7",
+                    "libraryName": "전북도서관",
+                    "bookLibraryUrl": "http://example.com/book/69bbc3d0-2a78-47cc-a944-e86ac5fa5e8d"
+                },
+                {
+                    "id": "f32842a7-7f14-47be-8900-d050839ba140",
+                    "libraryName": "경상대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/69bbc3d0-2a78-47cc-a944-e86ac5fa5e8d"
+                },
+                {
+                    "id": "787a0e6d-fed2-4093-87a0-ef232a06e3b6",
+                    "libraryName": "바톤핑크",
+                    "bookLibraryUrl": "http://example.com/book/69bbc3d0-2a78-47cc-a944-e86ac5fa5e8d"
+                }
+            ]
+        },
+        {
+            "id": "e10ecaa2-6c88-44e1-97bf-240a57c01a41",
+            "title": "책 제목 169",
+            "author": "작가 169",
+            "provider": "교보문고",
+            "publisher": "출판사 169",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "fb61f88e-7c29-4424-b0ea-f9fea2e0d24f",
+                    "libraryName": "울산과학기술원 도서관",
+                    "bookLibraryUrl": "http://example.com/book/e10ecaa2-6c88-44e1-97bf-240a57c01a41"
+                },
+                {
+                    "id": "d512bb86-af60-4459-97a8-dca90d36984f",
+                    "libraryName": "대구도서관",
+                    "bookLibraryUrl": "http://example.com/book/e10ecaa2-6c88-44e1-97bf-240a57c01a41"
+                }
+            ]
+        },
+        {
+            "id": "fe73e432-0839-412f-965c-0e8ea75b8137",
+            "title": "책 제목 170",
+            "author": "작가 170",
+            "provider": "교보문고",
+            "publisher": "출판사 170",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "dd53aab6-de5b-4d72-9ecd-16e980115fb8",
+                    "libraryName": "중앙대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/fe73e432-0839-412f-965c-0e8ea75b8137"
+                },
+                {
+                    "id": "b754f742-82ff-4618-b7fb-38b13f14ffb1",
+                    "libraryName": "양자출판사",
+                    "bookLibraryUrl": "http://example.com/book/fe73e432-0839-412f-965c-0e8ea75b8137"
+                },
+                {
+                    "id": "fb0101ab-340f-4dbb-8864-d0c43b480c06",
+                    "libraryName": "한양대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/fe73e432-0839-412f-965c-0e8ea75b8137"
+                }
+            ]
+        },
+        {
+            "id": "cafc2e72-e1a1-4b51-9f88-f462a7bfcc2c",
+            "title": "책 제목 171",
+            "author": "작가 171",
+            "provider": "교보문고",
+            "publisher": "출판사 171",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "22e3c3ba-be0d-4157-bea5-5600d56cf137",
+                    "libraryName": "충남대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/cafc2e72-e1a1-4b51-9f88-f462a7bfcc2c"
+                },
+                {
+                    "id": "f32842a7-7f14-47be-8900-d050839ba140",
+                    "libraryName": "경상대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/cafc2e72-e1a1-4b51-9f88-f462a7bfcc2c"
+                },
+                {
+                    "id": "a6090650-8bf9-4da4-9360-4ca72b3eb24a",
+                    "libraryName": "고렘팩토리",
+                    "bookLibraryUrl": "http://example.com/book/cafc2e72-e1a1-4b51-9f88-f462a7bfcc2c"
+                }
+            ]
+        },
+        {
+            "id": "a3b9b349-1981-4923-bb49-02178131b46b",
+            "title": "책 제목 172",
+            "author": "작가 172",
+            "provider": "교보문고",
+            "publisher": "출판사 172",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f89f7574-a751-4160-b1a0-78e5319356b1",
+                    "libraryName": "한동대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/a3b9b349-1981-4923-bb49-02178131b46b"
+                }
+            ]
+        },
+        {
+            "id": "6eef12f8-e73f-4ccf-a572-4672cc420233",
+            "title": "책 제목 173",
+            "author": "작가 173",
+            "provider": "교보문고",
+            "publisher": "출판사 173",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "ed615093-4be4-4f65-8ad2-36de6ce319b0",
+                    "libraryName": "대전도서관",
+                    "bookLibraryUrl": "http://example.com/book/6eef12f8-e73f-4ccf-a572-4672cc420233"
+                },
+                {
+                    "id": "23399f2c-76d6-4dbc-a024-e29d5ee1e141",
+                    "libraryName": "울산도서관",
+                    "bookLibraryUrl": "http://example.com/book/6eef12f8-e73f-4ccf-a572-4672cc420233"
+                },
+                {
+                    "id": "217b159c-7806-4401-b0bf-ef4be44abba3",
+                    "libraryName": "부산대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/6eef12f8-e73f-4ccf-a572-4672cc420233"
+                }
+            ]
+        },
+        {
+            "id": "44b5068f-3c52-4c0f-a950-33874fd620da",
+            "title": "책 제목 174",
+            "author": "작가 174",
+            "provider": "교보문고",
+            "publisher": "출판사 174",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "dc494969-03cb-436f-b776-ac007d10e965",
+                    "libraryName": "경남도서관",
+                    "bookLibraryUrl": "http://example.com/book/44b5068f-3c52-4c0f-a950-33874fd620da"
+                },
+                {
+                    "id": "2a6ab9f8-d7d1-4574-a7c0-e55d120d8d89",
+                    "libraryName": "이화여자대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/44b5068f-3c52-4c0f-a950-33874fd620da"
+                },
+                {
+                    "id": "f8d046db-4f6f-4e23-b741-71762fbde179",
+                    "libraryName": "경북도서관",
+                    "bookLibraryUrl": "http://example.com/book/44b5068f-3c52-4c0f-a950-33874fd620da"
+                }
+            ]
+        },
+        {
+            "id": "ed0dbe41-ed19-4d47-80f2-de455e878c70",
+            "title": "책 제목 175",
+            "author": "작가 175",
+            "provider": "교보문고",
+            "publisher": "출판사 175",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "3ad6e609-45f8-4e1e-938c-d692f694974f",
+                    "libraryName": "충북대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/ed0dbe41-ed19-4d47-80f2-de455e878c70"
+                },
+                {
+                    "id": "f8d046db-4f6f-4e23-b741-71762fbde179",
+                    "libraryName": "경북도서관",
+                    "bookLibraryUrl": "http://example.com/book/ed0dbe41-ed19-4d47-80f2-de455e878c70"
+                },
+                {
+                    "id": "23399f2c-76d6-4dbc-a024-e29d5ee1e141",
+                    "libraryName": "울산도서관",
+                    "bookLibraryUrl": "http://example.com/book/ed0dbe41-ed19-4d47-80f2-de455e878c70"
+                }
+            ]
+        },
+        {
+            "id": "6e98656b-a35d-4267-b902-c12e8cd62b6e",
+            "title": "책 제목 176",
+            "author": "작가 176",
+            "provider": "교보문고",
+            "publisher": "출판사 176",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "12ee40d1-a3a7-4cb9-a230-cd401b21808c",
+                    "libraryName": "연세대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/6e98656b-a35d-4267-b902-c12e8cd62b6e"
+                }
+            ]
+        },
+        {
+            "id": "1ea4b44f-3a79-4c41-9fdd-d8b2aae33b1e",
+            "title": "책 제목 177",
+            "author": "작가 177",
+            "provider": "교보문고",
+            "publisher": "출판사 177",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "ab306db4-08ad-46b1-9b58-9405fa926d62",
+                    "libraryName": "국립중앙도서관",
+                    "bookLibraryUrl": "http://example.com/book/1ea4b44f-3a79-4c41-9fdd-d8b2aae33b1e"
+                },
+                {
+                    "id": "22e3c3ba-be0d-4157-bea5-5600d56cf137",
+                    "libraryName": "충남대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/1ea4b44f-3a79-4c41-9fdd-d8b2aae33b1e"
+                },
+                {
+                    "id": "f8d046db-4f6f-4e23-b741-71762fbde179",
+                    "libraryName": "경북도서관",
+                    "bookLibraryUrl": "http://example.com/book/1ea4b44f-3a79-4c41-9fdd-d8b2aae33b1e"
+                }
+            ]
+        },
+        {
+            "id": "3d067e51-81e6-4f41-a4e9-959985e05faa",
+            "title": "책 제목 178",
+            "author": "작가 178",
+            "provider": "교보문고",
+            "publisher": "출판사 178",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f8d046db-4f6f-4e23-b741-71762fbde179",
+                    "libraryName": "경북도서관",
+                    "bookLibraryUrl": "http://example.com/book/3d067e51-81e6-4f41-a4e9-959985e05faa"
+                },
+                {
+                    "id": "b6387c4b-de2c-406f-975e-c9eb5c589027",
+                    "libraryName": "경북대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/3d067e51-81e6-4f41-a4e9-959985e05faa"
+                }
+            ]
+        },
+        {
+            "id": "5919a461-0652-41e8-bab7-63ac1ceebcca",
+            "title": "책 제목 179",
+            "author": "작가 179",
+            "provider": "교보문고",
+            "publisher": "출판사 179",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "ed615093-4be4-4f65-8ad2-36de6ce319b0",
+                    "libraryName": "대전도서관",
+                    "bookLibraryUrl": "http://example.com/book/5919a461-0652-41e8-bab7-63ac1ceebcca"
+                },
+                {
+                    "id": "f89f7574-a751-4160-b1a0-78e5319356b1",
+                    "libraryName": "한동대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/5919a461-0652-41e8-bab7-63ac1ceebcca"
+                },
+                {
+                    "id": "2c6a6952-284e-4cf4-a755-f0c6cbc3ddf2",
+                    "libraryName": "광주도서관",
+                    "bookLibraryUrl": "http://example.com/book/5919a461-0652-41e8-bab7-63ac1ceebcca"
+                }
+            ]
+        },
+        {
+            "id": "e21f5660-efa1-47dc-b469-833f093a77be",
+            "title": "책 제목 180",
+            "author": "작가 180",
+            "provider": "교보문고",
+            "publisher": "출판사 180",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "6946380b-e5e0-45aa-8ff4-b9655979ac84",
+                    "libraryName": "법원도서관",
+                    "bookLibraryUrl": "http://example.com/book/e21f5660-efa1-47dc-b469-833f093a77be"
+                },
+                {
+                    "id": "217b159c-7806-4401-b0bf-ef4be44abba3",
+                    "libraryName": "부산대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/e21f5660-efa1-47dc-b469-833f093a77be"
+                }
+            ]
+        },
+        {
+            "id": "21e3fcba-e308-4a8b-a40e-3f775965d4c4",
+            "title": "책 제목 181",
+            "author": "작가 181",
+            "provider": "교보문고",
+            "publisher": "출판사 181",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f8d046db-4f6f-4e23-b741-71762fbde179",
+                    "libraryName": "경북도서관",
+                    "bookLibraryUrl": "http://example.com/book/21e3fcba-e308-4a8b-a40e-3f775965d4c4"
+                }
+            ]
+        },
+        {
+            "id": "fc915740-02d9-49d0-b224-37830a1c8787",
+            "title": "책 제목 182",
+            "author": "작가 182",
+            "provider": "교보문고",
+            "publisher": "출판사 182",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f729dbb7-6683-4033-9ede-6d1f627494b4",
+                    "libraryName": "전남도서관",
+                    "bookLibraryUrl": "http://example.com/book/fc915740-02d9-49d0-b224-37830a1c8787"
+                },
+                {
+                    "id": "e1339922-5fbe-4ffa-8607-ccea60d14041",
+                    "libraryName": "국회도서관",
+                    "bookLibraryUrl": "http://example.com/book/fc915740-02d9-49d0-b224-37830a1c8787"
+                }
+            ]
+        },
+        {
+            "id": "f7009522-cd64-4107-adba-ba93fa237a9e",
+            "title": "책 제목 183",
+            "author": "작가 183",
+            "provider": "교보문고",
+            "publisher": "출판사 183",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "533a8d51-9daa-4400-8248-05d4f90340f0",
+                    "libraryName": "(주)누리달",
+                    "bookLibraryUrl": "http://example.com/book/f7009522-cd64-4107-adba-ba93fa237a9e"
+                },
+                {
+                    "id": "f89f7574-a751-4160-b1a0-78e5319356b1",
+                    "libraryName": "한동대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/f7009522-cd64-4107-adba-ba93fa237a9e"
+                }
+            ]
+        },
+        {
+            "id": "a8a2f155-4238-4e62-a978-964b11620900",
+            "title": "책 제목 184",
+            "author": "작가 184",
+            "provider": "교보문고",
+            "publisher": "출판사 184",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "e889f427-758d-4b38-8f73-3d394bd7af3a",
+                    "libraryName": "부산도서관",
+                    "bookLibraryUrl": "http://example.com/book/a8a2f155-4238-4e62-a978-964b11620900"
+                }
+            ]
+        },
+        {
+            "id": "9b66898e-79e5-4d57-b221-8c75554a300e",
+            "title": "책 제목 185",
+            "author": "작가 185",
+            "provider": "교보문고",
+            "publisher": "출판사 185",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "2c6a6952-284e-4cf4-a755-f0c6cbc3ddf2",
+                    "libraryName": "광주도서관",
+                    "bookLibraryUrl": "http://example.com/book/9b66898e-79e5-4d57-b221-8c75554a300e"
+                },
+                {
+                    "id": "3d2e83d2-e5d8-4be4-98c9-40ea6300f59d",
+                    "libraryName": "충북도서관",
+                    "bookLibraryUrl": "http://example.com/book/9b66898e-79e5-4d57-b221-8c75554a300e"
+                },
+                {
+                    "id": "f3244be1-5b36-4d35-8952-c88a19d7be50",
+                    "libraryName": "경기중앙도서관",
+                    "bookLibraryUrl": "http://example.com/book/9b66898e-79e5-4d57-b221-8c75554a300e"
+                }
+            ]
+        },
+        {
+            "id": "a6f8baf9-27e4-4a59-b2ff-6fd4a59058ca",
+            "title": "책 제목 186",
+            "author": "작가 186",
+            "provider": "교보문고",
+            "publisher": "출판사 186",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "de3342c8-8a49-41a9-bd8f-454b4c3d3564",
+                    "libraryName": "서울대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/a6f8baf9-27e4-4a59-b2ff-6fd4a59058ca"
+                },
+                {
+                    "id": "f32842a7-7f14-47be-8900-d050839ba140",
+                    "libraryName": "경상대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/a6f8baf9-27e4-4a59-b2ff-6fd4a59058ca"
+                }
+            ]
+        },
+        {
+            "id": "6b9f32da-10e0-4535-aa0b-5418c12545d9",
+            "title": "책 제목 187",
+            "author": "작가 187",
+            "provider": "교보문고",
+            "publisher": "출판사 187",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "e889f427-758d-4b38-8f73-3d394bd7af3a",
+                    "libraryName": "부산도서관",
+                    "bookLibraryUrl": "http://example.com/book/6b9f32da-10e0-4535-aa0b-5418c12545d9"
+                },
+                {
+                    "id": "dd53aab6-de5b-4d72-9ecd-16e980115fb8",
+                    "libraryName": "중앙대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/6b9f32da-10e0-4535-aa0b-5418c12545d9"
+                }
+            ]
+        },
+        {
+            "id": "a847f1fc-2178-4674-936c-aa1cc28ca88a",
+            "title": "책 제목 188",
+            "author": "작가 188",
+            "provider": "교보문고",
+            "publisher": "출판사 188",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "965d74c3-0b5f-4d67-95dd-acedfb9c857d",
+                    "libraryName": "한국과학기술원 도서관",
+                    "bookLibraryUrl": "http://example.com/book/a847f1fc-2178-4674-936c-aa1cc28ca88a"
+                }
+            ]
+        },
+        {
+            "id": "d29b6b0d-2e45-42b8-8397-a530a8795254",
+            "title": "책 제목 189",
+            "author": "작가 189",
+            "provider": "교보문고",
+            "publisher": "출판사 189",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816240/L480D210816240.jpg",
+            "libraryResponses": [
+                {
+                    "id": "965d74c3-0b5f-4d67-95dd-acedfb9c857d",
+                    "libraryName": "한국과학기술원 도서관",
+                    "bookLibraryUrl": "http://example.com/book/d29b6b0d-2e45-42b8-8397-a530a8795254"
+                },
+                {
+                    "id": "f8d046db-4f6f-4e23-b741-71762fbde179",
+                    "libraryName": "경북도서관",
+                    "bookLibraryUrl": "http://example.com/book/d29b6b0d-2e45-42b8-8397-a530a8795254"
+                }
+            ]
+        },
+        {
+            "id": "dce10198-62bb-49ba-991a-8ac0db17e56e",
+            "title": "책 제목 190",
+            "author": "작가 190",
+            "provider": "교보문고",
+            "publisher": "출판사 190",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "1847852a-b91b-42c8-986f-29064d85f433",
+                    "libraryName": "세종도서관",
+                    "bookLibraryUrl": "http://example.com/book/dce10198-62bb-49ba-991a-8ac0db17e56e"
+                }
+            ]
+        },
+        {
+            "id": "646efb56-0cd4-472f-b99c-094884858b51",
+            "title": "책 제목 191",
+            "author": "작가 191",
+            "provider": "교보문고",
+            "publisher": "출판사 191",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "6946380b-e5e0-45aa-8ff4-b9655979ac84",
+                    "libraryName": "법원도서관",
+                    "bookLibraryUrl": "http://example.com/book/646efb56-0cd4-472f-b99c-094884858b51"
+                }
+            ]
+        },
+        {
+            "id": "219425a7-e1c7-4bd7-881d-e5d6d39300da",
+            "title": "책 제목 192",
+            "author": "작가 192",
+            "provider": "교보문고",
+            "publisher": "출판사 192",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "2a6ab9f8-d7d1-4574-a7c0-e55d120d8d89",
+                    "libraryName": "이화여자대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/219425a7-e1c7-4bd7-881d-e5d6d39300da"
+                },
+                {
+                    "id": "b458afe7-3b8d-4a8c-8712-4b46a1fd57f0",
+                    "libraryName": "교보문고",
+                    "bookLibraryUrl": "http://example.com/book/219425a7-e1c7-4bd7-881d-e5d6d39300da"
+                },
+                {
+                    "id": "de3342c8-8a49-41a9-bd8f-454b4c3d3564",
+                    "libraryName": "서울대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/219425a7-e1c7-4bd7-881d-e5d6d39300da"
+                }
+            ]
+        },
+        {
+            "id": "2ddef9c1-be49-47dc-ad90-096f858ca46e",
+            "title": "책 제목 193",
+            "author": "작가 193",
+            "provider": "교보문고",
+            "publisher": "출판사 193",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "5381d53f-4834-42be-9db5-38734cf90857",
+                    "libraryName": "전남대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/2ddef9c1-be49-47dc-ad90-096f858ca46e"
+                },
+                {
+                    "id": "dcb61e1c-ee11-416b-b654-90827f02d713",
+                    "libraryName": "서울도서관",
+                    "bookLibraryUrl": "http://example.com/book/2ddef9c1-be49-47dc-ad90-096f858ca46e"
+                }
+            ]
+        },
+        {
+            "id": "df45ade9-941b-4503-9c66-f08cc1d46133",
+            "title": "책 제목 194",
+            "author": "작가 194",
+            "provider": "교보문고",
+            "publisher": "출판사 194",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "6c6fd174-a08f-48eb-a8cf-ee37d02aa699",
+                    "libraryName": "포항공과대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/df45ade9-941b-4503-9c66-f08cc1d46133"
+                },
+                {
+                    "id": "b458afe7-3b8d-4a8c-8712-4b46a1fd57f0",
+                    "libraryName": "교보문고",
+                    "bookLibraryUrl": "http://example.com/book/df45ade9-941b-4503-9c66-f08cc1d46133"
+                }
+            ]
+        },
+        {
+            "id": "70923904-7f36-4843-989a-199b98516ea5",
+            "title": "책 제목 195",
+            "author": "작가 195",
+            "provider": "교보문고",
+            "publisher": "출판사 195",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210826020/L480D210826020.jpg",
+            "libraryResponses": [
+                {
+                    "id": "965d74c3-0b5f-4d67-95dd-acedfb9c857d",
+                    "libraryName": "한국과학기술원 도서관",
+                    "bookLibraryUrl": "http://example.com/book/70923904-7f36-4843-989a-199b98516ea5"
+                }
+            ]
+        },
+        {
+            "id": "73608dd1-c2b9-448e-9ccf-dbcc77055d7f",
+            "title": "책 제목 196",
+            "author": "작가 196",
+            "provider": "교보문고",
+            "publisher": "출판사 196",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "a6090650-8bf9-4da4-9360-4ca72b3eb24a",
+                    "libraryName": "고렘팩토리",
+                    "bookLibraryUrl": "http://example.com/book/73608dd1-c2b9-448e-9ccf-dbcc77055d7f"
+                }
+            ]
+        },
+        {
+            "id": "285cb069-3ab5-4fd7-aa5b-bcf9af1283b1",
+            "title": "책 제목 197",
+            "author": "작가 197",
+            "provider": "교보문고",
+            "publisher": "출판사 197",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "cbe4500e-3a78-46e8-84e0-bb8d5d725da9",
+                    "libraryName": "충남도서관",
+                    "bookLibraryUrl": "http://example.com/book/285cb069-3ab5-4fd7-aa5b-bcf9af1283b1"
+                }
+            ]
+        },
+        {
+            "id": "52f36adc-03d4-4e41-a6d8-3d94a75e368f",
+            "title": "책 제목 198",
+            "author": "작가 198",
+            "provider": "교보문고",
+            "publisher": "출판사 198",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/480D210816140/L480D210816140.jpg",
+            "libraryResponses": [
+                {
+                    "id": "e1339922-5fbe-4ffa-8607-ccea60d14041",
+                    "libraryName": "국회도서관",
+                    "bookLibraryUrl": "http://example.com/book/52f36adc-03d4-4e41-a6d8-3d94a75e368f"
+                }
+            ]
+        },
+        {
+            "id": "6ad22c22-8aca-4bb0-bfa6-1706fb8d757c",
+            "title": "책 제목 199",
+            "author": "작가 199",
+            "provider": "교보문고",
+            "publisher": "출판사 199",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458638/L4801197458638.jpg",
+            "libraryResponses": [
+                {
+                    "id": "a6090650-8bf9-4da4-9360-4ca72b3eb24a",
+                    "libraryName": "고렘팩토리",
+                    "bookLibraryUrl": "http://example.com/book/6ad22c22-8aca-4bb0-bfa6-1706fb8d757c"
+                },
+                {
+                    "id": "d512bb86-af60-4459-97a8-dca90d36984f",
+                    "libraryName": "대구도서관",
+                    "bookLibraryUrl": "http://example.com/book/6ad22c22-8aca-4bb0-bfa6-1706fb8d757c"
+                }
+            ]
+        },
+        {
+            "id": "1f9b2def-d73b-4fc2-ab97-5c0769426047",
+            "title": "책 제목 200",
+            "author": "작가 200",
+            "provider": "교보문고",
+            "publisher": "출판사 200",
+            "imageUrl": "ebook.dnue.ac.kr:81/upload/20568/content/ebook/4801197458645/L4801197458645.jpg",
+            "libraryResponses": [
+                {
+                    "id": "f32842a7-7f14-47be-8900-d050839ba140",
+                    "libraryName": "경상대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/1f9b2def-d73b-4fc2-ab97-5c0769426047"
+                },
+                {
+                    "id": "dd53aab6-de5b-4d72-9ecd-16e980115fb8",
+                    "libraryName": "중앙대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/1f9b2def-d73b-4fc2-ab97-5c0769426047"
+                },
+                {
+                    "id": "2a6ab9f8-d7d1-4574-a7c0-e55d120d8d89",
+                    "libraryName": "이화여자대학교 도서관",
+                    "bookLibraryUrl": "http://example.com/book/1f9b2def-d73b-4fc2-ab97-5c0769426047"
+                }
+            ]
+        }
+    ]
+}

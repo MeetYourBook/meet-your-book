@@ -3,11 +3,14 @@ name: 'Chromatic Deployment'
 on:
   push:
     branches:
-      - fe-develop
+      - setup/cicd-workflow
 
 jobs:
   chromatic-deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./fe
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -22,11 +25,7 @@ jobs:
           node-version: "18.16.0"
 
       - name: Install dependency
-        run: |
-          cd ./fe
-          npm install
+        run: npm install
 
       - name: start Chromatic
-        run: |
-          cd ./fe
-          npx chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }} --token=${{ secrets.GITHUB_TOKEN }} --exit-zero-on-changes --auto-accept-changes
+        run: npx chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }} --token=${{ secrets.GITHUB_TOKEN }} --exit-zero-on-changes --auto-accept-changes

@@ -3,7 +3,7 @@ name: 'Chromatic Deployment'
 on:
   push:
     branches:
-      - setup/cicd-workflow
+      - fe-develop
 
 jobs:
   chromatic-deploy:

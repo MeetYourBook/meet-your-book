@@ -1,10 +1,16 @@
 import styled from "styled-components";
-
+const FavoriteBtnWrap = styled.span`
+    opacity: 0;
+`
 const ListItem = styled.li`
     width: 100%;
     display: flex;
     align-items: center;
     margin-bottom: 0.5rem;
+
+    &:hover ${FavoriteBtnWrap} {
+        opacity: 1;
+    }
 `;
 
 const Checkbox = styled.input`
@@ -33,4 +39,4 @@ const Label = styled.label`
     text-overflow: ellipsis;
 `;
 
-export { ListItem, Checkbox, Label };
+export { ListItem, Checkbox, Label, FavoriteBtnWrap };

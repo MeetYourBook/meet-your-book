@@ -7,7 +7,7 @@ const Container = styled.div`
 `
 
 const Input = styled.input`
-    width: 60%;
+    width: 95%;
     height: 2rem;
     border: ${({ theme }) => theme.border};
     border-radius: 8px;

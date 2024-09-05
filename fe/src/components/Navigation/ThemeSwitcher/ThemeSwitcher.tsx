@@ -4,9 +4,9 @@ import useThemeContext from "@/hooks/useThemeContext";
 const ThemeSwitcher = () => {
     const { theme, handleToggleTheme } = useThemeContext();
     return (
-        <span onClick={handleToggleTheme}>
+        <button onClick={handleToggleTheme}>
             {theme === "light" ? <LightBtn/> : <DarkBtn/>}
-        </span>
+        </button>
     );
 };
 

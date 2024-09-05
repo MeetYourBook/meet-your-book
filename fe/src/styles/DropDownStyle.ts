@@ -46,7 +46,7 @@ const DropdownItem = styled.li`
     font-size: 0.9rem;
     cursor: pointer;
     &:hover {
-        background-color: #f0f0f0;
+        background-color: ${({ theme }) => theme.hover};
     }
 `;
 

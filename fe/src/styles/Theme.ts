@@ -3,6 +3,7 @@ export const lightTheme = {
     text: '#121620',
     input: "#ffffff",
     border: "1px solid var(--border-color)",
+    hover: "#f0f0f0",
 };
 
 export const darkTheme = {
@@ -10,4 +11,5 @@ export const darkTheme = {
     text: '#ffffff',
     input: "#374151",
     border: "1px solid var(--border-dark-color)",
+    hover: "#374151",
 };

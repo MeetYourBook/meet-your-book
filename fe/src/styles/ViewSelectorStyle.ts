@@ -1,12 +1,12 @@
 import styled from "styled-components";
+import { ViewType } from "@/types/View";
 
-export type ViewType = "grid" | "list";
-
-const ModeButton = styled.button`
+const ModeButton = styled.span`
     border: none;
-    background: white;
     cursor: pointer;
     font-size: 1rem;
+    padding: 1px 6px;
+    
 `
 
 const GridButton = styled(ModeButton)<{ $active: ViewType }>`

@@ -29,7 +29,7 @@ const DropdownList = styled.ul`
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: white;
+    background-color: ${({ theme }) => theme.body};
     border: 1px solid #ccc;
     border-radius: 8px;
     z-index: 10;
@@ -42,11 +42,11 @@ const DropdownList = styled.ul`
 const DropdownItem = styled.li`
     padding: 8px;
     margin: auto;
-    color: gray;
+    color: ${({ theme }) => theme.text};
     font-size: 0.9rem;
     cursor: pointer;
     &:hover {
-        background-color: #f0f0f0;
+        background-color: ${({ theme }) => theme.hover};
     }
 `;
 

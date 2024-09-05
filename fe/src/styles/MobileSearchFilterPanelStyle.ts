@@ -28,7 +28,7 @@ const FilterWrap = styled.div<{ $isFilterOpen: boolean }>`
     top: 0;
     height: 100%;
     padding: 20px;
-    background-color: white;
+    background-color: ${({ theme }) => theme.body};
     right: ${({ $isFilterOpen }) => ($isFilterOpen ? "0" : "-100%")};
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
     transition: right 0.3s ease;
@@ -39,7 +39,7 @@ const FilterWrap = styled.div<{ $isFilterOpen: boolean }>`
 const Overlay = styled.div`
     position: fixed;
     inset: 0;
-    background-color: rgba(249, 250, 251, 0.7);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 40;
     backdrop-filter: blur(1px);
 `;
@@ -65,7 +65,7 @@ const SearchWrap = styled.div<{$isSearchOpen: boolean}>`
     top: ${({ $isSearchOpen }) => ($isSearchOpen ? "0" : "-100%")};
     height: 80px;
     padding: 20px;
-    background-color: white;
+    background-color: ${({ theme }) => theme.body};
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
     transition: top 0.3s ease;
     box-sizing: border-box;

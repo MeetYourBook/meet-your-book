@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { SearchOutlined } from "@ant-design/icons";
 const InputWrap = styled.div`
     border: 1px solid var(--border-color);
     border-radius: 8px;
@@ -20,16 +20,16 @@ const InputField = styled.input`
     padding: 0 10px;
     outline: none;
     border: none;
-
+    background-color: ${({ theme }) => theme.body};
+    color: ${({ theme }) => theme.text};
     @media (max-width: 450px) {
         width: 200px;
     }
 `;
 
-const SearchField = styled.button`
+const SearchField = styled(SearchOutlined)`
     width: 50px;
     height: 90%;
-    color: gray;
     font-size: 1rem;
     border: none;
     border-radius: 0 5px 5px 0;
@@ -37,7 +37,6 @@ const SearchField = styled.button`
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    background-color: white;
 `;
 
 export { InputWrap, InputField, SearchField };

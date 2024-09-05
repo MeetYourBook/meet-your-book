@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { ViewType } from "./ViewSelectorStyle";
+import { ViewType } from "@/types/View";
 
 const Card = styled.div<{ $isVisible: boolean }>`
-    background-color: white;
     border: 1px solid #d1d5db;
     border-radius: 0.375rem;
     padding: 0.3rem;
@@ -60,7 +59,6 @@ const Title = styled.h3`
 
 const Subtitle = styled.p`
     font-size: 0.75rem;
-    color: #4b5563;
     margin-bottom: 0.25rem;
     white-space: nowrap;
     overflow: hidden;

@@ -6,6 +6,12 @@ const GlobalStyle = createGlobalStyle`
 
     :root {
     --border-color: #e9e7e7;
+    --border-dark-color: "#374151";
+    }
+
+    body {
+        background-color: ${({ theme }) => theme.body};
+        color: ${({ theme }) => theme.text};
     }
     
     body,
@@ -13,6 +19,10 @@ const GlobalStyle = createGlobalStyle`
     input,
     textarea {
     font-family: 'NotoSansFont', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+    }
+    button {
+        all: unset;
+        cursor: pointer;
     }
 `;
 

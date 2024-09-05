@@ -1,7 +1,7 @@
 import { http, HttpResponse } from "msw";
 import booksData from "../mockData/books.json";
 import { BookContent } from "@/types/Books";
-
+import { DEV_API } from ".";
 interface Params {
     [Key: string]: string;
 }
@@ -65,7 +65,7 @@ const paginateBooks = (books: BookContent[], page: number, size: number) => {
 };
 
 export const booksHandlers = [
-    http.get("api/books", ({ request }) => {
+    http.get(DEV_API.BOOKS, ({ request }) => {
         const url = new URL(request.url);
         const params = Object.fromEntries(url.searchParams);
         const filteredBooks = filterBooks(booksData.content, params);

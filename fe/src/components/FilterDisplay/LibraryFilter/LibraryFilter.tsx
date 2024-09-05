@@ -17,7 +17,7 @@ const LibraryFilter = () => {
         getDisplayLibraries,
         observerRef
     } = useLibraryFilter();
-    console.log("배포테스트 1")
+    
     return (
         <S.Container>
             <S.Header onClick={toggleFilter}>

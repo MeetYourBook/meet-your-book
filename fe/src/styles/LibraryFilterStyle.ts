@@ -80,11 +80,13 @@ const ListUl = styled.ul`
 const Input = styled.input`
     width: 90%;
     height: 2rem;
-    border: 1px solid var(--border-color);
+    border: ${({ theme }) => theme.border};
     border-radius: 8px;
     margin: 0px auto 1rem;
     padding: 0 0.6rem;
     outline: none;
+    background-color: ${({ theme }) => theme.input};
+    color: ${({ theme }) => theme.text};
 `
 
 export { Container, Header, ListWrap, ListUl, Input, Title };

@@ -20,7 +20,7 @@ describe("SearchInput 컴포넌트 테스트", () => {
         render(<SearchInput/>)
 
         const inputElement = screen.getByPlaceholderText("Search For Book...") as HTMLInputElement;
-        const buttonElement = screen.getByRole("button");
+        const buttonElement = screen.getByLabelText("search");
 
         fireEvent.change(inputElement, {target: {value: "test search"}})
         fireEvent.click(buttonElement)

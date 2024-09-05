@@ -5,7 +5,8 @@ import routes from "./routers/routes.tsx";
 import GlobalStyle from "./styles/GlobalStyle.ts";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import "@/styles/font.css"
+import { ThemeContextProvider } from "./hooks/useThemeContext.tsx";
+import "@/styles/font.css";
 
 // const main = async () => {
 //     if (process.env.NODE_ENV === "development") {
@@ -28,10 +29,12 @@ const queryClient = new QueryClient({
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
-        <QueryClientProvider client={queryClient}>
-            <GlobalStyle />
-            <RouterProvider router={routes} />
-            <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
+        <ThemeContextProvider>
+            <QueryClientProvider client={queryClient}>
+                <GlobalStyle />
+                <RouterProvider router={routes} />
+                <ReactQueryDevtools initialIsOpen={false} />
+            </QueryClientProvider>
+        </ThemeContextProvider>
     </React.StrictMode>
 );

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ViewType } from "./ViewSelectorStyle";
+import { ViewType } from "@/types/View";
 
 const BookContainer = styled.div`
 width: 750px;

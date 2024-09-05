@@ -1,4 +1,4 @@
-import FavoritesBtn from "@/components/FavoritesBtn/FavoritesBtn";
+import FavoriteBtn from "@/components/FavoriteBtn/FavoriteBtn";
 import * as S from "@/styles/LibraryListStyle";
 import { LibrariesType } from "@/types/Libraries";
 
@@ -26,7 +26,7 @@ const LibraryList = ({
                     {library.name}
                 </S.Label>
                 <S.FavoriteBtnWrap>
-                    <FavoritesBtn item={library} storageName="libraries"/>
+                    <FavoriteBtn item={library} storageName="libraries"/>
                 </S.FavoriteBtnWrap>
             </S.ListItem>
         ))}

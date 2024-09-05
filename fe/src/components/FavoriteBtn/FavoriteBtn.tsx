@@ -1,18 +1,20 @@
 import styled from "styled-components";
 import { StarOutlined, StarFilled } from "@ant-design/icons";
 import { LibrariesType } from "@/types/Libraries";
+import { BookContent } from "@/types/Books";
 import { useEffect, useState } from "react";
 import { getStorage, hasFavoriteItem } from "@/utils";
 interface FavoritesBtnProps {
-    item: LibrariesType;
-    storageName: "libraries";
+    item: LibrariesType | BookContent;
+    storageName: "libraries" | "books";
 }
 
-const FavoritesBtn = ({ item, storageName }: FavoritesBtnProps) => {
-    
+const FavoriteBtn = ({ item, storageName }: FavoritesBtnProps) => {
+
     const [isFavorite, setIsFavorite] = useState(false);
 
-    const handleFavorite = () => {
+    const handleFavorite = (e: React.MouseEvent) => {
+        e.stopPropagation();
         const favoritesStorage = getStorage(storageName);
         const newFavoritesStorage = hasFavoriteItem(item.id, favoritesStorage)
             ? favoritesStorage.filter((curFav: LibrariesType) => curFav.id !== item.id)
@@ -28,16 +30,16 @@ const FavoritesBtn = ({ item, storageName }: FavoritesBtnProps) => {
 
     return (
         <div onClick={handleFavorite}>
-            {isFavorite ? <FavoriteBtn /> : <UnFavoriteBtn />}
+            {isFavorite ? <FavoriteButton /> : <UnFavoriteButton />}
         </div>
     );
 };
 
-export default FavoritesBtn;
+export default FavoriteBtn;
 
-const UnFavoriteBtn = styled(StarOutlined)`
+const UnFavoriteButton = styled(StarOutlined)`
     color: #fadb14;
 `;
-const FavoriteBtn = styled(StarFilled)`
+const FavoriteButton = styled(StarFilled)`
     color: #fadb14;
 `;

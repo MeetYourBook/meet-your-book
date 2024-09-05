@@ -1,4 +1,5 @@
 import { LibrariesType } from "@/types/Libraries";
+import { BookContent } from "@/types/Books";
 export const getCurrentPageItems = <T>(
     items: T[],
     currentPage: number,
@@ -17,10 +18,10 @@ export const handleImageError = (
     e.currentTarget.style.objectFit = "cover";
 };
 
-export const getStorage = (storageName: "libraries") => {
+export const getStorage = (storageName: "libraries" | "books") => {
     return JSON.parse(localStorage.getItem(storageName) || "[]");
 }
 
-export const hasFavoriteItem = (itemID: string, storage: LibrariesType[]) => {
-    return storage.some((fav: LibrariesType) => fav.id === itemID)
+export const hasFavoriteItem = (itemID: string, storage: LibrariesType[] | BookContent[]) => {
+    return storage.some((fav: LibrariesType | BookContent) => fav.id === itemID)
 }

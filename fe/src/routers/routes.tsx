@@ -2,8 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import DefaultLayout from "@/components/Layout/DefaultLayout";
 import Home from "../pages/Home";
 import NotFound from "../pages/NotFound";
-import Login from "@/pages/Login";
-import SignUp from "@/pages/SignUp";
 import ErrorFallBack from "@/components/ErrorFallBack/ErrorFallBack";
 import { ErrorBoundary } from "react-error-boundary";
 
@@ -21,14 +19,6 @@ const routes = createBrowserRouter([
                 element: <Home />,
             },
         ],
-    },
-    {
-        path: "/Login",
-        element: <Login />,
-    },
-    {
-        path: "/SignUp",
-        element: <SignUp />,
     },
     {
         path: "*",

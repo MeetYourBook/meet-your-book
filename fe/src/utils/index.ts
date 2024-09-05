@@ -18,7 +18,7 @@ export const handleImageError = (
     e.currentTarget.style.objectFit = "cover";
 };
 
-export const getStorage = (storageName: "libraries" | "books") => {
+export const getStorage = (storageName: string) => {
     return JSON.parse(localStorage.getItem(storageName) || "[]");
 }
 

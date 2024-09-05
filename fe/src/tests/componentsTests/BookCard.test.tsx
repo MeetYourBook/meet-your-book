@@ -5,6 +5,7 @@ import { vi } from "vitest";
 
 vi.mock("@/styles/BookCardStyle", () => ({
     GridCard: 'div',
+    FavoritesBtnWrap: "span",
     ListCard: 'div',
     Image: 'img',
     ListImage: 'img',

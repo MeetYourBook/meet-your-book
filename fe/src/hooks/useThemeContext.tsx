@@ -22,10 +22,11 @@ export const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
     useEffect(() => {
         const savedTheme = localStorage.getItem("theme");
         const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-        const newTheme = (savedTheme === "dark" || savedTheme === "light") 
-            ? savedTheme : prefersDark ? "dark" : "light";
-        
-        setTheme(newTheme);
+        if (savedTheme && (savedTheme === "dark" || savedTheme === "light")) {
+            setTheme(savedTheme);
+        } else if (prefersDark) {
+        setTheme("dark");
+        }
     }, []);
     return (
         <ThemeContext.Provider value={{ theme, handleToggleTheme }}>

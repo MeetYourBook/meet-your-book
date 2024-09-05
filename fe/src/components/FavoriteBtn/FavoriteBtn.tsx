@@ -29,9 +29,9 @@ const FavoriteBtn = ({ item, storageName }: FavoritesBtnProps) => {
     }, [item.id, storageName]);
 
     return (
-        <div onClick={handleFavorite}>
+        <button onClick={handleFavorite}>
             {isFavorite ? <FavoriteButton /> : <UnFavoriteButton />}
-        </div>
+        </button>
     );
 };
 

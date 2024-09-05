@@ -19,8 +19,9 @@ export const handleImageError = (
 };
 
 export const getStorage = (storageName: string) => {
-    return JSON.parse(localStorage.getItem(storageName) || "[]");
-}
+    const storedData = localStorage.getItem(storageName);
+    return JSON.parse(storedData ?? "[]");
+};
 
 export const hasFavoriteItem = (itemID: string, storage: LibrariesType[] | BookContent[]) => {
     return storage.some((fav: LibrariesType | BookContent) => fav.id === itemID)

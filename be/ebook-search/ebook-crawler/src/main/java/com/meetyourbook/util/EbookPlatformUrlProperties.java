@@ -6,17 +6,16 @@ import java.util.Map;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.stereotype.Component;
 
-@Component
+@Configuration
 @ConfigurationProperties(prefix = "ebook")
-@PropertySource(value = "classpath:ebook-config.properties", encoding = "UTF-8")
+@PropertySource(value = "file:/app/config/ebook-config.properties", ignoreResourceNotFound = true)
 @Getter
 @Setter
 public class EbookPlatformUrlProperties {
 
     private final Map<EbookPlatform, String> platformUrls = new HashMap<>();
-
 
 }

@@ -1,0 +1,54 @@
+name: Deploy Crawler Application
+
+on:
+  push:
+    branches: [ dev-be ]
+    paths:
+      - 'be/ebook-search/ebook-crawler/**'
+      - 'be/ebook-search/ebook-domain/**'
+      - '.github/workflows/deploy-crawler.yml'
+  pull_request:
+    branches: [ dev-be ]
+    paths:
+      - 'be/ebook-search/ebook-crawler/**'
+      - 'be/ebook-search/ebook-domain/**'
+      - '.github/workflows/deploy-crawler.yml'
+
+env:
+  DOCKER_IMAGE: ${{ secrets.DOCKER_HUB_USERNAME }}/ebook-crawler:latest
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'corretto'
+          cache: gradle
+
+      - name: Build ebook-crawler with Gradle
+        working-directory: be/ebook-search
+        run: |
+          chmod +x ./gradlew
+          ./gradlew :ebook-crawler:build
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: be/ebook-search/ebook-crawler
+          push: true
+          tags: ${{ env.DOCKER_IMAGE }}

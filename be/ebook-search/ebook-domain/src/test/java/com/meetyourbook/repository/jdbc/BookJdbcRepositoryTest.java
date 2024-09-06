@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.simple.JdbcClient;
 
 @JdbcRepositoryTest
@@ -24,11 +25,14 @@ class BookJdbcRepositoryTest {
     @Autowired
     private JdbcClient jdbcClient;
 
+    @Autowired
+    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+
     private BookJdbcRepository bookJdbcRepository;
 
     @BeforeEach
     void setUp() {
-        bookJdbcRepository = new BookJdbcRepository(jdbcClient);
+        bookJdbcRepository = new BookJdbcRepository(jdbcClient, namedParameterJdbcTemplate);
     }
 
     @Test

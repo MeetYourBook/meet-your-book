@@ -1,4 +1,4 @@
-package com.meetyourbook.repository;
+package com.meetyourbook.repository.jdbc;
 
 import com.meetyourbook.dto.BookLibraryRelation;
 import java.util.List;
@@ -15,7 +15,8 @@ import org.springframework.stereotype.Repository;
 public class BookLibraryJdbcRepository {
 
     private static final String SAVE_BOOK_LIBRARY_SQL =
-        "INSERT INTO book_library (book_id, library_id, url, created_at, updated_at) VALUES (:bookId, :libraryId, :url, :now, :now) " +
+        "INSERT INTO book_library (book_id, library_id, url, created_at, updated_at) VALUES (:bookId, :libraryId, :url, :now, :now) "
+            +
             "ON DUPLICATE KEY UPDATE url = VALUES(url), updated_at = :now";
 
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;

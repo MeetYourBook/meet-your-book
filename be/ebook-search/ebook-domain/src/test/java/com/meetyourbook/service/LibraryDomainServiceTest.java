@@ -13,7 +13,7 @@ import com.meetyourbook.dto.LibraryUpdateInfo;
 import com.meetyourbook.entity.Library;
 import com.meetyourbook.entity.Library.EbookPlatform;
 import com.meetyourbook.entity.Library.LibraryType;
-import com.meetyourbook.repository.LibraryRepository;
+import com.meetyourbook.repository.jpa.LibraryRepository;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;

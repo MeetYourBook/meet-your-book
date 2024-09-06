@@ -1,7 +1,8 @@
-package com.meetyourbook.repository;
+package com.meetyourbook.repository.jdbc;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.meetyourbook.common.JdbcRepositoryTest;
 import com.meetyourbook.dto.BookLibraryRelation;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,12 +10,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.test.jdbc.JdbcTestUtils;
 
-@JdbcTest
+@JdbcRepositoryTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class BookLibraryJdbcRepositoryTest {
 

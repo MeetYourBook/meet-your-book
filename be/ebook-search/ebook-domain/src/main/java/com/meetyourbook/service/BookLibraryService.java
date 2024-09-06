@@ -4,7 +4,7 @@ import com.meetyourbook.dto.BookInfo;
 import com.meetyourbook.dto.BookLibraryRelation;
 import com.meetyourbook.dto.BookRecord;
 import com.meetyourbook.dto.BookUniqueKey;
-import com.meetyourbook.repository.BookLibraryJdbcRepository;
+import com.meetyourbook.repository.jdbc.BookLibraryJdbcRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,13 +36,12 @@ public class BookLibraryService {
     }
 
     private BookLibraryRelation createBookLibraryRelation(BookRecord bookRecord) {
-        Long bookId = bookCacheService.getBookIdFromCache(BookUniqueKey.from(bookRecord), bookRecord);
+        Long bookId = bookCacheService.getBookIdFromCache(BookUniqueKey.from(bookRecord),
+            bookRecord);
         Long libraryId = libraryCacheService.getLibraryFromCache(bookRecord.baseUrl());
 
         return new BookLibraryRelation(bookId, libraryId, bookRecord.bookUrl());
     }
-
-
 
 
 }

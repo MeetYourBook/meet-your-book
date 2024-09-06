@@ -2,9 +2,9 @@ package com.meetyourbook.service;
 
 import com.meetyourbook.dto.BookCountVerificationResult;
 import com.meetyourbook.entity.Library;
-import com.meetyourbook.repository.BookLibraryRepository;
-import com.meetyourbook.repository.BookLibraryRepository.BookLibraryCount;
-import com.meetyourbook.repository.LibraryRepository;
+import com.meetyourbook.repository.jpa.BookLibraryRepository;
+import com.meetyourbook.repository.jpa.BookLibraryRepository.BookLibraryCount;
+import com.meetyourbook.repository.jpa.LibraryRepository;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;

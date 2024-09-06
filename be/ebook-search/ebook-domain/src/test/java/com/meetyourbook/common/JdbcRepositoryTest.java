@@ -1,6 +1,6 @@
 package com.meetyourbook.common;
 
-import com.meetyourbook.common.config.TestJpaConfig;
+import com.meetyourbook.common.config.TestJdbcConfig;
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Inherited;
@@ -17,8 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Documented
 @Inherited
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = TestJpaConfig.class)
+@ContextConfiguration(classes = TestJdbcConfig.class)
 @Transactional
-public @interface RepositoryTest {
+public @interface JdbcRepositoryTest {
 
 }

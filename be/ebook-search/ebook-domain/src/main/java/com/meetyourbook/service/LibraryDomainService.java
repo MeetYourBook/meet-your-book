@@ -7,7 +7,7 @@ import com.meetyourbook.dto.LibraryResponse;
 import com.meetyourbook.dto.LibraryUpdateInfo;
 import com.meetyourbook.entity.Library;
 import com.meetyourbook.exception.ResourceNotFoundException;
-import com.meetyourbook.repository.LibraryRepository;
+import com.meetyourbook.repository.jpa.LibraryRepository;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

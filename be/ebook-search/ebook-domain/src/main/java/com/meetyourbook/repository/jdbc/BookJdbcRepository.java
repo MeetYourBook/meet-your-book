@@ -1,4 +1,4 @@
-package com.meetyourbook.repository;
+package com.meetyourbook.repository.jdbc;
 
 import com.meetyourbook.dto.BookRecord;
 import com.meetyourbook.dto.BookUniqueKey;

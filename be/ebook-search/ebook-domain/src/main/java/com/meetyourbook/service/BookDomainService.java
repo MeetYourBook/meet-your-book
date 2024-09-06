@@ -6,7 +6,7 @@ import com.meetyourbook.dto.BookSearchInfo;
 import com.meetyourbook.dto.BookUpdateInfo;
 import com.meetyourbook.entity.Book;
 import com.meetyourbook.exception.ResourceNotFoundException;
-import com.meetyourbook.repository.BookRepository;
+import com.meetyourbook.repository.jpa.BookRepository;
 import com.meetyourbook.spec.BookSpecs;
 import com.meetyourbook.spec.SpecBuilder;
 import lombok.RequiredArgsConstructor;

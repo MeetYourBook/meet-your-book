@@ -63,39 +63,10 @@ const Button = styled.button`
     border-radius: 8px;
     border: none;
     font-size: 1rem;
-    cursor: pointer;
-    &:hover {
-        background-color: #A1A5AB;
-    }
-`;
-
-const AuthButton = styled(Button)`
-    background-color: transparent;
-    color: #374151;
-    border: 1px solid #d1d5db;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .icon {
-        height: 1rem;
-        width: 1rem;
-        margin-right: 8px;
-    }
-`;
-
-const SignUpText = styled.div`
     text-align: center;
-    font-size: 0.875rem;
-    color: #6b7280;
-`;
-
-const SignUpLink = styled.span`
-    text-decoration: underline;
-    color: #3b82f6;
     cursor: pointer;
     &:hover {
-        color: #2563eb;
+        background-color: #a1a5ab;
     }
 `;
 
@@ -112,9 +83,6 @@ export {
     Label,
     Input,
     Button,
-    AuthButton,
-    SignUpText,
-    SignUpLink,
     Header,
     LogoWrap,
 };

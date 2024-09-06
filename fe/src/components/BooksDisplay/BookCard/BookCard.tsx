@@ -5,6 +5,7 @@ import * as S from "@/styles/BookCardStyle";
 import { ANIMATION_TIME } from "@/constants";
 import BookInfoModal from "@/components/Modal/BookInfoModal/BookInfoModal";
 import { handleImageError } from "@/utils";
+import FavoriteBtn from "@/components/FavoriteBtn/FavoriteBtn";
 interface BookItemProps {
     bookData: BookContent;
     viewMode: ViewType;
@@ -28,6 +29,9 @@ const BookCard = ({ bookData, viewMode }: BookItemProps) => {
         <>
             {viewMode === "grid" ? (
                 <S.GridCard $isVisible={isVisible} onClick={handleModalOpen}>
+                    <S.FavoritesBtnWrap>
+                        <FavoriteBtn item={bookData} storageName="books"/>
+                    </S.FavoritesBtnWrap>
                     <S.Image
                         src={`//${imageUrl}`}
                         alt={title}

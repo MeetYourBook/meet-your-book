@@ -5,7 +5,7 @@ const ThemeSwitcher = () => {
     const { theme, handleToggleTheme } = useThemeContext();
     return (
         <button onClick={handleToggleTheme}>
-            {theme === "light" ? <LightBtn/> : <DarkBtn/>}
+            {theme === "light" ?  <DarkBtn/>: <LightBtn/>}
         </button>
     );
 };

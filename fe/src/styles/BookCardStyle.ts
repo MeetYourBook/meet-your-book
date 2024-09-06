@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { ViewType } from "@/types/View";
 
 const Card = styled.div<{ $isVisible: boolean }>`
+    position: relative;
     border: 1px solid #d1d5db;
     border-radius: 0.375rem;
     padding: 0.3rem;
@@ -70,6 +71,12 @@ const MetaInfo = styled.p`
     color: #6b7280;
 `;
 
+const FavoritesBtnWrap = styled.span`
+    position: absolute;
+    right: 10px;
+    z-index: 10;
+`
+
 export {
     GridCard,
     ListCard,
@@ -78,4 +85,5 @@ export {
     Subtitle,
     MetaInfo,
     Image,
+    FavoritesBtnWrap
 };

@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "@/styles/Theme";
 type ThemeType = "light" | "dark";
@@ -14,11 +14,23 @@ export const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
     const [theme, setTheme] = useState<ThemeType>("light");
 
     const handleToggleTheme = () => {
-        setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+        const updatedTheme = theme === "light" ? "dark" : "light"
+        setTheme(updatedTheme);
+        localStorage.setItem("theme", updatedTheme);
     };
+
+    useEffect(() => {
+        const savedTheme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (savedTheme && (savedTheme === "dark" || savedTheme === "light")) {
+            setTheme(savedTheme);
+        } else if (prefersDark) {
+        setTheme("dark");
+        }
+    }, []);
     return (
         <ThemeContext.Provider value={{ theme, handleToggleTheme }}>
-            <ThemeProvider theme={theme === "light" ? darkTheme : lightTheme}>
+            <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
                 {children}
             </ThemeProvider>
         </ThemeContext.Provider>

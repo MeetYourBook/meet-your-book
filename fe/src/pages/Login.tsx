@@ -9,8 +9,10 @@ const Login = () => {
         setLoginForm((prev) => ({ ...prev, [id]: value }));
     };
 
-    const handleSubmit = () => {}
-    
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+    };
+
     return (
         <>
             <S.LogoWrap>
@@ -21,7 +23,7 @@ const Login = () => {
                     <S.Header>
                         <S.AuthTitle>Login</S.AuthTitle>
                     </S.Header>
-                    <S.AuthForm>
+                    <S.AuthForm onSubmit={handleSubmit}>
                         <S.FormGroup>
                             <S.Label>ID</S.Label>
                             <S.Input
@@ -42,7 +44,7 @@ const Login = () => {
                                 onChange={handleInputChange}
                             />
                         </S.FormGroup>
-                        <S.Button onClick={handleSubmit}>Login</S.Button>
+                        <S.Button type="submit">Login</S.Button>
                     </S.AuthForm>
                 </S.AuthCard>
             </S.AuthContainer>

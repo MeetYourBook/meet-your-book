@@ -29,7 +29,7 @@ const AuthTitle = styled.h2`
     font-weight: bold;
 `;
 
-const AuthForm = styled.div`
+const AuthForm = styled.form`
     display: flex;
     flex-direction: column;
     gap: 16px;

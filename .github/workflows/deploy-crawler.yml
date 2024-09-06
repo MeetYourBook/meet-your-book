@@ -15,7 +15,7 @@ on:
       - '.github/workflows/deploy-crawler.yml'
 
 env:
-  DOCKER_IMAGE: ${{ secrets.DOCKER_HUB_USERNAME }}/ebook-crawler:${{ github.sha }}
+  DOCKER_IMAGE: ${{ secrets.DOCKER_HUB_USERNAME }}/ebook-crawler:latest
 
 jobs:
   build-and-push:

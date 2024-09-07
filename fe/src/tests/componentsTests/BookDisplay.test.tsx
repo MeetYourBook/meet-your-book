@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import BooksDisplay from "@/components/BooksDisplay/BooksDisplay";
 import { vi } from "vitest";
-import useQueryData from "@/hooks/useQueryData";
+import useBooksQuery from "@/hooks/queries/useBooksQuery";
 
 vi.mock("@/styles/BookDisplayStyle", () => ({
     BookContainer: "div",
@@ -9,7 +9,7 @@ vi.mock("@/styles/BookDisplayStyle", () => ({
     LastPageView: "div"
 }));
 
-vi.mock("@/hooks/useQueryData", () => ({
+vi.mock("@/hooks/queries/useBooksQuery", () => ({
     default: vi.fn(),
 }));
 
@@ -82,7 +82,7 @@ describe("BooksDisplay 컴포넌트", () => {
     });
 
     test("초기 렌더링 시 컴포넌트가 올바르게 표시되는지 확인", async () => {
-        (useQueryData as jest.Mock).mockReturnValue({
+        (useBooksQuery as jest.Mock).mockReturnValue({
             data: mockBooks,
             isLoading: false,
         });
@@ -98,7 +98,7 @@ describe("BooksDisplay 컴포넌트", () => {
     });
 
     test("로딩 중일 때 Spin 컴포넌트가 화면에 표시되는지 확인", async () => {
-        (useQueryData as jest.Mock).mockReturnValue({
+        (useBooksQuery as jest.Mock).mockReturnValue({
             data: null,
             isLoading: true,
         });
@@ -111,7 +111,7 @@ describe("BooksDisplay 컴포넌트", () => {
 
     test("스크롤하여 페이지가 증가하는지 확인", async () => {
         let currentPage = 1;
-        (useQueryData as jest.Mock).mockReturnValue(() => {
+        (useBooksQuery as jest.Mock).mockReturnValue(() => {
             return {
                 data: {
                     ...mockBooks,

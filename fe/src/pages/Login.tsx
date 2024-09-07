@@ -1,8 +1,18 @@
 import * as S from "@/styles/AuthFormStyle";
 import Logo from "@/components/Navigation/Logo/Logo";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
+import useLoginMutation from "@/hooks/queries/useLoginMutation";
+import { useNavigate } from "react-router-dom";
+import { Spin } from "antd";
+interface LoginForm {
+    id: string;
+    password: string;
+}
+
 const Login = () => {
-    const [loginForm, setLoginForm] = useState({ id: "", password: "" });
+    const [loginForm, setLoginForm] = useState<LoginForm>({ id: "", password: "" });
+    const { data, mutate, isPending } = useLoginMutation();
+    const navigate = useNavigate()
 
     const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
         const { id, value } = e.currentTarget;
@@ -11,7 +21,15 @@ const Login = () => {
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        mutate(loginForm);
     };
+
+    useEffect(() => {
+        if (data && data.token) {
+            sessionStorage.setItem("token", data.token)
+            navigate("/admin")
+        }
+    }, [data, navigate])
 
     return (
         <>
@@ -44,7 +62,7 @@ const Login = () => {
                                 onChange={handleInputChange}
                             />
                         </S.FormGroup>
-                        <S.Button type="submit">Login</S.Button>
+                        <S.Button disabled={isPending} type="submit">{isPending ? <Spin size="small"/> : "Login"}</S.Button>
                     </S.AuthForm>
                 </S.AuthCard>
             </S.AuthContainer>

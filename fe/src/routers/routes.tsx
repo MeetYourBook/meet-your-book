@@ -5,6 +5,7 @@ import NotFound from "../pages/NotFound";
 import ErrorFallBack from "@/components/ErrorFallBack/ErrorFallBack";
 import { ErrorBoundary } from "react-error-boundary";
 import Login from "@/pages/Login";
+import Admin from "@/pages/Admin";
 
 const routes = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ const routes = createBrowserRouter([
     {
         path: "/login",
         element: <Login />,
+    },
+    {
+        path: "/admin",
+        element: <Admin />,
     },
     {
         path: "*",

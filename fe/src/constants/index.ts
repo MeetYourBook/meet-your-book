@@ -4,6 +4,10 @@ export const DROP_DOWN_INITIAL_ITEMS = [
     { value: "author", label: "저자" },
     { value: "publisher", label: "출판사" },
 ];
+
+export const ERROR_MESSAGE = {
+    LOGIN_ERROR: "로그인에 실패했습니다! 아이디, 비밀번호를 다시 확인해주세요!"
+}
 export const PAGINATION_FIRST_PAGE = 1
 export const FIRST_PAGE = 0;
 export const ANIMATION_TIME = 100;

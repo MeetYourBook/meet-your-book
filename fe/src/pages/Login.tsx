@@ -25,7 +25,7 @@ const Login = () => {
     };
 
     useEffect(() => {
-        if (data && data.token) {
+        if (data?.token) {
             sessionStorage.setItem("token", data.token)
             navigate("/admin")
         }

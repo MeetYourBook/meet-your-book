@@ -8,7 +8,7 @@ interface LoginForm {
 }
 
 const fetchLogin = async (body: LoginForm) => {
-    const response = await loginAPI.post("", body)
+    const response = await loginAPI.post(body, "")
     
     if (response.status !== 200) {
         message.error(ERROR_MESSAGE.LOGIN_ERROR);

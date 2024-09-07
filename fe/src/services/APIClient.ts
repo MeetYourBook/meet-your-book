@@ -16,15 +16,11 @@ export class APIClient {
         })
     }
 
-    public post<T>(query = "", body: T) {
+    public post<T>(body: T, query = "") {
         return fetchAPI(this.#path + query, {
             method: "POST",
             headers: headers,
             body: body ? JSON.stringify(body) : null
         })
     }
-
-    public patch() {}
-
-    public delete() {}
 }

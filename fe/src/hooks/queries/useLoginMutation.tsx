@@ -9,8 +9,7 @@ interface LoginForm {
 
 const fetchLogin = async (body: LoginForm) => {
     const response = await loginAPI.post("", body)
-    const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
-    await delay(2500)
+    
     if (response.status !== 200) {
         message.error(ERROR_MESSAGE.LOGIN_ERROR);
     }

@@ -1,18 +1,19 @@
 import * as S from "@/styles/SearchInputStyle";
 import { KeyboardEvent, useRef } from "react";
 import useQueryStore from "@/stores/queryStore";
-import { FIRST_PAGE } from "@/constants";
+import { ERROR_MESSAGE, FIRST_PAGE } from "@/constants";
 import DropDownBox from "../DropDownBox/DropDownBox";
+import { message } from "antd";
 
 const SearchInput = () => {
     const inputRef = useRef<HTMLInputElement>(null);
     const { setSearchText, setPage } = useQueryStore();
 
     const handleSearchClick = () => {
-        if (inputRef.current) {
-            setPage(FIRST_PAGE)
-            setSearchText(inputRef.current.value);
-        }
+        const searchValue = inputRef.current?.value.trim() ?? "";
+        if (searchValue === "") return message.warning(ERROR_MESSAGE.EMPTY_INPUT);
+        setPage(FIRST_PAGE);
+        setSearchText(searchValue);
     };
 
     const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {

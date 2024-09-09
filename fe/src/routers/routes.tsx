@@ -6,6 +6,7 @@ import ErrorFallBack from "@/components/ErrorFallBack/ErrorFallBack";
 import { ErrorBoundary } from "react-error-boundary";
 import Login from "@/pages/Login";
 import Admin from "@/pages/Admin";
+import PrivateAdminLayout from "@/components/Layout/PrivateAdminLayout";
 
 const routes = createBrowserRouter([
     {
@@ -26,9 +27,16 @@ const routes = createBrowserRouter([
         path: "/login",
         element: <Login />,
     },
+
     {
         path: "/admin",
-        element: <Admin />,
+        element: <PrivateAdminLayout />,
+        children: [
+            {
+                path: "",
+                element: <Admin/>
+            }
+        ]
     },
     {
         path: "*",

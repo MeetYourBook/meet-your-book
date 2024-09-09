@@ -3,7 +3,8 @@ import Logo from "@/components/Navigation/Logo/Logo";
 import { FormEvent, useEffect, useState } from "react";
 import useLoginMutation from "@/hooks/queries/useLoginMutation";
 import { useNavigate } from "react-router-dom";
-import { Spin } from "antd";
+import { message, Spin } from "antd";
+import { SUCCESS_MESSAGE } from "@/constants";
 interface LoginForm {
     id: string;
     password: string;
@@ -28,6 +29,7 @@ const Login = () => {
         if (data?.token) {
             sessionStorage.setItem("token", data.token)
             navigate("/admin")
+            message.success(SUCCESS_MESSAGE.LOGIN_SUCCESS)
         }
     }, [data, navigate])
 

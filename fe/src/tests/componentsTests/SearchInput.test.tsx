@@ -3,11 +3,15 @@ import SearchInput from "@/components/Navigation/SearchInput/SearchInput";
 import { vi } from "vitest";
 
 const mockSetSearchText = vi.fn();
+const mockSetInputValue = vi.fn();
+
 vi.mock("@/stores/queryStore", () => ({
     __esModule: true,
     default: () => ({
         setSearchText: mockSetSearchText,
         setPage: mockSetSearchText,
+        setInputValue: mockSetInputValue,
+        inputValue: ""
     }),
 }));
 
@@ -25,7 +29,7 @@ describe("SearchInput 컴포넌트 테스트", () => {
         fireEvent.change(inputElement, {target: {value: "test search"}})
         fireEvent.click(buttonElement)
 
-        expect(mockSetSearchText).toHaveBeenCalledWith("test search");
+        expect(mockSetInputValue).toHaveBeenCalledWith("test search");
     });
 
     test("Enter 키를 누르면 입력값으로 setSearchText가 호출되는지 확인", () => {
@@ -37,6 +41,6 @@ describe("SearchInput 컴포넌트 테스트", () => {
 
         fireEvent.keyDown(inputElement, { key: "Enter", code: "Enter", charCode: 13 });
 
-        expect(mockSetSearchText).toHaveBeenCalledWith("test search");
+        expect(mockSetInputValue).toHaveBeenCalledWith("test search");
     });
 });

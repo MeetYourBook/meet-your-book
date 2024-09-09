@@ -14,13 +14,20 @@ vi.mock("react-router-dom", async () => {
     };
 });
 
-vi.mock("antd", () => ({
-    Spin: () => (
-        <div className="ant-spin" data-testid="antd-spin">
-            Loading
-        </div>
-    ),
-}));
+vi.mock("antd", async () => {
+    const actual: object = await vi.importActual("antd");
+    return {
+        ...(actual as object),
+        Spin: () => (
+            <div className="ant-spin" data-testid="antd-spin">
+                Loading
+            </div>
+        ),
+        message: {
+            success: vi.fn(),
+        },
+    };
+});
 
 vi.mock("@/styles/AuthFormStyle", () => ({
     LogoWrap: "div",

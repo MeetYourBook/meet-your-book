@@ -26,21 +26,22 @@ const NavInfoWrap = styled.span`
 
 const MenuIcon = styled(MenuOutlined)`
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
 `;
 
 const CurrentActive = styled.h2`
     font-weight: bold;
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 `;
 
 const ReloadBtn = styled(RedoOutlined)`
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
 `;
 
 const SideBarContainer = styled.ul<{ $isOpen: boolean }>`
+    position: fixed;
     font-size: 14px;
     width: 150px;
     height: 100vh;
@@ -52,7 +53,38 @@ const SideBarContainer = styled.ul<{ $isOpen: boolean }>`
     transform: ${({ $isOpen }) =>
         $isOpen ? "translateX(0)" : "translateX(-100%)"};
     transition: transform 0.3s ease-in-out;
+    z-index: 100;
+    background-color: ${({ theme }) => theme.body};
 `;
+
+const SideBarItem = styled.li`
+    &:hover {
+        cursor: pointer;
+    }
+`
+
+const MainContainer = styled.div`
+    display: flex;
+`
+
+const PopupOverlay = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+`;
+
+const IconWrap = styled.div`
+    display: flex;
+    gap: 16px
+`
+
 
 export {
     AdminContainer,
@@ -62,4 +94,8 @@ export {
     CurrentActive,
     ReloadBtn,
     SideBarContainer,
+    SideBarItem,
+    MainContainer,
+    PopupOverlay,
+    IconWrap
 };

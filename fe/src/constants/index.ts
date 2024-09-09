@@ -24,6 +24,8 @@ export const ADMIN_MENU_VALUE: ActiveType[] = [
     "LibraryBooksCount",
 ];
 
+export const BOOKS_TABLE_ITEM = ["title" , "author", "publisher", "publishDate", ]
+
 export const PAGINATION_FIRST_PAGE = 1
 export const FIRST_PAGE = 0;
 export const ANIMATION_TIME = 100;

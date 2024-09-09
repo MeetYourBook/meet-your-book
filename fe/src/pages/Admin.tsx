@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { ActiveType } from "@/types/Admin";
 import { ADMIN_MENU_VALUE } from "@/constants";
-import * as S from "@/styles/AdinPageStyle"
+import * as S from "@/styles/AdinPageStyle";
+import ItemManager from "@/components/Admin/ItmeManager/ItemManager";
+import ThemeSwitcher from "@/components/Navigation/ThemeSwitcher/ThemeSwitcher";
 const Admin = () => {
     const [activeTap, setActiveTap] = useState<ActiveType>("books");
     const [isOpen, setOpen] = useState(false);
@@ -9,22 +11,27 @@ const Admin = () => {
         <S.AdminContainer>
             <S.AdminNav>
                 <S.NavInfoWrap>
-                    <S.MenuIcon onClick={() => setOpen(!isOpen)}/>
+                    <S.MenuIcon onClick={() => setOpen(!isOpen)} />
                     <S.CurrentActive>{activeTap}</S.CurrentActive>
                 </S.NavInfoWrap>
-                <S.ReloadBtn />
+                <S.IconWrap>
+                    <S.ReloadBtn />
+                    <ThemeSwitcher />
+                </S.IconWrap>
             </S.AdminNav>
             <S.SideBarContainer $isOpen={isOpen}>
                 {ADMIN_MENU_VALUE.map((curValue: ActiveType) => (
-                    <li key={curValue} onClick={() => setActiveTap(curValue)}>
+                    <S.SideBarItem
+                        key={curValue}
+                        onClick={() => setActiveTap(curValue)}
+                    >
                         {curValue}
-                    </li>
+                    </S.SideBarItem>
                 ))}
             </S.SideBarContainer>
+            <ItemManager />
         </S.AdminContainer>
     );
 };
 
 export default Admin;
-
-

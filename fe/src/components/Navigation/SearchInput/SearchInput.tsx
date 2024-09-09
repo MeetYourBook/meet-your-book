@@ -11,7 +11,15 @@ const SearchInput = () => {
 
     const handleSearchClick = () => {
         const searchValue = inputRef.current?.value.trim() ?? "";
-        if (searchValue === "") return message.warning(ERROR_MESSAGE.EMPTY_INPUT);
+        if (searchValue === "") {
+            message.warning({
+                content: ERROR_MESSAGE.EMPTY_INPUT,
+                style: {
+                    marginTop: "10vh",
+                },
+            });
+            return;
+        }
         setPage(FIRST_PAGE);
         setSearchText(searchValue);
     };
@@ -22,13 +30,13 @@ const SearchInput = () => {
 
     return (
         <S.InputWrap>
-            <DropDownBox/>
+            <DropDownBox />
             <S.InputField
                 ref={inputRef}
                 onKeyDown={handleKeyDown}
                 placeholder="Search For Book..."
             />
-            <S.SearchField onClick={handleSearchClick}/>
+            <S.SearchField onClick={handleSearchClick} />
         </S.InputWrap>
     );
 };

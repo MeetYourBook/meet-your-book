@@ -17,7 +17,7 @@ const useGenerateQuery = () => {
                     publisher: searchText,
                 }
                 : searchText && { [selectedValue]: searchText }),
-            ...(librariesFilter.length > 0 && {libraries: librariesFilter.join(",")}),
+            ...(librariesFilter.length > 0 && {libraries: librariesFilter.map(item => item.id).join(",")}),
         };
 
         const queryString = Object.entries(queryParams)
@@ -25,8 +25,7 @@ const useGenerateQuery = () => {
             .join("&");
 
         setQuery(`?${queryString}`);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [page, size, librariesFilter, searchText]);
+    }, [page, size, librariesFilter, searchText, selectedValue]);
 
     return query;
 };

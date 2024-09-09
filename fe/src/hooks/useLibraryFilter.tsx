@@ -25,12 +25,12 @@ export const useLibraryFilter = () => {
         return disPlayLibraries;
     }, [searchValue, filteredLibraries, disPlayLibraries]);
 
-    const handleSelectLibrary = (id: string) => {
+    const handleSelectLibrary = (library: LibrariesType) => {
         setPage(FIRST_PAGE);
         setLibrariesFilter(
-            librariesFilter.includes(id)
-                ? librariesFilter.filter((item) => item !== id)
-                : [...librariesFilter, id]
+            librariesFilter.some(curLibrary => curLibrary.id === library.id)
+                ? librariesFilter.filter((item) => item.id !== library.id)
+                : [...librariesFilter, library]
         );
     };
 

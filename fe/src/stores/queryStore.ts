@@ -1,33 +1,47 @@
 import { create } from "zustand";
 import { BookContent } from "@/types/Books";
+import { LibrariesType } from "@/types/Libraries";
 interface StoreState {
-    booksItem: BookContent[]
+    booksItem: BookContent[];
     searchText: string;
+    inputValue: string;
     page: number;
     size: number;
     selectedValue: string;
-    librariesFilter: string[];
+    librariesFilter: LibrariesType[];
     setBooksItem: (books: BookContent[]) => void;
     setSearchText: (searchText: string) => void;
+    setInputValue: (value: string) => void;
     setPage: (pageNum: number) => void;
     setSize: (size: number) => void;
     setSelectedValue: (value: string) => void;
-    setLibrariesFilter: (libraries: string[]) => void;
+    setLibrariesFilter: (libraries: LibrariesType[]) => void;
+    resetFilter: () => void;
 }
 
 const useQueryStore = create<StoreState>((set) => ({
     booksItem: [],
     searchText: "",
+    inputValue: "",
     page: 0,
     size: 20,
     selectedValue: "all",
     librariesFilter: [],
-    setBooksItem: (books) => set({booksItem: books}),
+    setBooksItem: (books) => set({ booksItem: books }),
     setSearchText: (searchText) => set({ searchText }),
-    setPage: (pageNum) => set({page: pageNum}),
+    setInputValue: (value) => set({ inputValue: value }),
+    setPage: (pageNum) => set({ page: pageNum }),
     setSize: (size) => set({ size }),
     setSelectedValue: (value) => set({ selectedValue: value }),
     setLibrariesFilter: (libraries) => set({ librariesFilter: libraries }),
+    resetFilter: () =>
+        set({
+            searchText: "",
+            inputValue: "",
+            page: 0,
+            selectedValue: "all",
+            librariesFilter: [],
+        }),
 }));
 
 export default useQueryStore;

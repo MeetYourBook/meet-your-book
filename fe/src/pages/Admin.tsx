@@ -6,12 +6,12 @@ import ItemManager from "@/components/Admin/ItmeManager/ItemManager";
 import ThemeSwitcher from "@/components/Navigation/ThemeSwitcher/ThemeSwitcher";
 const Admin = () => {
     const [activeTap, setActiveTap] = useState<ActiveType>("books");
-    const [isOpen, setOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
     return (
         <S.AdminContainer>
             <S.AdminNav>
                 <S.NavInfoWrap>
-                    <S.MenuIcon onClick={() => setOpen(!isOpen)} />
+                    <S.MenuIcon onClick={() => setIsOpen(!isOpen)} />
                     <S.CurrentActive>{activeTap}</S.CurrentActive>
                 </S.NavInfoWrap>
                 <S.IconWrap>

@@ -128,6 +128,7 @@ class BookControllerTest {
                     fieldWithPath("content[].title").description("책 제목"),
                     fieldWithPath("content[].author").description("책 저자"),
                     fieldWithPath("content[].publisher").description("책 출판사"),
+                    fieldWithPath("content[].publishDate").description("책 출판일"),
                     fieldWithPath("content[].imageUrl").description("책 이미지 URL"),
                     fieldWithPath("content[].libraryResponses[].id").description("도서관 ID"),
                     fieldWithPath("content[].libraryResponses[].libraryName").description("도서관 이름"),

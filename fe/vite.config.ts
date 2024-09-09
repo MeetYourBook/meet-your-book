@@ -41,6 +41,9 @@ export default defineConfig(({ mode }) => {
           'src/hooks/**/*.{ts,tsx}',
           'src/components/**/*.{ts,tsx}',
         ],
+        exclude: [
+          "src/hooks/queries/*.{ts,tsx}"
+        ]
       },
     },
   };

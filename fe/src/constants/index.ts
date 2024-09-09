@@ -1,3 +1,5 @@
+import { ActiveType } from "@/types/Admin";
+
 export const DROP_DOWN_INITIAL_ITEMS = [
     { value: "all", label: "통합 검색" },
     { value: "title", label: "제목" },
@@ -14,6 +16,13 @@ export const ERROR_MESSAGE = {
 export const SUCCESS_MESSAGE = {
     LOGIN_SUCCESS: "로그인 성공!"
 }
+
+export const ADMIN_MENU_VALUE: ActiveType[] = [
+    "books",
+    "libraries",
+    "crawling",
+    "LibraryBooksCount",
+];
 
 export const PAGINATION_FIRST_PAGE = 1
 export const FIRST_PAGE = 0;

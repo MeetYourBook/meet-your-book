@@ -7,7 +7,7 @@ import GlobalStyle from "../src/styles/GlobalStyle";
 import { libraryHandlers } from "../src/mocks/handlers/libraryHandler";
 import { booksHandlers } from "../src/mocks/handlers/booksHandler";
 import { BrowserRouter } from "react-router-dom";
-
+import { ThemeContextProvider } from "../src/hooks/useThemeContext";
 initialize({
     serviceWorker: {
         url: "/mockServiceWorker.js",
@@ -19,12 +19,14 @@ const queryClient = new QueryClient();
 
 export const decorators = [
     (Story: React.ComponentType) => (
-        <QueryClientProvider client={queryClient}>
-            <GlobalStyle />
-            <BrowserRouter>
-                <Story />
-            </BrowserRouter>
-        </QueryClientProvider>
+        <ThemeContextProvider>
+            <QueryClientProvider client={queryClient}>
+                <GlobalStyle />
+                <BrowserRouter>
+                    <Story />
+                </BrowserRouter>
+            </QueryClientProvider>
+        </ThemeContextProvider>
     ),
     mswDecorator,
 ];

@@ -20,7 +20,7 @@ const mockLibraries = [
     { id: "3", name: "Library 3" },
 ];
 
-vi.mock('@/hooks/useQueryData', () => ({
+vi.mock('@/hooks/queries/useLibrariesQuery', () => ({
     default: () => ({
         data: mockLibraries,
         isLoading: false,

@@ -1,12 +1,12 @@
 import useQueryStore from "@/stores/queryStore";
 import { useState, useMemo, useRef, useEffect } from "react";
 import { FIRST_PAGE } from "@/constants";
-import useQueryData from "./useQueryData";
 import useSearchFilter from "./useFilterSearch";
 import { getCurrentPageItems } from "@/utils";
 import { LIBRARIES_FILTER_PER_PAGE, PAGINATION_FIRST_PAGE } from "@/constants";
 import useInfiniteScroll from "./useInfiniteScroll";
 import { LibrariesType } from "@/types/Libraries";
+import useLibrariesQuery from "./queries/useLibrariesQuery";
 
 export const useLibraryFilter = () => {
     const observerRef = useRef(null);
@@ -14,7 +14,7 @@ export const useLibraryFilter = () => {
     const [filterPage, setFilterPage] = useState(PAGINATION_FIRST_PAGE);
     const [disPlayLibraries, setDisplayLibraries] = useState<LibrariesType[]>([])
     const { librariesFilter, setLibrariesFilter, setPage } = useQueryStore();
-    const { data = [], isLoading } = useQueryData("libraries");
+    const { data = [], isLoading } = useLibrariesQuery();
     const { searchValue, setSearchValue, filteredLibraries } = useSearchFilter<LibrariesType>({
         libraries: data,
         keyName: "name",

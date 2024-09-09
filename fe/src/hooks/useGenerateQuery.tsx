@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 const useGenerateQuery = () => {
     const { searchText, page, size, selectedValue, librariesFilter} =
         useQueryStore();
-    const [query, setQuery] = useState(`books?page=${page}&size=${size}`);
+    const [query, setQuery] = useState(`?page=${page}&size=${size}`);
 
     useEffect(() => {
         const queryParams = {
@@ -24,7 +24,7 @@ const useGenerateQuery = () => {
             .map(([key, value]) => `${key}=${value}`)
             .join("&");
 
-        setQuery(`books?${queryString}`);
+        setQuery(`?${queryString}`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [page, size, librariesFilter, searchText]);
 

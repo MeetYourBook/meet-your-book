@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import useGenerateQuery from "./useGenerateQuery";
-import useQueryData from "./useQueryData";
 import useQueryStore from "@/stores/queryStore";
 import useInfiniteScroll from "./useInfiniteScroll";
 import { FIRST_PAGE } from "@/constants";
+import useBooksQuery from "./queries/useBooksQuery";
 
 const useBooksLogic = () => {
     const query = useGenerateQuery();
-    const { data: books, isLoading, isFetching } = useQueryData(query);
+    const { data: books, isLoading, isFetching } = useBooksQuery(query);
     const { booksItem, setBooksItem, page, setPage } = useQueryStore();
     const [lastPageNum, setLastPageNum] = useState(FIRST_PAGE);
     const loadingMore = useRef(false);

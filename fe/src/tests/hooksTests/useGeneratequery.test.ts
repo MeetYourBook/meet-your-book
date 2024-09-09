@@ -21,7 +21,7 @@ describe("useGenerateQuery 훅 테스트", () => {
 
         const { result } = renderHook(() => useGenerateQuery());
 
-        expect(result.current).toBe("books?page=1&size=20")
+        expect(result.current).toBe("?page=1&size=20")
     })
 
     test("검색어와 선택된 값이 있을 때 쿼리가 올바르게 생성되는지 확인", () => {
@@ -35,7 +35,7 @@ describe("useGenerateQuery 훅 테스트", () => {
 
         const { result } = renderHook(() => useGenerateQuery());
 
-        expect(result.current).toBe("books?page=1&size=20&author=George");
+        expect(result.current).toBe("?page=1&size=20&author=George");
     });
 
     test("librariesFilter가 있을 때 쿼리가 올바르게 생성되는지 확인", () => {
@@ -49,7 +49,7 @@ describe("useGenerateQuery 훅 테스트", () => {
 
         const { result } = renderHook(() => useGenerateQuery());
 
-        expect(result.current).toBe("books?page=2&size=20&libraries=Library1,Library2");
+        expect(result.current).toBe("?page=2&size=20&libraries=Library1,Library2");
     });
 
     test("searchText가 있고 selectedValue가 'all'일 때 여러 필드에 검색어가 포함되는지 확인", () => {
@@ -63,7 +63,7 @@ describe("useGenerateQuery 훅 테스트", () => {
 
         const { result } = renderHook(() => useGenerateQuery());
 
-        expect(result.current).toBe("books?page=1&size=20&title=George&author=George&publisher=George");
+        expect(result.current).toBe("?page=1&size=20&title=George&author=George&publisher=George");
     });
 })
 

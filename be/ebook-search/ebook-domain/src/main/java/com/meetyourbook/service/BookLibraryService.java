@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 public class BookLibraryService {
 
-    private final BookCacheService bookCacheService;
+    private final BookPersistenceService bookPersistenceService;
     private final LibraryCacheService libraryCacheService;
     private final BookLibraryJdbcRepository bookLibraryJdbcRepository;
 
@@ -25,7 +25,7 @@ public class BookLibraryService {
         List<BookRecord> bookRecords = bookInfos.stream()
             .map(BookRecord::from)
             .toList();
-        Map<BookRecord, Long> processedBooks = bookCacheService.processBook(bookRecords);
+        Map<BookRecord, Long> processedBooks = bookPersistenceService.processBooks(bookRecords);
         List<BookLibraryRelation> bookLibraries = createBookLibraryRelations(processedBooks);
         bookLibraryJdbcRepository.saveAll(bookLibraries);
     }

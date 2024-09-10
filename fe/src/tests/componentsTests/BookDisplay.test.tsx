@@ -6,7 +6,8 @@ import useBooksQuery from "@/hooks/queries/useBooksQuery";
 vi.mock("@/styles/BookDisplayStyle", () => ({
     BookContainer: "div",
     BookWrap: "div",
-    LastPageView: "div"
+    LastPageView: "div",
+    EmptyContentText: "div"
 }));
 
 vi.mock("@/hooks/queries/useBooksQuery", () => ({

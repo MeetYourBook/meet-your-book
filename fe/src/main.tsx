@@ -8,13 +8,13 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeContextProvider } from "./hooks/useThemeContext.tsx";
 import "@/styles/font.css";
 
-const main = async () => {
-    if (process.env.NODE_ENV === "development") {
-        const { worker } = await import("./mocks/node.ts");
-        await worker.start({ onUnhandledRequest: "bypass" });
-    }
-};
-await main();
+// const main = async () => {
+//     if (process.env.NODE_ENV === "development") {
+//         const { worker } = await import("./mocks/node.ts");
+//         await worker.start({ onUnhandledRequest: "bypass" });
+//     }
+// };
+// await main();
 
 const queryClient = new QueryClient({
     defaultOptions: {

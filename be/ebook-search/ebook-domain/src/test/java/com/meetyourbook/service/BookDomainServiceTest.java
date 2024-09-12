@@ -2,11 +2,11 @@ package com.meetyourbook.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.meetyourbook.common.RepositoryTest;
+import com.meetyourbook.common.JpaRepositoryTest;
 import com.meetyourbook.dto.BookCreationInfo;
 import com.meetyourbook.dto.BookUpdateInfo;
 import com.meetyourbook.entity.Book;
-import com.meetyourbook.repository.BookRepository;
+import com.meetyourbook.repository.jpa.BookRepository;
 import java.time.LocalDate;
 import java.util.Optional;
 import org.junit.jupiter.api.AfterEach;
@@ -15,7 +15,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@RepositoryTest
+@JpaRepositoryTest
 class BookDomainServiceTest {
 
     private BookDomainService bookDomainService;

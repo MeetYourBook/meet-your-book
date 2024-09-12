@@ -1,12 +1,13 @@
-package com.meetyourbook.repository;
+package com.meetyourbook.repository.jpa;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.meetyourbook.common.RepositoryTest;
+import com.meetyourbook.common.JpaRepositoryTest;
 import com.meetyourbook.entity.Book;
 import com.meetyourbook.entity.BookLibrary;
 import com.meetyourbook.entity.Library;
-import com.meetyourbook.repository.BookLibraryRepository.BookLibraryCount;
+import com.meetyourbook.entity.Library.EbookPlatform;
+import com.meetyourbook.repository.jpa.BookLibraryRepository.BookLibraryCount;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -14,7 +15,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@RepositoryTest
+@JpaRepositoryTest
 class BookLibraryRepositoryTest {
 
     @Autowired
@@ -32,6 +33,7 @@ class BookLibraryRepositoryTest {
         // Given
         Library library1 = Library.builder()
             .name("Library 1")
+            .ebookPlatform(EbookPlatform.KYOBO)
             .build();
 
         libraryRepository.save(library1);

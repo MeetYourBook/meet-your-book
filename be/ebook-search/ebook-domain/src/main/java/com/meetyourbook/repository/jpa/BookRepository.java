@@ -1,4 +1,4 @@
-package com.meetyourbook.repository;
+package com.meetyourbook.repository.jpa;
 
 
 import com.meetyourbook.dto.BookInfo;

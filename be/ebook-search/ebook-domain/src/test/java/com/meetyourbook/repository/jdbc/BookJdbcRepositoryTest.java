@@ -1,8 +1,9 @@
-package com.meetyourbook.repository;
+package com.meetyourbook.repository.jdbc;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import com.meetyourbook.common.JdbcRepositoryTest;
 import com.meetyourbook.dto.BookInfo;
 import com.meetyourbook.dto.BookRecord;
 import com.meetyourbook.dto.BookUniqueKey;
@@ -13,22 +14,25 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.simple.JdbcClient;
 
-@JdbcTest
+@JdbcRepositoryTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class BookJdbcRepositoryTest {
 
     @Autowired
     private JdbcClient jdbcClient;
 
+    @Autowired
+    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+
     private BookJdbcRepository bookJdbcRepository;
 
     @BeforeEach
     void setUp() {
-        bookJdbcRepository = new BookJdbcRepository(jdbcClient);
+        bookJdbcRepository = new BookJdbcRepository(jdbcClient, namedParameterJdbcTemplate);
     }
 
     @Test

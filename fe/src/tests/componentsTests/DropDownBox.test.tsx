@@ -29,10 +29,10 @@ describe("DropDownBox 컴포넌트 테스트", () => {
 
     test("드랍다운을 호버하고 마우스가 떠나면 리스트가 사라지는지 확인.", () => {
         render(<DropDownBox />);
-        const dropdownContainer = screen.getByText("통합 검색");
+        const dropdownContainer = screen.getByText("제목");
         fireEvent.mouseEnter(dropdownContainer);
         fireEvent.mouseLeave(dropdownContainer);
-        expect(screen.queryByText("제목")).not.toBeInTheDocument();
+        expect(screen.queryByText("통합 검색")).not.toBeInTheDocument();
         expect(screen.queryByText("저자")).not.toBeInTheDocument();
         expect(screen.queryByText("출판사")).not.toBeInTheDocument();
     });

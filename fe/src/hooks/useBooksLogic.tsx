@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import useGenerateQuery from "./useGenerateQuery";
 import useQueryStore from "@/stores/queryStore";
 import useInfiniteScroll from "./useInfiniteScroll";
@@ -10,11 +10,9 @@ const useBooksLogic = () => {
     const { data: books, isLoading, isFetching } = useBooksQuery(query);
     const { booksItem, setBooksItem, page, setPage } = useQueryStore();
     const [lastPageNum, setLastPageNum] = useState(FIRST_PAGE);
-    const loadingMore = useRef(false);
 
     const handleLoadMore = useCallback(() => {
-        if (!loadingMore.current && !isFetching && page < lastPageNum) {
-            loadingMore.current = true;
+        if (!isFetching && page < lastPageNum) {
             setPage(page + 1);
         }
     }, [isFetching, page, lastPageNum, setPage]);
@@ -30,7 +28,6 @@ const useBooksLogic = () => {
         if (books && books.content) {
             setBooksItem(page === FIRST_PAGE ? books.content : [...booksItem, ...books.content])
             setLastPageNum(books.totalPages);
-            loadingMore.current = false;
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [books]);

@@ -1,18 +1,25 @@
 import * as S from "@/styles/SearchInputStyle";
-import { KeyboardEvent, useRef } from "react";
+import { KeyboardEvent } from "react";
 import useQueryStore from "@/stores/queryStore";
-import { FIRST_PAGE } from "@/constants";
+import { ERROR_MESSAGE, FIRST_PAGE } from "@/constants";
 import DropDownBox from "../DropDownBox/DropDownBox";
+import { message } from "antd";
 
 const SearchInput = () => {
-    const inputRef = useRef<HTMLInputElement>(null);
-    const { setSearchText, setPage } = useQueryStore();
+    const { inputValue, setInputValue, setSearchText, setPage } = useQueryStore();
 
     const handleSearchClick = () => {
-        if (inputRef.current) {
-            setPage(FIRST_PAGE)
-            setSearchText(inputRef.current.value);
+        if (inputValue === "") {
+            message.warning({
+                content: ERROR_MESSAGE.EMPTY_INPUT,
+                style: {
+                    marginTop: "10vh",
+                },
+            });
+            return;
         }
+        setPage(FIRST_PAGE);
+        setSearchText(inputValue);
     };
 
     const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
@@ -21,13 +28,14 @@ const SearchInput = () => {
 
     return (
         <S.InputWrap>
-            <DropDownBox/>
+            <DropDownBox />
             <S.InputField
-                ref={inputRef}
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="Search For Book..."
             />
-            <S.SearchField onClick={handleSearchClick}/>
+            <S.SearchField onClick={handleSearchClick} />
         </S.InputWrap>
     );
 };

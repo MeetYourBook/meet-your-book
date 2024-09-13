@@ -30,4 +30,9 @@ const LastPageView = styled.div`
     text-align: center;
 `
 
-export { BookContainer, BookWrap, LastPageView };
+const EmptyContentText = styled.div`
+    text-align: center;
+    padding: 30px 0;
+`
+
+export { BookContainer, BookWrap, LastPageView, EmptyContentText };

@@ -49,8 +49,6 @@ const ListWrap = styled.div<{ $isOpen: boolean }>`
     overflow-y: auto;
     padding: 1rem;
     border-top: ${({$isOpen}) => $isOpen && "1px solid var(--border-color)"};
-    transform: ${({ $isOpen }) =>
-        $isOpen ? "translateY(0)" : "translateY(-10px)"};
     animation: ${({ $isOpen }) =>
         $isOpen
             ? css`${dropdownOpenAnimation} 0.3s ease-out forwards`

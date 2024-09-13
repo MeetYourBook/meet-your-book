@@ -4,8 +4,8 @@ import { LibrariesType } from "@/types/Libraries";
 
 interface LibraryListProps {
     libraries: LibrariesType[];
-    librariesFilter: string[];
-    handleSelectLibrary: (id: string) => void;
+    librariesFilter: LibrariesType[];
+    handleSelectLibrary: (library: LibrariesType) => void;
 }
 
 const LibraryList = ({
@@ -19,8 +19,8 @@ const LibraryList = ({
                 <S.Checkbox
                     type="checkbox"
                     id={`${library.id}-${index}`}
-                    checked={librariesFilter.includes(library.id)}
-                    onChange={() => handleSelectLibrary(library.id)}
+                    checked={librariesFilter.some(curLibrary => curLibrary.id === library.id)}
+                    onChange={() => handleSelectLibrary(library)}
                 />
                 <S.Label htmlFor={`${library.id}-${index}`}>
                     {library.name}

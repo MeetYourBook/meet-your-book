@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { SearchOutlined, FilterOutlined } from "@ant-design/icons";
+import { SearchOutlined, FilterOutlined, CloseOutlined } from "@ant-design/icons";
 
 const PanelContainer = styled.div`
     display: none;
@@ -25,13 +25,16 @@ const FilterWrap = styled.div<{ $isFilterOpen: boolean }>`
     position: fixed;
     z-index: 50;
     width: 300px;
+    max-width: 100%;
     top: 0;
+    right: 0;
     height: 100%;
     padding: 20px;
     background-color: ${({ theme }) => theme.body};
-    right: ${({ $isFilterOpen }) => ($isFilterOpen ? "0" : "-100%")};
+    transform: ${({ $isFilterOpen }) =>
+        $isFilterOpen ? "translateX(0)" : "translateX(100%)"};
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
-    transition: right 0.3s ease;
+    transition: transform 0.3s ease;
     box-sizing: border-box;
     overflow-y: auto;
 `;
@@ -44,7 +47,7 @@ const Overlay = styled.div`
     backdrop-filter: blur(1px);
 `;
 
-const CancelBtn = styled.div`
+const CancelBtn = styled(CloseOutlined)`
     display: flex;
     align-items: center;
     justify-content: right;

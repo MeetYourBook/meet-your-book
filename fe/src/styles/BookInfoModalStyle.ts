@@ -55,10 +55,11 @@ const BookInfoWrap = styled.div`
 `;
 
 const Img = styled.img`
-    width: 150px;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 8px;
+ object-fit: cover;
+    width: 9rem;
+    height: 13rem;
+    border-radius: 0.375rem;
+    margin: auto;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 `;
 

@@ -1,0 +1,1 @@
+export type ActiveType = "books" | "libraries" | "crawling" | "LibraryBooksCount";

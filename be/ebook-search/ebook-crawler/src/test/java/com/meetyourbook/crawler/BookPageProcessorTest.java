@@ -8,10 +8,12 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.meetyourbook.dto.BookInfo;
+import com.meetyourbook.parser.BookPageParser;
 import com.meetyourbook.service.BookCrawlerService;
 import com.meetyourbook.service.BookQueueService;
 import io.micrometer.core.instrument.Counter;
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -38,6 +40,8 @@ class BookPageProcessorTest {
     private Counter booksCounter;
     @Mock
     private Page page;
+    @Mock
+    private BookPageParser bookPageParser;
 
     @Captor
     private ArgumentCaptor<List<BookInfo>> bookInfosCaptor;
@@ -46,7 +50,8 @@ class BookPageProcessorTest {
 
     @BeforeEach
     void setUp() {
-        bookPageProcessor = new BookPageProcessor(bookQueueService, pagesCounter, booksCounter);
+        bookPageProcessor = new BookPageProcessor(bookQueueService, pagesCounter, booksCounter,
+            bookPageParser);
         BookCrawlerService.pageQueue.clear();
     }
 
@@ -81,11 +86,16 @@ class BookPageProcessorTest {
                     </li>
                 </ul>
             """;
+        String expectedBookUrl = "https://example.com";
 
-        setupPage(htmlContent);
+        setupPage(htmlContent, "https://example.com/content/contentList.ink?pageIndex=1");
 
-        when(page.getUrl()).thenReturn(new PlainText(
-            "https://example.com/content/contentList.ink?brcd=&sntnAuthCode=&contentAll=Y&cttsDvsnCode=001&ctgrId=&orderByKey=publDate&selViewCnt=20&pageIndex=1&recordCount=20"));
+        List<BookInfo> mockBookInfos = Collections.singletonList(
+            new BookInfo("테스트 책 제목", "제이든", "테스트 출판사",
+                LocalDate.of(2024, 1, 1), "example.com/book-cover.jpg", "https://example.com",
+                expectedBookUrl, "url")
+        );
+        when(bookPageParser.parseBooks(any())).thenReturn(mockBookInfos);
 
         //when
         bookPageProcessor.process(page);
@@ -111,9 +121,8 @@ class BookPageProcessorTest {
     void parseEmptyList_ShouldNotAddToQueue() {
         // Given
         String htmlContent = "<div class='book_resultList'></div>";
-        setupPage(htmlContent);
-        when(page.getUrl()).thenReturn(new PlainText(
-            "https://example.com/content/contentList.ink?brcd=&sntnAuthCode=&contentAll=Y&cttsDvsnCode=001&ctgrId=&orderByKey=publDate&selViewCnt=20&pageIndex=1&recordCount=20"));
+        setupPage(htmlContent,
+            "https://example.com/content/contentList.ink?brcd=&sntnAuthCode=&contentAll=Y&cttsDvsnCode=001&ctgrId=&orderByKey=publDate&selViewCnt=20&pageIndex=1&recordCount=20");
 
         // When
         bookPageProcessor.process(page);
@@ -124,47 +133,14 @@ class BookPageProcessorTest {
         verify(pagesCounter, never()).increment();
     }
 
-    @Test
-    @DisplayName("잘못된 날짜 정보를 파싱할 경우 null값을 저장한다.")
-    void parseInvalidDateFormat_ShouldSaveNull() {
-        // Given
-        String htmlContent = """
-            <div class="book_resultList">
-                <div>
-                    <div class="store">TestStore</div>
-                    <div class="tit">테스트 책 제목</div>
-                    <div class="writer">
-                        제이든
-                        <span>테스트 출판사</span>
-                        2024-0101
-                    </div>
-                    <img src="//example.com/book-cover.jpg" />
-                </div>
-            </div>
-            """;
-        setupPage(htmlContent);
-        when(page.getUrl()).thenReturn(new PlainText(
-            "https://example.com/content/contentList.ink?brcd=&sntnAuthCode=&contentAll=Y&cttsDvsnCode=001&ctgrId=&orderByKey=publDate&selViewCnt=20&pageIndex=1&recordCount=20"));
-
-        // When
-        bookPageProcessor.process(page);
-
-        // Then
-        verify(bookQueueService).addBookInfosToQueue(bookInfosCaptor.capture());
-        List<BookInfo> capturedBookInfos = bookInfosCaptor.getValue();
-        assertThat(1).isEqualTo(capturedBookInfos.size());
-        BookInfo bookInfo = capturedBookInfos.getFirst();
-        assertThat(bookInfo.publishDate()).isNull();
-    }
 
     @Test
     @DisplayName("ResultList Element를 찾지 못한 경우 queue에 파싱 결과를 추가하지 않는다.")
     void parseEmptyResultList_ShouldNotAddToQueue() {
         // Given
         String htmlContent = "<div></div>";
-        setupPage(htmlContent);
-        when(page.getUrl()).thenReturn(new PlainText(
-            "https://example.com/content/contentList.ink?brcd=&sntnAuthCode=&contentAll=Y&cttsDvsnCode=001&ctgrId=&orderByKey=publDate&selViewCnt=20&pageIndex=1&recordCount=20"));
+        setupPage(htmlContent,
+            "https://example.com/content/contentList.ink?brcd=&sntnAuthCode=&contentAll=Y&cttsDvsnCode=001&ctgrId=&orderByKey=publDate&selViewCnt=20&pageIndex=1&recordCount=20");
 
         // When
         bookPageProcessor.process(page);
@@ -175,57 +151,10 @@ class BookPageProcessorTest {
         verify(pagesCounter, never()).increment();
     }
 
-    @Test
-    @DisplayName("책 상세 페이지 URL 파싱 테스트")
-    void testParsingBookDetailUrl() {
-        // Given
-        String htmlContent = """
-                <ul class="book_resultList">
-                    <li>
-                        <div class="img">
-                            <a href="/content/contentView.ink" title="테스트 책 제목 | ASML 전자도서관" class="scale" onclick="javascript:contentList.fnContentClick(this, '001', 'TEST1234567890', '110101', '', 'N', '5'); event.preventDefault();">
-                                <img src="//example.com/book-cover.jpg" alt="테스트 책 제목" onerror="this.src='/resources/common/images/L_NOBOOK.jpg'"/>
-                            </a>
-                            <p><a href="#" class="btn btn_s btn_line" onClick="javascript:contentList.fnContentPreview('N','001', '110101' ,'TEST1234567890','5', ''); event.preventDefault();" target="_blank" title="새 창으로 열림">미리보기</a></p>
-                        </div>
-                        <div>
-                            <p>
-                                <span class="store">TestStore</span>
-                            </p>
-                            <ul>
-                                <li class="tit"><a href="/content/contentView.ink" title="테스트 책 제목 | ASML 전자도서관" onClick="javascript:contentList.fnContentClick(this, '001', 'TEST1234567890', '110101', '', 'N'); event.preventDefault();">테스트 책 제목</a></li>
-                                <li class="writer">제이든<span>테스트 출판사</span>2024-01-01</li>
-                                <li class="txt">이것은 테스트 책의 설명입니다. 여기에 책의 줄거리나 소개가 들어갑니다. 이 책은 테스트를 위해 만들어진 가상의 책으로, 실제 존재하지 않습니다. 테스트 데이터의 구조와 형식을 보여주기 위한 목적으로 작성되었습니다.</li>
-                            </ul>
-                        </div>
-                        <div class="btn_area">
-                            <span><input type="button" name="brwBtn" value="대출" class="btn btn_mL btn_blue2" onClick="javascript:contentList.fnContentBorrow('N', '', '22705', '', 'TEST1234567890', '001', '테스트 책 제목','5', 'KB','1', '', event);"/></span>
-                            <span><input type="button" name="dibsBtn" value="찜" class="btn btn_mL btn_sel" onClick="javascript:contentList.fnDibs(this, 'TEST1234567890','N');"/></span>
-                        </div>
-                    </li>
-                </ul>
-            """;
-        String expectedBookUrl = "https://example.com/content/contentView.ink?brcd=TEST1234567890&cttsDvsnCode=001";
-
-        setupPage(htmlContent);
-
-        when(page.getUrl()).thenReturn(new PlainText(
-            "https://example.com/content/contentList.ink?brcd=&sntnAuthCode=&contentAll=Y&cttsDvsnCode=001&ctgrId=&orderByKey=publDate&selViewCnt=20&pageIndex=1&recordCount=20"));
-
-        // When
-        bookPageProcessor.process(page);
-
-        // Then
-        verify(bookQueueService).addBookInfosToQueue(bookInfosCaptor.capture());
-        List<BookInfo> capturedBookInfos = bookInfosCaptor.getValue();
-        BookInfo bookInfo = capturedBookInfos.getFirst();
-        assertThat(bookInfo.bookUrl()).isEqualTo(expectedBookUrl);
-    }
-
-
-    private void setupPage(String html) {
+    private void setupPage(String html, String url) {
         Document doc = Jsoup.parse(html);
         when(page.getHtml()).thenReturn(new Html(doc));
+        when(page.getUrl()).thenReturn(new PlainText(url));
     }
 
 }

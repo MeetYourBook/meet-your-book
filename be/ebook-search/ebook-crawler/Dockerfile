@@ -7,8 +7,16 @@ RUN apk add --no-cache tzdata && \
     echo $TZ > /etc/timezone && \
     apk del tzdata
 
-COPY build/libs/*.jar app.jar
 WORKDIR /app
+
+COPY build/libs/*.jar app.jar
+
+# Java 옵션을 환경 변수로 설정
+ENV JAVA_OPTS="-Xms512m -Xmx1024m -Duser.timezone=Asia/Seoul"
+
 VOLUME /app/config
+
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "/app.jar", "--spring.config.additional-location=file:/app/config/"]
+
+# JAVA_OPTS 환경 변수 사용
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar --spring.config.additional-location=file:/app/config/"]

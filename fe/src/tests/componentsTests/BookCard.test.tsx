@@ -2,6 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import BookCard from "@/components/BooksDisplay/BookCard/BookCard";
 import { BookContent } from "@/types/Books";
 import { vi } from "vitest";
+
 Object.defineProperty(window, "matchMedia", {
     writable: true,
     value: vi.fn().mockImplementation((query) => ({
@@ -40,6 +41,8 @@ vi.mock("@/styles/BookCardStyle", () => ({
     Subtitle: "h3",
     MetaInfo: "span",
     ListTitle: "h3",
+    ListBookInfo: "div",
+    LibrariesCount: "div",
 }));
 
 const mockBook: BookContent = {
@@ -65,14 +68,12 @@ describe("BookCard 컴포넌트", () => {
 
     test("list 뷰 모드에서 렌더링되는지 확인", () => {
         render(<BookCard bookData={mockBook} viewMode="list" />);
-
-        expect(
-            screen.getByRole("img", { name: /test book/i })
-        ).toBeInTheDocument();
-        expect(screen.getByText("Test Book")).toBeInTheDocument();
-        expect(screen.getByText("Test Author")).toBeInTheDocument();
-        expect(screen.getByText("Test publishDate")).toBeInTheDocument();
-        expect(screen.getByText("Test Publisher")).toBeInTheDocument();
+    
+        expect(screen.getByRole("img", { name: /test book/i })).toBeInTheDocument();
+        expect(screen.getByText(/Test Book/i)).toBeInTheDocument();
+        expect(screen.getByText(/저자:.*Test Author/i)).toBeInTheDocument();
+        expect(screen.getByText(/출판일:.*Test publishDate/i)).toBeInTheDocument();
+        expect(screen.getByText(/출판사:.*Test Publisher/i)).toBeInTheDocument();
     });
 
     test("이미지 로드 실패 시 대체 이미지를 보여주는지 확인", () => {

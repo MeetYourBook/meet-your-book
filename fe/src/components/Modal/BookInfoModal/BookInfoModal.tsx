@@ -28,7 +28,6 @@ const BookInfoModal = ({ bookData, handleModalClose }: BookInfoModalProps) => {
                         <S.MetaInfo>출판사: {publisher}</S.MetaInfo>
                     </S.InfoWrap>
                 </S.BookInfoWrap>
-                <S.Description>디스크립션 태그입니다.</S.Description>
                 <LibrariesPaging libraryResponses={libraryResponses}/>
             </S.PopupCard>
         </S.PopupOverlay>

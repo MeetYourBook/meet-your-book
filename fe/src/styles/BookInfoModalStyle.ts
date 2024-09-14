@@ -78,13 +78,6 @@ const MetaInfo = styled.p`
     margin: 4px 0;
 `;
 
-const Description = styled.p`
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 24px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid #eee;
-`;
 export {
     PopupOverlay,
     PopupCard,
@@ -94,5 +87,4 @@ export {
     InfoWrap,
     Title,
     MetaInfo,
-    Description,
 };

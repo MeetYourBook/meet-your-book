@@ -22,7 +22,7 @@ vi.mock("@/components/Modal/BookInfoModal/BookInfoModal", () => ({
             <h2>{bookData.title}</h2>
             <p>저자: {bookData.author}</p>
             <p>제공: {bookData.provider}</p>
-            <p>출판사: {bookData.publisher}</p>
+            <p>출판일: {bookData.publishDate}</p>
             <p>소장 도서관: {bookData.libraryResponses.length}</p>
             <button onClick={handleModalClose}>Close</button>
         </div>
@@ -39,13 +39,14 @@ vi.mock("@/styles/BookCardStyle", () => ({
     Title: "h2",
     Subtitle: "h3",
     MetaInfo: "span",
+    ListTitle: "h3",
 }));
 
 const mockBook: BookContent = {
     id: "1",
     title: "Test Book",
     author: "Test Author",
-    provider: "Test Provider",
+    publishDate: "Test publishDate",
     publisher: "Test Publisher",
     imageUrl: "test-image-url.com",
     libraryResponses: [],
@@ -70,7 +71,7 @@ describe("BookCard 컴포넌트", () => {
         ).toBeInTheDocument();
         expect(screen.getByText("Test Book")).toBeInTheDocument();
         expect(screen.getByText("Test Author")).toBeInTheDocument();
-        expect(screen.getByText("Test Provider")).toBeInTheDocument();
+        expect(screen.getByText("Test publishDate")).toBeInTheDocument();
         expect(screen.getByText("Test Publisher")).toBeInTheDocument();
     });
 

@@ -14,7 +14,7 @@ public record LibraryCreationInfo(
     public Library toEntity() {
         return Library.builder()
             .name(name)
-            .libraryUrl(url)
+            .libraryUrl(url.trim())
             .ebookPlatform(ebookPlatform)
             .build();
     }

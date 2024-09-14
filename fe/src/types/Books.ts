@@ -7,8 +7,8 @@ export interface BookContent {
     id: string;
     title: string;
     author: string;
-    provider: string;
     publisher: string;
     imageUrl: string;
+    publishDate: string;
     libraryResponses: LibraryResponse[];
 }

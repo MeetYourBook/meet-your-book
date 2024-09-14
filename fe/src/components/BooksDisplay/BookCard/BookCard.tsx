@@ -12,7 +12,7 @@ interface BookItemProps {
 }
 
 const BookCard = ({ bookData, viewMode }: BookItemProps) => {
-    const { imageUrl, title, author, provider, publisher } = bookData;
+    const { imageUrl, title, author, publisher, publishDate } = bookData;
     const [isVisible, setIsVisible] = useState(false);
     const [isModalOpen, setModalOpen] = useState(false)
 
@@ -51,11 +51,11 @@ const BookCard = ({ bookData, viewMode }: BookItemProps) => {
                         onError={handleImageError}
                     />
                     <S.TextContainer $viewMode="list" >
-                        <S.Title>{title}</S.Title>
+                        <S.ListTitle>{title}</S.ListTitle>
                         <S.Subtitle>{author}</S.Subtitle>
                         <div>
-                            <S.MetaInfo>{provider}</S.MetaInfo>
                             <S.MetaInfo>{publisher}</S.MetaInfo>
+                            <S.MetaInfo>{publishDate}</S.MetaInfo>
                         </div>
                     </S.TextContainer>
                 </S.ListCard>

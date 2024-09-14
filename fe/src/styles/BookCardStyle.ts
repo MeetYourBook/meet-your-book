@@ -37,12 +37,11 @@ const Image = styled.img`
     width: 9rem;
     height: 13rem;
     border-radius: 0.375rem;
-    margin: auto;
 `;
 
 const TextContainer = styled.div<{ $viewMode: ViewType }>`
     width: ${({ $viewMode }) =>
-        $viewMode === "list" ? "calc(100% - 132px)" : "100%"};
+        $viewMode === "list" ? "70%" : "100%"};
     padding-left: ${({ $viewMode }) =>
         $viewMode === "list" ? "1rem" : "0"};
     text-align: ${({ $viewMode }) => ($viewMode === "list" ? "left" : "center")};
@@ -57,6 +56,12 @@ const Title = styled.h3`
     overflow: hidden;
     text-overflow: ellipsis;
 `;
+
+const ListTitle = styled.h3`
+    font-weight: bold;
+    font-size: 0.875rem;
+    margin: 0.25rem 0;
+`
 
 const Subtitle = styled.p`
     font-size: 0.75rem;
@@ -85,5 +90,6 @@ export {
     Subtitle,
     MetaInfo,
     Image,
-    FavoritesBtnWrap
+    FavoritesBtnWrap,
+    ListTitle
 };

@@ -13,7 +13,8 @@ const fetchBooks = async (query: string) => {
 const useBooksQuery = (query: string) => {
     return useQuery({
         queryKey: ["books", query],
-        queryFn: () => fetchBooks(query), 
+        queryFn: () => fetchBooks(query),
+        staleTime: Infinity, 
     });
 }
 

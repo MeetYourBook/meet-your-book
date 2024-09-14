@@ -14,6 +14,7 @@ const useLibrariesQuery = () => {
     return useQuery({
         queryKey: ["libraries"],
         queryFn: () => fetchLibraries(), 
+        staleTime: Infinity,
     });
 }
 

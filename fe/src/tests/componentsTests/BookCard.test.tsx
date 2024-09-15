@@ -2,6 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import BookCard from "@/components/BooksDisplay/BookCard/BookCard";
 import { BookContent } from "@/types/Books";
 import { vi } from "vitest";
+
 Object.defineProperty(window, "matchMedia", {
     writable: true,
     value: vi.fn().mockImplementation((query) => ({
@@ -22,7 +23,7 @@ vi.mock("@/components/Modal/BookInfoModal/BookInfoModal", () => ({
             <h2>{bookData.title}</h2>
             <p>저자: {bookData.author}</p>
             <p>제공: {bookData.provider}</p>
-            <p>출판사: {bookData.publisher}</p>
+            <p>출판일: {bookData.publishDate}</p>
             <p>소장 도서관: {bookData.libraryResponses.length}</p>
             <button onClick={handleModalClose}>Close</button>
         </div>
@@ -39,13 +40,16 @@ vi.mock("@/styles/BookCardStyle", () => ({
     Title: "h2",
     Subtitle: "h3",
     MetaInfo: "span",
+    ListTitle: "h3",
+    ListBookInfo: "div",
+    LibrariesCount: "div",
 }));
 
 const mockBook: BookContent = {
     id: "1",
     title: "Test Book",
     author: "Test Author",
-    provider: "Test Provider",
+    publishDate: "Test publishDate",
     publisher: "Test Publisher",
     imageUrl: "test-image-url.com",
     libraryResponses: [],
@@ -64,14 +68,12 @@ describe("BookCard 컴포넌트", () => {
 
     test("list 뷰 모드에서 렌더링되는지 확인", () => {
         render(<BookCard bookData={mockBook} viewMode="list" />);
-
-        expect(
-            screen.getByRole("img", { name: /test book/i })
-        ).toBeInTheDocument();
-        expect(screen.getByText("Test Book")).toBeInTheDocument();
-        expect(screen.getByText("Test Author")).toBeInTheDocument();
-        expect(screen.getByText("Test Provider")).toBeInTheDocument();
-        expect(screen.getByText("Test Publisher")).toBeInTheDocument();
+    
+        expect(screen.getByRole("img", { name: /test book/i })).toBeInTheDocument();
+        expect(screen.getByText(/Test Book/i)).toBeInTheDocument();
+        expect(screen.getByText(/저자:.*Test Author/i)).toBeInTheDocument();
+        expect(screen.getByText(/출판일:.*Test publishDate/i)).toBeInTheDocument();
+        expect(screen.getByText(/출판사:.*Test Publisher/i)).toBeInTheDocument();
     });
 
     test("이미지 로드 실패 시 대체 이미지를 보여주는지 확인", () => {

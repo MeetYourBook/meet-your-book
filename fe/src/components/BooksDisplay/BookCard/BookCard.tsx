@@ -12,13 +12,13 @@ interface BookItemProps {
 }
 
 const BookCard = ({ bookData, viewMode }: BookItemProps) => {
-    const { imageUrl, title, author, provider, publisher } = bookData;
+    const { imageUrl, title, author, publisher, publishDate, libraryResponses } = bookData;
     const [isVisible, setIsVisible] = useState(false);
-    const [isModalOpen, setModalOpen] = useState(false)
+    const [isModalOpen, setModalOpen] = useState(false);
 
-    const handleModalOpen = () => setModalOpen(true)
+    const handleModalOpen = () => setModalOpen(true);
 
-    const handleModalClose = () => setModalOpen(false)
+    const handleModalClose = () => setModalOpen(false);
 
     useEffect(() => {
         const timer = setTimeout(() => setIsVisible(true), ANIMATION_TIME);
@@ -30,7 +30,7 @@ const BookCard = ({ bookData, viewMode }: BookItemProps) => {
             {viewMode === "grid" ? (
                 <S.GridCard $isVisible={isVisible} onClick={handleModalOpen}>
                     <S.FavoritesBtnWrap>
-                        <FavoriteBtn item={bookData} storageName="books"/>
+                        <FavoriteBtn item={bookData} storageName="books" />
                     </S.FavoritesBtnWrap>
                     <S.Image
                         src={`//${imageUrl}`}
@@ -45,22 +45,31 @@ const BookCard = ({ bookData, viewMode }: BookItemProps) => {
                 </S.GridCard>
             ) : (
                 <S.ListCard $isVisible={isVisible} onClick={handleModalOpen}>
+                    <S.FavoritesBtnWrap>
+                        <FavoriteBtn item={bookData} storageName="books" />
+                    </S.FavoritesBtnWrap>
                     <S.Image
                         src={`//${imageUrl}`}
                         alt={title}
                         onError={handleImageError}
                     />
-                    <S.TextContainer $viewMode="list" >
-                        <S.Title>{title}</S.Title>
-                        <S.Subtitle>{author}</S.Subtitle>
-                        <div>
-                            <S.MetaInfo>{provider}</S.MetaInfo>
-                            <S.MetaInfo>{publisher}</S.MetaInfo>
-                        </div>
-                    </S.TextContainer>
+                    <S.ListBookInfo>
+                        <S.ListTitle>{title}</S.ListTitle>
+                        <S.MetaInfo>저자: {author}</S.MetaInfo>
+                        <S.MetaInfo>출판사: {publisher}</S.MetaInfo>
+                        <S.MetaInfo>출판일: {publishDate}</S.MetaInfo>
+                        <S.LibrariesCount>
+                            소장 도서관: {libraryResponses.length}
+                        </S.LibrariesCount>
+                    </S.ListBookInfo>
                 </S.ListCard>
             )}
-            {isModalOpen && <BookInfoModal bookData={bookData} handleModalClose={handleModalClose}/>}
+            {isModalOpen && (
+                <BookInfoModal
+                    bookData={bookData}
+                    handleModalClose={handleModalClose}
+                />
+            )}
         </>
     );
 };

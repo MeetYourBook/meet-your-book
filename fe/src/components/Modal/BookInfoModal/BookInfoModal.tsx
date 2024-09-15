@@ -11,8 +11,8 @@ interface BookInfoModalProps {
 
 const BookInfoModal = ({ bookData, handleModalClose }: BookInfoModalProps) => {
     const inSideRef = useRef(null)
-    const { imageUrl, title, author, provider, publisher, libraryResponses } = bookData;
-
+    const { imageUrl, title, author, publisher, publishDate, libraryResponses } = bookData;
+    
     useOnClickOutside(inSideRef, handleModalClose)
     
     return (
@@ -24,11 +24,10 @@ const BookInfoModal = ({ bookData, handleModalClose }: BookInfoModalProps) => {
                     <S.InfoWrap>
                         <S.Title>{title}</S.Title>
                         <S.MetaInfo>저자: {author}</S.MetaInfo>
-                        <S.MetaInfo>제공: {provider}</S.MetaInfo>
+                        <S.MetaInfo>출판일: {publishDate}</S.MetaInfo>
                         <S.MetaInfo>출판사: {publisher}</S.MetaInfo>
                     </S.InfoWrap>
                 </S.BookInfoWrap>
-                <S.Description>디스크립션 태그입니다.</S.Description>
                 <LibrariesPaging libraryResponses={libraryResponses}/>
             </S.PopupCard>
         </S.PopupOverlay>

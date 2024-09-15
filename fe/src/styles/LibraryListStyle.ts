@@ -32,6 +32,7 @@ const Checkbox = styled.input`
 `;
 
 const Label = styled.label`
+    height: 15px;
     flex-grow: 1;
     font-size: 0.9rem;
     white-space: nowrap;

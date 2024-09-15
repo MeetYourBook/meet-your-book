@@ -1,27 +1,4 @@
-import styled, { keyframes, css } from "styled-components";
-
-const dropdownOpenAnimation = keyframes`
-    from {
-        max-height: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        max-height: 20rem;
-        transform: translateY(0);
-    }
-`;
-
-const dropdownCloseAnimation = keyframes`
-    from {
-        max-height: 20rem;
-        transform: translateY(0);
-    }
-    to {
-        max-height: 0;
-        transform: translateY(-10px);
-        display: none;
-    }
-`;
+import styled, { css } from "styled-components";
 
 const Container = styled.div`
     min-width: 240px;
@@ -36,24 +13,42 @@ const Header = styled.header`
     font-weight: 400;
     font-size: 0.9rem;
     cursor: pointer;
-    
 `;
 
 const Title = styled.div`
     font-weight: 600;
-`
+`;
 
 const ListWrap = styled.div<{ $isOpen: boolean }>`
     font-weight: 400;
     font-size: 0.9rem;
     overflow-y: auto;
     padding: 1rem;
-    border-top: ${({$isOpen}) => $isOpen && "1px solid var(--border-color)"};
-    animation: ${({ $isOpen }) =>
-        $isOpen
-            ? css`${dropdownOpenAnimation} 0.3s ease-out forwards`
-            : css`${dropdownCloseAnimation} 0.3s ease-out forwards`};
+    border-top: ${({ $isOpen }) =>
+        $isOpen ? "1px solid var(--border-color)" : "none"};
 
+    ${({ $isOpen }) =>
+        $isOpen
+            ? css`
+                display: block;
+                max-height: 20rem;
+                padding: 1rem;
+                transform: translateY(0);
+                transition:
+                    max-height 0.3s ease-out,
+                    padding 0.3s ease-out,
+                    transform 0.3s ease-out;
+            `
+            : css`
+                max-height: 0;
+                padding: 0 1rem;
+                transform: translateY(-10px);
+                transition:
+                    max-height 0.3s ease-out,
+                    padding 0.3s ease-out,
+                    transform 0.3s ease-out;
+                transition-delay: 0s, 0s, 0s, 0.3s;
+            `}
     &::-webkit-scrollbar {
         width: 4px;
     }
@@ -73,8 +68,6 @@ const ListUl = styled.ul`
     padding: 0;
 `;
 
-
-
 const Input = styled.input`
     width: 90%;
     height: 2rem;
@@ -85,6 +78,6 @@ const Input = styled.input`
     outline: none;
     background-color: ${({ theme }) => theme.input};
     color: ${({ theme }) => theme.text};
-`
+`;
 
 export { Container, Header, ListWrap, ListUl, Input, Title };

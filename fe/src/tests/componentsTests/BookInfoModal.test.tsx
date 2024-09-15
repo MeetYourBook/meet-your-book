@@ -19,7 +19,7 @@ const mockBookData: BookContent = {
     id: "1",
     title: "Test Book",
     author: "Test Author",
-    provider: "Test Provider",
+    publishDate: "Test PublishDate",
     publisher: "Test Publisher",
     imageUrl: "test-image-url.jpg",
     libraryResponses: [],
@@ -49,7 +49,7 @@ describe("BookInfoModal 컴포넌트 테스트", () => {
 
         expect(screen.getByText("Test Book")).toBeInTheDocument();
         expect(screen.getByText("저자: Test Author")).toBeInTheDocument();
-        expect(screen.getByText("제공: Test Provider")).toBeInTheDocument();
+        expect(screen.getByText("출판일: Test PublishDate")).toBeInTheDocument();
         expect(screen.getByText("출판사: Test Publisher")).toBeInTheDocument();
 
         const bookImage = screen.getByAltText("Test Book");

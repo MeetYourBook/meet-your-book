@@ -46,7 +46,7 @@ class AdminLibraryControllerTest {
     @DisplayName("도서관 생성 요청 성공")
     void createLibrary() throws Exception {
         // Given
-        LibraryCreateRequest libraryCreateRequest = new LibraryCreateRequest("대학교", "서울대학교",
+        LibraryCreateRequest libraryCreateRequest = new LibraryCreateRequest("서울대학교", "대학교",
             "https://test.com");
         String createRequest = objectMapper.writeValueAsString(libraryCreateRequest);
 
@@ -66,7 +66,7 @@ class AdminLibraryControllerTest {
     @DisplayName("도서관 수정 요청 성공")
     void updateLibrary_success() throws Exception {
         // Given
-        LibraryUpdateRequest libraryUpdateRequest = new LibraryUpdateRequest("대학교", "서울대학교",
+        LibraryUpdateRequest libraryUpdateRequest = new LibraryUpdateRequest("서울대학교", "대학교",
             "https://test.com");
         String updateRequest = objectMapper.writeValueAsString(libraryUpdateRequest);
 

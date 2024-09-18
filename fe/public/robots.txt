@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /404
+Allow: /
+
+# Host
+Host: https://www.meetyourbook.site/
+
+# Sitemaps
+Sitemap: https://www.meetyourbook.site/sitemap.xml

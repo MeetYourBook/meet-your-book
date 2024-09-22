@@ -3,7 +3,9 @@ package com.meetyourbook.service;
 import com.meetyourbook.dto.DuplicateLibrary;
 import com.meetyourbook.dto.LibraryCreationInfo;
 import com.meetyourbook.dto.LibraryCreationResult;
+import com.meetyourbook.dto.LibraryPageResponse;
 import com.meetyourbook.dto.LibraryResponse;
+import com.meetyourbook.dto.LibrarySearchCondition;
 import com.meetyourbook.dto.LibraryUpdateInfo;
 import com.meetyourbook.entity.Library;
 import com.meetyourbook.exception.ResourceNotFoundException;
@@ -15,6 +17,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -105,6 +108,13 @@ public class LibraryDomainService {
     public Library findByBaseUrl(String baseUrl) {
         return libraryRepository.findByLibraryUrl_UrlContaining(baseUrl)
             .orElseThrow(() -> new NoSuchElementException("base Url not found = " + baseUrl));
+    }
+
+    @Transactional(readOnly = true)
+    public LibraryPageResponse findLibraries(LibrarySearchCondition request) {
+        Page<Library> libraryPage = libraryRepository.findByNameStartingWith(request.name(),
+            request.pageable());
+        return LibraryPageResponse.of(libraryPage);
     }
 
     private Library findLibrary(Long id) {

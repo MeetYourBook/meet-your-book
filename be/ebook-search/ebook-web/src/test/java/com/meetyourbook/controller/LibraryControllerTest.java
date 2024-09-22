@@ -1,6 +1,7 @@
 package com.meetyourbook.controller;
 
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
@@ -11,9 +12,12 @@ import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWit
 import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
+import static org.springframework.restdocs.request.RequestDocumentation.queryParameters;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.meetyourbook.dto.LibraryPageResponse;
 import com.meetyourbook.dto.LibraryResponse;
+import com.meetyourbook.dto.LibrarySearchRequest;
 import com.meetyourbook.service.LibraryWebService;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -40,28 +44,42 @@ class LibraryControllerTest {
 
 
     @Test
-    @DisplayName("도서관 목록 조회 요청 성공")
-    void getLibraries_success() throws Exception {
+    @DisplayName("도서관 목록 페이징 조회 요청 성공")
+    void getLibraries_withPagination_success() throws Exception {
         // Given
-        Long libraryId1 = 1L;
-        Long libraryId2 = 2L;
+        String name = "도서관";
+        int page = 0;
+        int size = 10;
 
-        LibraryResponse libraryResponse = new LibraryResponse(libraryId1, "도서관1");
-        LibraryResponse libraryResponse2 = new LibraryResponse(libraryId2, "도서관2");
-
-        when(libraryWebService.findAllLibraryResponses()).thenReturn(
-            List.of(libraryResponse, libraryResponse2)
+        LibrarySearchRequest request = new LibrarySearchRequest(name, page, size);
+        List<LibraryResponse> content = List.of(
+            new LibraryResponse(1L, "도서관1"),
+            new LibraryResponse(2L, "도서관2")
         );
+        LibraryPageResponse pageResponse = new LibraryPageResponse(page, size, 2, 1, content);
+
+        when(libraryWebService.findLibraries(any(LibrarySearchRequest.class))).thenReturn(pageResponse);
 
         // When, Then
-        mockMvc.perform(get("/libraries"))
+        mockMvc.perform(get("/libraries")
+                .param("name", name)
+                .param("page", String.valueOf(page))
+                .param("size", String.valueOf(size)))
             .andExpect(status().isOk())
-            .andDo(document("libraries",
-                preprocessRequest(prettyPrint()),
-                preprocessResponse(prettyPrint()),
+            .andDo(document("libraries-search",
+                queryParameters(
+                    parameterWithName("name").description("도서관 이름 검색어").optional(),
+                    parameterWithName("page").description("페이지 번호 (0부터 시작)").optional(),
+                    parameterWithName("size").description("페이지 크기").optional()
+                ),
                 responseFields(
-                    fieldWithPath("[].id").description("도서관 ID"),
-                    fieldWithPath("[].name").description("도서관 이름")
+                    fieldWithPath("pageNumber").description("현재 페이지 번호"),
+                    fieldWithPath("pageSize").description("페이지 크기"),
+                    fieldWithPath("totalElements").description("전체 요소 수"),
+                    fieldWithPath("totalPages").description("전체 페이지 수"),
+                    fieldWithPath("content").description("도서관 목록"),
+                    fieldWithPath("content[].id").description("도서관 ID"),
+                    fieldWithPath("content[].name").description("도서관 이름")
                 )
             ));
     }

@@ -1,7 +1,9 @@
 package com.meetyourbook.service;
 
 import com.meetyourbook.dto.LibraryCreateRequest;
+import com.meetyourbook.dto.LibraryPageResponse;
 import com.meetyourbook.dto.LibraryResponse;
+import com.meetyourbook.dto.LibrarySearchRequest;
 import com.meetyourbook.dto.LibraryUpdateRequest;
 import com.meetyourbook.entity.Library;
 import java.util.List;
@@ -34,12 +36,8 @@ public class LibraryWebService {
         libraryDomainService.delete(id);
     }
 
-    public List<LibraryResponse> findAllLibraryResponses() {
-        List<Library> libraries = findAll();
-
-        return libraries.stream()
-            .map(LibraryResponse::fromEntity)
-            .toList();
+    public LibraryPageResponse findLibraries(LibrarySearchRequest request) {
+        return libraryDomainService.findLibraries(request.toLibrarySearchCondition());
     }
 
 }

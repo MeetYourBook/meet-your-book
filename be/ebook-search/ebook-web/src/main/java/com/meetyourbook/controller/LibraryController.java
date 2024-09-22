@@ -1,11 +1,13 @@
 package com.meetyourbook.controller;
 
+import com.meetyourbook.dto.LibraryPageResponse;
 import com.meetyourbook.dto.LibraryResponse;
+import com.meetyourbook.dto.LibrarySearchRequest;
 import com.meetyourbook.service.LibraryWebService;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,8 +20,8 @@ public class LibraryController {
     private final LibraryWebService libraryWebService;
 
     @GetMapping
-    public List<LibraryResponse> getLibraries() {
-        return libraryWebService.findAllLibraryResponses();
+    public LibraryPageResponse getLibraries(@ModelAttribute LibrarySearchRequest request) {
+        return libraryWebService.findLibraries(request);
     }
 
     @GetMapping("/{libraryId}")

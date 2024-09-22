@@ -2,15 +2,15 @@ package com.meetyourbook.dto;
 
 public record LibraryCreateRequest(
 
+    String name,
     String category,
-    String press,
     String url
 
 ) {
 
     public LibraryCreationInfo toLibraryCreationInfo() {
         return LibraryCreationInfo.builder()
-            .name(press)
+            .name(name)
             .url(url)
             .build();
     }

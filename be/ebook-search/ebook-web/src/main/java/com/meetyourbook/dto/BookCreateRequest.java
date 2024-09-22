@@ -17,7 +17,7 @@ public record BookCreateRequest(
     String publisher,
 
     LocalDate publishDate,
-    String url
+    String imageUrl
 
 ) {
 
@@ -27,7 +27,7 @@ public record BookCreateRequest(
             .author(author)
             .publisher(publisher)
             .publishDate(publishDate)
-            .url(url)
+            .url(imageUrl)
             .build();
     }
 

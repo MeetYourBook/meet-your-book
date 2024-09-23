@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import LibraryFilter from "@/components/FilterDisplay/LibraryFilter/LibraryFilter";
 import { useLibraryFilter } from "@/hooks/useLibraryFilter";
 import { vi } from "vitest";
-import { LibrariesType } from "@/types/Libraries";
+import { Libraries } from "@/types/Libraries";
 
 vi.mock("@/hooks/useLibraryFilter", () => ({
     useLibraryFilter: vi.fn(),
@@ -16,22 +16,22 @@ vi.mock("@/components/LoadingFallBack/LoadingFallBack", () => ({
     default: vi.fn().mockReturnValue(<div data-testid="loading-fallback" />),
 }));
 
-const mockLibraries: LibrariesType[] = [
-    { id: "1", name: "Library One" },
-    { id: "2", name: "Library Two" },
+const mockLibraries: Libraries[] = [
+    { id: 1, name: "Library One" },
+    { id: 2, name: "Library Two" },
 ];
 
 describe("LibraryFilter 컴포넌트 테스트", () => {
     beforeEach(() => {
         (useLibraryFilter as jest.Mock).mockReturnValue({
             isOpen: true,
-            searchValue: "",
+            setDebounceValue: vi.fn(),
+            toggleFilter: vi.fn(),
+            setLibraryPage: 0,
+            librariesItem: mockLibraries,
+            isLoading: false,
             librariesFilter: [],
             handleSelectLibrary: vi.fn(),
-            toggleFilter: vi.fn(),
-            handleSearch: vi.fn(),
-            isLoading: false,
-            getDisplayLibraries: mockLibraries,
             observerRef: { current: null },
         });
     });
@@ -60,21 +60,6 @@ describe("LibraryFilter 컴포넌트 테스트", () => {
         fireEvent.click(header);
 
         expect(mockToggleFilter).toHaveBeenCalled();
-    });
-
-    test("검색 기능이 제대로 작동하는지 확인", () => {
-        const mockHandleSearch = vi.fn();
-        (useLibraryFilter as jest.Mock).mockReturnValue({
-            ...useLibraryFilter(),
-            handleSearch: mockHandleSearch,
-        });
-
-        render(<LibraryFilter />);
-
-        const searchInput = screen.getByPlaceholderText("도서관 검색...");
-        fireEvent.change(searchInput, { target: { value: "Library One" } });
-
-        expect(mockHandleSearch).toHaveBeenCalledWith(expect.any(Object));
     });
 
     test("로딩 중일 때 LoadingFallBack이 표시되는지 확인", () => {

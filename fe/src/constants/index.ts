@@ -32,3 +32,5 @@ export const ANIMATION_TIME = 100;
 export const LIBRARIES_PER_PAGE = 5;
 export const LIBRARIES_FILTER_PER_PAGE = 20;
 export const DEBOUNCE_TIME = 300;
+export const LIBRARIES_PAGE_SIZE = 20
+export const LIBRARIES_DEFAULT_QUERY = `?name=서울&page=0&size=10`

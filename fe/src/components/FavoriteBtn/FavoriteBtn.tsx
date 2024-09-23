@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { StarOutlined, StarFilled } from "@ant-design/icons";
-import { LibrariesType } from "@/types/Libraries";
+import { Libraries } from "@/types/Libraries";
 import { BookContent } from "@/types/Books";
 import { useEffect, useState } from "react";
 import { getStorage, hasFavoriteItem } from "@/utils";
 interface FavoritesBtnProps {
-    item: LibrariesType | BookContent;
+    item: Libraries | BookContent;
     storageName: "libraries" | "books";
 }
 
@@ -17,7 +17,7 @@ const FavoriteBtn = ({ item, storageName }: FavoritesBtnProps) => {
         e.stopPropagation();
         const favoritesStorage = getStorage(storageName);
         const newFavoritesStorage = hasFavoriteItem(item.id, favoritesStorage)
-            ? favoritesStorage.filter((curFav: LibrariesType) => curFav.id !== item.id)
+            ? favoritesStorage.filter((curFav: Libraries) => curFav.id !== item.id)
             : [...favoritesStorage, item];
         localStorage.setItem(storageName, JSON.stringify(newFavoritesStorage));
         setIsFavorite(!isFavorite);

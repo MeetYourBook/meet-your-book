@@ -80,4 +80,10 @@ const Input = styled.input`
     color: ${({ theme }) => theme.text};
 `;
 
-export { Container, Header, ListWrap, ListUl, Input, Title };
+const Message = styled.div`
+    text-align: center;
+    margin: 1rem 0 0.5rem;
+
+`
+
+export { Container, Header, ListWrap, ListUl, Input, Title, Message };

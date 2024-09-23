@@ -1,4 +1,4 @@
-import { LibrariesType } from "@/types/Libraries";
+import { Libraries } from "@/types/Libraries";
 import { BookContent } from "@/types/Books";
 export const getCurrentPageItems = <T>(
     items: T[],
@@ -23,6 +23,6 @@ export const getStorage = (storageName: string) => {
     return JSON.parse(storedData ?? "[]");
 };
 
-export const hasFavoriteItem = (itemID: string, storage: LibrariesType[] | BookContent[]) => {
-    return storage.some((fav: LibrariesType | BookContent) => fav.id === itemID)
+export const hasFavoriteItem = (itemID: string | number, storage: Libraries[] | BookContent[]) => {
+    return storage.some((fav: Libraries | BookContent) => fav.id === itemID)
 }

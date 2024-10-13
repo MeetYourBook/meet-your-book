@@ -1,31 +1,26 @@
 import useQueryStore from "@/stores/queryStore";
 import { useState, useMemo, useRef, useEffect } from "react";
-import { FIRST_PAGE } from "@/constants";
-import useSearchFilter from "./useFilterSearch";
-import { getCurrentPageItems } from "@/utils";
-import { LIBRARIES_FILTER_PER_PAGE, PAGINATION_FIRST_PAGE } from "@/constants";
+import { FIRST_PAGE, LIBRARIES_DEFAULT_QUERY, LIBRARIES_PAGE_SIZE } from "@/constants";
 import useInfiniteScroll from "./useInfiniteScroll";
-import { LibrariesType } from "@/types/Libraries";
+import { Libraries } from "@/types/Libraries";
 import useLibrariesQuery from "./queries/useLibrariesQuery";
 
 export const useLibraryFilter = () => {
-    const observerRef = useRef(null);
     const [isOpen, setIsOpen] = useState(true);
-    const [filterPage, setFilterPage] = useState(PAGINATION_FIRST_PAGE);
-    const [disPlayLibraries, setDisplayLibraries] = useState<LibrariesType[]>([])
+    const [debounceValue, setDebounceValue] = useState("")
+    const [libraryPage, setLibraryPage] = useState(FIRST_PAGE)
+    const [query, setQuery] = useState<string>(LIBRARIES_DEFAULT_QUERY)
     const { librariesFilter, setLibrariesFilter, setPage } = useQueryStore();
-    const { data = [], isLoading } = useLibrariesQuery();
-    const { searchValue, setSearchValue, filteredLibraries } = useSearchFilter<LibrariesType>({
-        libraries: data,
-        keyName: "name",
-    });
+    const { data: libraries, isLoading } = useLibrariesQuery(query);
+    const [librariesItem, setLibrariesItem] = useState<Libraries[]>([])
+    const observerRef = useRef(null);
 
-    const getDisplayLibraries = useMemo(() => {
-        if (searchValue) return filteredLibraries;
-        return disPlayLibraries;
-    }, [searchValue, filteredLibraries, disPlayLibraries]);
+    const totalPages = useMemo(() => {
+        if(libraries && libraries.totalPages) return libraries.totalPages
+    }, [libraries])
+    
 
-    const handleSelectLibrary = (library: LibrariesType) => {
+    const handleSelectLibrary = (library: Libraries) => {
         setPage(FIRST_PAGE);
         setLibrariesFilter(
             librariesFilter.some(curLibrary => curLibrary.id === library.id)
@@ -36,20 +31,21 @@ export const useLibraryFilter = () => {
 
     const toggleFilter = () => setIsOpen(!isOpen);
 
-    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchValue(e.target.value);
-    };
-
-    const handleLoadMore = () => setFilterPage(prev => prev + 1);
+    const handleLoadMore = () => setLibraryPage(prev => prev + 1);
 
     const { observe } = useInfiniteScroll(handleLoadMore);
 
     useEffect(() => {
-        if(data.length > 0) {
-        const newPageData: LibrariesType[] = getCurrentPageItems(data, filterPage, LIBRARIES_FILTER_PER_PAGE)
-        setDisplayLibraries(prevLibraries => [...prevLibraries, ...newPageData]) 
-        }   
-    }, [data, filterPage])
+        const queryParams = { name: debounceValue === "" ? "서울" : debounceValue, page: libraryPage, size: LIBRARIES_PAGE_SIZE}
+        const queryString = Object.entries(queryParams).map(([key, value]) => `${key}=${value}`).join("&")
+        setQuery(`?${queryString}`)
+    }, [debounceValue, libraryPage])
+
+    useEffect(() => {
+        if(libraries && libraries.content) 
+        setLibrariesItem(libraryPage === FIRST_PAGE ? libraries.content : [...librariesItem, ...libraries.content])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [libraries, libraryPage])
 
     useEffect(() => {
         if (observerRef.current) {
@@ -59,13 +55,15 @@ export const useLibraryFilter = () => {
 
     return {
         isOpen,
-        searchValue,
+        setDebounceValue, 
+        toggleFilter,
+        setLibraryPage,
+        librariesItem,
+        isLoading,
         librariesFilter,
         handleSelectLibrary,
-        toggleFilter,
-        handleSearch,
-        isLoading,
-        getDisplayLibraries,
         observerRef,
+        totalPages,
+        libraryPage,
     };
 };

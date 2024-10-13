@@ -14,7 +14,7 @@ const mockLocalStorage = (() => {
 Object.defineProperty(window, "localStorage", {value: mockLocalStorage})
 
 describe("FavoriteBtn 컴포넌트 테스트", () => {
-    const mockItem = { id: "1", name: "Test Item" };
+    const mockItem = { id: 1, name: "Test Item" };
     const mockStorageName = "libraries";
 
     beforeEach(() => {

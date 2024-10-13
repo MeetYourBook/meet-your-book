@@ -1,4 +1,12 @@
 export interface LibrariesType {
-    id: string;
+    totalPages: number;
+    totalElements: number;
+    pageSize: number;
+    pageNumber: number;
+    content: Libraries[];
+}
+
+export interface Libraries {
+    id: number;
     name: string;
 }

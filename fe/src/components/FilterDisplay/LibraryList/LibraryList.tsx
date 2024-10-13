@@ -1,11 +1,11 @@
 import FavoriteBtn from "@/components/FavoriteBtn/FavoriteBtn";
 import * as S from "@/styles/LibraryListStyle";
-import { LibrariesType } from "@/types/Libraries";
+import { Libraries } from "@/types/Libraries";
 
 interface LibraryListProps {
-    libraries: LibrariesType[];
-    librariesFilter: LibrariesType[];
-    handleSelectLibrary: (library: LibrariesType) => void;
+    libraries: Libraries[];
+    librariesFilter: Libraries[];
+    handleSelectLibrary: (library: Libraries) => void;
 }
 
 const LibraryList = ({

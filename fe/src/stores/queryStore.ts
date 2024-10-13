@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { BookContent } from "@/types/Books";
-import { LibrariesType } from "@/types/Libraries";
+import { Libraries } from "@/types/Libraries";
 interface StoreState {
     booksItem: BookContent[];
     searchText: string;
@@ -8,14 +8,14 @@ interface StoreState {
     page: number;
     size: number;
     selectedValue: string;
-    librariesFilter: LibrariesType[];
+    librariesFilter: Libraries[];
     setBooksItem: (books: BookContent[]) => void;
     setSearchText: (searchText: string) => void;
     setInputValue: (value: string) => void;
     setPage: (pageNum: number) => void;
     setSize: (size: number) => void;
     setSelectedValue: (value: string) => void;
-    setLibrariesFilter: (libraries: LibrariesType[]) => void;
+    setLibrariesFilter: (libraries: Libraries[]) => void;
     resetFilter: () => void;
 }
 

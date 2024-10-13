@@ -1,6 +1,6 @@
 import React, { ComponentType, ReactNode } from "react";
 import { ErrorProps } from "@/components/ErrorFallBack/ErrorFallBack";
-
+import { HTTPError } from "./HTTPError";
 interface ErrorBoundaryProps {
     fallback: ComponentType<ErrorProps>;
     onReset: () => void;
@@ -9,7 +9,7 @@ interface ErrorBoundaryProps {
 
 interface ErrorBoundaryState {
     hasError: boolean;
-    error: Error | null;
+    error: Error | HTTPError | null;
 }
 
 class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
@@ -20,7 +20,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
         this.resetError = this.resetError.bind(this);
     }
 
-    static getDerivedStateFromError(error:Error) {
+    static getDerivedStateFromError(error: Error | HTTPError) {
         return { hasError: true, error };
     }
 
@@ -34,8 +34,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
 
     captureReject(e: PromiseRejectionEvent) {
         e.preventDefault();
-        const error = e.reason instanceof Error ? e.reason : new Error(String(e.reason));
-        this.setState({ hasError: true, error });
+        this.setState({ hasError: true, error: e.reason });
     }
 
     resetError() {
@@ -43,29 +42,12 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
         this.setState({ hasError: false, error: null });
     }
 
-    getStatusCode(error: Error | null): number {
-        if (!error) return 500;
-
-        const errorMessage = error.message;
-        const statusCode = parseInt(errorMessage);
-
-        if (!isNaN(statusCode) && statusCode >= 100 && statusCode < 600) {
-            return statusCode;
-        }
-
-        if (error instanceof TypeError) return 400;
-        if (errorMessage.includes("Network Error")) return 503;
-        
-        return 500;
-    }
-
     render(): ReactNode {
         const { fallback: Fallback, children } = this.props;
         if (this.state.hasError) {
-            const statusCode = this.getStatusCode(this.state.error);
 
             return <Fallback 
-                statusCode={statusCode}
+            statusCode={this.state.error instanceof HTTPError ? this.state.error.statusCode : undefined }
                 resetError={this.resetError}
             />;
         }

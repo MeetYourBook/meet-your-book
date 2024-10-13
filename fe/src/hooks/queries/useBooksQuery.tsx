@@ -1,10 +1,11 @@
 import { booksAPI } from "@/services";
 import { useQuery } from "@tanstack/react-query";
+import { HTTPError } from "@/components/ErrorBoundary/HTTPError";
 
 const fetchBooks = async (query: string) => {
     const response = await booksAPI.get(query);
     if (!response.ok) {
-        throw new Error(`${response.status}`);
+        throw new HTTPError(response.status);
     }
     return await response.json();
 };

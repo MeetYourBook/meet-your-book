@@ -1,10 +1,11 @@
 import { librariesAPI } from "@/services";
 import { useQuery } from "@tanstack/react-query";
+import { HTTPError } from "@/components/ErrorBoundary/HTTPError";
 
 const fetchLibraries = async (query: string) => {
     const response = await librariesAPI.get(query)
     if (!response.ok) {
-        throw new Error("libraries error")
+        throw new HTTPError(response.status)
     }
     const data = await response.json()
     return data
@@ -15,6 +16,7 @@ const useLibrariesQuery = (query: string) => {
         queryKey: ["libraries", query],
         queryFn: () => fetchLibraries(query), 
         staleTime: Infinity,
+        throwOnError: true,
     });
 }
 

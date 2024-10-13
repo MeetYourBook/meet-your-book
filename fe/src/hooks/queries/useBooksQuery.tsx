@@ -2,20 +2,21 @@ import { booksAPI } from "@/services";
 import { useQuery } from "@tanstack/react-query";
 
 const fetchBooks = async (query: string) => {
-    const response = await booksAPI.get(query)
+    const response = await booksAPI.get(query);
     if (!response.ok) {
-        throw new Error("books error")
+        throw new Error(`${response.status}`);
     }
-    const data = await response.json()
-    return data
-}
+    return await response.json();
+};
 
 const useBooksQuery = (query: string) => {
     return useQuery({
         queryKey: ["books", query],
         queryFn: () => fetchBooks(query),
-        staleTime: Infinity, 
+        staleTime: Infinity,
+        throwOnError: true,
     });
-}
+};
 
-export default useBooksQuery
+export default useBooksQuery;
+

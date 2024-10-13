@@ -5,24 +5,31 @@ import MobileSearchFilterPanel from "../Navigation/MobileSearchFilterPanel/Mobil
 import * as S from "@/styles/NavigationStyle";
 import ThemeSwitcher from "../Navigation/ThemeSwitcher/ThemeSwitcher";
 import FilterStatusBar from "../Navigation/FilterStatusBar/FilterStatusBar";
+import ErrorBoundary from "@/ErrorBoundary/ErrorBoundary";
+import ErrorFallBack from "../ErrorFallBack/ErrorFallBack";
 
 const DefaultLayout = () => {
     return (
         <>
-            <S.NavContainer>
-                <S.NavWrap>
-                    <Logo />
-                    <S.SearchWrap>
-                        <SearchInput />
-                    </S.SearchWrap>
-                    <MobileSearchFilterPanel />
-                    <S.ThemeSwitcherWrap>
-                        <ThemeSwitcher />
-                    </S.ThemeSwitcherWrap>
-                </S.NavWrap>
-            </S.NavContainer>
-            <FilterStatusBar/>
-            <Outlet />
+            <ErrorBoundary
+                fallback={ErrorFallBack}
+                onReset={() => window.location.reload()}
+            >
+                <S.NavContainer>
+                    <S.NavWrap>
+                        <Logo />
+                        <S.SearchWrap>
+                            <SearchInput />
+                        </S.SearchWrap>
+                        <MobileSearchFilterPanel />
+                        <S.ThemeSwitcherWrap>
+                            <ThemeSwitcher />
+                        </S.ThemeSwitcherWrap>
+                    </S.NavWrap>
+                </S.NavContainer>
+                <FilterStatusBar />
+                <Outlet />
+            </ErrorBoundary>
         </>
     );
 };

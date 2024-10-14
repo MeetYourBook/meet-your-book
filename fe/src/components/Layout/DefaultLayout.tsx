@@ -5,7 +5,7 @@ import MobileSearchFilterPanel from "../Navigation/MobileSearchFilterPanel/Mobil
 import * as S from "@/styles/NavigationStyle";
 import ThemeSwitcher from "../Navigation/ThemeSwitcher/ThemeSwitcher";
 import FilterStatusBar from "../Navigation/FilterStatusBar/FilterStatusBar";
-import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
+import { ErrorBoundary } from "async-error-boundary";
 import ErrorFallBack from "../ErrorFallBack/ErrorFallBack";
 
 const DefaultLayout = () => {

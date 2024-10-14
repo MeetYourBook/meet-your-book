@@ -1,9 +1,6 @@
 import * as S from "@/styles/ErrorFallBackStyle"
 import { HTTP_ERROR_MESSAGE } from "@/constants/HTTPErrorMessage";
-export interface ErrorProps {
-    statusCode?: number;
-    resetError?: () => void;
-}
+import { ErrorProps } from "async-error-boundary";
 
 const ErrorFallBack = ({ statusCode = 404, resetError }: ErrorProps) => {
     const currentStatusCode = statusCode as keyof typeof HTTP_ERROR_MESSAGE;

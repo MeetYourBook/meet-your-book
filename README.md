@@ -15,10 +15,13 @@ Meet Your Book은 전자책을 검색하고 소장 도서관을 찾을 수 있�
 
 ## 주요 기능
 - 무한스크롤
+![무한스크롤GIF](https://github.com/user-attachments/assets/cea772ff-abc3-42de-bb0d-d1daad5b7605)
 
 - 다양한 필터
+![필터GIF](https://github.com/user-attachments/assets/21c8e74a-acab-4c2f-a68a-4b716146e651)
 
 - 다크모드, 디바운스 검색, 필터 취소, 페이지네이션
+![그밖에GIF](https://github.com/user-attachments/assets/bb4c11a7-ff1c-460b-bbe6-69b09e3a39c9)
 
 ## 기술스택
 ### Frontend

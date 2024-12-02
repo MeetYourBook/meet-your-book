@@ -1,17 +1,20 @@
 import * as S from "@/styles/ErrorFallBackStyle"
+import { HTTP_ERROR_MESSAGE } from "@/constants/HTTPErrorMessage";
+import { ErrorProps } from "async-error-boundary";
 
-const ErrorFallBack = () => {
+const ErrorFallBack = ({ statusCode = 404, resetError }: ErrorProps) => {
+    const currentStatusCode = statusCode as keyof typeof HTTP_ERROR_MESSAGE;
+
     return (
         <S.Container>
             <S.ContentWrapper>
-                <S.Title>오류가 발생했습니다!</S.Title>
+                <S.Title>{HTTP_ERROR_MESSAGE[currentStatusCode].HEADING}</S.Title>
                 <S.Description>
-                    죄송합니다. 예기치 못한 오류가 발생했습니다. 잠시 후 다시
-                    시도해 주세요.
+                    {HTTP_ERROR_MESSAGE[currentStatusCode].BODY}
                 </S.Description>
                 <S.ButtonWrapper>
-                    <S.RetryButton onClick={() => window.location.reload()}>
-                        다시 시도하기
+                    <S.RetryButton onClick={resetError}>
+                        {HTTP_ERROR_MESSAGE[currentStatusCode].BUTTON}
                     </S.RetryButton>
                 </S.ButtonWrapper>
             </S.ContentWrapper>

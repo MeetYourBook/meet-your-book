@@ -2,8 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import DefaultLayout from "@/components/Layout/DefaultLayout";
 import Home from "../pages/Home";
 import NotFound from "../pages/NotFound";
-import ErrorFallBack from "@/components/ErrorFallBack/ErrorFallBack";
-import { ErrorBoundary } from "react-error-boundary";
 import Login from "@/pages/Login";
 import Admin from "@/pages/Admin";
 import PrivateAdminLayout from "@/components/Layout/PrivateAdminLayout";
@@ -11,11 +9,7 @@ import PrivateAdminLayout from "@/components/Layout/PrivateAdminLayout";
 const routes = createBrowserRouter([
     {
         path: "/",
-        element: (
-            <ErrorBoundary fallbackRender={ErrorFallBack}>
-                <DefaultLayout />
-            </ErrorBoundary>
-        ),
+        element: <DefaultLayout />,
         children: [
             {
                 path: "/",
